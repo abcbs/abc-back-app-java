@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.CmTableAreaBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.CmTableAreaBean">
+		<id column="area_id" property="areaId" jdbcType="VARCHAR" />
+	
+    
+		<result column="is_syn" property="isSyn" jdbcType="VARCHAR" />
+    
+		<result column="rest_id" property="restId" jdbcType="VARCHAR" />
+    
+		<result column="consume_low" property="consumeLow" jdbcType="DOUBLE" />
+    
+		<result column="name" property="name" jdbcType="VARCHAR" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="notes" property="notes" jdbcType="VARCHAR" />
+    
+		<result column="version" property="version" jdbcType="BIGINT" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="sevice_charge_num" property="seviceChargeNum" jdbcType="DOUBLE" />
+    
+		<result column="sevice_charge_type" property="seviceChargeType" jdbcType="VARCHAR" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+    
+		<result column="is_special_price" property="isSpecialPrice" jdbcType="VARCHAR" />
+    
+		<result column="teamare" property="teamare" jdbcType="VARCHAR" />
+    
+		<result column="is_on_sale" property="isOnSale" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		is_syn as isSyn ,
+		rest_id as restId ,
+		consume_low as consumeLow ,
+		area_id as areaId ,
+		name as name ,
+		create_by as createBy ,
+		update_by as updateBy ,
+		notes as notes ,
+		version as version ,
+		create_time as createTime ,
+		sevice_charge_num as seviceChargeNum ,
+		sevice_charge_type as seviceChargeType ,
+		syn_version as synVersion ,
+		is_special_price as isSpecialPrice ,
+		teamare as teamare ,
+		is_on_sale as isOnSale ,
+		update_time as updateTime 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="isSyn != null"> and is_syn = #{isSyn}</if>
+				
+		  	    <if test="restId != null"> and rest_id = #{restId}</if>
+				
+		  	    <if test="consumeLow != null"> and consume_low = #{consumeLow}</if>
+				
+		  	    <if test="areaId != null"> and area_id = #{areaId}</if>
+				
+		  	    <if test="name != null"> and name = #{name}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #{createBy}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #{updateBy}</if>
+				
+		  	    <if test="notes != null"> and notes = #{notes}</if>
+				
+		  	    <if test="version != null"> and version = #{version}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #{createTime}</if>
+				
+		  	    <if test="seviceChargeNum != null"> and sevice_charge_num = #{seviceChargeNum}</if>
+				
+		  	    <if test="seviceChargeType != null"> and sevice_charge_type = #{seviceChargeType}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #{synVersion}</if>
+				
+		  	    <if test="isSpecialPrice != null"> and is_special_price = #{isSpecialPrice}</if>
+				
+		  	    <if test="teamare != null"> and teamare = #{teamare}</if>
+				
+		  	    <if test="isOnSale != null"> and is_on_sale = #{isOnSale}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #{updateTime}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by ${sorting}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</sql>
+	
+	<!-- ��ѯ���� -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(area_id)
+		from cm_table_area
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ��ѯ -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cm_table_area
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ����ID��ѯ -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cm_table_area
+		where area_id = #{area_id}
+	</select>
+	
+	<!-- ����IDɾ�� -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cm_table_area
+		where  area_id = #{area_id}
+	</delete>
+	
+	<!-- ɾ�� -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- ��� -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.CmTableAreaBean">
+		insert into cm_table_area(
+		  	    is_syn  ,
+	
+		  	    rest_id  ,
+	
+		  	    consume_low  ,
+	
+		  	    area_id  ,
+	
+		  	    name  ,
+	
+		  	    create_by  ,
+	
+		  	    update_by  ,
+	
+		  	    notes  ,
+	
+		  	    version  ,
+	
+		  	    create_time  ,
+	
+		  	    sevice_charge_num  ,
+	
+		  	    sevice_charge_type  ,
+	
+		  	    syn_version  ,
+	
+		  	    is_special_price  ,
+	
+		  	    teamare  ,
+	
+		  	    is_on_sale  ,
+	
+		  	    update_time  
+	
+			
+		)
+		values (
+		  	    #{isSyn } ,
+		  	    #{restId } ,
+		  	    #{consumeLow } ,
+		  	    #{areaId } ,
+		  	    #{name } ,
+		  	    #{createBy } ,
+		  	    #{updateBy } ,
+		  	    #{notes } ,
+		  	    #{version } ,
+		  	    #{createTime } ,
+		  	    #{seviceChargeNum } ,
+		  	    #{seviceChargeType } ,
+		  	    #{synVersion } ,
+		  	    #{isSpecialPrice } ,
+		  	    #{teamare } ,
+		  	    #{isOnSale } ,
+		  	    #{updateTime } 
+		)
+	</insert>
+	
+	
+	<!-- ͨ��ID���� -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.CmTableAreaBean">
+		update cm_table_area
+		<set>
+		  	<if test="isSyn != null">  is_syn = #{isSyn} ,</if>
+		  	<if test="restId != null">  rest_id = #{restId} ,</if>
+		  	<if test="consumeLow != null">  consume_low = #{consumeLow} ,</if>
+		  	<if test="name != null">  name = #{name} ,</if>
+		  	<if test="createBy != null">  create_by = #{createBy} ,</if>
+		  	<if test="updateBy != null">  update_by = #{updateBy} ,</if>
+		  	<if test="notes != null">  notes = #{notes} ,</if>
+		  	<if test="version != null">  version = #{version} ,</if>
+		  	<if test="createTime != null">  create_time = #{createTime} ,</if>
+		  	<if test="seviceChargeNum != null">  sevice_charge_num = #{seviceChargeNum} ,</if>
+		  	<if test="seviceChargeType != null">  sevice_charge_type = #{seviceChargeType} ,</if>
+		  	<if test="synVersion != null">  syn_version = #{synVersion} ,</if>
+		  	<if test="isSpecialPrice != null">  is_special_price = #{isSpecialPrice} ,</if>
+		  	<if test="teamare != null">  teamare = #{teamare} ,</if>
+		  	<if test="isOnSale != null">  is_on_sale = #{isOnSale} ,</if>
+		  	<if test="updateTime != null">  update_time = #{updateTime} </if>
+		</set>
+		where  area_id = #{area_id}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.CmTableAreaBean">
+		update cm_table_area
+
+		set 
+		  	 is_syn = #{isSyn} ,
+		  	 rest_id = #{restId} ,
+		  	 consume_low = #{consumeLow} ,
+		  	 name = #{name} ,
+		  	 create_by = #{createBy} ,
+		  	 update_by = #{updateBy} ,
+		  	 notes = #{notes} ,
+		  	 version = #{version} ,
+		  	 create_time = #{createTime} ,
+		  	 sevice_charge_num = #{seviceChargeNum} ,
+		  	 sevice_charge_type = #{seviceChargeType} ,
+		  	 syn_version = #{synVersion} ,
+		  	 is_special_price = #{isSpecialPrice} ,
+		  	 teamare = #{teamare} ,
+		  	 is_on_sale = #{isOnSale} ,
+		  	 update_time = #{updateTime} 
+	
+		where  area_id = #{area_id}
+	</update>
+	
+</mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/WEB-INF/layouts/">
+	<excludes>
+		<pattern>/static/*</pattern>
+		<pattern>/api/*</pattern>
+		<pattern>/open/*</pattern>
+		<pattern>/login*</pattern>
+		<pattern>/login?relogin=1</pattern>
+		<pattern>/self/*</pattern>
+		<pattern>/self?*</pattern>
+		<pattern>/mobile/*</pattern>
+		<pattern>/G2mobile/*</pattern>
+		<pattern>/employe/*</pattern>
+		<pattern>/barpay.jsp</pattern>
+		<pattern>/qrpay.jsp</pattern>
+		<pattern>/trade_cancel.jsp</pattern>
+		<pattern>/trade_refund.jsp</pattern>
+		<pattern>/payIndex.html</pattern>
+	</excludes>
+	
+	<decorator name="default" page="default.jsp">
+		<pattern>/*</pattern>
+	</decorator>
+	
+	<decorator name="pop" page="defaultPop.jsp">
+		<pattern>/*/pop/*</pattern>
+	</decorator>
+	
+	<decorator name="ajax" page="defaultAjax.jsp">
+		<pattern>/*/ajax/*</pattern>
+	</decorator>
+</decorators>

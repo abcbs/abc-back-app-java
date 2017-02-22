@@ -1,0 +1,257 @@
+/* CSS Document */
+@charset "utf-8";
+/* 样式初始化 */
+*{margin: 0; padding: 0;}
+fieldset,img,button{border: 0;}
+:focus {outline: 0;}
+address, caption, cite, code, dfn,
+em, strong, th, var, optgroup {font-style: normal;font-weight:normal;}
+h1, h2, h3, h4, h5, h6 {font-size: 100%;font-weight:normal;}
+abbr, acronym {border: 0;font-variant: normal;}
+input, button, textarea,
+select, optgroup, option {font-family:inherit; font-size: inherit; font-style:inherit; font-weight:inherit;}
+code, kbd, samp, tt {font-size: 100%;}
+input, button, textarea, select {*font-size: 100%;}
+body {line-height: 1.5; font-family:"Microsoft YaHei UI","Microsoft YaHei",SimSun,"Segoe UI",Tahoma,Helvetica,Sans-Serif;font-size:12px;}
+ol, ul,li {list-style: none;}
+table {border-collapse: collapse;border-spacing: 0;}
+sup, sub {font-size:100%;vertical-align: baseline;}
+:link, :visited , ins {text-decoration: none;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after,
+q:before, q:after {content: '';content: none;}
+body{background:url(../images/bg.png) repeat;}
+html ,body{}
+
+.right{float:right;}
+.mr_8{margin-right:8px;}
+.hideTooLongChar{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;course:hand;}
+/*链接*/
+.link_blue{color:#0000ff;cursor:pointer;text-decoration:underline;}
+
+.body_huiyuan{width:998px;border:1px solid #969696;margin:0 auto 8px 13px;height:670px;}
+/*会员and预订左*/
+.list_h{width:807px;height:664px;float:left; border-right:1px solid #ababab;margin:2px 0 0 2px;display:inline;background:#c4c4c4; position:relative;}
+.hy_nav{width:807px;height:50px;float:left;background:url(../images/main_nav_bg2.png);position:relative;overflow:auto;overflow-x:hidden;overflow-y:hidden;}
+.hy_nav ul{width:304px;float:left;} 
+.hy_nav li{width:115px;height:46px;float:left;border-right:1px solid #969696; position:relative;} 
+.hy_nav a{width:114px;height:46px;float:left;font-weight:bold;line-height:46px;vertical-align:middle;text-align:center;font-size:14px;color:#666;display:block;border-right:1px solid #fff;}
+.hy_nav .a_on{font-weight:bold;background:#c4c4c4;border-right:1px solid #c4c4c4;border-bottom:1px solid #c4c4c4;color:#666;display:block;}
+.hy_nav a:hover{background:#c4c4c4;border-right:1px solid #c4c4c4;border-bottom:1px solid #c4c4c4;}
+
+/*左右滚动按钮*/
+.hy_nav .but_go,.hy_nav .but_back{height:45px;display:block;position:absolute;top:1px;}
+.hy_nav .but_go{width:46px;background:url(../images/zhangdan/diancan_bg_3.png) -47px 0;right:4px;}
+.hy_nav .but_go:hover{background:url(../images/zhangdan/diancan_bg_3.png) -47px -46px;}
+.hy_nav .but_back{width:47px;background:url(../images/zhangdan/diancan_bg_3.png) 0 0;right:50px;}
+.hy_nav .but_back:hover{background:url(../images/zhangdan/diancan_bg_3.png) 0 -46px;}
+
+
+
+.dot_on{width:28px;height:8px;dispay:block;position:absolute;bottom:-5px;left:25px;background:url(../images/huiyuan-yuding/dot.png);}
+.hy_nav .quanbu{width:115px;height:46px;background:url(../images/index_bg_3.png);border:0;}
+.hy_nav .quanbu_on{width:115px;height:46px;padding:0;background:url(../images/index_bg_3.png) 0 -46px;border:0;}
+.hy_nav .quanbu:hover{width:115px;height:46px;background:url(../images/index_bg_3.png) 0 -46px;border:0;border-bottom:1px solid #c4c4c4;}
+.hy_nav .qita_on{background:#c4c4c4;border-right:1px solid #c4c4c4;border-bottom:1px solid #c4c4c4;}
+.hy_table_wrap{width:807px; height:557px;float:left;overflow:auto;overflow-x:hidden;}
+.huiyuan_table{width:100%;float:left;}
+.huiyuan_table th{height:38px;line-height:38px; vertical-align:middle;background:url(../images/huiyuan-yuding/huiyuan_bg_1.png);}
+.huiyuan_table th img{vertical-align:middle; margin-left:3px;}
+.huiyuan_table tr{width:807px;background:#fff;}
+.huiyuan_table td{padding:0 10px;height:42px;border-bottom:1px solid #c4c4c4;text-align: center;}
+.huiyuan_table .on_hy_tr{background:#dcdcdc;}
+.table_but_1,.table_but_2,.table_but_3{height:38px;text-align:center;line-height:38px;vertical-align:middle;color:#000;display:block;float:left;}
+.table_but_1{width:138px;background:url(../images/huiyuan-yuding/huiyuan_3.png);}
+.table_but_1:hover{background:url(../images/huiyuan-yuding/huiyuan_3.png) 0 -42px;}
+.table_but_2{width:69px;background:url(../images/huiyuan-yuding/huiyuan_3.png) -144px 0;}
+.table_but_2:hover{background:url(../images/huiyuan-yuding/huiyuan_3.png) -145px -42px;}
+.table_but_3{width:50px;background:url(../images/huiyuan-yuding/huiyuan_3.png) -220px 0;float: left;}
+.table_but_3:hover{background:url(../images/huiyuan-yuding/huiyuan_3.png) -220px -42px;}
+
+.hy_sousuo{width:795px;height:52px;position:absolute;bottom:0;left:0;}
+.search_sec{width:230px;float:left;padding-left:20px;margin-top:10px;}
+.search_sec input{width:163px;height:26px;line-height:26px;padding-left:7px;vertical-align:middle;border:0;float:left;background:url(../images/search.png) 0 0;}
+.search_sec button{width:30px;height:26px;border:0;background:url(../images/search.png) -170px 0;}
+.but_qx_left{width:44px;height:44px;display:block;float:left;margin-right:7px;background:url(../images/zhangdan/zhangdan_bg_1.png) -97px -111px;}
+.but_qx_left:hover{background:url(../images/zhangdan/zhangdan_bg_1.png) -97px -226px;}
+.but_qx_left_on{width:44px;height:44px;display:block;float:left;margin-right:7px;background:url(../images/zhangdan/zhangdan_bg_1.png) -97px -226px;}
+.but_qx_left_no{width:44px;height:44px;display:block;float:left;margin-right:7px;background:url(../images/zhangdan/zhangdan_bg_1.png) -97px -226px;}
+
+.but_qx_right{width:44px;height:44px;display:block;float:left;margin-right:7px;background:url(../images/zhangdan/zhangdan_bg_1.png) -148px -111px;}
+.but_qx_right:hover{background:url(../images/zhangdan/zhangdan_bg_1.png) -148px -226px;}
+.but_qx_right_on{width:44px;height:44px;display:block;float:left;margin-right:7px;background:url(../images/zhangdan/zhangdan_bg_1.png) -148px -226px;}
+.but_qx_right_no{width:44px;height:44px;display:block;float:left;margin-right:7px;background:url(../images/zhangdan/zhangdan_bg_1.png) -148px -226px;}
+
+
+.left-td{text-align:left;}
+.right-td{text-align:right;}
+
+/*会员and预订右*/
+.list_y{width:185px;height:664px;float:left;margin:2px 2px 0 0;border-left:1px solid #666;display:inline;background:url(../images/zhangdan/zhangdan_bg_2.png) repeat;}
+.hy_gongneng_1{width:173px;height:230px;margin-top:30px;padding:0 0 20px 12px;float:left;border-bottom:1px solid #969696;}
+.hy_gongneng_1 a{width:77px;height:67px;display:block;float:left;margin-bottom:8px;}
+.hy_gongneng_1 .hy_no{width:77px;height:67px;display:block;float:left;margin:0 8px 8px 0;background:url(../images/gongneng_4.png) 0 -68px;}
+
+.hy_ksfk{background:url(../images/huiyuan-yuding/huiyuan_6.png) 0 0;}
+.hy_ksfk:hover{background:url(../images/huiyuan-yuding/huiyuan_4.png) 0 0;}
+.hy_ksfk_no{background:url(../images/huiyuan-yuding/huiyuan_5.png) 0 0;}
+
+.hy_guashi{background:url(../images/huiyuan-yuding/huiyuan_6.png) -85px 0;}
+.hy_guashi:hover{background:url(../images/huiyuan-yuding/huiyuan_4.png) -85px 0;}
+.hy_guashi_no{background:url(../images/huiyuan-yuding/huiyuan_5.png) -85px 0;}
+
+.hy_tingyong{background:url(../images/huiyuan-yuding/huiyuan_6.png) 0 -75px;}
+.hy_tingyong:hover{background:url(../images/huiyuan-yuding/huiyuan_4.png) 0 -75px;}
+.hy_tingyong_no{background:url(../images/huiyuan-yuding/huiyuan_5.png) 0 -75px;}
+
+.hy_tuika{background:url(../images/huiyuan-yuding/huiyuan_6.png)  -85px -75px;}
+.hy_tuika:hover{background:url(../images/huiyuan-yuding/huiyuan_4.png)  -85px -75px;}
+.hy_tuika_no{background:url(../images/huiyuan-yuding/huiyuan_5.png)  -85px -75px;}
+
+.hy_chongzhi{background:url(../images/huiyuan-yuding/huiyuan_6.png) 0 -150px;}
+.hy_chongzhi:hover{background:url(../images/huiyuan-yuding/huiyuan_4.png) 0 -150px;}
+.hy_chongzhi_no{background:url(../images/huiyuan-yuding/huiyuan_5.png) 0 -150px;}
+
+.hy_gongneng_2{width:173px;padding-left:12px;float:left;font-size:14px;border-top:1px solid #fff;}
+.hy_gongneng_2 h3{width:160px;text-align:center;margin:15px 0 20px 0; padding-right:13px;}
+.hy_gongneng_2 a{width:77px;height:67px;line-height:67px; vertical-align:middle;text-align:center;display:block;float:left;color:#fff;margin:0 8px 8px 0;background:url(../images/gongneng_4.png) -85px -136px;}
+.hy_gongneng_2 a:hover{background:url(../images/gongneng_4.png) 0 -136px;}
+.hy_gongneng_2 .hy_on{background:url(../images/gongneng_4.png) 0 -136px;}
+
+.hy_gongneng_2 .hy_quanbu{background:url(../images/gongneng_4.png) -85px -136px;}
+.hy_gongneng_2 .hy_quanbu:hover{background:url(../images/zhuangtai_2.png) 0 0;}
+
+
+
+/*预订功能区*/
+.yd_xinzeng{width:77px;height:67px;display:block;background:url(../images/huiyuan-yuding/yuding_bg_1.png) 0 0;}
+.yd_xinzeng_no{width:77px;height:67px;display:block;background:url(../images/huiyuan-yuding/yuding_bg_1.png) -344px 0;}
+.yd_xinzeng:hover{background:url(../images/huiyuan-yuding/yuding_bg_1.png) -172px 0;}
+.yd_shqr{width:77px;height:67px;display:block;display:block;background:url(../images/huiyuan-yuding/yuding_bg_1.png) -85px 0;}
+.yd_shqr_no{width:77px;height:67px;display:block;display:block;background:url(../images/huiyuan-yuding/yuding_bg_1.png) -430px 0;}
+.yd_shqr:hover{background:url(../images/huiyuan-yuding/yuding_bg_1.png) -257px 0;}
+.yd_zkt{width:77px;height:67px;display:block;display:block;background:url(../images/huiyuan-yuding/yuding_bg_1.png) 0 -75px;}
+.yd_zkt_no{width:77px;height:67px;display:block;display:block;background:url(../images/huiyuan-yuding/yuding_bg_1.png) -344px -75px;}
+.yd_zkt:hover{background:url(../images/huiyuan-yuding/yuding_bg_1.png) -172px -75px;}
+.yd_qxyd{width:77px;height:67px;display:block;display:block;background:url(../images/huiyuan-yuding/yuding_bg_1.png) -85px -75px;}
+.yd_qxyd_no{width:77px;height:67px;display:block;display:block;background:url(../images/huiyuan-yuding/yuding_bg_1.png) -430px -75px;}
+.yd_qxyd:hover{background:url(../images/huiyuan-yuding/yuding_bg_1.png) -257px -75px;}
+
+.yd_gongneng_2{width:173px;padding-left:12px;float:left;font-size:14px;border-top:1px solid #fff;}
+.yd_gongneng_2 h3{width:160px;text-align:center;margin:15px 0 20px 0; padding-right:13px;}
+.yd_gongneng_2 a{width:77px;height:67px;display:block;float:left;color:#fff;margin:0 8px 8px 0;background:url(../images/gongneng_4.png) -85px -136px;display:table; *position: relative;}
+.yd_gongneng_2 a:hover{background:url(../images/gongneng_4.png) 0 -136px;}
+.yd_gongneng_2 .hy_quanbu{background:url(../images/gongneng_4.png) -85px -136px;}
+.yd_gongneng_2 .hy_quanbu:hover{background:url(../images/zhuangtai_2.png) 0 0;}
+.yd_gongneng_2 span{display:table-cell; vertical-align:middle;*position:absolute;*top:50%;}
+.yd_gongneng_2 i{width:77px;text-align:center;display:block; font-style:normal;margin: 0 auto; *position: relative; *top: -50%;}
+.yd_gongneng_2 .yd_gongneng_2_a_on{background:url(../images/gongneng_4.png) 0 -136px;}
+
+
+
+/*估清*/
+.guqing_wrap{width:795px;padding:30px 0 0 12px;height:517px;background:#c4c4c4;float:left;overflow:auto;overflow-x:hidden;}
+.guqing_nav{width:807px;height:50px;float:left;background:url(../images/main_nav_bg2.png);position:relative;overflow:auto;overflow-x:hidden;overflow-y:hidden;}
+.guqing_nav ul{float:left;} 
+.guqing_nav li{width:81px;height:46px;float:left;border-right:1px solid #969696; position:relative;} 
+.guqing_nav a{width:80px;height:46px;float:left;font-weight:bold;line-height:46px;vertical-align:middle;text-align:center;font-size:14px;color:#666;display:block;border-right:1px solid #fff;}
+.guqing_nav .a_on{font-weight:bold;background:#c4c4c4;border-right:1px solid #c4c4c4;border-bottom:1px solid #c4c4c4;color:#666;display:block;}
+.guqing_nav .p_quanbu{width:80px;height:46px;background:url(../images/index_bg_3.png);border:0;}
+.guqing_nav a:hover{background:#c4c4c4;border-right:1px solid #c4c4c4;border-bottom:1px solid #c4c4c4;}
+.guqing_nav .quanbu{width:80px;height:46px;background:url(../images/index_bg_3.png);border:0;}
+.guqing_nav .quanbu_on{width:80px;height:46px;padding:0;background:url(../images/index_bg_3.png) 0 -46px;border:0;}
+.guqing_nav .quanbu:hover{width:80px;height:46px;background:url(../images/index_bg_3.png) 0 -46px;border:0;border-bottom:1px solid #c4c4c4;}
+
+/*左右滚动按钮*/
+.guqing_nav .but_go,.guqing_nav .but_back{height:45px;display:block;position:absolute;top:1px;}
+.guqing_nav .but_go{width:46px;background:url(../images/zhangdan/diancan_bg_3.png) -47px 0;right:4px;}
+.guqing_nav .but_go:hover{background:url(../images/zhangdan/diancan_bg_3.png) -47px -46px;}
+.guqing_nav .but_back{width:47px;background:url(../images/zhangdan/diancan_bg_3.png) 0 0;right:50px;}
+.guqing_nav .but_back:hover{background:url(../images/zhangdan/diancan_bg_3.png) 0 -46px;}
+
+
+.guqing_red,.guqing_yellow,.guqing_green{width:95px;height:95px;float:left;margin:0 4px 4px 0;font-size:14px;color:#000;display:table; *position: relative;}
+.guqing_red{cursor:pointer;background:url(../images/zhangdan/diancan_bg_1.png) -100px -95px;}
+.guqing_red:hover{background:url(../images/zhangdan/diancan_bg_1.png) 0 -95px;}
+.guqing_red_on{background:url(../images/zhangdan/diancan_bg_1.png) 0 -95px;}
+
+.guqing_yellow{cursor:pointer;background:url(../images/zhangdan/diancan_bg_1.png) -195px -95px;}
+.guqing_yellow:hover{background:url(../images/zhangdan/diancan_bg_1.png) 0 -194px;}
+.guqing_yellow_on{background:url(../images/zhangdan/diancan_bg_1.png) 0 -194px;}
+
+
+.guqing_green{cursor:pointer;background:url(../images/zhangdan/diancan_bg_1.png) -194px 0;}
+.guqing_green:hover{background:url(../images/zhangdan/diancan_bg_1.png) -100px -194px;}
+.guqing_green_on{background:url(../images/zhangdan/diancan_bg_1.png) -100px -194px;}
+
+.guqing_red div,.guqing_yellow div,.guqing_green div{display:table-cell; vertical-align:middle;*position:absolute;*top:50%;}
+.guqing_red p,.guqing_yellow p,.guqing_green p{width:90px; margin: 0 auto; *position:relative; *top: -50%;}
+.guqing_red span,.guqing_yellow span,.guqing_green span{display:block;height:18px;line-height:18px;width:90px; text-align:center;}
+
+.guqing{background:url(../images/zhangdan/guqing_bg_1.png) 0 0;}
+.guqing:hover{background:url(../images/zhangdan/guqing_bg_1.png) 0 -140px;}
+.guqing_no{background:url(../images/zhangdan/guqing_bg_1.png) 0 -70px;}
+
+.qx_guqing{background:url(../images/zhangdan/guqing_bg_1.png) -85px 0;}
+.qx_guqing:hover{background:url(../images/zhangdan/guqing_bg_1.png) -85px -140px;}
+.qx_guqing_no{background:url(../images/zhangdan/guqing_bg_1.png) -85px -70px;}
+
+.qx_guqing{background:url(../images/zhangdan/guqing_bg_1.png) -85px 0;}
+.qx_guqing:hover{background:url(../images/zhangdan/guqing_bg_1.png) -85px -140px;}
+.qx_guqing_no{background:url(../images/zhangdan/guqing_bg_1.png) -85px -70px;}
+
+.qbqx_guqing{background:url(../images/zhangdan/guqing_bg_1.png) -170px 0;}
+.qbqx_guqing:hover{background:url(../images/zhangdan/guqing_bg_1.png) -170px -140px;}
+.qbqx_guqing_no{background:url(../images/zhangdan/guqing_bg_1.png) -170px -70px;}
+
+.guqing_zhuangtai{width:173px;padding-left:12px;float:left;font-size:14px;border-top:1px solid #fff;}
+.guqing_zhuangtai h3{width:160px;text-align:center;margin:15px 0 20px 0; padding-right:13px;}
+
+.gqzt_red span,.gqzt_yellow span,.gqzt_green span{height:16px;text-align:center;display:block;}
+.gqzt_red{width:77px;height:54px;padding-top:13px;display:block;float:left;color:#fff;margin:0 8px 8px 0;background:url(../images/zhangdan/guqing_bg_2.png) 0 -144px;}
+.gqzt_red:hover{background:url(../images/zhangdan/guqing_bg_2.png) -83px -144px;}
+.gqzt_red_on{background:url(../images/zhangdan/guqing_bg_2.png) -83px -144px;}
+.gqzt_yellow{width:77px;height:54px;padding-top:13px;display:block;float:left;color:#fff;margin:0 8px 8px 0;background:url(../images/zhangdan/guqing_bg_2.png) 0 -72px;}
+.gqzt_yellow:hover{background:url(../images/zhangdan/guqing_bg_2.png) -83px -72px;}
+.gqzt_yellow_on{background:url(../images/zhangdan/guqing_bg_2.png) -83px -72px;}
+.gqzt_green{width:77px;height:54px;padding-top:13px;display:block;float:left;color:#fff;margin:0 8px 8px 0;background:url(../images/zhangdan/guqing_bg_2.png) 0 0;}
+.gqzt_green:hover{background:url(../images/zhangdan/guqing_bg_2.png) -83px 0;}
+.gqzt_green_on{background:url(../images/zhangdan/guqing_bg_2.png) -83px 0;}
+
+
+/*2014-12-09丹*/
+.huiyuan_table a.print_a{background:url(../images/images_p/print.png) no-repeat;display:inline-block;width:25px;height:25px;}
+.huiyuan_table a.print_a:hover{background:url(../images/images_p/print_hover.png) no-repeat;}
+
+@media screen and (min-width: 1152px) and (max-device-width: 1279px){
+	.body_huiyuan{width:1125px;border:1px solid #969696;margin:0 auto 8px 13px;height:670px;}
+	.list_h{width:934px;height:664px;float:left; border-right:1px solid #ababab;margin:2px 0 0 2px;display:inline;background:#c4c4c4; position:relative;}
+}
+@media screen and (min-width: 1280px) and (max-device-width: 1343px){
+	.body_huiyuan{width:1253px;border:1px solid #969696;margin:0 auto 8px 13px;height:670px;}
+	.list_h{width:1062px;height:664px;float:left; border-right:1px solid #ababab;margin:2px 0 0 2px;display:inline;background:#c4c4c4; position:relative;}
+}
+@media screen and (min-width: 1344px) and (max-device-width: 1359px){
+	.body_huiyuan{width:1317px;border:1px solid #969696;margin:0 auto 8px 13px;height:670px;}
+	.list_h{width:1126px;height:664px;float:left; border-right:1px solid #ababab;margin:2px 0 0 2px;display:inline;background:#c4c4c4; position:relative;}
+}
+@media screen and (min-width: 1360px) and (max-device-width: 1365px){
+	.body_huiyuan{width:1333px;border:1px solid #969696;margin:0 auto 8px 13px;height:670px;}
+	.list_h{width:1142px;height:664px;float:left; border-right:1px solid #ababab;margin:2px 0 0 2px;display:inline;background:#c4c4c4; position:relative;}
+}
+@media screen and (min-width: 1366px) and (max-device-width: 1439px){
+	.body_huiyuan{width:1339px;border:1px solid #969696;margin:0 auto 8px 13px;height:670px;}
+	.list_h{width:1148px;height:664px;float:left; border-right:1px solid #ababab;margin:2px 0 0 2px;display:inline;background:#c4c4c4; position:relative;}
+}
+@media screen and (min-width: 1440px) and (max-device-width: 1599px){
+	.body_huiyuan{width:1413px;border:1px solid #969696;margin:0 auto 8px 13px;height:670px;}
+	.list_h{width:1222px;height:664px;float:left; border-right:1px solid #ababab;margin:2px 0 0 2px;display:inline;background:#c4c4c4; position:relative;}
+}
+@media screen and (min-width: 1600px) and (max-device-width: 1919px){
+	.body_huiyuan{width:1573px;border:1px solid #969696;margin:0 auto 8px 13px;height:670px;}
+	.list_h{width:1382px;height:664px;float:left; border-right:1px solid #ababab;margin:2px 0 0 2px;display:inline;background:#c4c4c4; position:relative;}
+}
+@media screen and (min-width: 1920px) and (max-device-width: 3000px){
+	.body_huiyuan{width:1893px;border:1px solid #969696;margin:0 auto 8px 13px;height:670px;}
+	.list_h{width:1702px;height:664px;float:left; border-right:1px solid #ababab;margin:2px 0 0 2px;display:inline;background:#c4c4c4; position:relative;}
+}

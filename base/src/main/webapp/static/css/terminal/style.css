@@ -1,0 +1,24 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{margin: 0; padding: 0; font-family:"冬青黑体简体中文 W3";}
+
+     /*----顶部区域---*/
+
+ 	/*----点餐界面背景--*/
+.time{ color:#FFF; float:left; margin:17px 0 0 15px; font-size:16px;}
+.hhg_logo{ background-image:url(../../images/teiminal/teiminal/ksdc_02.png);  float:left; width:148px; height:46px; margin:1px 0 0 350px; }
+.mixi_logo{ background-image:url(images/ksdc_05.png); width:98px; height:33px; float:right; margin:8px 20px 0 0; cursor:pointer;}
+
+/*--开始点餐界面*/
+.KS_father{ background-image:url(../../images/teiminal/ksdc.png); width:1280px; height:1024px;} 
+.ks_header{ padding-bottom:169px;}
+.KS_central { background:url(../../images/teiminal/ksdc_10.png) no-repeat; width:456px; height:158px; margin:0 0 0 411px;}
+.zzdcxt{ color:#FFF; font-family:"冬青黑体简体中文 W3"; font-size:42px; margin:422px 0 0 512px;}
+.KS_bottom{ background:url(../../images/teiminal/ksdc_14.png); width:255px; height:95px; margin:27px 0 0 512px; cursor:pointer;}
+
+
+
+
+
+

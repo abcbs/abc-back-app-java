@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.CmDinerBillDishesBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.CmDinerBillDishesBean">
+		<id column="bd_id" property="bdId" jdbcType="VARCHAR" />
+	
+    
+		<result column="cancel_reason_name" property="cancelReasonName" jdbcType="VARCHAR" />
+    
+		<result column="cancel_time" property="cancelTime" jdbcType="DATE" />
+    
+		<result column="is_ruling_price" property="isRulingPrice" jdbcType="VARCHAR" />
+    
+		<result column="real_cost" property="realCost" jdbcType="DOUBLE" />
+    
+		<result column="bill_no" property="billNo" jdbcType="VARCHAR" />
+    
+		<result column="bill_id" property="billId" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="unit_type" property="unitType" jdbcType="VARCHAR" />
+    
+		<result column="real_unit_price" property="realUnitPrice" jdbcType="DOUBLE" />
+    
+		<result column="dishes_id" property="dishesId" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="unit_id" property="unitId" jdbcType="VARCHAR" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+    
+		<result column="taste_name_array" property="tasteNameArray" jdbcType="VARCHAR" />
+    
+		<result column="fixed_version" property="fixedVersion" jdbcType="BIGINT" />
+    
+		<result column="unit_name" property="unitName" jdbcType="VARCHAR" />
+    
+		<result column="taste_id_array" property="tasteIdArray" jdbcType="VARCHAR" />
+    
+		<result column="dishes_status" property="dishesStatus" jdbcType="VARCHAR" />
+    
+		<result column="last_urge_time" property="lastUrgeTime" jdbcType="DATE" />
+    
+		<result column="urge_num" property="urgeNum" jdbcType="BIGINT" />
+    
+		<result column="rest_id" property="restId" jdbcType="VARCHAR" />
+    
+		<result column="rm_return" property="rmReturn" jdbcType="VARCHAR" />
+    
+		<result column="order_emp_id" property="orderEmpId" jdbcType="VARCHAR" />
+    
+		<result column="cancel_reason_id" property="cancelReasonId" jdbcType="VARCHAR" />
+    
+		<result column="is_onsale" property="isOnsale" jdbcType="VARCHAR" />
+    
+		<result column="avoidfood_id_array" property="avoidfoodIdArray" jdbcType="VARCHAR" />
+    
+		<result column="dishes_name" property="dishesName" jdbcType="VARCHAR" />
+    
+		<result column="ori_cost" property="oriCost" jdbcType="DOUBLE" />
+    
+		<result column="unit_num" property="unitNum" jdbcType="FLOAT" />
+    
+		<result column="is_syn" property="isSyn" jdbcType="VARCHAR" />
+    
+		<result column="version" property="version" jdbcType="BIGINT" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="avoidfood_name_array" property="avoidfoodNameArray" jdbcType="VARCHAR" />
+    
+		<result column="service_commission" property="serviceCommission" jdbcType="DOUBLE" />
+    
+		<result column="give_time" property="giveTime" jdbcType="DATE" />
+    
+		<result column="give_operator" property="giveOperator" jdbcType="VARCHAR" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="discount" property="discount" jdbcType="BIGINT" />
+    
+		<result column="notes" property="notes" jdbcType="VARCHAR" />
+    
+		<result column="fixed_time" property="fixedTime" jdbcType="DATE" />
+    
+		<result column="pungent_level" property="pungentLevel" jdbcType="BIGINT" />
+    
+		<result column="sale_commission" property="saleCommission" jdbcType="DOUBLE" />
+    
+		<result column="discount_type" property="discountType" jdbcType="VARCHAR" />
+    
+		<result column="category_id" property="categoryId" jdbcType="VARCHAR" />
+    
+		<result column="dishes_code" property="dishesCode" jdbcType="VARCHAR" />
+    
+		<result column="is_user_defined" property="isUserDefined" jdbcType="VARCHAR" />
+    
+		<result column="unit_price" property="unitPrice" jdbcType="DOUBLE" />
+    
+		<result column="order_time" property="orderTime" jdbcType="DATE" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		cancel_reason_name as cancelReasonName ,
+		cancel_time as cancelTime ,
+		is_ruling_price as isRulingPrice ,
+		real_cost as realCost ,
+		bill_no as billNo ,
+		bill_id as billId ,
+		update_time as updateTime ,
+		unit_type as unitType ,
+		real_unit_price as realUnitPrice ,
+		dishes_id as dishesId ,
+		create_time as createTime ,
+		unit_id as unitId ,
+		syn_version as synVersion ,
+		taste_name_array as tasteNameArray ,
+		fixed_version as fixedVersion ,
+		unit_name as unitName ,
+		taste_id_array as tasteIdArray ,
+		dishes_status as dishesStatus ,
+		last_urge_time as lastUrgeTime ,
+		urge_num as urgeNum ,
+		bd_id as bdId ,
+		rest_id as restId ,
+		rm_return as rmReturn ,
+		order_emp_id as orderEmpId ,
+		cancel_reason_id as cancelReasonId ,
+		is_onsale as isOnsale ,
+		avoidfood_id_array as avoidfoodIdArray ,
+		dishes_name as dishesName ,
+		ori_cost as oriCost ,
+		unit_num as unitNum ,
+		is_syn as isSyn ,
+		version as version ,
+		create_by as createBy ,
+		avoidfood_name_array as avoidfoodNameArray ,
+		service_commission as serviceCommission ,
+		give_time as giveTime ,
+		give_operator as giveOperator ,
+		update_by as updateBy ,
+		discount as discount ,
+		notes as notes ,
+		fixed_time as fixedTime ,
+		pungent_level as pungentLevel ,
+		sale_commission as saleCommission ,
+		discount_type as discountType ,
+		category_id as categoryId ,
+		dishes_code as dishesCode ,
+		is_user_defined as isUserDefined ,
+		unit_price as unitPrice ,
+		order_time as orderTime 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="cancelReasonName != null"> and cancel_reason_name = #{cancelReasonName}</if>
+				
+		  	    <if test="cancelTime != null"> and cancel_time = #{cancelTime}</if>
+				
+		  	    <if test="isRulingPrice != null"> and is_ruling_price = #{isRulingPrice}</if>
+				
+		  	    <if test="realCost != null"> and real_cost = #{realCost}</if>
+				
+		  	    <if test="billNo != null"> and bill_no = #{billNo}</if>
+				
+		  	    <if test="billId != null"> and bill_id = #{billId}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #{updateTime}</if>
+				
+		  	    <if test="unitType != null"> and unit_type = #{unitType}</if>
+				
+		  	    <if test="realUnitPrice != null"> and real_unit_price = #{realUnitPrice}</if>
+				
+		  	    <if test="dishesId != null"> and dishes_id = #{dishesId}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #{createTime}</if>
+				
+		  	    <if test="unitId != null"> and unit_id = #{unitId}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #{synVersion}</if>
+				
+		  	    <if test="tasteNameArray != null"> and taste_name_array = #{tasteNameArray}</if>
+				
+		  	    <if test="fixedVersion != null"> and fixed_version = #{fixedVersion}</if>
+				
+		  	    <if test="unitName != null"> and unit_name = #{unitName}</if>
+				
+		  	    <if test="tasteIdArray != null"> and taste_id_array = #{tasteIdArray}</if>
+				
+		  	    <if test="dishesStatus != null"> and dishes_status = #{dishesStatus}</if>
+				
+		  	    <if test="lastUrgeTime != null"> and last_urge_time = #{lastUrgeTime}</if>
+				
+		  	    <if test="urgeNum != null"> and urge_num = #{urgeNum}</if>
+				
+		  	    <if test="bdId != null"> and bd_id = #{bdId}</if>
+				
+		  	    <if test="restId != null"> and rest_id = #{restId}</if>
+				
+		  	    <if test="rmReturn != null"> and rm_return = #{rmReturn}</if>
+				
+		  	    <if test="orderEmpId != null"> and order_emp_id = #{orderEmpId}</if>
+				
+		  	    <if test="cancelReasonId != null"> and cancel_reason_id = #{cancelReasonId}</if>
+				
+		  	    <if test="isOnsale != null"> and is_onsale = #{isOnsale}</if>
+				
+		  	    <if test="avoidfoodIdArray != null"> and avoidfood_id_array = #{avoidfoodIdArray}</if>
+				
+		  	    <if test="dishesName != null"> and dishes_name = #{dishesName}</if>
+				
+		  	    <if test="oriCost != null"> and ori_cost = #{oriCost}</if>
+				
+		  	    <if test="unitNum != null"> and unit_num = #{unitNum}</if>
+				
+		  	    <if test="isSyn != null"> and is_syn = #{isSyn}</if>
+				
+		  	    <if test="version != null"> and version = #{version}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #{createBy}</if>
+				
+		  	    <if test="avoidfoodNameArray != null"> and avoidfood_name_array = #{avoidfoodNameArray}</if>
+				
+		  	    <if test="serviceCommission != null"> and service_commission = #{serviceCommission}</if>
+				
+		  	    <if test="giveTime != null"> and give_time = #{giveTime}</if>
+				
+		  	    <if test="giveOperator != null"> and give_operator = #{giveOperator}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #{updateBy}</if>
+				
+		  	    <if test="discount != null"> and discount = #{discount}</if>
+				
+		  	    <if test="notes != null"> and notes = #{notes}</if>
+				
+		  	    <if test="fixedTime != null"> and fixed_time = #{fixedTime}</if>
+				
+		  	    <if test="pungentLevel != null"> and pungent_level = #{pungentLevel}</if>
+				
+		  	    <if test="saleCommission != null"> and sale_commission = #{saleCommission}</if>
+				
+		  	    <if test="discountType != null"> and discount_type = #{discountType}</if>
+				
+		  	    <if test="categoryId != null"> and category_id = #{categoryId}</if>
+				
+		  	    <if test="dishesCode != null"> and dishes_code = #{dishesCode}</if>
+				
+		  	    <if test="isUserDefined != null"> and is_user_defined = #{isUserDefined}</if>
+				
+		  	    <if test="unitPrice != null"> and unit_price = #{unitPrice}</if>
+				
+		  	    <if test="orderTime != null"> and order_time = #{orderTime}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by ${sorting}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</sql>
+	
+	<!-- ��ѯ���� -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(bd_id)
+		from cm_diner_bill_dishes
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ��ѯ -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cm_diner_bill_dishes
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ����ID��ѯ -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cm_diner_bill_dishes
+		where bd_id = #{bd_id}
+	</select>
+	
+	<!-- ����IDɾ�� -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cm_diner_bill_dishes
+		where  bd_id = #{bd_id}
+	</delete>
+	
+	<!-- ɾ�� -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- ��� -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.CmDinerBillDishesBean">
+		insert into cm_diner_bill_dishes(
+		  	    cancel_reason_name  ,
+	
+		  	    cancel_time  ,
+	
+		  	    is_ruling_price  ,
+	
+		  	    real_cost  ,
+	
+		  	    bill_no  ,
+	
+		  	    bill_id  ,
+	
+		  	    update_time  ,
+	
+		  	    unit_type  ,
+	
+		  	    real_unit_price  ,
+	
+		  	    dishes_id  ,
+	
+		  	    create_time  ,
+	
+		  	    unit_id  ,
+	
+		  	    syn_version  ,
+	
+		  	    taste_name_array  ,
+	
+		  	    fixed_version  ,
+	
+		  	    unit_name  ,
+	
+		  	    taste_id_array  ,
+	
+		  	    dishes_status  ,
+	
+		  	    last_urge_time  ,
+	
+		  	    urge_num  ,
+	
+		  	    bd_id  ,
+	
+		  	    rest_id  ,
+	
+		  	    rm_return  ,
+	
+		  	    order_emp_id  ,
+	
+		  	    cancel_reason_id  ,
+	
+		  	    is_onsale  ,
+	
+		  	    avoidfood_id_array  ,
+	
+		  	    dishes_name  ,
+	
+		  	    ori_cost  ,
+	
+		  	    unit_num  ,
+	
+		  	    is_syn  ,
+	
+		  	    version  ,
+	
+		  	    create_by  ,
+	
+		  	    avoidfood_name_array  ,
+	
+		  	    service_commission  ,
+	
+		  	    give_time  ,
+	
+		  	    give_operator  ,
+	
+		  	    update_by  ,
+	
+		  	    discount  ,
+	
+		  	    notes  ,
+	
+		  	    fixed_time  ,
+	
+		  	    pungent_level  ,
+	
+		  	    sale_commission  ,
+	
+		  	    discount_type  ,
+	
+		  	    category_id  ,
+	
+		  	    dishes_code  ,
+	
+		  	    is_user_defined  ,
+	
+		  	    unit_price  ,
+	
+		  	    order_time  
+	
+			
+		)
+		values (
+		  	    #{cancelReasonName } ,
+		  	    #{cancelTime } ,
+		  	    #{isRulingPrice } ,
+		  	    #{realCost } ,
+		  	    #{billNo } ,
+		  	    #{billId } ,
+		  	    #{updateTime } ,
+		  	    #{unitType } ,
+		  	    #{realUnitPrice } ,
+		  	    #{dishesId } ,
+		  	    #{createTime } ,
+		  	    #{unitId } ,
+		  	    #{synVersion } ,
+		  	    #{tasteNameArray } ,
+		  	    #{fixedVersion } ,
+		  	    #{unitName } ,
+		  	    #{tasteIdArray } ,
+		  	    #{dishesStatus } ,
+		  	    #{lastUrgeTime } ,
+		  	    #{urgeNum } ,
+		  	    #{bdId } ,
+		  	    #{restId } ,
+		  	    #{rmReturn } ,
+		  	    #{orderEmpId } ,
+		  	    #{cancelReasonId } ,
+		  	    #{isOnsale } ,
+		  	    #{avoidfoodIdArray } ,
+		  	    #{dishesName } ,
+		  	    #{oriCost } ,
+		  	    #{unitNum } ,
+		  	    #{isSyn } ,
+		  	    #{version } ,
+		  	    #{createBy } ,
+		  	    #{avoidfoodNameArray } ,
+		  	    #{serviceCommission } ,
+		  	    #{giveTime } ,
+		  	    #{giveOperator } ,
+		  	    #{updateBy } ,
+		  	    #{discount } ,
+		  	    #{notes } ,
+		  	    #{fixedTime } ,
+		  	    #{pungentLevel } ,
+		  	    #{saleCommission } ,
+		  	    #{discountType } ,
+		  	    #{categoryId } ,
+		  	    #{dishesCode } ,
+		  	    #{isUserDefined } ,
+		  	    #{unitPrice } ,
+		  	    #{orderTime } 
+		)
+	</insert>
+	
+	
+	<!-- ͨ��ID���� -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.CmDinerBillDishesBean">
+		update cm_diner_bill_dishes
+		<set>
+		  	<if test="cancelReasonName != null">  cancel_reason_name = #{cancelReasonName} ,</if>
+		  	<if test="cancelTime != null">  cancel_time = #{cancelTime} ,</if>
+		  	<if test="isRulingPrice != null">  is_ruling_price = #{isRulingPrice} ,</if>
+		  	<if test="realCost != null">  real_cost = #{realCost} ,</if>
+		  	<if test="billNo != null">  bill_no = #{billNo} ,</if>
+		  	<if test="billId != null">  bill_id = #{billId} ,</if>
+		  	<if test="updateTime != null">  update_time = #{updateTime} ,</if>
+		  	<if test="unitType != null">  unit_type = #{unitType} ,</if>
+		  	<if test="realUnitPrice != null">  real_unit_price = #{realUnitPrice} ,</if>
+		  	<if test="dishesId != null">  dishes_id = #{dishesId} ,</if>
+		  	<if test="createTime != null">  create_time = #{createTime} ,</if>
+		  	<if test="unitId != null">  unit_id = #{unitId} ,</if>
+		  	<if test="synVersion != null">  syn_version = #{synVersion} ,</if>
+		  	<if test="tasteNameArray != null">  taste_name_array = #{tasteNameArray} ,</if>
+		  	<if test="fixedVersion != null">  fixed_version = #{fixedVersion} ,</if>
+		  	<if test="unitName != null">  unit_name = #{unitName} ,</if>
+		  	<if test="tasteIdArray != null">  taste_id_array = #{tasteIdArray} ,</if>
+		  	<if test="dishesStatus != null">  dishes_status = #{dishesStatus} ,</if>
+		  	<if test="lastUrgeTime != null">  last_urge_time = #{lastUrgeTime} ,</if>
+		  	<if test="urgeNum != null">  urge_num = #{urgeNum} ,</if>
+		  	<if test="restId != null">  rest_id = #{restId} ,</if>
+		  	<if test="rmReturn != null">  rm_return = #{rmReturn} ,</if>
+		  	<if test="orderEmpId != null">  order_emp_id = #{orderEmpId} ,</if>
+		  	<if test="cancelReasonId != null">  cancel_reason_id = #{cancelReasonId} ,</if>
+		  	<if test="isOnsale != null">  is_onsale = #{isOnsale} ,</if>
+		  	<if test="avoidfoodIdArray != null">  avoidfood_id_array = #{avoidfoodIdArray} ,</if>
+		  	<if test="dishesName != null">  dishes_name = #{dishesName} ,</if>
+		  	<if test="oriCost != null">  ori_cost = #{oriCost} ,</if>
+		  	<if test="unitNum != null">  unit_num = #{unitNum} ,</if>
+		  	<if test="isSyn != null">  is_syn = #{isSyn} ,</if>
+		  	<if test="version != null">  version = #{version} ,</if>
+		  	<if test="createBy != null">  create_by = #{createBy} ,</if>
+		  	<if test="avoidfoodNameArray != null">  avoidfood_name_array = #{avoidfoodNameArray} ,</if>
+		  	<if test="serviceCommission != null">  service_commission = #{serviceCommission} ,</if>
+		  	<if test="giveTime != null">  give_time = #{giveTime} ,</if>
+		  	<if test="giveOperator != null">  give_operator = #{giveOperator} ,</if>
+		  	<if test="updateBy != null">  update_by = #{updateBy} ,</if>
+		  	<if test="discount != null">  discount = #{discount} ,</if>
+		  	<if test="notes != null">  notes = #{notes} ,</if>
+		  	<if test="fixedTime != null">  fixed_time = #{fixedTime} ,</if>
+		  	<if test="pungentLevel != null">  pungent_level = #{pungentLevel} ,</if>
+		  	<if test="saleCommission != null">  sale_commission = #{saleCommission} ,</if>
+		  	<if test="discountType != null">  discount_type = #{discountType} ,</if>
+		  	<if test="categoryId != null">  category_id = #{categoryId} ,</if>
+		  	<if test="dishesCode != null">  dishes_code = #{dishesCode} ,</if>
+		  	<if test="isUserDefined != null">  is_user_defined = #{isUserDefined} ,</if>
+		  	<if test="unitPrice != null">  unit_price = #{unitPrice} ,</if>
+		  	<if test="orderTime != null">  order_time = #{orderTime} </if>
+		</set>
+		where  bd_id = #{bd_id}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.CmDinerBillDishesBean">
+		update cm_diner_bill_dishes
+
+		set 
+		  	 cancel_reason_name = #{cancelReasonName} ,
+		  	 cancel_time = #{cancelTime} ,
+		  	 is_ruling_price = #{isRulingPrice} ,
+		  	 real_cost = #{realCost} ,
+		  	 bill_no = #{billNo} ,
+		  	 bill_id = #{billId} ,
+		  	 update_time = #{updateTime} ,
+		  	 unit_type = #{unitType} ,
+		  	 real_unit_price = #{realUnitPrice} ,
+		  	 dishes_id = #{dishesId} ,
+		  	 create_time = #{createTime} ,
+		  	 unit_id = #{unitId} ,
+		  	 syn_version = #{synVersion} ,
+		  	 taste_name_array = #{tasteNameArray} ,
+		  	 fixed_version = #{fixedVersion} ,
+		  	 unit_name = #{unitName} ,
+		  	 taste_id_array = #{tasteIdArray} ,
+		  	 dishes_status = #{dishesStatus} ,
+		  	 last_urge_time = #{lastUrgeTime} ,
+		  	 urge_num = #{urgeNum} ,
+		  	 rest_id = #{restId} ,
+		  	 rm_return = #{rmReturn} ,
+		  	 order_emp_id = #{orderEmpId} ,
+		  	 cancel_reason_id = #{cancelReasonId} ,
+		  	 is_onsale = #{isOnsale} ,
+		  	 avoidfood_id_array = #{avoidfoodIdArray} ,
+		  	 dishes_name = #{dishesName} ,
+		  	 ori_cost = #{oriCost} ,
+		  	 unit_num = #{unitNum} ,
+		  	 is_syn = #{isSyn} ,
+		  	 version = #{version} ,
+		  	 create_by = #{createBy} ,
+		  	 avoidfood_name_array = #{avoidfoodNameArray} ,
+		  	 service_commission = #{serviceCommission} ,
+		  	 give_time = #{giveTime} ,
+		  	 give_operator = #{giveOperator} ,
+		  	 update_by = #{updateBy} ,
+		  	 discount = #{discount} ,
+		  	 notes = #{notes} ,
+		  	 fixed_time = #{fixedTime} ,
+		  	 pungent_level = #{pungentLevel} ,
+		  	 sale_commission = #{saleCommission} ,
+		  	 discount_type = #{discountType} ,
+		  	 category_id = #{categoryId} ,
+		  	 dishes_code = #{dishesCode} ,
+		  	 is_user_defined = #{isUserDefined} ,
+		  	 unit_price = #{unitPrice} ,
+		  	 order_time = #{orderTime} 
+	
+		where  bd_id = #{bd_id}
+	</update>
+	
+</mapper>

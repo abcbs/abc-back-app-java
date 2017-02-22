@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.cwwarm.model.CwHoldActivityMsgBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.cwwarm.model.CwHoldActivityMsgBean">
+		<id column="cw_activity_msg_id" property="cwActivityMsgId" jdbcType="VARCHAR" />
+	
+    
+		<result column="ham_comment_qty" property="hamCommentQty" jdbcType="VARCHAR" />
+    
+		<result column="ham_busi_status" property="hamBusiStatus" jdbcType="VARCHAR" />
+    
+		<result column="ham_busi_summary" property="hamBusiSummary" jdbcType="VARCHAR" />
+    
+		<result column="ham_pic" property="hamPic" jdbcType="VARCHAR" />
+    
+		<result column="ham_join_qty" property="hamJoinQty" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="ham_org_name" property="hamOrgName" jdbcType="VARCHAR" />
+    
+		<result column="ham_default_pic" property="hamDefaultPic" jdbcType="VARCHAR" />
+    
+		<result column="ham_busi_addr" property="hamBusiAddr" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="ham_org" property="hamOrg" jdbcType="VARCHAR" />
+    
+		<result column="ham_type" property="hamType" jdbcType="VARCHAR" />
+    
+		<result column="ham_sponsor" property="hamSponsor" jdbcType="VARCHAR" />
+    
+		<result column="ham_rcv_love_qty" property="hamRcvLoveQty" jdbcType="VARCHAR" />
+    
+		<result column="ham_by_type" property="hamByType" jdbcType="VARCHAR" />
+    
+		<result column="ham_busi_start_place" property="hamBusiStartPlace" jdbcType="DATE" />
+    
+		<result column="ham_busi_type" property="hamBusiType" jdbcType="VARCHAR" />
+    
+		<result column="ham_enroll_end_datetime" property="hamEnrollEndDatetime" jdbcType="DATE" />
+    
+		<result column="ham_busi_detail_msg" property="hamBusiDetailMsg" jdbcType="VARCHAR" />
+    
+		<result column="ham_by_pic" property="hamByPic" jdbcType="VARCHAR" />
+    
+		<result column="ham_contact_phone" property="hamContactPhone" jdbcType="VARCHAR" />
+    
+		<result column="ham_life_status" property="hamLifeStatus" jdbcType="VARCHAR" />
+    
+		<result column="ham_enroll_start_datetime" property="hamEnrollStartDatetime" jdbcType="DATE" />
+    
+		<result column="ham_by" property="hamBy" jdbcType="VARCHAR" />
+    
+		<result column="ham_busi_end_place" property="hamBusiEndPlace" jdbcType="DATE" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="ham_rcv_goods_qty" property="hamRcvGoodsQty" jdbcType="VARCHAR" />
+    
+		<result column="ham_collection_qty" property="hamCollectionQty" jdbcType="VARCHAR" />
+    
+		<result column="ham_by_name" property="hamByName" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ham_comment_qty as hamCommentQty ,
+		ham_busi_status as hamBusiStatus ,
+		ham_busi_summary as hamBusiSummary ,
+		ham_pic as hamPic ,
+		ham_join_qty as hamJoinQty ,
+		update_time as updateTime ,
+		update_by as updateBy ,
+		ham_org_name as hamOrgName ,
+		ham_default_pic as hamDefaultPic ,
+		cw_activity_msg_id as cwActivityMsgId ,
+		ham_busi_addr as hamBusiAddr ,
+		create_time as createTime ,
+		ham_org as hamOrg ,
+		ham_type as hamType ,
+		ham_sponsor as hamSponsor ,
+		ham_rcv_love_qty as hamRcvLoveQty ,
+		ham_by_type as hamByType ,
+		ham_busi_start_place as hamBusiStartPlace ,
+		ham_busi_type as hamBusiType ,
+		ham_enroll_end_datetime as hamEnrollEndDatetime ,
+		ham_busi_detail_msg as hamBusiDetailMsg ,
+		ham_by_pic as hamByPic ,
+		ham_contact_phone as hamContactPhone ,
+		ham_life_status as hamLifeStatus ,
+		ham_enroll_start_datetime as hamEnrollStartDatetime ,
+		ham_by as hamBy ,
+		ham_busi_end_place as hamBusiEndPlace ,
+		create_by as createBy ,
+		ham_rcv_goods_qty as hamRcvGoodsQty ,
+		ham_collection_qty as hamCollectionQty ,
+		ham_by_name as hamByName 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="hamCommentQty != null"> and ham_comment_qty = #{hamCommentQty}</if>
+				
+		  	    <if test="hamBusiStatus != null"> and ham_busi_status = #{hamBusiStatus}</if>
+				
+		  	    <if test="hamBusiSummary != null"> and ham_busi_summary = #{hamBusiSummary}</if>
+				
+		  	    <if test="hamPic != null"> and ham_pic = #{hamPic}</if>
+				
+		  	    <if test="hamJoinQty != null"> and ham_join_qty = #{hamJoinQty}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #{updateTime}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #{updateBy}</if>
+				
+		  	    <if test="hamOrgName != null"> and ham_org_name = #{hamOrgName}</if>
+				
+		  	    <if test="hamDefaultPic != null"> and ham_default_pic = #{hamDefaultPic}</if>
+				
+		  	    <if test="cwActivityMsgId != null"> and cw_activity_msg_id = #{cwActivityMsgId}</if>
+				
+		  	    <if test="hamBusiAddr != null"> and ham_busi_addr = #{hamBusiAddr}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #{createTime}</if>
+				
+		  	    <if test="hamOrg != null"> and ham_org = #{hamOrg}</if>
+				
+		  	    <if test="hamType != null"> and ham_type = #{hamType}</if>
+				
+		  	    <if test="hamSponsor != null"> and ham_sponsor = #{hamSponsor}</if>
+				
+		  	    <if test="hamRcvLoveQty != null"> and ham_rcv_love_qty = #{hamRcvLoveQty}</if>
+				
+		  	    <if test="hamByType != null"> and ham_by_type = #{hamByType}</if>
+				
+		  	    <if test="hamBusiStartPlace != null"> and ham_busi_start_place = #{hamBusiStartPlace}</if>
+				
+		  	    <if test="hamBusiType != null"> and ham_busi_type = #{hamBusiType}</if>
+				
+		  	    <if test="hamEnrollEndDatetime != null"> and ham_enroll_end_datetime = #{hamEnrollEndDatetime}</if>
+				
+		  	    <if test="hamBusiDetailMsg != null"> and ham_busi_detail_msg = #{hamBusiDetailMsg}</if>
+				
+		  	    <if test="hamByPic != null"> and ham_by_pic = #{hamByPic}</if>
+				
+		  	    <if test="hamContactPhone != null"> and ham_contact_phone = #{hamContactPhone}</if>
+				
+		  	    <if test="hamLifeStatus != null"> and ham_life_status = #{hamLifeStatus}</if>
+				
+		  	    <if test="hamEnrollStartDatetime != null"> and ham_enroll_start_datetime = #{hamEnrollStartDatetime}</if>
+				
+		  	    <if test="hamBy != null"> and ham_by = #{hamBy}</if>
+				
+		  	    <if test="hamBusiEndPlace != null"> and ham_busi_end_place = #{hamBusiEndPlace}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #{createBy}</if>
+				
+		  	    <if test="hamRcvGoodsQty != null"> and ham_rcv_goods_qty = #{hamRcvGoodsQty}</if>
+				
+		  	    <if test="hamCollectionQty != null"> and ham_collection_qty = #{hamCollectionQty}</if>
+				
+		  	    <if test="hamByName != null"> and ham_by_name = #{hamByName}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by ${sorting}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</sql>
+	
+	<!-- 查询总数 -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(cw_activity_msg_id)
+		from cw_hold_activity_msg
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 查询 -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cw_hold_activity_msg
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cw_hold_activity_msg
+		where cw_activity_msg_id = #{cwActivityMsgId}
+	</select>
+	
+	<!-- 根据ID删除 -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cw_hold_activity_msg
+		where  cw_activity_msg_id = #{cwActivityMsgId}
+	</delete>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- 添加 -->	
+	<insert id="insert" parameterType="com.ndlan.cwwarm.model.CwHoldActivityMsgBean">
+		insert into cw_hold_activity_msg(
+		  	    ham_comment_qty  ,
+	
+		  	    ham_busi_status  ,
+	
+		  	    ham_busi_summary  ,
+	
+		  	    ham_pic  ,
+	
+		  	    ham_join_qty  ,
+	
+		  	    update_time  ,
+	
+		  	    update_by  ,
+	
+		  	    ham_org_name  ,
+	
+		  	    ham_default_pic  ,
+	
+		  	    cw_activity_msg_id  ,
+	
+		  	    ham_busi_addr  ,
+	
+		  	    create_time  ,
+	
+		  	    ham_org  ,
+	
+		  	    ham_type  ,
+	
+		  	    ham_sponsor  ,
+	
+		  	    ham_rcv_love_qty  ,
+	
+		  	    ham_by_type  ,
+	
+		  	    ham_busi_start_place  ,
+	
+		  	    ham_busi_type  ,
+	
+		  	    ham_enroll_end_datetime  ,
+	
+		  	    ham_busi_detail_msg  ,
+	
+		  	    ham_by_pic  ,
+	
+		  	    ham_contact_phone  ,
+	
+		  	    ham_life_status  ,
+	
+		  	    ham_enroll_start_datetime  ,
+	
+		  	    ham_by  ,
+	
+		  	    ham_busi_end_place  ,
+	
+		  	    create_by  ,
+	
+		  	    ham_rcv_goods_qty  ,
+	
+		  	    ham_collection_qty  ,
+	
+		  	    ham_by_name  
+	
+			
+		)
+		values (
+		  	    #{hamCommentQty } ,
+		  	    #{hamBusiStatus } ,
+		  	    #{hamBusiSummary } ,
+		  	    #{hamPic } ,
+		  	    #{hamJoinQty } ,
+		  	    #{updateTime } ,
+		  	    #{updateBy } ,
+		  	    #{hamOrgName } ,
+		  	    #{hamDefaultPic } ,
+		  	    #{cwActivityMsgId } ,
+		  	    #{hamBusiAddr } ,
+		  	    #{createTime } ,
+		  	    #{hamOrg } ,
+		  	    #{hamType } ,
+		  	    #{hamSponsor } ,
+		  	    #{hamRcvLoveQty } ,
+		  	    #{hamByType } ,
+		  	    #{hamBusiStartPlace } ,
+		  	    #{hamBusiType } ,
+		  	    #{hamEnrollEndDatetime } ,
+		  	    #{hamBusiDetailMsg } ,
+		  	    #{hamByPic } ,
+		  	    #{hamContactPhone } ,
+		  	    #{hamLifeStatus } ,
+		  	    #{hamEnrollStartDatetime } ,
+		  	    #{hamBy } ,
+		  	    #{hamBusiEndPlace } ,
+		  	    #{createBy } ,
+		  	    #{hamRcvGoodsQty } ,
+		  	    #{hamCollectionQty } ,
+		  	    #{hamByName } 
+		)
+	</insert>
+	
+	
+	<!-- 通过ID更新 -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.cwwarm.model.CwHoldActivityMsgBean">
+		update cw_hold_activity_msg
+		<set>
+		  	<if test="hamCommentQty != null">  ham_comment_qty = #{hamCommentQty} ,</if>
+		  	<if test="hamBusiStatus != null">  ham_busi_status = #{hamBusiStatus} ,</if>
+		  	<if test="hamBusiSummary != null">  ham_busi_summary = #{hamBusiSummary} ,</if>
+		  	<if test="hamPic != null">  ham_pic = #{hamPic} ,</if>
+		  	<if test="hamJoinQty != null">  ham_join_qty = #{hamJoinQty} ,</if>
+		  	<if test="updateTime != null">  update_time = #{updateTime} ,</if>
+		  	<if test="updateBy != null">  update_by = #{updateBy} ,</if>
+		  	<if test="hamOrgName != null">  ham_org_name = #{hamOrgName} ,</if>
+		  	<if test="hamDefaultPic != null">  ham_default_pic = #{hamDefaultPic} ,</if>
+		  	<if test="hamBusiAddr != null">  ham_busi_addr = #{hamBusiAddr} ,</if>
+		  	<if test="createTime != null">  create_time = #{createTime} ,</if>
+		  	<if test="hamOrg != null">  ham_org = #{hamOrg} ,</if>
+		  	<if test="hamType != null">  ham_type = #{hamType} ,</if>
+		  	<if test="hamSponsor != null">  ham_sponsor = #{hamSponsor} ,</if>
+		  	<if test="hamRcvLoveQty != null">  ham_rcv_love_qty = #{hamRcvLoveQty} ,</if>
+		  	<if test="hamByType != null">  ham_by_type = #{hamByType} ,</if>
+		  	<if test="hamBusiStartPlace != null">  ham_busi_start_place = #{hamBusiStartPlace} ,</if>
+		  	<if test="hamBusiType != null">  ham_busi_type = #{hamBusiType} ,</if>
+		  	<if test="hamEnrollEndDatetime != null">  ham_enroll_end_datetime = #{hamEnrollEndDatetime} ,</if>
+		  	<if test="hamBusiDetailMsg != null">  ham_busi_detail_msg = #{hamBusiDetailMsg} ,</if>
+		  	<if test="hamByPic != null">  ham_by_pic = #{hamByPic} ,</if>
+		  	<if test="hamContactPhone != null">  ham_contact_phone = #{hamContactPhone} ,</if>
+		  	<if test="hamLifeStatus != null">  ham_life_status = #{hamLifeStatus} ,</if>
+		  	<if test="hamEnrollStartDatetime != null">  ham_enroll_start_datetime = #{hamEnrollStartDatetime} ,</if>
+		  	<if test="hamBy != null">  ham_by = #{hamBy} ,</if>
+		  	<if test="hamBusiEndPlace != null">  ham_busi_end_place = #{hamBusiEndPlace} ,</if>
+		  	<if test="createBy != null">  create_by = #{createBy} ,</if>
+		  	<if test="hamRcvGoodsQty != null">  ham_rcv_goods_qty = #{hamRcvGoodsQty} ,</if>
+		  	<if test="hamCollectionQty != null">  ham_collection_qty = #{hamCollectionQty} ,</if>
+		  	<if test="hamByName != null">  ham_by_name = #{hamByName} </if>
+		</set>
+		where  cw_activity_msg_id = #{cwActivityMsgId}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.cwwarm.model.CwHoldActivityMsgBean">
+		update cw_hold_activity_msg
+
+		set 
+		  	 ham_comment_qty = #{hamCommentQty} ,
+		  	 ham_busi_status = #{hamBusiStatus} ,
+		  	 ham_busi_summary = #{hamBusiSummary} ,
+		  	 ham_pic = #{hamPic} ,
+		  	 ham_join_qty = #{hamJoinQty} ,
+		  	 update_time = #{updateTime} ,
+		  	 update_by = #{updateBy} ,
+		  	 ham_org_name = #{hamOrgName} ,
+		  	 ham_default_pic = #{hamDefaultPic} ,
+		  	 ham_busi_addr = #{hamBusiAddr} ,
+		  	 create_time = #{createTime} ,
+		  	 ham_org = #{hamOrg} ,
+		  	 ham_type = #{hamType} ,
+		  	 ham_sponsor = #{hamSponsor} ,
+		  	 ham_rcv_love_qty = #{hamRcvLoveQty} ,
+		  	 ham_by_type = #{hamByType} ,
+		  	 ham_busi_start_place = #{hamBusiStartPlace} ,
+		  	 ham_busi_type = #{hamBusiType} ,
+		  	 ham_enroll_end_datetime = #{hamEnrollEndDatetime} ,
+		  	 ham_busi_detail_msg = #{hamBusiDetailMsg} ,
+		  	 ham_by_pic = #{hamByPic} ,
+		  	 ham_contact_phone = #{hamContactPhone} ,
+		  	 ham_life_status = #{hamLifeStatus} ,
+		  	 ham_enroll_start_datetime = #{hamEnrollStartDatetime} ,
+		  	 ham_by = #{hamBy} ,
+		  	 ham_busi_end_place = #{hamBusiEndPlace} ,
+		  	 create_by = #{createBy} ,
+		  	 ham_rcv_goods_qty = #{hamRcvGoodsQty} ,
+		  	 ham_collection_qty = #{hamCollectionQty} ,
+		  	 ham_by_name = #{hamByName} 
+	
+		where  cw_activity_msg_id = #{cwActivityMsgId}
+	</update>
+	
+</mapper>

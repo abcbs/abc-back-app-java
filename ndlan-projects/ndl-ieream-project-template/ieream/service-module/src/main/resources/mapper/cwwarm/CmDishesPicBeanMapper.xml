@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.CmDishesPicBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.CmDishesPicBean">
+		<id column="pic_id" property="picId" jdbcType="VARCHAR" />
+	
+    
+		<result column="version" property="version" jdbcType="BIGINT" />
+    
+		<result column="pic_url" property="picUrl" jdbcType="VARCHAR" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="is_syn" property="isSyn" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+    
+		<result column="pic_type" property="picType" jdbcType="VARCHAR" />
+    
+		<result column="dishes_id" property="dishesId" jdbcType="VARCHAR" />
+    
+		<result column="rest_id" property="restId" jdbcType="VARCHAR" />
+    
+		<result column="show_seq" property="showSeq" jdbcType="BIGINT" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		version as version ,
+		pic_url as picUrl ,
+		update_by as updateBy ,
+		pic_id as picId ,
+		is_syn as isSyn ,
+		update_time as updateTime ,
+		syn_version as synVersion ,
+		pic_type as picType ,
+		dishes_id as dishesId ,
+		rest_id as restId ,
+		show_seq as showSeq ,
+		create_by as createBy ,
+		create_time as createTime 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="version != null"> and version = #{version}</if>
+				
+		  	    <if test="picUrl != null"> and pic_url = #{picUrl}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #{updateBy}</if>
+				
+		  	    <if test="picId != null"> and pic_id = #{picId}</if>
+				
+		  	    <if test="isSyn != null"> and is_syn = #{isSyn}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #{updateTime}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #{synVersion}</if>
+				
+		  	    <if test="picType != null"> and pic_type = #{picType}</if>
+				
+		  	    <if test="dishesId != null"> and dishes_id = #{dishesId}</if>
+				
+		  	    <if test="restId != null"> and rest_id = #{restId}</if>
+				
+		  	    <if test="showSeq != null"> and show_seq = #{showSeq}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #{createBy}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #{createTime}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by ${sorting}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</sql>
+	
+	<!-- ��ѯ���� -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(pic_id)
+		from cm_dishes_pic
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ��ѯ -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cm_dishes_pic
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ����ID��ѯ -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cm_dishes_pic
+		where pic_id = #{pic_id}
+	</select>
+	
+	<!-- ����IDɾ�� -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cm_dishes_pic
+		where  pic_id = #{pic_id}
+	</delete>
+	
+	<!-- ɾ�� -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- ��� -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.CmDishesPicBean">
+		insert into cm_dishes_pic(
+		  	    version  ,
+	
+		  	    pic_url  ,
+	
+		  	    update_by  ,
+	
+		  	    pic_id  ,
+	
+		  	    is_syn  ,
+	
+		  	    update_time  ,
+	
+		  	    syn_version  ,
+	
+		  	    pic_type  ,
+	
+		  	    dishes_id  ,
+	
+		  	    rest_id  ,
+	
+		  	    show_seq  ,
+	
+		  	    create_by  ,
+	
+		  	    create_time  
+	
+			
+		)
+		values (
+		  	    #{version } ,
+		  	    #{picUrl } ,
+		  	    #{updateBy } ,
+		  	    #{picId } ,
+		  	    #{isSyn } ,
+		  	    #{updateTime } ,
+		  	    #{synVersion } ,
+		  	    #{picType } ,
+		  	    #{dishesId } ,
+		  	    #{restId } ,
+		  	    #{showSeq } ,
+		  	    #{createBy } ,
+		  	    #{createTime } 
+		)
+	</insert>
+	
+	
+	<!-- ͨ��ID���� -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.CmDishesPicBean">
+		update cm_dishes_pic
+		<set>
+		  	<if test="version != null">  version = #{version} ,</if>
+		  	<if test="picUrl != null">  pic_url = #{picUrl} ,</if>
+		  	<if test="updateBy != null">  update_by = #{updateBy} ,</if>
+		  	<if test="isSyn != null">  is_syn = #{isSyn} ,</if>
+		  	<if test="updateTime != null">  update_time = #{updateTime} ,</if>
+		  	<if test="synVersion != null">  syn_version = #{synVersion} ,</if>
+		  	<if test="picType != null">  pic_type = #{picType} ,</if>
+		  	<if test="dishesId != null">  dishes_id = #{dishesId} ,</if>
+		  	<if test="restId != null">  rest_id = #{restId} ,</if>
+		  	<if test="showSeq != null">  show_seq = #{showSeq} ,</if>
+		  	<if test="createBy != null">  create_by = #{createBy} ,</if>
+		  	<if test="createTime != null">  create_time = #{createTime} </if>
+		</set>
+		where  pic_id = #{pic_id}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.CmDishesPicBean">
+		update cm_dishes_pic
+
+		set 
+		  	 version = #{version} ,
+		  	 pic_url = #{picUrl} ,
+		  	 update_by = #{updateBy} ,
+		  	 is_syn = #{isSyn} ,
+		  	 update_time = #{updateTime} ,
+		  	 syn_version = #{synVersion} ,
+		  	 pic_type = #{picType} ,
+		  	 dishes_id = #{dishesId} ,
+		  	 rest_id = #{restId} ,
+		  	 show_seq = #{showSeq} ,
+		  	 create_by = #{createBy} ,
+		  	 create_time = #{createTime} 
+	
+		where  pic_id = #{pic_id}
+	</update>
+	
+</mapper>

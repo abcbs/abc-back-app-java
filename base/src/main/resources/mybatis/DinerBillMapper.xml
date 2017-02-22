@@ -1,0 +1,1081 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.ndlan.canyin.base.repository.mybatis.DinerBillMyDao">
+
+<select id="getAllss" parameterType="int" resultType="DinerBill">
+SELECT (SELECT
+		
+		cpt.payment_name 
+		
+		FROM
+	
+		cm_diner_bill_payment cdbp LEFT JOIN cm_payment_type cpt ON cpt.cpt_id = cdbp.cpt_id
+		WHERE
+		
+		cdbp.rest_id = '${restId}'
+		AND cdbp.bill_id='${billId}') AS paymentName FROM cm_diner_bill c WHERE c.bill_id='${billId}'
+</select>
+
+
+	
+	<select id="getAll" parameterType="int" resultType="DinerBill">
+		select 
+			cdb.bill_id as billId,
+			cdb.*
+		from 
+			cm_diner_bill cdb
+		where
+			cdb.rest_id = '${restId}' 
+		<if test="isValid != null">
+			and cdb.is_valid = '${isValid}'
+		</if>
+		<if test="keywords != null">
+			and
+			(
+				cdb.bill_no like '%${keywords}%'
+				<!--  or
+				cdb.tab_no like '%${keywords}%'  -->
+			)
+		</if>	
+		<if test="billStatus != null">
+			and cdb.bill_status = '${billStatus}'
+		</if>	
+		<if test="billType != null">
+			and cdb.bill_type = '${billType}'
+		</if>
+		  <if test="startDate != null">
+				<![CDATA[and DATE_FORMAT(cdb.bill_time,'%Y-%m-%d') >= '${startDate}']]>
+		  </if>
+		   <if test="endDate != null">
+				<![CDATA[and DATE_FORMAT(cdb.bill_time,'%Y-%m-%d') <= '${endDate}']]>
+		   </if>	
+		<if test="pageType != null">
+		
+		 
+			<if test="pageType == 'today'">
+				and DATE_FORMAT( cdb.bill_time,'%Y-%m-%d') >= DATE_FORMAT( NOW(),'%Y-%m-%d')
+			</if>
+			
+			<if test="pageType == '7day'">
+				and DATE_FORMAT( cdb.bill_time,'%Y-%m-%d') >= DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 7 DAY),'%Y-%m-%d')
+			</if>
+			
+			<if test="pageType == 'unPay'">
+				and 
+				(
+					cdb.bill_status = '1' or 
+					cdb.bill_status = '2' or 
+					cdb.bill_status = '4' or 
+					cdb.bill_status = '9' 
+				)
+			</if>
+		</if>
+		<if test="isHasAllArea == null">
+					and 
+					(
+					(select
+					count(ct.tab_id)
+					from 
+						cm_role_user cru,
+						cm_role_table_area crta,
+						cm_table ct
+					where
+						ct.area_id = crta.fk_tablearea_id and
+						cru.fk_role_id = crta.fk_role_id and
+						cru.fk_user_id = '${userId}'  and
+						ct.tab_id = cdb.tab_id
+					) > 0
+					or
+					cdb.create_by = '${userId}'
+					)
+		</if>	
+			
+		order by cdb.bill_time desc,cdb.bill_no desc
+		limit ${start},${pageSize}
+	</select>
+
+	<select id="getAllCount" parameterType="int" resultType="int">
+		select 
+			count(cdb.bill_id)
+		from 
+			cm_diner_bill cdb
+		where
+			cdb.rest_id = '${restId}'
+		<if test="isValid != null">
+			and cdb.is_valid = '${isValid}'
+		</if>
+		<if test="keywords != null">
+			and
+			(
+				cdb.bill_no like '%${keywords}%'
+				<!--  or
+				cdb.tab_no like '%${keywords}%' --> 
+			)
+		</if>	
+		<if test="billStatus != null">
+			and cdb.bill_status = '${billStatus}'
+		</if>	
+		<if test="billType != null">
+			and cdb.bill_type = '${billType}'
+		</if>
+		<if test="startDate != null">
+				<![CDATA[and DATE_FORMAT(cdb.bill_time,'%Y-%m-%d') >= '${startDate}']]>
+		    </if>
+		     <if test="endDate != null">
+				<![CDATA[and DATE_FORMAT(cdb.bill_time,'%Y-%m-%d') <= '${endDate}']]>
+		     </if>	
+		<if test="pageType != null">
+		   
+			<if test="pageType == 'today'">
+				and DATE_FORMAT( cdb.bill_time,'%Y-%m-%d') >= DATE_FORMAT( NOW(),'%Y-%m-%d')
+			</if>
+			
+			<if test="pageType == '7day'">
+				and DATE_FORMAT( cdb.bill_time,'%Y-%m-%d') >= DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 7 DAY),'%Y-%m-%d')
+			</if>
+			
+			<if test="pageType == 'unPay'">
+				and 
+				(
+					cdb.bill_status = '1' or 
+					cdb.bill_status = '2' or 
+					cdb.bill_status = '4' or 
+					cdb.bill_status = '9' 
+				)
+			</if>
+		</if>
+		<if test="isHasAllArea == null">
+					and 
+					(
+					(select
+					count(ct.tab_id)
+					from 
+						cm_role_user cru,
+						cm_role_table_area crta,
+						cm_table ct
+					where
+						ct.area_id = crta.fk_tablearea_id and
+						cru.fk_role_id = crta.fk_role_id and
+						cru.fk_user_id = '${userId}'  and
+						ct.tab_id = cdb.tab_id
+					) > 0
+					or
+					cdb.create_by = '${userId}'
+					)
+		</if>					
+	</select>
+	
+	
+	
+	<select id="getALLDishesAndSet" parameterType="int" resultType="Dishe">
+		SELECT dies.*,ccdp.pic_url AS picUrl,
+				ccdps.pic_url AS picUrlSet FROM (select
+					dishAndSetDiv,
+					dishesName,
+					estimate,
+					isRulingPrice,
+					isTakeout,
+					dishesCode,
+					price,
+				    dishesId,
+					dishesUnitName,
+				    show_seq,
+					create_time
+		from
+		(
+			select
+				'1' as dishAndSetDiv,
+				cd.dishes_name as dishesName,
+				cd.estimate as estimate,
+				cd.is_ruling_price as isRulingPrice,
+				cd.is_takeout as isTakeout,
+				cd.dishes_code as dishesCode,
+				cd.price as price,
+				cd.dishes_id as dishesId,
+				cdu.name as dishesUnitName,
+				cd.show_seq,
+				cd.create_time
+			from
+				cm_dishes cd,
+				cm_dishes_unit cdu
+			where
+				cd.unit_id = cdu.unit_id and
+				cd.rest_id = '${restId}' and
+				cd.is_user_defined = '0' and
+				cd.is_stop_sell = '0'
+				<if test="categoryId != null">
+					and cd.category_id = '${categoryId}'
+				</if>	
+				<if test="keywords != null">
+					and
+					(
+						cd.dishes_name like '%${keywords}%' or 
+						cd.dishes_code like '%${keywords}%' 
+					)
+				</if>
+				<if test="estimateStatus != null">
+					<choose>
+						<when test="estimateStatus==1 ">
+							and cd.estimate is not null
+						</when>
+						<when test="estimateStatus==2 ">
+							and cd.estimate = 0
+						</when>
+						<when test="estimateStatus==3 ">
+							<![CDATA[and cd.estimate > 0 and cd.estimate < 10]]>
+						</when>
+						<when test="estimateStatus==4 ">
+							and cd.estimate is null
+						</when>
+					</choose>
+				</if>
+				<if test="isTakeout != null">
+					and cd.is_takeout = '${isTakeout}' 					
+				</if>
+			union all
+			select
+				'2' as dishAndSetDiv,
+				cds.ds_name as dishesName,
+				cds.estimate as estimate,
+				'0' as isRulingPrice,
+				cds.is_takeout as isTakeout,
+				cds.ds_code as dishesCode,
+				cds.price as price,
+				cds.ds_id as dishesId,
+				cdsc.category_name as dishesUnitName,
+				cds.show_seq,
+				cds.create_time
+			from
+				cm_dishes_set cds,
+				cm_dishes_set_category cdsc
+			where
+				cdsc.ds_category_id = cds.ds_category_id and
+				cds.is_stop_sell = '0' and
+				cds.rest_id = '${restId}' 
+				<if test="dsCategoryId != null">
+					and cds.ds_category_id = '${dsCategoryId}'
+				</if>
+				<if test="keywords != null">
+					and
+					(
+						cds.ds_name like '%${keywords}%' or
+						cds.ds_code like '%${keywords}%' 
+					)
+				</if>
+				<if test="estimateStatus != null">
+					<if test="estimateStatus==1 ">
+						and cds.estimate is not null
+					</if>
+					<if test="estimateStatus==2 ">
+						and cds.estimate = 0
+					</if>
+					<if test="estimateStatus==3 ">
+						<![CDATA[and cds.estimate > 0 and cds.estimate < 10]]>
+					</if>
+					<if test="estimateStatus==4 ">
+						and cds.estimate is null
+					</if>
+				</if>
+				<if test="isTakeout != null">
+					and cds.is_takeout = '${isTakeout}' 					
+				</if>
+		) as  inlineView) AS dies LEFT JOIN cm_dishes_pic ccdp ON
+		ccdp.dishes_id =dies.dishesId  
+		LEFT JOIN cm_dishes_set_pic ccdps ON   ccdps.ds_id=dies.dishesId   
+		GROUP BY dies.dishesName
+		<if test="orderBy != null">
+			order by estimate desc,show_seq asc,create_time asc,dishesId asc
+		</if>	
+		<if test="orderBy == null">
+			order by show_seq asc,create_time asc,dishesId asc
+		</if>
+		
+		limit ${start},${pageSize}
+	</select>
+	
+	<select id="getALLDishesAndSetCount" parameterType="int" resultType="int">
+		select
+			count(*)
+		from
+		(
+			select
+				'1' as dishAndSetDiv,
+				cd.dishes_name as dishesName,
+				cd.estimate as estimate,
+				cd.is_ruling_price as isRulingPrice,
+				cd.is_takeout as isTakeout,
+				cd.dishes_code as dishesCode,
+				cd.price as price,
+				cd.dishes_id as dishesId,
+				cdu.name as dishesUnitName,
+				cd.show_seq
+			from
+				cm_dishes cd,
+				cm_dishes_unit cdu
+			where
+				cd.unit_id = cdu.unit_id and
+				cd.rest_id = '${restId}' and
+				cd.is_user_defined = '0' and
+				cd.is_stop_sell = '0'
+				<if test="categoryId != null">
+					and cd.category_id = '${categoryId}'
+				</if>	
+				<if test="keywords != null">
+					and
+					(
+						<!-- cd.dishes_name like '%${keywords}%' or -->
+						cd.dishes_code like '%${keywords}%' 
+					)
+				</if>
+				<if test="estimateStatus != null">
+					<if test="estimateStatus==1 ">
+						and cd.estimate is not null
+					</if>
+					<if test="estimateStatus==2 ">
+						and cd.estimate = 0
+					</if>
+					<if test="estimateStatus==3 ">
+						<![CDATA[and cd.estimate > 0 and cd.estimate < 10]]>
+					</if>
+					<if test="estimateStatus==4 ">
+						and cd.estimate is null
+					</if>
+				</if>
+				<if test="isTakeout != null">
+					and cd.is_takeout = '${isTakeout}' 					
+				</if>
+			union all
+			select
+				'2' as dishAndSetDiv,
+				cds.ds_name as dishesName,
+				cds.estimate as estimate,
+				'0' as isRulingPrice,
+				cds.is_takeout as isTakeout,
+				cds.ds_code as dishesCode,
+				cds.price as price,
+				cds.ds_id as dishesId,
+				cdsc.category_name as dishesUnitName,
+				cds.show_seq
+			from
+				cm_dishes_set cds,
+				cm_dishes_set_category cdsc
+			where
+				cdsc.ds_category_id = cds.ds_category_id and
+				cds.is_stop_sell = '0' and
+				cds.rest_id = '${restId}' 
+				<if test="dsCategoryId != null">
+					and cds.ds_category_id = '${dsCategoryId}'
+				</if>
+				<if test="keywords != null">
+					and
+					(
+						cds.ds_name like '%${keywords}%' or
+						cds.ds_code like '%${keywords}%' 
+					)
+				</if>
+				<if test="estimateStatus != null">
+					<if test="estimateStatus==1 ">
+						and cds.estimate is not null
+					</if>
+					<if test="estimateStatus==2 ">
+						and cds.estimate = 0
+					</if>
+					<if test="estimateStatus==3 ">
+						<![CDATA[and cds.estimate > 0 and cds.estimate < 10]]>
+					</if>
+					<if test="estimateStatus==4 ">
+						and cds.estimate is null
+					</if>
+				</if>
+				<if test="isTakeout != null">
+					and cds.is_takeout = '${isTakeout}' 					
+				</if>
+		) as  inlineView 
+	</select>
+	
+	
+	<select id="getDishes" parameterType="int" resultType="Dishe">
+	SELECT dies.*,ccdp.pic_url AS picUrl FROM (
+	select
+					dishAndSetDiv,
+					dishesName,
+					estimate,
+					isRulingPrice,
+					isTakeout,
+					dishesCode,
+					price,
+				    dishesId,
+					dishesUnitName
+				   
+		from(
+		select
+			'1' as dishAndSetDiv,
+			cd.dishes_name as dishesName,
+			cd.estimate as estimate,
+			cd.is_ruling_price as isRulingPrice,
+			cd.is_takeout as isTakeout,
+			cd.dishes_code as dishesCode,
+			cd.price as price,
+			cd.dishes_id as dishesId,
+			cdu.name as dishesUnitName
+		from
+			cm_dishes cd,
+			cm_dishes_unit cdu
+		where
+			cd.unit_id = cdu.unit_id and
+			cd.rest_id = '${restId}' and
+			cd.is_user_defined = '0' and
+			cd.is_stop_sell = '0'
+			<if test="categoryId != null">
+				and cd.category_id = '${categoryId}'
+			</if>	
+			<if test="keywords != null">
+				and
+				(
+					<!-- cd.dishes_name like '%${keywords}%' or -->
+					cd.dishes_code like '%${keywords}%' 
+				)
+			</if>
+			<if test="estimateStatus != null">
+				<if test="estimateStatus==1 ">
+					and cd.estimate is not null
+				</if>
+				<if test="estimateStatus==2 ">
+					and cd.estimate = 0
+				</if>
+				<if test="estimateStatus==3 ">
+					<![CDATA[and cd.estimate > 0 and cd.estimate < 10]]>
+				</if>
+				<if test="estimateStatus==4 ">
+					and cd.estimate is null
+				</if>
+			</if>
+			<if test="isTakeout != null">
+					and cd.is_takeout = '${isTakeout}' 					
+			</if>
+		<if test="orderBy != null">
+			order by cd.estimate desc,cd.show_seq asc,cd.create_time asc,dishesId asc
+		</if>	
+		<if test="orderBy == null">
+			order by cd.show_seq asc,cd.create_time asc,dishesId asc
+		</if>
+		) AS dinertAll )AS dies LEFT JOIN cm_dishes_pic ccdp ON
+		ccdp.dishes_id =dies.dishesId  
+		GROUP BY dies.dishesName
+		
+		limit ${start},${pageSize}
+	</select>
+	
+	<select id="getDishesCount" parameterType="int" resultType="int">
+		select
+			count(*)
+		from
+			cm_dishes cd,
+			cm_dishes_unit cdu
+		where
+			cd.unit_id = cdu.unit_id and
+			cd.rest_id = '${restId}' and
+			cd.is_user_defined = '0' and
+			cd.is_stop_sell = '0'
+			<if test="categoryId != null">
+				and cd.category_id = '${categoryId}'
+			</if>
+			<if test="keywords != null">
+				and
+				(
+					<!-- cd.dishes_name like '%${keywords}%' or -->
+					cd.dishes_code like '%${keywords}%' 
+				)
+			</if>	
+			<if test="estimateStatus != null">
+				<if test="estimateStatus==1 ">
+					and cd.estimate is not null
+				</if>
+				<if test="estimateStatus==2 ">
+					and cd.estimate = 0
+				</if>
+				<if test="estimateStatus==3 ">
+					<![CDATA[and cd.estimate > 0 and cd.estimate < 10]]>
+				</if>
+				<if test="estimateStatus==4 ">
+					and cd.estimate is null
+				</if>
+			</if>
+			<if test="isTakeout != null">
+				and cd.is_takeout = '${isTakeout}' 					
+			</if>
+	</select>
+	
+	
+	
+	<select id="getSet" parameterType="int" resultType="Dishe">
+	SELECT dies.*,ccdp.pic_url AS picUrl FROM (
+	select
+					dishAndSetDiv,
+					dishesName,
+					estimate,
+					isRulingPrice,
+					isTakeout,
+					dishesCode,
+					price,
+				    dishesId,
+					dishesUnitName
+				   
+		from(
+			select
+				'2' as dishAndSetDiv,
+				cds.ds_name as dishesName,
+				cds.estimate as estimate,
+				'0' as isRulingPrice,
+				cds.is_takeout as isTakeout,
+				cds.ds_code as dishesCode,
+				cds.price as price,
+				cds.ds_id as dishesId,
+				cdsc.category_name as dishesUnitName
+			from
+				cm_dishes_set cds,
+				cm_dishes_set_category cdsc
+			where
+				cdsc.ds_category_id = cds.ds_category_id and
+				cds.is_stop_sell = '0' and
+				cds.rest_id = '${restId}' 
+			<if test="dsCategoryId != null">
+				and cds.ds_category_id = '${dsCategoryId}'
+			</if>
+			<if test="keywords != null">
+				and
+				(
+					<!-- cds.ds_name like '%${keywords}%' or -->
+					cds.ds_code like '%${keywords}%' 
+				)
+			</if>
+			<if test="estimateStatus != null">
+					<if test="estimateStatus==1 ">
+						and cds.estimate is not null
+					</if>
+					<if test="estimateStatus==2 ">
+						and cds.estimate = 0
+					</if>
+					<if test="estimateStatus==3 ">
+						<![CDATA[and cds.estimate > 0 and cds.estimate < 10]]>
+					</if>
+					<if test="estimateStatus==4 ">
+						and cds.estimate is null
+					</if>
+		    </if>
+			<if test="isTakeout != null">
+				and cds.is_takeout = '${isTakeout}' 					
+			</if>
+			<if test="orderBy != null">
+				order by cds.estimate desc,cds.show_seq asc,cds.create_time asc,dishesId asc
+			</if>	
+			<if test="orderBy == null">
+				order by cds.show_seq asc,cds.create_time asc,dishesId asc
+			</if>
+			) AS dinertAll )AS dies LEFT JOIN cm_dishes_set_pic ccdp ON
+		ccdp.ds_id =dies.dishesId 
+		GROUP BY dies.dishesName
+			limit ${start},${pageSize}
+	</select>
+	
+	<select id="getSetCount" parameterType="int" resultType="int">
+		select
+			count(*)
+		from
+			cm_dishes_set cds,
+			cm_dishes_set_category cdsc
+		where
+			cdsc.ds_category_id = cds.ds_category_id and
+			cds.is_stop_sell = '0' and
+			cds.rest_id = '${restId}' 
+			<if test="dsCategoryId != null">
+				and cds.ds_category_id = '${dsCategoryId}'
+			</if>
+			<if test="keywords != null">
+				and
+				(
+					<!-- cds.ds_name like '%${keywords}%' or -->
+					cds.ds_code like '%${keywords}%' 
+				)
+			</if>
+			<if test="estimateStatus != null">
+				<if test="estimateStatus==1 ">
+					and cds.estimate is not null
+				</if>
+				<if test="estimateStatus==2 ">
+					and cds.estimate = 0
+				</if>
+				<if test="estimateStatus==3 ">
+					<![CDATA[and cds.estimate > 0 and cds.estimate < 10]]>
+				</if>
+				<if test="estimateStatus==4 ">
+					and cds.estimate is null
+				</if>
+			</if>
+			<if test="isTakeout != null">
+				and cds.is_takeout = '${isTakeout}' 					
+			</if>
+	</select>
+	
+	
+	
+	<select id="getCurrentDayPayableCostTotal" parameterType="int" resultType="java.math.BigDecimal">
+		select 
+			sum(c.payable_cost) as payableCostTotal
+		from 
+			cm_diner_bill c
+		where
+			c.rest_id = '${restId}' and
+			(c.bill_status = 1 or c.bill_status = 2  or c.bill_status = 4 or c.bill_status = 9)  and 
+			TO_DAYS(c.bill_time) = TO_DAYS(NOW())
+			<if test="isHasAllArea == null">
+					and 
+					(
+					(select
+					count(ct.tab_id)
+					from 
+						cm_role_user cru,
+						cm_role_table_area crta,
+						cm_table ct
+					where
+						ct.area_id = crta.fk_tablearea_id and
+						cru.fk_role_id = crta.fk_role_id and
+						cru.fk_user_id = '${userId}'  and
+						ct.tab_id = c.tab_id
+					) > 0
+					or
+					c.create_by = '${userId}'
+					)
+			</if>	
+	</select>
+	
+	<select id="getCurrentDayRealCostTotal" parameterType="int" resultType="java.math.BigDecimal">
+		select
+			 sum(c.real_cost) as realCostTotal
+		from
+			cm_diner_bill c
+		where
+			c.rest_id = '${restId}' and
+			c.bill_status = 3 and 
+			TO_DAYS(c.bill_time) = TO_DAYS(NOW())
+			<if test="isHasAllArea == null">
+					and 
+					(
+					(select
+					count(ct.tab_id)
+					from 
+						cm_role_user cru,
+						cm_role_table_area crta,
+						cm_table ct
+					where
+						ct.area_id = crta.fk_tablearea_id and
+						cru.fk_role_id = crta.fk_role_id and
+						cru.fk_user_id = '${userId}'  and
+						ct.tab_id = c.tab_id
+					) > 0
+					or
+					c.create_by = '${userId}'
+					)
+			</if>	
+	</select>
+	
+	<!-- 外卖单 -->
+	<select id="getTakeoutList" parameterType="int" resultType="java.util.HashMap">
+		SELECT * FROM (
+		<!-- 7天内有账单的外卖 -->
+		SELECT 
+			t.t_id AS tId,<!-- 外卖单主键 -->
+			d.bill_id AS billId,<!-- 账单主键 -->
+			d.bill_status AS billStatus,<!-- 账单状态 -->
+			t.contact_name AS contactName,<!-- 联系人姓名 -->
+			t.mobile AS mobile,<!-- 联系人手机 -->
+			t.telephone AS telephone,<!-- 联系人电话 -->
+			t.total_cost AS totalCost,<!-- 总价 -->
+			t.send_address AS sendAddress,<!-- 送餐地址 -->
+			t.send_time AS sendTime,<!-- 送餐时间 -->
+			'0' AS isCanceled,<!-- 是否撤单（无账单的外卖用） -->
+			TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) AS minuteDiff,<!-- 超过送餐时间的分钟差 -->
+			DATE_FORMAT(t.send_time,'%Y-%m-%d') AS sendDate,<!-- 送餐日期 -->
+			DATE_FORMAT(NOW(),'%Y-%m-%d') AS nowDate,<!-- 当前日期 -->
+			t.create_time as createTime,<!-- 创建时间 -->
+			t.bill_no as takesNumber <!-- 编号 -->
+		FROM 
+			cm_takeout t
+		INNER JOIN 
+			cm_diner_bill d ON t.bill_id = d.bill_id
+		WHERE t.rest_id = '${restId}' 
+			AND d.is_valid = '1' AND d.bill_type = '2' 
+				<![CDATA[
+				AND DATE_FORMAT(t.create_time,'%Y-%m-%d') >= DATE_FORMAT('${startDate}','%Y-%m-%d')
+				]]>
+				<if test="billStatus != null and billStatus != ''">
+					<if test="billStatus != -1 and billStatus != 3">
+						AND d.bill_status = '${billStatus}' 
+					</if>
+					<if test="billStatus == -1"><!-- 未完结状态 -->
+						AND d.bill_status IN ('1','2','4','9','11') 
+					</if>
+					<if test="billStatus == 3"><!-- 已完结状态 -->
+						AND d.bill_status IN ('3','8') 
+					</if>
+				</if>	
+				<if test="keywords != null and keywords != ''">
+					AND
+					
+						t.mobile like '%${keywords}%'
+						<!--( 
+						 业务需求，只搜索手机号
+						d.bill_no like '%${keywords}%' 
+						OR
+						t.contact_name like '%${keywords}%' 
+						OR  
+						 
+						OR 
+						t.telephone like '%${keywords}%' 
+						OR 
+						t.send_address like '%${keywords}%' )-->
+					
+				</if>
+				<if test="sendTimeType != null and sendTimeType != ''">
+					<if test="sendTimeType == 0"><!-- 预定 -->
+						<![CDATA[
+						AND TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) <= 0 
+						]]>
+					</if>
+					<if test="sendTimeType == 15"><!-- 15分钟 -->
+						<![CDATA[
+						AND TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) > 0 
+						AND TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) <= 15 
+						]]>
+					</if>
+					<if test="sendTimeType == 30"><!-- 30分钟 -->
+						<![CDATA[
+						AND TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) > 15 
+						AND TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) <= 30 
+						]]>
+					</if>
+					<if test="sendTimeType == -1"><!-- 更久 -->
+						<![CDATA[
+						AND TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) > 30 
+						]]>
+					</if>
+				</if>
+				
+		UNION ALL
+			<!-- 7天内无账单的外卖 -->
+			SELECT 
+			t.t_id AS tId,<!-- 外卖单主键 -->
+			NULL AS billId,<!-- 账单主键 -->
+			IF(t.is_canceled = '1','8',NULL) AS billStatus,<!-- 账单状态，如果已经撤单则把账单状态改为‘已撤单’ -->
+			t.contact_name AS contactName,<!-- 联系人姓名 -->
+			t.mobile AS mobile,<!-- 联系人手机 -->
+			t.telephone AS telephone,<!-- 联系人电话 -->
+			t.total_cost AS totalCost,<!-- 总价 -->
+			t.send_address AS sendAddress,<!-- 送餐地址 -->
+			t.send_time AS sendTime,<!-- 送餐时间 -->
+			t.is_canceled AS isCanceled,<!-- 是否撤单（无账单的外卖用） -->
+			TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) AS minuteDiff,<!-- 超过送餐时间的分钟差 -->
+			DATE_FORMAT(t.send_time,'%Y-%m-%d') AS sendDate,<!-- 送餐日期 -->
+			DATE_FORMAT(NOW(),'%Y-%m-%d') AS nowDate,<!-- 当前日期 -->
+			t.create_time as createTime,<!-- 创建时间 -->
+			t.takes_number as takesNumber <!-- 编号 -->
+		FROM 
+			cm_takeout t
+		WHERE t.rest_id = '${restId}' 
+			AND t.bill_id IS NULL
+				<![CDATA[
+				AND DATE_FORMAT(t.create_time,'%Y-%m-%d') >= DATE_FORMAT('${startDate}','%Y-%m-%d')
+				]]>
+				<if test="billStatus != null and billStatus != '' and billStatus != -1 and billStatus != 1 and billStatus != 3">
+					AND t.bill_id IS NOT NULL
+				</if>
+				<!-- 已完结的状态时把撤单的显示出来 -->
+				<if test="billStatus == 3">
+					AND t.is_canceled = '1'
+				</if>
+				<!-- 未完结和未下单的状态时隐藏撤单的外卖 -->
+				<if test="billStatus == -1 or billStatus == 1">
+					AND (t.is_canceled = '0' OR t.is_canceled IS NULL)
+				</if>
+				<if test="keywords != null and keywords != ''">
+					AND
+					t.mobile like '%${keywords}%'
+				</if>
+				<if test="sendTimeType != null and sendTimeType != ''">
+					<if test="sendTimeType == 0"><!-- 预定 -->
+						<![CDATA[
+						AND TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) <= 0 
+						]]>
+					</if>
+					<if test="sendTimeType == 15"><!-- 15分钟 -->
+						<![CDATA[
+						AND TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) > 0 
+						AND TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) <= 15 
+						]]>
+					</if>
+					<if test="sendTimeType == 30"><!-- 30分钟 -->
+						<![CDATA[
+						AND TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) > 15 
+						AND TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) <= 30 
+						]]>
+					</if>
+					<if test="sendTimeType == -1"><!-- 更久 -->
+						<![CDATA[
+						AND TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) > 30 
+						]]>
+					</if>
+				</if>
+				
+	<if test="billStatus == null or billStatus == '' or billStatus == 1 or billStatus == 2 or billStatus == -1 or billStatus == 11">	
+		UNION ALL
+			<!-- 7天前有账单的外卖 -->
+			SELECT 
+			t.t_id AS tId,<!-- 外卖单主键 -->
+			d.bill_id AS billId,<!-- 账单主键 -->
+			d.bill_status AS billStatus,<!-- 账单状态 -->
+			t.contact_name AS contactName,<!-- 联系人姓名 -->
+			t.mobile AS mobile,<!-- 联系人手机 -->
+			t.telephone AS telephone,<!-- 联系人电话 -->
+			t.total_cost AS totalCost,<!-- 总价 -->
+			t.send_address AS sendAddress,<!-- 送餐地址 -->
+			t.send_time AS sendTime,<!-- 送餐时间 -->
+			'0' AS isCanceled,<!-- 是否撤单（无账单的外卖用） -->
+			TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) AS minuteDiff,<!-- 超过送餐时间的分钟差 -->
+			DATE_FORMAT(t.send_time,'%Y-%m-%d') AS sendDate,<!-- 送餐日期 -->
+			DATE_FORMAT(NOW(),'%Y-%m-%d') AS nowDate,<!-- 当前日期 -->
+			t.create_time as createTime,<!-- 创建时间 -->
+			t.takes_number as takesNumber
+		FROM 
+			cm_takeout t
+		INNER JOIN 
+			cm_diner_bill d ON t.bill_id = d.bill_id
+		WHERE t.rest_id = '${restId}' 
+			AND d.is_valid = '1' AND d.bill_type = '2' 
+				<![CDATA[
+				AND DATE_FORMAT(t.create_time,'%Y-%m-%d') < DATE_FORMAT('${startDate}','%Y-%m-%d')
+				]]>
+				
+				<if test="billStatus != null and billStatus != '' and billStatus != -1" >
+					AND d.bill_status = '${billStatus}' 
+				</if>
+				
+				<if test="billStatus == null or billStatus == '' or billStatus == -1">
+					AND d.bill_status IN ('1','2','4','9','11')
+				</if>
+				
+				<if test="keywords != null and keywords != ''">
+					AND
+					t.mobile like '%${keywords}%'
+				</if>
+				<if test="sendTimeType != null and sendTimeType != ''">
+					<if test="sendTimeType == 0"><!-- 预定 -->
+						<![CDATA[
+						AND TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) <= 0 
+						]]>
+					</if>
+					<if test="sendTimeType == 15"><!-- 15分钟 -->
+						<![CDATA[
+						AND TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) > 0 
+						AND TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) <= 15 
+						]]>
+					</if>
+					<if test="sendTimeType == 30"><!-- 30分钟 -->
+						<![CDATA[
+						AND TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) > 15 
+						AND TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) <= 30 
+						]]>
+					</if>
+					<if test="sendTimeType == -1"><!-- 更久 -->
+						<![CDATA[
+						AND TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) > 30 
+						]]>
+					</if>
+				</if>
+	</if>
+	<if test="billStatus == null or billStatus == '' or billStatus == -1 or billStatus == 1">	
+			UNION ALL
+				<!-- 7天前无账单的外卖 -->
+				SELECT 
+				t.t_id AS tId,<!-- 外卖单主键 -->
+				NULL AS billId,<!-- 账单主键 -->
+				NULL AS billStatus,<!-- 账单状态 -->
+				t.contact_name AS contactName,<!-- 联系人姓名 -->
+				t.mobile AS mobile,<!-- 联系人手机 -->
+				t.telephone AS telephone,<!-- 联系人电话 -->
+				t.total_cost AS totalCost,<!-- 总价 -->
+				t.send_address AS sendAddress,<!-- 送餐地址 -->
+				t.send_time AS sendTime,<!-- 送餐时间 -->
+				t.is_canceled AS isCanceled,<!-- 是否撤单（无账单的外卖用） -->
+				TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) AS minuteDiff,<!-- 超过送餐时间的分钟差 -->
+				DATE_FORMAT(t.send_time,'%Y-%m-%d') AS sendDate,<!-- 送餐日期 -->
+				DATE_FORMAT(NOW(),'%Y-%m-%d') AS nowDate,<!-- 当前日期 -->
+				t.create_time as createTime,<!-- 创建时间 -->
+				t.takes_number as takesNumber
+			FROM 
+				cm_takeout t
+			WHERE t.rest_id = '${restId}' 
+				AND t.bill_id IS NULL
+				AND (t.is_canceled = '0' OR t.is_canceled IS NULL)  
+					<![CDATA[
+					AND DATE_FORMAT(t.create_time,'%Y-%m-%d') < DATE_FORMAT('${startDate}','%Y-%m-%d')
+					]]>
+					<if test="keywords != null and keywords != ''">
+						AND
+						t.mobile like '%${keywords}%'
+					</if>
+					<if test="sendTimeType != null and sendTimeType != ''">
+						<if test="sendTimeType == 0"><!-- 预定 -->
+							<![CDATA[
+							AND TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) <= 0 
+							]]>
+						</if>
+						<if test="sendTimeType == 15"><!-- 15分钟 -->
+							<![CDATA[
+							AND TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) > 0 
+							AND TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) <= 15 
+							]]>
+						</if>
+						<if test="sendTimeType == 30"><!-- 30分钟 -->
+							<![CDATA[
+							AND TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) > 15 
+							AND TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) <= 30 
+							]]>
+						</if>
+						<if test="sendTimeType == -1"><!-- 更久 -->
+							<![CDATA[
+							AND TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) > 30 
+							]]>
+						</if>
+					</if>
+		</if>
+	) AS td
+		<if test="isCount == 0"><!-- 是否是统计个数: 1：统计个数，0：不是统计个数 -->
+			ORDER BY createTime desc
+			LIMIT ${start},${pageSize}
+		</if>
+	</select>
+	
+	<!-- 统计所有未完结的外卖单 -->
+	<select id="getTakeoutListForNoPay" parameterType="int" resultType="java.util.HashMap">
+		SELECT * FROM (
+		SELECT 
+			t.t_id AS tId,<!-- 外卖单主键 -->
+			d.bill_id AS billId,<!-- 账单主键 -->
+			d.bill_status AS billStatus,<!-- 账单状态 -->
+			t.contact_name AS contactName,<!-- 联系人姓名 -->
+			t.mobile AS mobile,<!-- 联系人手机 -->
+			t.telephone AS telephone,<!-- 联系人电话 -->
+			t.total_cost AS totalCost,<!-- 总价 -->
+			t.send_address AS sendAddress,<!-- 送餐地址 -->
+			t.send_time AS sendTime,<!-- 送餐时间 -->
+			TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) AS minuteDiff,<!-- 超过送餐时间的分钟差 -->
+			DATE_FORMAT(t.send_time,'%Y-%m-%d') AS sendDate,<!-- 送餐日期 -->
+			DATE_FORMAT(NOW(),'%Y-%m-%d') AS nowDate,<!-- 当前日期 -->
+			t.takes_number as takesNumber
+		FROM 
+			cm_takeout t
+		INNER JOIN 
+			cm_diner_bill d ON t.bill_id = d.bill_id
+		WHERE t.rest_id = '${restId}' 
+			AND d.is_valid = '1' 
+			AND d.bill_type = '2' 
+			AND d.bill_status IN ('1','2','9','11') 
+		UNION ALL
+			SELECT 
+			t.t_id AS tId,<!-- 外卖单主键 -->
+			NULL AS billId,<!-- 账单主键 -->
+			NULL AS billStatus,<!-- 账单状态 -->
+			t.contact_name AS contactName,<!-- 联系人姓名 -->
+			t.mobile AS mobile,<!-- 联系人手机 -->
+			t.telephone AS telephone,<!-- 联系人电话 -->
+			t.total_cost AS totalCost,<!-- 总价 -->
+			t.send_address AS sendAddress,<!-- 送餐地址 -->
+			t.send_time AS sendTime,<!-- 送餐时间 -->
+			TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) AS minuteDiff,<!-- 超过送餐时间的分钟差 -->
+			DATE_FORMAT(t.send_time,'%Y-%m-%d') AS sendDate,<!-- 送餐日期 -->
+			DATE_FORMAT(NOW(),'%Y-%m-%d') AS nowDate,<!-- 当前日期 -->
+			t.takes_number as takesNumber
+		FROM 
+			cm_takeout t
+		WHERE t.rest_id = '${restId}' 
+			AND t.bill_id IS NULL
+			AND (t.is_canceled = '0' OR t.is_canceled IS NULL)
+	) AS td
+	</select>
+	
+	
+	<!-- 统计所有未完结的外卖单 -->
+	<select id="getTakeoutListForNoPayCount" parameterType="int" resultType="java.lang.Long">
+		SELECT count(1) FROM (
+		SELECT 
+			t.t_id AS tId,<!-- 外卖单主键 -->
+			d.bill_id AS billId,<!-- 账单主键 -->
+			d.bill_status AS billStatus,<!-- 账单状态 -->
+			t.contact_name AS contactName,<!-- 联系人姓名 -->
+			t.mobile AS mobile,<!-- 联系人手机 -->
+			t.telephone AS telephone,<!-- 联系人电话 -->
+			t.total_cost AS totalCost,<!-- 总价 -->
+			t.send_address AS sendAddress,<!-- 送餐地址 -->
+			t.send_time AS sendTime,<!-- 送餐时间 -->
+			TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) AS minuteDiff,<!-- 超过送餐时间的分钟差 -->
+			DATE_FORMAT(t.send_time,'%Y-%m-%d') AS sendDate,<!-- 送餐日期 -->
+			DATE_FORMAT(NOW(),'%Y-%m-%d') AS nowDate,<!-- 当前日期 -->
+			t.takes_number as takesNumber
+		FROM 
+			cm_takeout t
+		INNER JOIN 
+			cm_diner_bill d ON t.bill_id = d.bill_id
+		WHERE t.rest_id = '${restId}' 
+			AND d.is_valid = '1' 
+			AND d.bill_type = '2' 
+			AND d.bill_status IN ('1','2','9','11') 
+		UNION ALL
+			SELECT 
+			t.t_id AS tId,<!-- 外卖单主键 -->
+			NULL AS billId,<!-- 账单主键 -->
+			NULL AS billStatus,<!-- 账单状态 -->
+			t.contact_name AS contactName,<!-- 联系人姓名 -->
+			t.mobile AS mobile,<!-- 联系人手机 -->
+			t.telephone AS telephone,<!-- 联系人电话 -->
+			t.total_cost AS totalCost,<!-- 总价 -->
+			t.send_address AS sendAddress,<!-- 送餐地址 -->
+			t.send_time AS sendTime,<!-- 送餐时间 -->
+			TIMESTAMPDIFF(MINUTE, DATE_FORMAT(t.send_time,'%Y-%m-%d %H:%i:%s'),NOW()) AS minuteDiff,<!-- 超过送餐时间的分钟差 -->
+			DATE_FORMAT(t.send_time,'%Y-%m-%d') AS sendDate,<!-- 送餐日期 -->
+			DATE_FORMAT(NOW(),'%Y-%m-%d') AS nowDate,<!-- 当前日期 -->
+			t.takes_number as takesNumber
+		FROM 
+			cm_takeout t
+		WHERE t.rest_id = '${restId}' 
+			AND t.bill_id IS NULL
+			AND (t.is_canceled = '0' OR t.is_canceled IS NULL)
+	) AS td
+	</select>
+	
+	
+	<select id="getCountByBillId" parameterType="int" resultType="java.lang.Long">
+		select
+			sum(inline.d)
+		from
+		(
+			select
+				sum(unit_num) as d
+			from
+				cm_diner_bill_dishes
+			where
+				bill_Id = '${billId}' and
+				dishes_status in  ('1','2','5')
+		union all
+			select
+				sum(unit_num) as d
+			from
+				cm_diner_bill_dishes_set
+			where
+				bill_Id = '${billId}' and
+				ds_status in  ('1','2','5')
+		) as inline
+	</select>
+	
+</mapper> 

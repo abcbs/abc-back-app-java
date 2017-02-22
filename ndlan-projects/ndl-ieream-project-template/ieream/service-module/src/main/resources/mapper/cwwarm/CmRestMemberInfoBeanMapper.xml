@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.CmRestMemberInfoBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.CmRestMemberInfoBean">
+		<id column="mb_id" property="mbId" jdbcType="VARCHAR" />
+	
+    
+		<result column="login_password" property="loginPassword" jdbcType="VARCHAR" />
+    
+		<result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    
+		<result column="name" property="name" jdbcType="VARCHAR" />
+    
+		<result column="edu" property="edu" jdbcType="VARCHAR" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="origin_rest_id" property="originRestId" jdbcType="VARCHAR" />
+    
+		<result column="birthday_int" property="birthdayInt" jdbcType="BIGINT" />
+    
+		<result column="salesman_id" property="salesmanId" jdbcType="VARCHAR" />
+    
+		<result column="work" property="work" jdbcType="VARCHAR" />
+    
+		<result column="version" property="version" jdbcType="BIGINT" />
+    
+		<result column="login_username" property="loginUsername" jdbcType="VARCHAR" />
+    
+		<result column="address" property="address" jdbcType="VARCHAR" />
+    
+		<result column="gender" property="gender" jdbcType="VARCHAR" />
+    
+		<result column="reg_origin" property="regOrigin" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="name_code" property="nameCode" jdbcType="VARCHAR" />
+    
+		<result column="adr_city" property="adrCity" jdbcType="VARCHAR" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="invoice_list" property="invoiceList" jdbcType="VARCHAR" />
+    
+		<result column="birthday_day" property="birthdayDay" jdbcType="DATE" />
+    
+		<result column="is_syn" property="isSyn" jdbcType="VARCHAR" />
+    
+		<result column="rest_id" property="restId" jdbcType="VARCHAR" />
+    
+		<result column="company" property="company" jdbcType="VARCHAR" />
+    
+		<result column="notes" property="notes" jdbcType="VARCHAR" />
+    
+		<result column="adr_province" property="adrProvince" jdbcType="VARCHAR" />
+    
+		<result column="email" property="email" jdbcType="VARCHAR" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		login_password as loginPassword ,
+		mobile as mobile ,
+		name as name ,
+		edu as edu ,
+		update_by as updateBy ,
+		origin_rest_id as originRestId ,
+		birthday_int as birthdayInt ,
+		salesman_id as salesmanId ,
+		work as work ,
+		version as version ,
+		login_username as loginUsername ,
+		address as address ,
+		gender as gender ,
+		reg_origin as regOrigin ,
+		create_time as createTime ,
+		name_code as nameCode ,
+		adr_city as adrCity ,
+		create_by as createBy ,
+		invoice_list as invoiceList ,
+		birthday_day as birthdayDay ,
+		is_syn as isSyn ,
+		rest_id as restId ,
+		company as company ,
+		notes as notes ,
+		adr_province as adrProvince ,
+		mb_id as mbId ,
+		email as email ,
+		syn_version as synVersion ,
+		update_time as updateTime 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="loginPassword != null"> and login_password = #{loginPassword}</if>
+				
+		  	    <if test="mobile != null"> and mobile = #{mobile}</if>
+				
+		  	    <if test="name != null"> and name = #{name}</if>
+				
+		  	    <if test="edu != null"> and edu = #{edu}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #{updateBy}</if>
+				
+		  	    <if test="originRestId != null"> and origin_rest_id = #{originRestId}</if>
+				
+		  	    <if test="birthdayInt != null"> and birthday_int = #{birthdayInt}</if>
+				
+		  	    <if test="salesmanId != null"> and salesman_id = #{salesmanId}</if>
+				
+		  	    <if test="work != null"> and work = #{work}</if>
+				
+		  	    <if test="version != null"> and version = #{version}</if>
+				
+		  	    <if test="loginUsername != null"> and login_username = #{loginUsername}</if>
+				
+		  	    <if test="address != null"> and address = #{address}</if>
+				
+		  	    <if test="gender != null"> and gender = #{gender}</if>
+				
+		  	    <if test="regOrigin != null"> and reg_origin = #{regOrigin}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #{createTime}</if>
+				
+		  	    <if test="nameCode != null"> and name_code = #{nameCode}</if>
+				
+		  	    <if test="adrCity != null"> and adr_city = #{adrCity}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #{createBy}</if>
+				
+		  	    <if test="invoiceList != null"> and invoice_list = #{invoiceList}</if>
+				
+		  	    <if test="birthdayDay != null"> and birthday_day = #{birthdayDay}</if>
+				
+		  	    <if test="isSyn != null"> and is_syn = #{isSyn}</if>
+				
+		  	    <if test="restId != null"> and rest_id = #{restId}</if>
+				
+		  	    <if test="company != null"> and company = #{company}</if>
+				
+		  	    <if test="notes != null"> and notes = #{notes}</if>
+				
+		  	    <if test="adrProvince != null"> and adr_province = #{adrProvince}</if>
+				
+		  	    <if test="mbId != null"> and mb_id = #{mbId}</if>
+				
+		  	    <if test="email != null"> and email = #{email}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #{synVersion}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #{updateTime}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by ${sorting}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</sql>
+	
+	<!-- ��ѯ���� -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(mb_id)
+		from cm_rest_member_info
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ��ѯ -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cm_rest_member_info
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ����ID��ѯ -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cm_rest_member_info
+		where mb_id = #{mb_id}
+	</select>
+	
+	<!-- ����IDɾ�� -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cm_rest_member_info
+		where  mb_id = #{mb_id}
+	</delete>
+	
+	<!-- ɾ�� -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- ��� -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.CmRestMemberInfoBean">
+		insert into cm_rest_member_info(
+		  	    login_password  ,
+	
+		  	    mobile  ,
+	
+		  	    name  ,
+	
+		  	    edu  ,
+	
+		  	    update_by  ,
+	
+		  	    origin_rest_id  ,
+	
+		  	    birthday_int  ,
+	
+		  	    salesman_id  ,
+	
+		  	    work  ,
+	
+		  	    version  ,
+	
+		  	    login_username  ,
+	
+		  	    address  ,
+	
+		  	    gender  ,
+	
+		  	    reg_origin  ,
+	
+		  	    create_time  ,
+	
+		  	    name_code  ,
+	
+		  	    adr_city  ,
+	
+		  	    create_by  ,
+	
+		  	    invoice_list  ,
+	
+		  	    birthday_day  ,
+	
+		  	    is_syn  ,
+	
+		  	    rest_id  ,
+	
+		  	    company  ,
+	
+		  	    notes  ,
+	
+		  	    adr_province  ,
+	
+		  	    mb_id  ,
+	
+		  	    email  ,
+	
+		  	    syn_version  ,
+	
+		  	    update_time  
+	
+			
+		)
+		values (
+		  	    #{loginPassword } ,
+		  	    #{mobile } ,
+		  	    #{name } ,
+		  	    #{edu } ,
+		  	    #{updateBy } ,
+		  	    #{originRestId } ,
+		  	    #{birthdayInt } ,
+		  	    #{salesmanId } ,
+		  	    #{work } ,
+		  	    #{version } ,
+		  	    #{loginUsername } ,
+		  	    #{address } ,
+		  	    #{gender } ,
+		  	    #{regOrigin } ,
+		  	    #{createTime } ,
+		  	    #{nameCode } ,
+		  	    #{adrCity } ,
+		  	    #{createBy } ,
+		  	    #{invoiceList } ,
+		  	    #{birthdayDay } ,
+		  	    #{isSyn } ,
+		  	    #{restId } ,
+		  	    #{company } ,
+		  	    #{notes } ,
+		  	    #{adrProvince } ,
+		  	    #{mbId } ,
+		  	    #{email } ,
+		  	    #{synVersion } ,
+		  	    #{updateTime } 
+		)
+	</insert>
+	
+	
+	<!-- ͨ��ID���� -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.CmRestMemberInfoBean">
+		update cm_rest_member_info
+		<set>
+		  	<if test="loginPassword != null">  login_password = #{loginPassword} ,</if>
+		  	<if test="mobile != null">  mobile = #{mobile} ,</if>
+		  	<if test="name != null">  name = #{name} ,</if>
+		  	<if test="edu != null">  edu = #{edu} ,</if>
+		  	<if test="updateBy != null">  update_by = #{updateBy} ,</if>
+		  	<if test="originRestId != null">  origin_rest_id = #{originRestId} ,</if>
+		  	<if test="birthdayInt != null">  birthday_int = #{birthdayInt} ,</if>
+		  	<if test="salesmanId != null">  salesman_id = #{salesmanId} ,</if>
+		  	<if test="work != null">  work = #{work} ,</if>
+		  	<if test="version != null">  version = #{version} ,</if>
+		  	<if test="loginUsername != null">  login_username = #{loginUsername} ,</if>
+		  	<if test="address != null">  address = #{address} ,</if>
+		  	<if test="gender != null">  gender = #{gender} ,</if>
+		  	<if test="regOrigin != null">  reg_origin = #{regOrigin} ,</if>
+		  	<if test="createTime != null">  create_time = #{createTime} ,</if>
+		  	<if test="nameCode != null">  name_code = #{nameCode} ,</if>
+		  	<if test="adrCity != null">  adr_city = #{adrCity} ,</if>
+		  	<if test="createBy != null">  create_by = #{createBy} ,</if>
+		  	<if test="invoiceList != null">  invoice_list = #{invoiceList} ,</if>
+		  	<if test="birthdayDay != null">  birthday_day = #{birthdayDay} ,</if>
+		  	<if test="isSyn != null">  is_syn = #{isSyn} ,</if>
+		  	<if test="restId != null">  rest_id = #{restId} ,</if>
+		  	<if test="company != null">  company = #{company} ,</if>
+		  	<if test="notes != null">  notes = #{notes} ,</if>
+		  	<if test="adrProvince != null">  adr_province = #{adrProvince} ,</if>
+		  	<if test="email != null">  email = #{email} ,</if>
+		  	<if test="synVersion != null">  syn_version = #{synVersion} ,</if>
+		  	<if test="updateTime != null">  update_time = #{updateTime} </if>
+		</set>
+		where  mb_id = #{mb_id}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.CmRestMemberInfoBean">
+		update cm_rest_member_info
+
+		set 
+		  	 login_password = #{loginPassword} ,
+		  	 mobile = #{mobile} ,
+		  	 name = #{name} ,
+		  	 edu = #{edu} ,
+		  	 update_by = #{updateBy} ,
+		  	 origin_rest_id = #{originRestId} ,
+		  	 birthday_int = #{birthdayInt} ,
+		  	 salesman_id = #{salesmanId} ,
+		  	 work = #{work} ,
+		  	 version = #{version} ,
+		  	 login_username = #{loginUsername} ,
+		  	 address = #{address} ,
+		  	 gender = #{gender} ,
+		  	 reg_origin = #{regOrigin} ,
+		  	 create_time = #{createTime} ,
+		  	 name_code = #{nameCode} ,
+		  	 adr_city = #{adrCity} ,
+		  	 create_by = #{createBy} ,
+		  	 invoice_list = #{invoiceList} ,
+		  	 birthday_day = #{birthdayDay} ,
+		  	 is_syn = #{isSyn} ,
+		  	 rest_id = #{restId} ,
+		  	 company = #{company} ,
+		  	 notes = #{notes} ,
+		  	 adr_province = #{adrProvince} ,
+		  	 email = #{email} ,
+		  	 syn_version = #{synVersion} ,
+		  	 update_time = #{updateTime} 
+	
+		where  mb_id = #{mb_id}
+	</update>
+	
+</mapper>

@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.CmDeliveryDetailsBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.CmDeliveryDetailsBean">
+		<id column="dd_id" property="ddId" jdbcType="VARCHAR" />
+	
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="before_delivery_count" property="beforeDeliveryCount" jdbcType="FLOAT" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="material_code" property="materialCode" jdbcType="VARCHAR" />
+    
+		<result column="unit_name" property="unitName" jdbcType="VARCHAR" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="store_name" property="storeName" jdbcType="VARCHAR" />
+    
+		<result column="delivery_count" property="deliveryCount" jdbcType="FLOAT" />
+    
+		<result column="delivery_id" property="deliveryId" jdbcType="VARCHAR" />
+    
+		<result column="is_syn" property="isSyn" jdbcType="VARCHAR" />
+    
+		<result column="version" property="version" jdbcType="VARCHAR" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+    
+		<result column="material_name" property="materialName" jdbcType="VARCHAR" />
+    
+		<result column="rm_id" property="rmId" jdbcType="VARCHAR" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="rest_id" property="restId" jdbcType="VARCHAR" />
+    
+		<result column="price" property="price" jdbcType="DOUBLE" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		update_time as updateTime ,
+		before_delivery_count as beforeDeliveryCount ,
+		create_time as createTime ,
+		material_code as materialCode ,
+		unit_name as unitName ,
+		dd_id as ddId ,
+		create_by as createBy ,
+		store_name as storeName ,
+		delivery_count as deliveryCount ,
+		delivery_id as deliveryId ,
+		is_syn as isSyn ,
+		version as version ,
+		syn_version as synVersion ,
+		material_name as materialName ,
+		rm_id as rmId ,
+		update_by as updateBy ,
+		rest_id as restId ,
+		price as price 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="updateTime != null"> and update_time = #\{updateTime\}</if>
+				
+		  	    <if test="beforeDeliveryCount != null"> and before_delivery_count = #\{beforeDeliveryCount\}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #\{createTime\}</if>
+				
+		  	    <if test="materialCode != null"> and material_code = #\{materialCode\}</if>
+				
+		  	    <if test="unitName != null"> and unit_name = #\{unitName\}</if>
+				
+		  	    <if test="ddId != null"> and dd_id = #\{ddId\}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #\{createBy\}</if>
+				
+		  	    <if test="storeName != null"> and store_name = #\{storeName\}</if>
+				
+		  	    <if test="deliveryCount != null"> and delivery_count = #\{deliveryCount\}</if>
+				
+		  	    <if test="deliveryId != null"> and delivery_id = #\{deliveryId\}</if>
+				
+		  	    <if test="isSyn != null"> and is_syn = #\{isSyn\}</if>
+				
+		  	    <if test="version != null"> and version = #\{version\}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #\{synVersion\}</if>
+				
+		  	    <if test="materialName != null"> and material_name = #\{materialName\}</if>
+				
+		  	    <if test="rmId != null"> and rm_id = #\{rmId\}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #\{updateBy\}</if>
+				
+		  	    <if test="restId != null"> and rest_id = #\{restId\}</if>
+				
+		  	    <if test="price != null"> and price = #\{price\}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by $\{sorting\}</if>
+		<if test="offset != null and limit != null">
+			limit #\{offset\}, #\{limit\}
+		</if>
+	</sql>
+	
+	<!-- 查询总数 -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(dd_id)
+		from cm_delivery_details
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 查询 -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cm_delivery_details
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cm_delivery_details
+		where dd_id = #\{dd_id\}
+	</select>
+	
+	<!-- 根据ID删除 -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cm_delivery_details
+		where  dd_id = #\{dd_id\}
+	</delete>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- 添加 -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.CmDeliveryDetailsBean">
+		insert into cm_delivery_details(
+		  	    update_time  ,
+	
+		  	    before_delivery_count  ,
+	
+		  	    create_time  ,
+	
+		  	    material_code  ,
+	
+		  	    unit_name  ,
+	
+		  	    dd_id  ,
+	
+		  	    create_by  ,
+	
+		  	    store_name  ,
+	
+		  	    delivery_count  ,
+	
+		  	    delivery_id  ,
+	
+		  	    is_syn  ,
+	
+		  	    version  ,
+	
+		  	    syn_version  ,
+	
+		  	    material_name  ,
+	
+		  	    rm_id  ,
+	
+		  	    update_by  ,
+	
+		  	    rest_id  ,
+	
+		  	    price  
+	
+			
+		)
+		values (
+		  	    #\{updateTime \} ,
+		  	    #\{beforeDeliveryCount \} ,
+		  	    #\{createTime \} ,
+		  	    #\{materialCode \} ,
+		  	    #\{unitName \} ,
+		  	    #\{ddId \} ,
+		  	    #\{createBy \} ,
+		  	    #\{storeName \} ,
+		  	    #\{deliveryCount \} ,
+		  	    #\{deliveryId \} ,
+		  	    #\{isSyn \} ,
+		  	    #\{version \} ,
+		  	    #\{synVersion \} ,
+		  	    #\{materialName \} ,
+		  	    #\{rmId \} ,
+		  	    #\{updateBy \} ,
+		  	    #\{restId \} ,
+		  	    #\{price \} 
+		)
+	</insert>
+	
+	
+	<!-- 通过ID更新 -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.CmDeliveryDetailsBean">
+		update cm_delivery_details
+		<set>
+		  	<if test=\"updateTime != null\">  update_time = #\{updateTime\} ,</if>
+		  	<if test=\"beforeDeliveryCount != null\">  before_delivery_count = #\{beforeDeliveryCount\} ,</if>
+		  	<if test=\"createTime != null\">  create_time = #\{createTime\} ,</if>
+		  	<if test=\"materialCode != null\">  material_code = #\{materialCode\} ,</if>
+		  	<if test=\"unitName != null\">  unit_name = #\{unitName\} ,</if>
+		  	<if test=\"createBy != null\">  create_by = #\{createBy\} ,</if>
+		  	<if test=\"storeName != null\">  store_name = #\{storeName\} ,</if>
+		  	<if test=\"deliveryCount != null\">  delivery_count = #\{deliveryCount\} ,</if>
+		  	<if test=\"deliveryId != null\">  delivery_id = #\{deliveryId\} ,</if>
+		  	<if test=\"isSyn != null\">  is_syn = #\{isSyn\} ,</if>
+		  	<if test=\"version != null\">  version = #\{version\} ,</if>
+		  	<if test=\"synVersion != null\">  syn_version = #\{synVersion\} ,</if>
+		  	<if test=\"materialName != null\">  material_name = #\{materialName\} ,</if>
+		  	<if test=\"rmId != null\">  rm_id = #\{rmId\} ,</if>
+		  	<if test=\"updateBy != null\">  update_by = #\{updateBy\} ,</if>
+		  	<if test=\"restId != null\">  rest_id = #\{restId\} ,</if>
+		  	<if test=\"price != null\">  price = #\{price\} </if>
+		</set>
+		where  dd_id = #\{dd_id\}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.CmDeliveryDetailsBean">
+		update cm_delivery_details
+
+		set 
+		  	 update_time = #\{updateTime\} ,
+		  	 before_delivery_count = #\{beforeDeliveryCount\} ,
+		  	 create_time = #\{createTime\} ,
+		  	 material_code = #\{materialCode\} ,
+		  	 unit_name = #\{unitName\} ,
+		  	 create_by = #\{createBy\} ,
+		  	 store_name = #\{storeName\} ,
+		  	 delivery_count = #\{deliveryCount\} ,
+		  	 delivery_id = #\{deliveryId\} ,
+		  	 is_syn = #\{isSyn\} ,
+		  	 version = #\{version\} ,
+		  	 syn_version = #\{synVersion\} ,
+		  	 material_name = #\{materialName\} ,
+		  	 rm_id = #\{rmId\} ,
+		  	 update_by = #\{updateBy\} ,
+		  	 rest_id = #\{restId\} ,
+		  	 price = #\{price\} 
+	
+		where  dd_id = #\{dd_id\}
+	</update>
+	
+</mapper>

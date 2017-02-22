@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.cwwarm.model.CwWorkJobBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.cwwarm.model.CwWorkJobBean">
+		<id column="cw_work_job_id" property="cwWorkJobId" jdbcType="VARCHAR" />
+	
+    
+		<result column="wjob_parent_path_id" property="wjobParentPathId" jdbcType="VARCHAR" />
+    
+		<result column="wjob_category_name" property="wjobCategoryName" jdbcType="VARCHAR" />
+    
+		<result column="wjob_category_grade" property="wjobCategoryGrade" jdbcType="VARCHAR" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="wjob_parent_category_id" property="wjobParentCategoryId" jdbcType="VARCHAR" />
+    
+		<result column="wjob_busi_status" property="wjobBusiStatus" jdbcType="VARCHAR" />
+    
+		<result column="wjob_category_desc" property="wjobCategoryDesc" jdbcType="VARCHAR" />
+    
+		<result column="wjob_parent_path_name" property="wjobParentPathName" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="wjob_parent_category_name" property="wjobParentCategoryName" jdbcType="VARCHAR" />
+    
+		<result column="wjob_life_status" property="wjobLifeStatus" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		wjob_parent_path_id as wjobParentPathId ,
+		wjob_category_name as wjobCategoryName ,
+		cw_work_job_id as cwWorkJobId ,
+		wjob_category_grade as wjobCategoryGrade ,
+		create_by as createBy ,
+		wjob_parent_category_id as wjobParentCategoryId ,
+		wjob_busi_status as wjobBusiStatus ,
+		wjob_category_desc as wjobCategoryDesc ,
+		wjob_parent_path_name as wjobParentPathName ,
+		update_time as updateTime ,
+		update_by as updateBy ,
+		wjob_parent_category_name as wjobParentCategoryName ,
+		wjob_life_status as wjobLifeStatus ,
+		create_time as createTime 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="wjobParentPathId != null"> and wjob_parent_path_id = #{wjobParentPathId}</if>
+				
+		  	    <if test="wjobCategoryName != null"> and wjob_category_name = #{wjobCategoryName}</if>
+				
+		  	    <if test="cwWorkJobId != null"> and cw_work_job_id = #{cwWorkJobId}</if>
+				
+		  	    <if test="wjobCategoryGrade != null"> and wjob_category_grade = #{wjobCategoryGrade}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #{createBy}</if>
+				
+		  	    <if test="wjobParentCategoryId != null"> and wjob_parent_category_id = #{wjobParentCategoryId}</if>
+				
+		  	    <if test="wjobBusiStatus != null"> and wjob_busi_status = #{wjobBusiStatus}</if>
+				
+		  	    <if test="wjobCategoryDesc != null"> and wjob_category_desc = #{wjobCategoryDesc}</if>
+				
+		  	    <if test="wjobParentPathName != null"> and wjob_parent_path_name = #{wjobParentPathName}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #{updateTime}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #{updateBy}</if>
+				
+		  	    <if test="wjobParentCategoryName != null"> and wjob_parent_category_name = #{wjobParentCategoryName}</if>
+				
+		  	    <if test="wjobLifeStatus != null"> and wjob_life_status = #{wjobLifeStatus}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #{createTime}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by ${sorting}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</sql>
+	
+	<!-- 查询总数 -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(cw_work_job_id)
+		from cw_work_job
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 查询 -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cw_work_job
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cw_work_job
+		where cw_work_job_id = #{cwWorkJobId}
+	</select>
+	
+	<!-- 根据ID删除 -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cw_work_job
+		where  cw_work_job_id = #{cwWorkJobId}
+	</delete>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- 添加 -->	
+	<insert id="insert" parameterType="com.ndlan.cwwarm.model.CwWorkJobBean">
+		insert into cw_work_job(
+		  	    wjob_parent_path_id  ,
+	
+		  	    wjob_category_name  ,
+	
+		  	    cw_work_job_id  ,
+	
+		  	    wjob_category_grade  ,
+	
+		  	    create_by  ,
+	
+		  	    wjob_parent_category_id  ,
+	
+		  	    wjob_busi_status  ,
+	
+		  	    wjob_category_desc  ,
+	
+		  	    wjob_parent_path_name  ,
+	
+		  	    update_time  ,
+	
+		  	    update_by  ,
+	
+		  	    wjob_parent_category_name  ,
+	
+		  	    wjob_life_status  ,
+	
+		  	    create_time  
+	
+			
+		)
+		values (
+		  	    #{wjobParentPathId } ,
+		  	    #{wjobCategoryName } ,
+		  	    #{cwWorkJobId } ,
+		  	    #{wjobCategoryGrade } ,
+		  	    #{createBy } ,
+		  	    #{wjobParentCategoryId } ,
+		  	    #{wjobBusiStatus } ,
+		  	    #{wjobCategoryDesc } ,
+		  	    #{wjobParentPathName } ,
+		  	    #{updateTime } ,
+		  	    #{updateBy } ,
+		  	    #{wjobParentCategoryName } ,
+		  	    #{wjobLifeStatus } ,
+		  	    #{createTime } 
+		)
+	</insert>
+	
+	
+	<!-- 通过ID更新 -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.cwwarm.model.CwWorkJobBean">
+		update cw_work_job
+		<set>
+		  	<if test="wjobParentPathId != null">  wjob_parent_path_id = #{wjobParentPathId} ,</if>
+		  	<if test="wjobCategoryName != null">  wjob_category_name = #{wjobCategoryName} ,</if>
+		  	<if test="wjobCategoryGrade != null">  wjob_category_grade = #{wjobCategoryGrade} ,</if>
+		  	<if test="createBy != null">  create_by = #{createBy} ,</if>
+		  	<if test="wjobParentCategoryId != null">  wjob_parent_category_id = #{wjobParentCategoryId} ,</if>
+		  	<if test="wjobBusiStatus != null">  wjob_busi_status = #{wjobBusiStatus} ,</if>
+		  	<if test="wjobCategoryDesc != null">  wjob_category_desc = #{wjobCategoryDesc} ,</if>
+		  	<if test="wjobParentPathName != null">  wjob_parent_path_name = #{wjobParentPathName} ,</if>
+		  	<if test="updateTime != null">  update_time = #{updateTime} ,</if>
+		  	<if test="updateBy != null">  update_by = #{updateBy} ,</if>
+		  	<if test="wjobParentCategoryName != null">  wjob_parent_category_name = #{wjobParentCategoryName} ,</if>
+		  	<if test="wjobLifeStatus != null">  wjob_life_status = #{wjobLifeStatus} ,</if>
+		  	<if test="createTime != null">  create_time = #{createTime} </if>
+		</set>
+		where  cw_work_job_id = #{cwWorkJobId}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.cwwarm.model.CwWorkJobBean">
+		update cw_work_job
+
+		set 
+		  	 wjob_parent_path_id = #{wjobParentPathId} ,
+		  	 wjob_category_name = #{wjobCategoryName} ,
+		  	 wjob_category_grade = #{wjobCategoryGrade} ,
+		  	 create_by = #{createBy} ,
+		  	 wjob_parent_category_id = #{wjobParentCategoryId} ,
+		  	 wjob_busi_status = #{wjobBusiStatus} ,
+		  	 wjob_category_desc = #{wjobCategoryDesc} ,
+		  	 wjob_parent_path_name = #{wjobParentPathName} ,
+		  	 update_time = #{updateTime} ,
+		  	 update_by = #{updateBy} ,
+		  	 wjob_parent_category_name = #{wjobParentCategoryName} ,
+		  	 wjob_life_status = #{wjobLifeStatus} ,
+		  	 create_time = #{createTime} 
+	
+		where  cw_work_job_id = #{cwWorkJobId}
+	</update>
+	
+</mapper>

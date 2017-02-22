@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.ndlan.canyin.base.repository.mybatis.EmployeeMyDao">
+	
+	<select id="getAll" parameterType="int" resultType="Employee">
+		select
+		ce.emp_id as empId,
+		ce.emp_num as empNum,
+		ce.*
+		from
+		cm_employee ce,
+		cm_role cr,
+		cm_role_user cru
+		where
+		ce.rest_id = '${restId}' and
+		<![CDATA[ce.sysdata_type <> '2' and]]>
+		<if test="roleType != null">
+		ce.emp_id = cru.fk_user_id and
+		cru.fk_role_id = cr.cr_id and
+		cr.role_type = '${roleType}' and 
+		cr.is_stop_use = '0' and 
+		</if>	
+		ce.job_status = '${jobStatus}'
+		limit ${start},${pageSize}
+	</select>
+
+	<select id="getAllCount" parameterType="int" resultType="int">
+		select 
+			count(ce.emp_id)
+		from
+		cm_employee ce,
+		cm_role cr,
+		cm_role_user cru
+		where
+		ce.rest_id = '${restId}' and
+		<![CDATA[ce.sysdata_type <> '2' and]]>
+		<if test="roleType != null">
+		ce.emp_id = cru.fk_user_id and
+		cru.fk_role_id = cr.cr_id and
+		cr.role_type = '${roleType}' and
+		</if>	
+		ce.job_status = '${jobStatus}'			
+	</select>
+	
+	<select id="getAuthorityModule" parameterType="int" resultType="AuthorityModule">
+		select
+			cam.cam_id as camId,
+			cam.cam_level as camLevel,
+			cam.cam_link as camLink,
+			cam.cam_name as camName,
+			cam.action_url as actionUrl,
+			cam.permission as permission
+		from
+			cm_authority_module cam,
+			cm_role_auth cra,
+			cm_role_user cru,
+			cm_role cr
+		where
+			cr.cr_id = cru.fk_role_id and
+			cru.fk_role_id = cra.fk_role_id and
+			cra.fk_auth_id = cam.cam_id and
+			cr.rest_id = '${restId}' 
+			<if test="isStopUse != null">
+				and cr.is_stop_use = '${isStopUse}'
+			</if>
+			<if test="userId != null">
+				and cru.fk_user_id = '${userId}'
+			</if>
+	</select>
+	
+	
+	
+	<select id="getAllTable" parameterType="int" resultType="Table">
+		select
+			ct.tab_id as tabId,
+			ct.dinner_status as dinnerStatus,
+			ct.tab_name as tabName,
+			ct.tab_no as tabNo,
+			ct.area_id as areaId,
+			ct.rest_id as restId,
+			ct.seat,
+			ct.min_seat as minSeat,
+			ct.comment,
+			ct.version
+		from
+			cm_table  ct
+		where
+			ct.rest_id = '${restId}' and
+			ct.is_enable = '1' 
+		<if test="dinnerStatus != null">
+			and ct.dinner_status = '${dinnerStatus}' 
+		</if>	
+		<if test="areaId != null">
+			and ct.area_id = '${areaId}' 
+		</if>
+		<if test="tabNo != null">
+			and 
+			(
+				ct.tab_no like '%${tabNo}%' or
+				ct.tab_name like '%${tabNo}%' 
+			)
+		</if>	
+		<if test="isHasAllArea == null">
+					and (select
+					count(ct.tab_id)
+					from 
+						cm_role_user icru,
+						cm_role_table_area icrta
+					where
+						ct.area_id = icrta.fk_tablearea_id and
+						icru.fk_role_id = icrta.fk_role_id and
+						icru.fk_user_id = '${userId}'
+					) > 0
+		</if>	
+		order by ct.tab_no asc
+		limit ${start},${pageSize}
+	</select>
+	
+	
+	
+	<select id="getOrderAllTable" parameterType="int" resultType="Table">   <!-- 预定获得全部餐台    -->
+		select
+			ct.tab_id as tabId,
+			ct.dinner_status as dinnerStatus,
+			ct.tab_name as tabName,
+			ct.tab_no as tabNo,
+			ct.area_id as areaId,
+			ct.rest_id as restId,
+			ct.seat,
+			ct.min_seat as minSeat,
+			ct.comment,
+			ct.version
+		from
+			cm_table  ct
+		where
+			ct.rest_id = '${restId}' and
+			ct.is_enable = '1'  and
+			ct.tab_id not in 
+			(
+			select c.tab_id from cm_table_order c 
+			where 
+			c.order_status ='2' and 
+			c.rest_id= '${restId}' and
+			<![CDATA[
+			DATE_FORMAT(c.order_time,'%Y-%m-%d %H:%i:%s') >= DATE_FORMAT('${datebegin}','%Y-%m-%d %H:%i:%s')  and 
+			]]>
+			<![CDATA[
+			DATE_FORMAT(c.order_time,'%Y-%m-%d %H:%i:%s') <= DATE_FORMAT('${dateend}','%Y-%m-%d %H:%i:%s')
+			]]>
+			)
+		
+		<if test="dinnerStatus != null">
+			and ct.dinner_status = '${dinnerStatus}' 
+		</if>	
+		<if test="areaId != null">
+			and ct.area_id = '${areaId}' 
+		</if>
+		<if test="tabNo != null">
+			and 
+			(
+				ct.tab_no like '%${tabNo}%' or
+				ct.tab_name like '%${tabNo}%' 
+			)
+		</if>	
+		<if test="isHasAllArea == null">
+					and (select
+					count(ct.tab_id)
+					from 
+						cm_role_user icru,
+						cm_role_table_area icrta
+					where
+						ct.area_id = icrta.fk_tablearea_id and
+						icru.fk_role_id = icrta.fk_role_id and
+						icru.fk_user_id = '${userId}'
+					) > 0
+		</if>	
+		order by ct.tab_no asc
+		limit ${start},${pageSize}
+	</select>
+
+	<select id="getAllTableCount" parameterType="int" resultType="int">
+		select 
+			count(ct.tab_id)
+		from
+			cm_table  ct
+		where
+			ct.rest_id = '${restId}' and
+			ct.is_enable = '1' 
+		<if test="dinnerStatus != null">
+			and ct.dinner_status = '${dinnerStatus}' 
+		</if>		
+		<if test="areaId != null">
+			and ct.area_id = '${areaId}' 
+		</if>
+		<if test="tabNo != null">
+			and 
+			(
+				ct.tab_no like '%${tabNo}%' or
+				ct.tab_name like '%${tabNo}%' 
+			)
+		</if>
+		<if test="isHasAllArea == null">
+					and (select
+					count(ct.tab_id)
+					from 
+						cm_role_user icru,
+						cm_role_table_area icrta
+					where
+						ct.area_id = icrta.fk_tablearea_id and
+						icru.fk_role_id = icrta.fk_role_id and
+						icru.fk_user_id = '${userId}'
+					) > 0
+		</if>	
+	</select>
+	
+	<!-- 菜肴分类销售 -->
+	<select id="getDisheSales" parameterType="int" resultType="java.util.HashMap">
+		SELECT 
+			dbd.category_id as categoryId,
+			dc.category_name categoryName,
+			SUM(dbd.unit_num) unitNumSum,
+			SUM(dbd.unit_price) unitPriceSum
+		FROM cm_diner_bill_dishes dbd 
+		INNER JOIN cm_diner_bill d ON dbd.bill_id = d.bill_id
+		INNER JOIN cm_dishes_category dc ON dbd.category_id = dc.category_id
+		WHERE dbd.rest_id = '${restId}' 
+		AND d.bill_status = '3'
+		AND dbd.dishes_status IN ('1','2','5')
+		<if test="startDate != null and startDate != ''">
+			AND DATE_FORMAT(d.pay_time,'%Y-%m-%d %H:%i:%s') >= DATE_FORMAT('${startDate}','%Y-%m-%d %H:%i')
+		</if>
+		<if test="endDate != null and endDate != ''">
+			<![CDATA[
+			AND DATE_FORMAT(d.pay_time,'%Y-%m-%d %H:%i') <= DATE_FORMAT('${endDate}','%Y-%m-%d %H:%i')
+			]]>
+		</if>
+		GROUP BY dbd.category_id
+		ORDER BY unitNumSum DESC
+	</select>
+	
+	<!-- 套餐分类销售 -->
+	<select id="getDisheSetSales" parameterType="int" resultType="java.util.HashMap">
+		SELECT 
+			dbds.ds_category_id dsCategoryId,
+			dsc.category_name categoryName,
+			SUM(dbds.unit_num) unitNumSum,
+			SUM(dbds.unit_price) unitPriceSum
+		FROM cm_diner_bill_dishes_set dbds 
+		INNER JOIN cm_diner_bill d ON dbds.bill_id = d.bill_id
+		INNER JOIN cm_dishes_set_category dsc ON dbds.ds_category_id = dsc.ds_category_id
+		WHERE dbds.rest_id = '${restId}' 
+		AND d.bill_status = '3' 
+		AND dbds.ds_status IN ('1','2','5')
+		<if test="startDate != null and startDate != ''">
+			AND DATE_FORMAT(d.pay_time,'%Y-%m-%d %H:%i') >= DATE_FORMAT('${startDate}','%Y-%m-%d %H:%i')
+		</if>
+		<if test="endDate != null and endDate != ''">
+			<![CDATA[
+			AND DATE_FORMAT(d.pay_time,'%Y-%m-%d %H:%i') <= DATE_FORMAT('${endDate}','%Y-%m-%d %H:%i')
+			]]>
+		</if>
+		GROUP BY dbds.ds_category_id
+		ORDER BY unitNumSum DESC
+	</select>
+	
+	<!-- 菜肴详细销售 -->
+	<select id="getDishesSalesDetail" parameterType="int" resultType="java.util.HashMap">
+		SELECT 
+			dbd.dishes_id dishesId,
+			dbd.dishes_name dishesName,
+			SUM(dbd.unit_num) unitNumSum,
+			SUM(dbd.ori_cost) oriCostSum 
+		FROM cm_diner_bill_dishes dbd INNER JOIN cm_diner_bill db ON dbd.bill_id = db.bill_id
+		WHERE db.bill_status = '3'
+		AND dbd.dishes_status IN ('1','2','5')
+		<if test="startDate != null and startDate != ''">
+			AND DATE_FORMAT(db.pay_time,'%Y-%m-%d %H:%i') >= DATE_FORMAT('${startDate}','%Y-%m-%d %H:%i')
+		</if>
+		<if test="endDate != null and endDate != ''">
+			<![CDATA[
+			AND DATE_FORMAT(db.pay_time,'%Y-%m-%d %H:%i') <= DATE_FORMAT('${endDate}','%Y-%m-%d %H:%i')
+			]]>
+		</if>
+		AND dbd.category_id = '${categoryId}'
+		GROUP BY dbd.dishes_id
+	</select>
+	
+	<!-- 套餐详细销售 -->
+	<select id="getDishesSetSalesDetail" parameterType="int" resultType="java.util.HashMap">
+		SELECT 
+			dbds.ds_id dsId,
+			dbds.ds_name dsName,
+			SUM(dbds.unit_num) unitNumSum,
+			SUM(dbds.ori_cost) oriCostSum 
+		FROM cm_diner_bill_dishes_set dbds INNER JOIN cm_diner_bill db ON dbds.bill_id = db.bill_id
+		WHERE db.bill_status = '3'
+		AND dbds.ds_status IN ('1','2','5')
+		<if test="startDate != null and startDate != ''">
+			AND DATE_FORMAT(db.pay_time,'%Y-%m-%d %H:%i') >= DATE_FORMAT('${startDate}','%Y-%m-%d %H:%i')
+		</if>
+		<if test="endDate != null and endDate != ''">
+			<![CDATA[
+			AND DATE_FORMAT(db.pay_time,'%Y-%m-%d %H:%i') <= DATE_FORMAT('${endDate}','%Y-%m-%d %H:%i')
+			]]>
+		</if>
+		AND dbds.ds_category_id = '${dsCategoryId}'
+		GROUP BY dbds.ds_id
+	</select>
+	
+	<select id="getAllByRoleType" parameterType="int" resultType="Employee">
+	select
+		ce.emp_id as empId,
+		ce.emp_num as empNum,
+		ce.name as name,
+		ce.mobile AS mobile,
+		ce.job_pic as jobPic,
+		ce.login_password as loginPassword,
+		ce.create_time as createTime,
+		ce.job_status as status,
+		ce.rest_id as restaurantId
+		from cm_employee ce
+		left join cm_role_user cru on ce.emp_id=cru.fk_user_id
+		left join  cm_role cr  on cru.fk_role_id=cr.cr_id
+		where
+		ce.rest_id = '${restId}' and
+		<![CDATA[ce.sysdata_type <> '2' and]]>
+		<if test="roleType != null">
+		ce.emp_id = cru.fk_user_id and
+		cru.fk_role_id = cr.cr_id and
+		cr.role_type = '${roleType}' and 
+		cr.is_stop_use = '0'  and
+		</if>	
+		<if test="searchValue !=null">
+			ce.name like '${searchValue}'
+			or ce.emp_num like '${searchValue}'
+		</if>
+		ORDER BY createTime
+		limit ${start},${pageSize}
+	</select>
+</mapper> 

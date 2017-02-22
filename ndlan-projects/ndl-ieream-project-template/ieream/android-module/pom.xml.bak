@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.ndlan</groupId>
+    <artifactId>travel.eye</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <packaging>jar</packaging>
+  <artifactId>travel-eye-android-module</artifactId>
+  <name>android-module</name>
+  <url>http://maven.apache.org</url>
+   <properties>
+		<!-- use UTF-8 for everything -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		
+		<maven-compiler-plugin-version>3.1</maven-compiler-plugin-version>
+		<java-version>1.7</java-version>
+		<maven-eclipse-plugin-version>2.9</maven-eclipse-plugin-version>
+		
+		<org.springframework.android-version>1.0.1.RELEASE</org.springframework.android-version>
+		<com.fasterxml.jackson-version>2.1.2</com.fasterxml.jackson-version>
+		
+		<org.simpleframework-version>2.6.9</org.simpleframework-version>
+		<junit-version>4.12</junit-version>
+	</properties>
+
+	<dependencies>
+	
+		<dependency>
+			<groupId>com.ndlan</groupId>
+			<artifactId>serivce-framework</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ndlan</groupId>
+			<artifactId>domain-module</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+		
+		<dependency>
+			<groupId>org.springframework.android</groupId>
+			<artifactId>spring-android-rest-template</artifactId>
+			<version>${org.springframework.android-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${com.fasterxml.jackson-version}</version>
+		</dependency>
+
+			<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit-version}</version>
+			<scope>test</scope>
+		</dependency>
+		
+	</dependencies>
+  
+
+</project>

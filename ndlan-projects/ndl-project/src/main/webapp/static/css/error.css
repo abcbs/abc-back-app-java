@@ -1,0 +1,41 @@
+/* CSS Document */
+@charset "utf-8";
+*{margin: 0; padding: 0;}
+fieldset,img,button{border: 0;}
+:focus {outline: 0;}
+address, caption, cite, code, dfn,
+em, strong, th, var, optgroup {font-style: normal;font-weight:normal;}
+h1, h2, h3, h4, h5, h6 {font-size: 100%;font-weight:normal;}
+abbr, acronym {border: 0;font-variant: normal;}
+input, button, textarea,
+select, optgroup, option {font-family:inherit; font-size: inherit; font-style:inherit; font-weight:inherit;}
+code, kbd, samp, tt {font-size: 100%;}
+input, button, textarea, select {*font-size: 100%;}
+body {line-height: 1.5; font-family:"Microsoft YaHei UI","Microsoft YaHei",SimSun,"Segoe UI",Tahoma,Helvetica,Sans-Serif;font-size:12px;}
+ol, ul,li {list-style: none;}
+table {border-collapse: collapse;border-spacing: 0;}
+sup, sub {font-size:100%;vertical-align: baseline;}
+:link, :visited , ins {text-decoration: none;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after,
+q:before, q:after {content: '';content: none;}
+body{background:url(../images/bg.png) repeat;}
+html ,body{}
+.none{display:none}
+.left{float:left;}
+.blank_8{width:8px;height:8px;margin:0 auto; clear:both;font-size:0px;}
+.mr_10{margin-right:10px;}
+.body{width:998px;margin:0 auto 10px auto;height:768px;border:1px solid #969696;}
+
+/*绑定云帐号*/
+.bangding_yzh{width:590px;height:500px;margin:280px auto 0px auto;}
+.bangding_yzh .yzh_title{font-size:20px;color:#f00;}
+.bangding_yzh .yzh_content{margin-top:30px;}
+.bangding_yzh .yzh_content .yzh_content_title{font-size:16px;color:#54b135;height:35px;line-height:35px;background:url(../images/takeout/yzh_dian.png) no-repeat center left;padding-left:10px;}
+.bangding_yzh .yzh_content .yzh_content_con{font-size:14px;color:#666;line-height:25px;}
+.bangding_yzh .yzh_button{margin-top:25px; text-align:center;}
+.bangding_yzh .yzh_button .yzh_button_bd{width:120px;height:44px;background:url(../images/takeout/yzh_button_bd.png) no-repeat;display:inline-block;}
+.bangding_yzh .yzh_button .yzh_button_kq{width:120px;height:44px;background:url(../images/takeout/yzh_button_kq.png) no-repeat;display:inline-block;}
+.bangding_yzh .yzh_button .yzh_button_shuaxin{width:60px;height:44px;background:url(../images/popup/popup_bg_2.png) -125px 0; display:inline-block;margin-left: -20px;}
+
+

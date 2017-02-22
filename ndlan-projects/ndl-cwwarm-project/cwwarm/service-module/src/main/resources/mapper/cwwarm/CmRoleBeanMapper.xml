@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.cwwarm.model.CmRoleBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.cwwarm.model.CmRoleBean">
+		<id column="cr_id" property="crId" jdbcType="VARCHAR" />
+	
+    
+		<result column="sysdata_type" property="sysdataType" jdbcType="VARCHAR" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="name" property="name" jdbcType="VARCHAR" />
+    
+		<result column="rest_id" property="restId" jdbcType="VARCHAR" />
+    
+		<result column="role_type" property="roleType" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="cr_status" property="crStatus" jdbcType="VARCHAR" />
+    
+		<result column="bar_path" property="barPath" jdbcType="VARCHAR" />
+    
+		<result column="is_all_tablearea" property="isAllTablearea" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="is_stop_use" property="isStopUse" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		sysdata_type as sysdataType ,
+		create_by as createBy ,
+		cr_id as crId ,
+		name as name ,
+		rest_id as restId ,
+		role_type as roleType ,
+		update_time as updateTime ,
+		cr_status as crStatus ,
+		bar_path as barPath ,
+		is_all_tablearea as isAllTablearea ,
+		create_time as createTime ,
+		update_by as updateBy ,
+		is_stop_use as isStopUse 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="sysdataType != null"> and sysdata_type = #{sysdataType}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #{createBy}</if>
+				
+		  	    <if test="crId != null"> and cr_id = #{crId}</if>
+				
+		  	    <if test="name != null"> and name = #{name}</if>
+				
+		  	    <if test="restId != null"> and rest_id = #{restId}</if>
+				
+		  	    <if test="roleType != null"> and role_type = #{roleType}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #{updateTime}</if>
+				
+		  	    <if test="crStatus != null"> and cr_status = #{crStatus}</if>
+				
+		  	    <if test="barPath != null"> and bar_path = #{barPath}</if>
+				
+		  	    <if test="isAllTablearea != null"> and is_all_tablearea = #{isAllTablearea}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #{createTime}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #{updateBy}</if>
+				
+		  	    <if test="isStopUse != null"> and is_stop_use = #{isStopUse}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by ${sorting}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</sql>
+	
+	<!-- 查询总数 -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(cr_id)
+		from cm_role
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 查询 -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cm_role
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cm_role
+		where cr_id = #{crId}
+	</select>
+	
+	<!-- 根据ID删除 -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cm_role
+		where  cr_id = #{crId}
+	</delete>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- 添加 -->	
+	<insert id="insert" parameterType="com.ndlan.cwwarm.model.CmRoleBean">
+		insert into cm_role(
+		  	    sysdata_type  ,
+	
+		  	    create_by  ,
+	
+		  	    cr_id  ,
+	
+		  	    name  ,
+	
+		  	    rest_id  ,
+	
+		  	    role_type  ,
+	
+		  	    update_time  ,
+	
+		  	    cr_status  ,
+	
+		  	    bar_path  ,
+	
+		  	    is_all_tablearea  ,
+	
+		  	    create_time  ,
+	
+		  	    update_by  ,
+	
+		  	    is_stop_use  
+	
+			
+		)
+		values (
+		  	    #{sysdataType } ,
+		  	    #{createBy } ,
+		  	    #{crId } ,
+		  	    #{name } ,
+		  	    #{restId } ,
+		  	    #{roleType } ,
+		  	    #{updateTime } ,
+		  	    #{crStatus } ,
+		  	    #{barPath } ,
+		  	    #{isAllTablearea } ,
+		  	    #{createTime } ,
+		  	    #{updateBy } ,
+		  	    #{isStopUse } 
+		)
+	</insert>
+	
+	
+	<!-- 通过ID更新 -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.cwwarm.model.CmRoleBean">
+		update cm_role
+		<set>
+		  	<if test="sysdataType != null">  sysdata_type = #{sysdataType} ,</if>
+		  	<if test="createBy != null">  create_by = #{createBy} ,</if>
+		  	<if test="name != null">  name = #{name} ,</if>
+		  	<if test="restId != null">  rest_id = #{restId} ,</if>
+		  	<if test="roleType != null">  role_type = #{roleType} ,</if>
+		  	<if test="updateTime != null">  update_time = #{updateTime} ,</if>
+		  	<if test="crStatus != null">  cr_status = #{crStatus} ,</if>
+		  	<if test="barPath != null">  bar_path = #{barPath} ,</if>
+		  	<if test="isAllTablearea != null">  is_all_tablearea = #{isAllTablearea} ,</if>
+		  	<if test="createTime != null">  create_time = #{createTime} ,</if>
+		  	<if test="updateBy != null">  update_by = #{updateBy} ,</if>
+		  	<if test="isStopUse != null">  is_stop_use = #{isStopUse} </if>
+		</set>
+		where  cr_id = #{crId}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.cwwarm.model.CmRoleBean">
+		update cm_role
+
+		set 
+		  	 sysdata_type = #{sysdataType} ,
+		  	 create_by = #{createBy} ,
+		  	 name = #{name} ,
+		  	 rest_id = #{restId} ,
+		  	 role_type = #{roleType} ,
+		  	 update_time = #{updateTime} ,
+		  	 cr_status = #{crStatus} ,
+		  	 bar_path = #{barPath} ,
+		  	 is_all_tablearea = #{isAllTablearea} ,
+		  	 create_time = #{createTime} ,
+		  	 update_by = #{updateBy} ,
+		  	 is_stop_use = #{isStopUse} 
+	
+		where  cr_id = #{crId}
+	</update>
+	
+</mapper>

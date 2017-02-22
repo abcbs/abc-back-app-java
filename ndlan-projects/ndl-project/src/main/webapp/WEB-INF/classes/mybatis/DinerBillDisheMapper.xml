@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.ndlan.canyin.base.repository.yygl.DinerBillDisheMyDao">
+	<select id="getCurrentShiftDishesStatByCesId" parameterType="int" resultType="java.util.HashMap">
+		select
+			cdbd.dishes_name as name,
+			sum(cdbd.real_cost) as realCost,
+			sum(cdbd.unit_num) as unitNum
+		from
+			cm_diner_bill cdb,
+			cm_diner_bill_dishes cdbd
+		where
+			cdb.bill_id = cdbd.bill_id and
+			cdb.is_valid = '1'  and
+			cdbd.rest_id='${restId}' and
+			cdb.ces_id='${cesId}' and
+			cdb.bill_status='${billStatus}'
+		group by
+			cdbd.dishes_name
+	</select>
+	
+	<!-- xianjia -->
+	
+		<select id="getTotalSalesByDish"  resultType="java.util.HashMap">
+			select
+				sum(cdbd.unit_num) as salesNum,
+				sum(cdbd.ori_cost) as salesOriCost,
+				sum(cdbd.real_cost) as salesRealCost
+			from
+				cm_diner_bill_dishes cdbd,
+				cm_diner_bill cdb
+			where
+				cdb.bill_id = cdbd.bill_id and
+				cdb.bill_status = '3' and
+				(
+				cdbd.dishes_status = '1' or 
+				cdbd.dishes_status = '2' or 
+				cdbd.dishes_status = '5' 
+				)  and
+				cdb.rest_id = '${restId}' and
+				cdb.is_valid = '1' 
+				<if test="startDate != null">
+					<![CDATA[and cdb.pay_time >= '${startDate}']]>
+				</if>
+				<if test="endDate != null">
+					<![CDATA[and cdb.pay_time <= '${endDate}']]>
+				</if>
+				<if test="categoryId != null">
+					and cdbd.category_id = '${categoryId}'
+				</if>
+	</select>
+	
+	
+	
+		<select id="getSalesByDishCount" parameterType="int" resultType="int">
+		select count(*) from (
+			select
+				cdbd.dishes_id as id,
+				sum(cdbd.unit_num) as salesNum,
+				cdbd.dishes_name as dishesName,
+				cdbd.dishes_code as dishesCode,
+				cdbd.category_id as categoryId,
+				cdc.category_name as categoryName,
+				sum(cdbd.ori_cost) as salesOriCost,
+				sum(cdbd.real_cost) as salesRealCost
+			from
+				cm_diner_bill_dishes cdbd,
+				cm_diner_bill cdb,
+				cm_dishes_category cdc
+			where
+				cdb.bill_id = cdbd.bill_id and
+			    cdc.category_id = cdbd.category_id and
+				cdb.bill_status = '3' and
+				(
+				cdbd.dishes_status = '1' or 
+				cdbd.dishes_status = '2' or 
+				cdbd.dishes_status = '5' 
+				)  and
+				cdb.rest_id = '${restId}' and
+				cdb.is_valid = '1'
+				<if test="startDate != null">
+					<![CDATA[and cdb.pay_time >= '${startDate}']]>
+				</if>
+				<if test="endDate != null">
+					<![CDATA[and cdb.pay_time <= '${endDate}']]>
+				</if>
+				<if test="categoryId != null">
+					and cdbd.category_id = '${categoryId}'
+				</if>
+			group by
+				cdbd.dishes_id
+			union all
+				select
+				cdbds.ds_id as id,
+				sum(cdbds.unit_num) as salesNum,
+				cdbds.ds_name as dishesName,
+				cdbds.ds_code as dishesCode,
+				cdbds.ds_category_id as categoryId,
+				cdsc.category_name as categoryName,
+				sum(cdbds.ori_cost) as salesOriCost,
+				sum(cdbds.real_cost) as salesRealCost
+			from
+				cm_diner_bill_dishes_set cdbds,
+				cm_diner_bill cdb,
+				cm_dishes_set_category cdsc
+			where
+				cdb.bill_id = cdbds.bill_id and
+			    cdsc.ds_category_id = cdbds.ds_category_id and
+				cdb.bill_status = '3' and
+				(
+				cdbds.ds_status = '1' or 
+				cdbds.ds_status = '2' or 
+				cdbds.ds_status = '5' 
+				)  and
+				cdb.rest_id = '${restId}' and
+				cdb.is_valid = '1'
+				<if test="startDate != null">
+					<![CDATA[and cdb.pay_time >= '${startDate}']]>
+				</if>
+				<if test="endDate != null">
+					<![CDATA[and cdb.pay_time <= '${endDate}']]>
+				</if>
+				<if test="categoryId != null">
+					and cdbds.ds_category_id = '${categoryId}'
+				</if>
+			group by
+				cdbds.ds_id
+				
+		) A
+		
+	</select>
+	
+	
+	
+		<select id="getSalesByDish"  resultType="java.util.HashMap">
+		select 	
+				inline.id as id,
+				sum(inline.salesNum) as salesNum,
+				inline.dishesName as dishesName,
+				inline.dishesCode as dishesCode,
+				inline.categoryId as categoryId,
+				inline.categoryName as categoryName,
+				sum(inline.salesOriCost) as salesOriCost,
+				sum(inline.salesRealCost) as salesRealCost 
+		
+		from (
+			select
+				cdbd.dishes_id as id,
+				sum(cdbd.unit_num) as salesNum,
+				cdbd.dishes_name as dishesName,
+				cdbd.dishes_code as dishesCode,
+				cdbd.category_id as categoryId,
+				cdc.category_name as categoryName,
+				sum(cdbd.ori_cost) as salesOriCost,
+				sum(cdbd.real_cost) as salesRealCost
+			from
+				cm_diner_bill_dishes cdbd,
+				cm_diner_bill cdb,
+				cm_dishes_category cdc
+			where
+				cdb.bill_id = cdbd.bill_id and
+			    cdc.category_id = cdbd.category_id and
+				cdb.bill_status = '3' and
+				(
+				cdbd.dishes_status = '1' or 
+				cdbd.dishes_status = '2' or 
+				cdbd.dishes_status = '5' 
+				)  and
+				cdb.rest_id = '${restId}' and
+				cdb.is_valid = '1' 
+				<if test="startDate != null">
+					<![CDATA[and cdb.pay_time >= '${startDate}']]>
+				</if>
+				<if test="endDate != null">
+					<![CDATA[and cdb.pay_time <= '${endDate}']]>
+				</if>
+				<if test="categoryId != null">
+					and cdbd.category_id = '${categoryId}'
+				</if>
+			group by
+				cdbd.dishes_id
+			
+			union all
+			select
+				cdbds.ds_id as id,
+				sum(cdbds.unit_num) as salesNum,
+				cdbds.ds_name as dishesName,
+				cdbds.ds_code as dishesCode,
+				cdbds.ds_category_id as categoryId,
+				cdsc.category_name as categoryName,
+				sum(cdbds.ori_cost) as salesOriCost,
+				sum(cdbds.real_cost) as salesRealCost
+			from
+				cm_diner_bill_dishes_set cdbds,
+				cm_diner_bill cdb,
+				cm_dishes_set_category cdsc
+			where
+				cdb.bill_id = cdbds.bill_id and
+			    cdsc.ds_category_id = cdbds.ds_category_id and
+				cdb.bill_status = '3' and
+				(
+				cdbds.ds_status = '1' or 
+				cdbds.ds_status = '2' or 
+				cdbds.ds_status = '5' 
+				)  and
+				cdb.rest_id = '${restId}' and
+				cdb.is_valid = '1' 
+				<if test="startDate != null">
+					<![CDATA[and cdb.pay_time >= '${startDate}']]>
+				</if>
+				<if test="endDate != null">
+					<![CDATA[and cdb.pay_time <= '${endDate}']]>
+				</if>
+				<if test="categoryId != null">
+					and cdbds.ds_category_id = '${categoryId}'
+				</if>
+			group by
+				cdbds.ds_id
+			
+		) inline
+		group by
+				id
+		order by
+				${orderBy}
+		limit ${start},${pageSize}
+	</select>
+	
+	
+</mapper> 

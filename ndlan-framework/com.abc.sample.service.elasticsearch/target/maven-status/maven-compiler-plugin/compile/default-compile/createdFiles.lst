@@ -1,0 +1,4 @@
+org\com\abc\sample\service\elasticsearch\CustomerRepository.class
+org\com\abc\sample\service\elasticsearch\Customer.class
+org\com\abc\sample\service\elasticsearch\App.class
+org\com\abc\sample\service\elasticsearch\SampleElasticsearchApplication.class

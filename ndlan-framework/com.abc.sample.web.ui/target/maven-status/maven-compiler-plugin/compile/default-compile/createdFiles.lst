@@ -1,0 +1,6 @@
+com\ndl\framework\workbrench\sample\ui\Message.class
+com\ndl\framework\workbrench\sample\ui\InMemoryMessageRepository.class
+com\ndl\framework\workbrench\sample\ui\mvc\MessageController.class
+com\ndl\framework\workbrench\sample\ui\SampleWebUiApplication$1.class
+com\ndl\framework\workbrench\sample\ui\SampleWebUiApplication.class
+com\ndl\framework\workbrench\sample\ui\MessageRepository.class

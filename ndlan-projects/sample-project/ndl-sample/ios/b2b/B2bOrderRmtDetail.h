@@ -1,0 +1,160 @@
+#import <Foundation/Foundation.h>
+
+
+@interface B2bOrderRmtDetail : NSObject
+	
+	
+    /**
+     * ??¡ì?¡°?????¡À?????¡ì¡ã
+     **/
+    @property(nonatomic,copy)NSString * categoryName ;
+    /**
+     * ??¡ã¨¦???¢ã????????¢ã¡®
+     **/
+    @property(nonatomic,copy)NSString * quantity ;
+    /**
+     * ??¡ì?¡°?¨¨¡ë???¡¤
+     **/
+    @property(nonatomic,copy)NSString * proColorNo ;
+    /**
+     * ?¡è???¡§
+     **/
+    @property(nonatomic,copy)NSString * remake ;
+    /**
+     * ??????
+     **/
+    @property(nonatomic,copy)NSString * volume ;
+    @property(nonatomic,copy)NSString * parentNamePath ;
+    /**
+     * ?????¡¤ID
+     **/
+    @property(nonatomic,copy)NSString * customerId ;
+    /**
+     * ??¡ì?¡°????¨¨?¡ã
+     **/
+    @property(nonatomic,copy)NSString * proDesc ;
+    /**
+     * ??¡±?¡±¡§??????
+     **/
+    @property(nonatomic,copy)NSString * applDesc ;
+    @property(nonatomic,copy)NSString * restName ;
+    /**
+     * ?????¡¤????¡ì¡ã
+     **/
+    @property(nonatomic,copy)NSString * customerName ;
+    /**
+     * ¨¨??¨¨?¡ì??¨C???
+     **/
+    @property(nonatomic,copy)NSString * orderRmtDetailCode ;
+    /**
+     * ???¨¨?????¨¨??ID
+     **/
+    @property(nonatomic,copy)NSString * orderDetailId ;
+    /**
+     * ???¨¨???????¨C??¡¤
+     **/
+    @property(nonatomic,copy)NSString * orderDetailNo ;
+    /**
+     * ????¡ë??¢ã????????¢ã¡®
+     **/
+    @property(nonatomic,copy)NSString * pic ;
+    /**
+     * ¨¨??¨¨?¡ìID
+     **/
+    @property(nonatomic,copy)NSString * orderRmtDetailId ;
+    /**
+     * ??¡ì?¡°?ID
+     **/
+    @property(nonatomic,copy)NSString * baseProId ;
+    /**
+     * ??¡ì?¡°???¨C???
+     **/
+    @property(nonatomic,copy)NSString * proCode ;
+    /**
+     * ?????¡±???????¡ì¡ã
+     **/
+    @property(nonatomic,copy)NSString * supplierName ;
+    /**
+     * ??¡ì?¡°???¨C???
+     **/
+    @property(nonatomic,copy)NSString * baseProNo ;
+    /**
+     * ?????¡±???ID
+     **/
+    @property(nonatomic,copy)NSString * supplierId ;
+    /**
+     * ¨¨¡ì????ID
+     **/
+    @property(nonatomic,copy)NSString * specsId ;
+    /**
+     * ????¡°??????¡ª
+     **/
+    @property(nonatomic,copy)NSString * seriesName ;
+    @property(nonatomic,copy)NSString * parentIdPath ;
+    /**
+     * ???¨¨???????¡­??¨C??¡¤
+     **/
+    @property(nonatomic,copy)NSString * orderPkgCode ;
+    /**
+     * ???¨¨?????????¢ã????0??¡­???????¢ã?1¨¦?¡§????????????2???????????????3??¡­??¡®¨¨?¡ì?¢ã?4?¡¤???¡®¨¨?¡ì?¢ã?5?¡¤??¡±?¨¨?¡ì?¢ã?6??¨C?????¡ë
+     **/
+    @property(nonatomic,copy)NSString * orignStatus ;
+    /**
+     * ???¨¦??
+     **/
+    @property(nonatomic,copy)NSString * capacity ;
+    /**
+     * ??¡¤???
+     **/
+    @property(nonatomic,copy)NSString * price ;
+    /**
+     * ??¡ì?¡°?????¡ì¡ã
+     **/
+    @property(nonatomic,copy)NSString * proName ;
+    @property(nonatomic,copy)NSString * restId ;
+    /**
+     * ¨¨??¨¨?¡ì??¡­ID
+     **/
+    @property(nonatomic,copy)NSString * orderRmtPkgId ;
+    /**
+     * ¨¨??¨¨?¡ì?¡è?ID
+     **/
+    @property(nonatomic,copy)NSString * orderRmtHeadId ;
+    /**
+     * ????¡°??????¡ªID
+     **/
+    @property(nonatomic,copy)NSString * seriesId ;
+    /**
+     * ¨¨¡ì?????¡ã????
+     **/
+    @property(nonatomic,copy)NSString * size ;
+    /**
+     * ?????????¨¨?¡ã
+     **/
+    @property(nonatomic,copy)NSString * damageSpec ;
+    /**
+     * ???¨¨???????¡­ID
+     **/
+    @property(nonatomic,copy)NSString * orderPkgId ;
+    /**
+     * ??????
+     **/
+    @property(nonatomic,copy)NSString * barCode ;
+    /**
+     * ¨¨¡ì????
+     **/
+    @property(nonatomic,copy)NSString * specsName ;
+    /**
+     * ???¨¨??????¡è?Id
+     **/
+    @property(nonatomic,copy)NSString * orderHeadId ;
+    /**
+     * ?¡­???¡°????¢ã?(0????¡±?¨¨?¡ì???1??¡­?¡­???¡°???2?¡¤??¡­???¡°)
+     **/
+    @property(nonatomic,copy)NSString * storageStatus ;
+    /**
+     * ??¡ì?¡°?????¡À?
+     **/
+    @property(nonatomic,copy)NSString * categoryId ;
+ 
+@end

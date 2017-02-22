@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.ndlan.canyin.base.repository.mybatis.RestMemberInfoMyDao">
+	
+	<select id="getAll" parameterType="int" resultType="RestMemberInfo">
+		select 
+			cm.mb_id as mbId,
+			cm.*
+		from 
+			cm_rest_member_info cm
+		where
+			cm.rest_id = '${restId}'
+		<if test="keywords != null">
+			and
+			(
+				cm.name like '%${keywords}%' or
+				cm.name_code like '%${keywords}%' or
+				cm.mobile like '%${keywords}%' or
+				( select   count(cmc.mc_id)
+					from cm_membership_card cmc 
+					where 
+					 cmc.mb_id =cm.mb_id  and
+					cmc.card_no like '%${keywords}%'
+				 ) > 0
+			)
+		</if>	
+		<if test="mcclassId != null">
+			and
+			( select   count(cmc.mc_id)
+			from cm_membership_card cmc 
+			where 
+			 cmc.mb_id =cm.mb_id  and
+			cmc.mcclass_id = '${mcclassId}'
+			) > 0
+		</if>	
+		<if test="cardStatus != null">
+			and
+			( select   count(cmc.mc_id)
+			from cm_membership_card cmc 
+			where 
+			 cmc.mb_id =cm.mb_id  and
+			cmc.card_status = '${cardStatus}'
+			) > 0
+		</if>	
+		order by cm.create_time asc
+		limit ${start},${pageSize}
+	</select>
+
+	<select id="getAllCount" parameterType="int" resultType="int">
+		select 
+			count(cm.mb_id)
+		from 
+			cm_rest_member_info cm
+		where
+			cm.rest_id = '${restId}'
+		<if test="keywords != null">
+			and
+			(
+				cm.name like '%${keywords}%' or
+				cm.mobile like '%${keywords}%'
+			)
+		</if>	
+		<if test="mcclassId != null">
+			and
+			( select   count(cmc.mc_id)
+			from cm_membership_card cmc 
+			where 
+			 cmc.mb_id =cm.mb_id  and
+			cmc.mcclass_id = '${mcclassId}'
+			) > 0
+		</if>
+		<if test="cardStatus != null">
+			and
+			( select   count(cmc.mc_id)
+			from cm_membership_card cmc 
+			where 
+			 cmc.mb_id =cm.mb_id  and
+			cmc.card_status = '${cardStatus}'
+			) > 0
+		</if>				
+	</select>
+	
+	
+	<select id="getAllByMemberId"  resultType="MembershipCard">
+		select 
+			cmc.mc_id as mcId,
+			cmc.card_no as cardNo,
+			cmc.create_time as createTime,
+			cmc.member_integral as memberIntegral,
+			cmc.cash_pledge as cashPledge,
+			cmc.card_status as cardStatus,
+			cmc.card_issue_time as cardIssueTime,
+			cmcc.name as membershipCardClassName,
+			cmc.*
+		from 
+			cm_membership_card cmc,
+			cm_membership_card_class cmcc
+		where
+			cmcc.mcclass_id = cmc.mcclass_id and
+			cmc.mb_id = '${mbId}'
+	</select> 
+	
+</mapper> 

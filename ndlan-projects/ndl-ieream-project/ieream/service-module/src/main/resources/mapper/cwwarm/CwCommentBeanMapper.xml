@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.CwCommentBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.CwCommentBean">
+		<id column="cw_comment_id" property="cwCommentId" jdbcType="VARCHAR" />
+	
+    
+		<result column="cmt_by" property="cmtBy" jdbcType="VARCHAR" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="cmt_obj_msg" property="cmtObjMsg" jdbcType="VARCHAR" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="version" property="version" jdbcType="BIGINT" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="cmt_content" property="cmtContent" jdbcType="VARCHAR" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="cmt_busi_status" property="cmtBusiStatus" jdbcType="VARCHAR" />
+    
+		<result column="cmt_by_pic" property="cmtByPic" jdbcType="VARCHAR" />
+    
+		<result column="cmt_obj_id" property="cmtObjId" jdbcType="VARCHAR" />
+    
+		<result column="cmt_life_status" property="cmtLifeStatus" jdbcType="VARCHAR" />
+    
+		<result column="cmt_by_name" property="cmtByName" jdbcType="VARCHAR" />
+    
+		<result column="cmt_obj_type" property="cmtObjType" jdbcType="VARCHAR" />
+    
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		cw_comment_id as cwCommentId ,
+		cmt_by as cmtBy ,
+		create_by as createBy ,
+		cmt_obj_msg as cmtObjMsg ,
+		update_by as updateBy ,
+		version as version ,
+		update_time as updateTime ,
+		cmt_content as cmtContent ,
+		syn_version as synVersion ,
+		create_time as createTime ,
+		cmt_busi_status as cmtBusiStatus ,
+		cmt_by_pic as cmtByPic ,
+		cmt_obj_id as cmtObjId ,
+		cmt_life_status as cmtLifeStatus ,
+		cmt_by_name as cmtByName ,
+		cmt_obj_type as cmtObjType ,
+		remark as remark 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="cwCommentId != null"> and cw_comment_id = #{cwCommentId}</if>
+				
+		  	    <if test="cmtBy != null"> and cmt_by = #{cmtBy}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #{createBy}</if>
+				
+		  	    <if test="cmtObjMsg != null"> and cmt_obj_msg = #{cmtObjMsg}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #{updateBy}</if>
+				
+		  	    <if test="version != null"> and version = #{version}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #{updateTime}</if>
+				
+		  	    <if test="cmtContent != null"> and cmt_content = #{cmtContent}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #{synVersion}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #{createTime}</if>
+				
+		  	    <if test="cmtBusiStatus != null"> and cmt_busi_status = #{cmtBusiStatus}</if>
+				
+		  	    <if test="cmtByPic != null"> and cmt_by_pic = #{cmtByPic}</if>
+				
+		  	    <if test="cmtObjId != null"> and cmt_obj_id = #{cmtObjId}</if>
+				
+		  	    <if test="cmtLifeStatus != null"> and cmt_life_status = #{cmtLifeStatus}</if>
+				
+		  	    <if test="cmtByName != null"> and cmt_by_name = #{cmtByName}</if>
+				
+		  	    <if test="cmtObjType != null"> and cmt_obj_type = #{cmtObjType}</if>
+				
+		  	    <if test="remark != null"> and remark = #{remark}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by ${sorting}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</sql>
+	
+	<!-- ��ѯ���� -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(cw_comment_id)
+		from cw_comment
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ��ѯ -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cw_comment
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ����ID��ѯ -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cw_comment
+		where cw_comment_id = #{cw_comment_id}
+	</select>
+	
+	<!-- ����IDɾ�� -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cw_comment
+		where  cw_comment_id = #{cw_comment_id}
+	</delete>
+	
+	<!-- ɾ�� -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- ��� -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.CwCommentBean">
+		insert into cw_comment(
+		  	    cw_comment_id  ,
+	
+		  	    cmt_by  ,
+	
+		  	    create_by  ,
+	
+		  	    cmt_obj_msg  ,
+	
+		  	    update_by  ,
+	
+		  	    version  ,
+	
+		  	    update_time  ,
+	
+		  	    cmt_content  ,
+	
+		  	    syn_version  ,
+	
+		  	    create_time  ,
+	
+		  	    cmt_busi_status  ,
+	
+		  	    cmt_by_pic  ,
+	
+		  	    cmt_obj_id  ,
+	
+		  	    cmt_life_status  ,
+	
+		  	    cmt_by_name  ,
+	
+		  	    cmt_obj_type  ,
+	
+		  	    remark  
+	
+			
+		)
+		values (
+		  	    #{cwCommentId } ,
+		  	    #{cmtBy } ,
+		  	    #{createBy } ,
+		  	    #{cmtObjMsg } ,
+		  	    #{updateBy } ,
+		  	    #{version } ,
+		  	    #{updateTime } ,
+		  	    #{cmtContent } ,
+		  	    #{synVersion } ,
+		  	    #{createTime } ,
+		  	    #{cmtBusiStatus } ,
+		  	    #{cmtByPic } ,
+		  	    #{cmtObjId } ,
+		  	    #{cmtLifeStatus } ,
+		  	    #{cmtByName } ,
+		  	    #{cmtObjType } ,
+		  	    #{remark } 
+		)
+	</insert>
+	
+	
+	<!-- ͨ��ID���� -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.CwCommentBean">
+		update cw_comment
+		<set>
+		  	<if test="cmtBy != null">  cmt_by = #{cmtBy} ,</if>
+		  	<if test="createBy != null">  create_by = #{createBy} ,</if>
+		  	<if test="cmtObjMsg != null">  cmt_obj_msg = #{cmtObjMsg} ,</if>
+		  	<if test="updateBy != null">  update_by = #{updateBy} ,</if>
+		  	<if test="version != null">  version = #{version} ,</if>
+		  	<if test="updateTime != null">  update_time = #{updateTime} ,</if>
+		  	<if test="cmtContent != null">  cmt_content = #{cmtContent} ,</if>
+		  	<if test="synVersion != null">  syn_version = #{synVersion} ,</if>
+		  	<if test="createTime != null">  create_time = #{createTime} ,</if>
+		  	<if test="cmtBusiStatus != null">  cmt_busi_status = #{cmtBusiStatus} ,</if>
+		  	<if test="cmtByPic != null">  cmt_by_pic = #{cmtByPic} ,</if>
+		  	<if test="cmtObjId != null">  cmt_obj_id = #{cmtObjId} ,</if>
+		  	<if test="cmtLifeStatus != null">  cmt_life_status = #{cmtLifeStatus} ,</if>
+		  	<if test="cmtByName != null">  cmt_by_name = #{cmtByName} ,</if>
+		  	<if test="cmtObjType != null">  cmt_obj_type = #{cmtObjType} ,</if>
+		  	<if test="remark != null">  remark = #{remark} </if>
+		</set>
+		where  cw_comment_id = #{cw_comment_id}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.CwCommentBean">
+		update cw_comment
+
+		set 
+		  	 cmt_by = #{cmtBy} ,
+		  	 create_by = #{createBy} ,
+		  	 cmt_obj_msg = #{cmtObjMsg} ,
+		  	 update_by = #{updateBy} ,
+		  	 version = #{version} ,
+		  	 update_time = #{updateTime} ,
+		  	 cmt_content = #{cmtContent} ,
+		  	 syn_version = #{synVersion} ,
+		  	 create_time = #{createTime} ,
+		  	 cmt_busi_status = #{cmtBusiStatus} ,
+		  	 cmt_by_pic = #{cmtByPic} ,
+		  	 cmt_obj_id = #{cmtObjId} ,
+		  	 cmt_life_status = #{cmtLifeStatus} ,
+		  	 cmt_by_name = #{cmtByName} ,
+		  	 cmt_obj_type = #{cmtObjType} ,
+		  	 remark = #{remark} 
+	
+		where  cw_comment_id = #{cw_comment_id}
+	</update>
+	
+</mapper>

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.CmBackupBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.CmBackupBean">
+		<id column="bak_id" property="bakId" jdbcType="VARCHAR" />
+	
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="version" property="version" jdbcType="BIGINT" />
+    
+		<result column="bak_name" property="bakName" jdbcType="VARCHAR" />
+    
+		<result column="bak_path" property="bakPath" jdbcType="VARCHAR" />
+    
+		<result column="bak_time" property="bakTime" jdbcType="DATE" />
+    
+		<result column="is_syn" property="isSyn" jdbcType="VARCHAR" />
+    
+		<result column="rest_id" property="restId" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="notes" property="notes" jdbcType="VARCHAR" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+    
+		<result column="bak_version" property="bakVersion" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		update_by as updateBy ,
+		version as version ,
+		bak_name as bakName ,
+		bak_path as bakPath ,
+		bak_time as bakTime ,
+		is_syn as isSyn ,
+		rest_id as restId ,
+		update_time as updateTime ,
+		notes as notes ,
+		syn_version as synVersion ,
+		bak_id as bakId ,
+		bak_version as bakVersion ,
+		create_time as createTime ,
+		create_by as createBy 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="updateBy != null"> and update_by = #\{updateBy\}</if>
+				
+		  	    <if test="version != null"> and version = #\{version\}</if>
+				
+		  	    <if test="bakName != null"> and bak_name = #\{bakName\}</if>
+				
+		  	    <if test="bakPath != null"> and bak_path = #\{bakPath\}</if>
+				
+		  	    <if test="bakTime != null"> and bak_time = #\{bakTime\}</if>
+				
+		  	    <if test="isSyn != null"> and is_syn = #\{isSyn\}</if>
+				
+		  	    <if test="restId != null"> and rest_id = #\{restId\}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #\{updateTime\}</if>
+				
+		  	    <if test="notes != null"> and notes = #\{notes\}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #\{synVersion\}</if>
+				
+		  	    <if test="bakId != null"> and bak_id = #\{bakId\}</if>
+				
+		  	    <if test="bakVersion != null"> and bak_version = #\{bakVersion\}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #\{createTime\}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #\{createBy\}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by $\{sorting\}</if>
+		<if test="offset != null and limit != null">
+			limit #\{offset\}, #\{limit\}
+		</if>
+	</sql>
+	
+	<!-- 查询总数 -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(bak_id)
+		from cm_backup
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 查询 -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cm_backup
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cm_backup
+		where bak_id = #\{bak_id\}
+	</select>
+	
+	<!-- 根据ID删除 -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cm_backup
+		where  bak_id = #\{bak_id\}
+	</delete>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- 添加 -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.CmBackupBean">
+		insert into cm_backup(
+		  	    update_by  ,
+	
+		  	    version  ,
+	
+		  	    bak_name  ,
+	
+		  	    bak_path  ,
+	
+		  	    bak_time  ,
+	
+		  	    is_syn  ,
+	
+		  	    rest_id  ,
+	
+		  	    update_time  ,
+	
+		  	    notes  ,
+	
+		  	    syn_version  ,
+	
+		  	    bak_id  ,
+	
+		  	    bak_version  ,
+	
+		  	    create_time  ,
+	
+		  	    create_by  
+	
+			
+		)
+		values (
+		  	    #\{updateBy \} ,
+		  	    #\{version \} ,
+		  	    #\{bakName \} ,
+		  	    #\{bakPath \} ,
+		  	    #\{bakTime \} ,
+		  	    #\{isSyn \} ,
+		  	    #\{restId \} ,
+		  	    #\{updateTime \} ,
+		  	    #\{notes \} ,
+		  	    #\{synVersion \} ,
+		  	    #\{bakId \} ,
+		  	    #\{bakVersion \} ,
+		  	    #\{createTime \} ,
+		  	    #\{createBy \} 
+		)
+	</insert>
+	
+	
+	<!-- 通过ID更新 -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.CmBackupBean">
+		update cm_backup
+		<set>
+		  	<if test=\"updateBy != null\">  update_by = #\{updateBy\} ,</if>
+		  	<if test=\"version != null\">  version = #\{version\} ,</if>
+		  	<if test=\"bakName != null\">  bak_name = #\{bakName\} ,</if>
+		  	<if test=\"bakPath != null\">  bak_path = #\{bakPath\} ,</if>
+		  	<if test=\"bakTime != null\">  bak_time = #\{bakTime\} ,</if>
+		  	<if test=\"isSyn != null\">  is_syn = #\{isSyn\} ,</if>
+		  	<if test=\"restId != null\">  rest_id = #\{restId\} ,</if>
+		  	<if test=\"updateTime != null\">  update_time = #\{updateTime\} ,</if>
+		  	<if test=\"notes != null\">  notes = #\{notes\} ,</if>
+		  	<if test=\"synVersion != null\">  syn_version = #\{synVersion\} ,</if>
+		  	<if test=\"bakVersion != null\">  bak_version = #\{bakVersion\} ,</if>
+		  	<if test=\"createTime != null\">  create_time = #\{createTime\} ,</if>
+		  	<if test=\"createBy != null\">  create_by = #\{createBy\} </if>
+		</set>
+		where  bak_id = #\{bak_id\}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.CmBackupBean">
+		update cm_backup
+
+		set 
+		  	 update_by = #\{updateBy\} ,
+		  	 version = #\{version\} ,
+		  	 bak_name = #\{bakName\} ,
+		  	 bak_path = #\{bakPath\} ,
+		  	 bak_time = #\{bakTime\} ,
+		  	 is_syn = #\{isSyn\} ,
+		  	 rest_id = #\{restId\} ,
+		  	 update_time = #\{updateTime\} ,
+		  	 notes = #\{notes\} ,
+		  	 syn_version = #\{synVersion\} ,
+		  	 bak_version = #\{bakVersion\} ,
+		  	 create_time = #\{createTime\} ,
+		  	 create_by = #\{createBy\} 
+	
+		where  bak_id = #\{bak_id\}
+	</update>
+	
+</mapper>

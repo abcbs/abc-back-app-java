@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.B2bDeliveryAddressBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.B2bDeliveryAddressBean">
+		<id column="delivery_address_id" property="deliveryAddressId" jdbcType="VARCHAR" />
+	
+    
+		<result column="is_default" property="isDefault" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="detail_address" property="detailAddress" jdbcType="VARCHAR" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="post_code" property="postCode" jdbcType="VARCHAR" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="remake" property="remake" jdbcType="VARCHAR" />
+    
+		<result column="receive_name" property="receiveName" jdbcType="VARCHAR" />
+    
+		<result column="supplier_name" property="supplierName" jdbcType="VARCHAR" />
+    
+		<result column="receive_tellcall" property="receiveTellcall" jdbcType="VARCHAR" />
+    
+		<result column="version" property="version" jdbcType="BIGINT" />
+    
+		<result column="is_syn" property="isSyn" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="region" property="region" jdbcType="VARCHAR" />
+    
+		<result column="receive_phone" property="receivePhone" jdbcType="VARCHAR" />
+    
+		<result column="supplier_id" property="supplierId" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		is_default as isDefault ,
+		delivery_address_id as deliveryAddressId ,
+		create_time as createTime ,
+		detail_address as detailAddress ,
+		update_by as updateBy ,
+		post_code as postCode ,
+		syn_version as synVersion ,
+		create_by as createBy ,
+		remake as remake ,
+		receive_name as receiveName ,
+		supplier_name as supplierName ,
+		receive_tellcall as receiveTellcall ,
+		version as version ,
+		is_syn as isSyn ,
+		update_time as updateTime ,
+		region as region ,
+		 as  ,
+		receive_phone as receivePhone ,
+		supplier_id as supplierId 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="isDefault != null"> and is_default = #{isDefault}</if>
+				
+		  	    <if test="deliveryAddressId != null"> and delivery_address_id = #{deliveryAddressId}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #{createTime}</if>
+				
+		  	    <if test="detailAddress != null"> and detail_address = #{detailAddress}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #{updateBy}</if>
+				
+		  	    <if test="postCode != null"> and post_code = #{postCode}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #{synVersion}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #{createBy}</if>
+				
+		  	    <if test="remake != null"> and remake = #{remake}</if>
+				
+		  	    <if test="receiveName != null"> and receive_name = #{receiveName}</if>
+				
+		  	    <if test="supplierName != null"> and supplier_name = #{supplierName}</if>
+				
+		  	    <if test="receiveTellcall != null"> and receive_tellcall = #{receiveTellcall}</if>
+				
+		  	    <if test="version != null"> and version = #{version}</if>
+				
+		  	    <if test="isSyn != null"> and is_syn = #{isSyn}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #{updateTime}</if>
+				
+		  	    <if test="region != null"> and region = #{region}</if>
+				
+		  	    <if test=" != null"> and  = #{}</if>
+				
+		  	    <if test="receivePhone != null"> and receive_phone = #{receivePhone}</if>
+				
+		  	    <if test="supplierId != null"> and supplier_id = #{supplierId}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by ${sorting}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</sql>
+	
+	<!-- ��ѯ���� -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(delivery_address_id)
+		from b2b_delivery_address
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ��ѯ -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from b2b_delivery_address
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ����ID��ѯ -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from b2b_delivery_address
+		where delivery_address_id = #{delivery_address_id}
+	</select>
+	
+	<!-- ����IDɾ�� -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from b2b_delivery_address
+		where  delivery_address_id = #{delivery_address_id}
+	</delete>
+	
+	<!-- ɾ�� -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- ��� -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.B2bDeliveryAddressBean">
+		insert into b2b_delivery_address(
+		  	    is_default  ,
+	
+		  	    delivery_address_id  ,
+	
+		  	    create_time  ,
+	
+		  	    detail_address  ,
+	
+		  	    update_by  ,
+	
+		  	    post_code  ,
+	
+		  	    syn_version  ,
+	
+		  	    create_by  ,
+	
+		  	    remake  ,
+	
+		  	    receive_name  ,
+	
+		  	    supplier_name  ,
+	
+		  	    receive_tellcall  ,
+	
+		  	    version  ,
+	
+		  	    is_syn  ,
+	
+		  	    update_time  ,
+	
+		  	    region  ,
+	
+		  	      ,
+	
+		  	    receive_phone  ,
+	
+		  	    supplier_id  
+	
+			
+		)
+		values (
+		  	    #{isDefault } ,
+		  	    #{deliveryAddressId } ,
+		  	    #{createTime } ,
+		  	    #{detailAddress } ,
+		  	    #{updateBy } ,
+		  	    #{postCode } ,
+		  	    #{synVersion } ,
+		  	    #{createBy } ,
+		  	    #{remake } ,
+		  	    #{receiveName } ,
+		  	    #{supplierName } ,
+		  	    #{receiveTellcall } ,
+		  	    #{version } ,
+		  	    #{isSyn } ,
+		  	    #{updateTime } ,
+		  	    #{region } ,
+		  	    #{ } ,
+		  	    #{receivePhone } ,
+		  	    #{supplierId } 
+		)
+	</insert>
+	
+	
+	<!-- ͨ��ID���� -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.B2bDeliveryAddressBean">
+		update b2b_delivery_address
+		<set>
+		  	<if test="isDefault != null">  is_default = #{isDefault} ,</if>
+		  	<if test="createTime != null">  create_time = #{createTime} ,</if>
+		  	<if test="detailAddress != null">  detail_address = #{detailAddress} ,</if>
+		  	<if test="updateBy != null">  update_by = #{updateBy} ,</if>
+		  	<if test="postCode != null">  post_code = #{postCode} ,</if>
+		  	<if test="synVersion != null">  syn_version = #{synVersion} ,</if>
+		  	<if test="createBy != null">  create_by = #{createBy} ,</if>
+		  	<if test="remake != null">  remake = #{remake} ,</if>
+		  	<if test="receiveName != null">  receive_name = #{receiveName} ,</if>
+		  	<if test="supplierName != null">  supplier_name = #{supplierName} ,</if>
+		  	<if test="receiveTellcall != null">  receive_tellcall = #{receiveTellcall} ,</if>
+		  	<if test="version != null">  version = #{version} ,</if>
+		  	<if test="isSyn != null">  is_syn = #{isSyn} ,</if>
+		  	<if test="updateTime != null">  update_time = #{updateTime} ,</if>
+		  	<if test="region != null">  region = #{region} ,</if>
+		  	<if test=" != null">   = #{} ,</if>
+		  	<if test="receivePhone != null">  receive_phone = #{receivePhone} ,</if>
+		  	<if test="supplierId != null">  supplier_id = #{supplierId} </if>
+		</set>
+		where  delivery_address_id = #{delivery_address_id}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.B2bDeliveryAddressBean">
+		update b2b_delivery_address
+
+		set 
+		  	 is_default = #{isDefault} ,
+		  	 create_time = #{createTime} ,
+		  	 detail_address = #{detailAddress} ,
+		  	 update_by = #{updateBy} ,
+		  	 post_code = #{postCode} ,
+		  	 syn_version = #{synVersion} ,
+		  	 create_by = #{createBy} ,
+		  	 remake = #{remake} ,
+		  	 receive_name = #{receiveName} ,
+		  	 supplier_name = #{supplierName} ,
+		  	 receive_tellcall = #{receiveTellcall} ,
+		  	 version = #{version} ,
+		  	 is_syn = #{isSyn} ,
+		  	 update_time = #{updateTime} ,
+		  	 region = #{region} ,
+		  	  = #{} ,
+		  	 receive_phone = #{receivePhone} ,
+		  	 supplier_id = #{supplierId} 
+	
+		where  delivery_address_id = #{delivery_address_id}
+	</update>
+	
+</mapper>

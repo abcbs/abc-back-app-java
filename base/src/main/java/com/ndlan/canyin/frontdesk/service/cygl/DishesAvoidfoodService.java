@@ -1,0 +1,74 @@
+ package com.ndlan.canyin.frontdesk.service.cygl;
+ 
+ import com.google.common.collect.ImmutableList;
+import com.ndlan.canyin.frontdesk.service.BaseService;
+ import com.ndlan.canyin.base.entity.cygl.DishesAvoidfood;
+ import com.ndlan.canyin.base.repository.cygl.DishesAvoidfoodDao;
+ import com.ndlan.canyin.core.common.EnableStatusEnum;
+ import com.ndlan.canyin.core.persistence.DynamicSpecifications;
+ import com.ndlan.canyin.core.persistence.SearchFilter;
+ import com.ndlan.canyin.core.persistence.SearchFilter.Operator;
+ import java.util.HashMap;
+ import java.util.List;
+ import java.util.Map;
+ import org.apache.commons.lang3.StringUtils;
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.data.domain.Page;
+ import org.springframework.data.domain.PageRequest;
+ import org.springframework.data.jpa.domain.Specification;
+ import org.springframework.data.jpa.domain.Specifications;
+ import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+ 
+ @Component
+ @Transactional(readOnly=true)
+ public class DishesAvoidfoodService extends BaseService<DishesAvoidfoodDao, DishesAvoidfood>
+ {
+   public Page<DishesAvoidfood> search(Map<String, Object> searchParams, int pageNumber, int pagzSize, String sortType, String restId)
+   {
+     PageRequest pageRequest = new PageRequest(pageNumber - 1, pagzSize, null);
+     Map filters = SearchFilter.parse(searchParams);
+     Specification spec = DynamicSpecifications.bySearchFilterWithOr(filters.values(), DishesAvoidfood.class);
+ 
+     Map restfilters = new HashMap();
+     restfilters.put("restId", new SearchFilter("restId", SearchFilter.Operator.EQ, restId));
+     Specification specWithRest = DynamicSpecifications.bySearchFilter(restfilters.values(), DishesAvoidfood.class);
+ 
+     return ((DishesAvoidfoodDao)getDao()).findAll(Specifications.where(spec).and(specWithRest), pageRequest);
+   }
+ 
+   public String findNameArray(String idArray)
+   {
+     StringBuffer nameArray = new StringBuffer();
+     if ((idArray != null) && (!idArray.isEmpty()))
+     {
+       List ar = ImmutableList.copyOf(StringUtils.split(idArray, ","));
+       for (int i = 0; i < ar.size(); i++) {
+         String e = (String)ar.get(i);
+         DishesAvoidfood dishesAvoidfood = (DishesAvoidfood)this.self.loadOne(e);
+         if (dishesAvoidfood == null)
+           continue;
+         nameArray.append(dishesAvoidfood.getName());
+         if (i < ar.size() - 1) {
+           nameArray.append(",");
+         }
+       }
+     }
+ 
+     return nameArray.toString();
+   }
+ 
+   public List<DishesAvoidfood> findAllDishesAvoidfoodByRestId(String restId)
+   {
+     return ((DishesAvoidfoodDao)getDao()).findByRestIdAndEnableStatus(restId, EnableStatusEnum.NORMAL.getCode());
+   }
+ 
+   public List<DishesAvoidfood> findByCodeAndRestId(String code, String restId)
+   {
+     return ((DishesAvoidfoodDao)getDao()).findByCodeAndRestIdAndEnableStatus(code, restId, EnableStatusEnum.NORMAL.getCode());
+   }
+   @Autowired
+   public void setBaseDao(DishesAvoidfoodDao dishesAvoidfoodDao) { super.setDao(dishesAvoidfoodDao);
+   }
+ }
+

@@ -1,0 +1,3 @@
+org\com\abc\sample\service\amqp\Sender.class
+org\com\abc\sample\service\amqp\SampleAmqpSimpleApplication.class
+org\com\abc\sample\service\amqp\SampleAmqpSimpleApplication$1.class

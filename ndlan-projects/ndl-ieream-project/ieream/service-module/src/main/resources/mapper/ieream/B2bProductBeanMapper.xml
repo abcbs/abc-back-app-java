@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.B2bProductBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.B2bProductBean">
+		<id column="pro_id" property="proId" jdbcType="VARCHAR" />
+	
+    
+		<result column="rest_id" property="restId" jdbcType="VARCHAR" />
+    
+		<result column="volume" property="volume" jdbcType="VARCHAR" />
+    
+		<result column="goods_attr4" property="goodsAttr4" jdbcType="VARCHAR" />
+    
+		<result column="is_syn" property="isSyn" jdbcType="VARCHAR" />
+    
+		<result column="goods_attr5" property="goodsAttr5" jdbcType="VARCHAR" />
+    
+		<result column="appl_desc" property="applDesc" jdbcType="VARCHAR" />
+    
+		<result column="category_id" property="categoryId" jdbcType="VARCHAR" />
+    
+		<result column="pic" property="pic" jdbcType="VARCHAR" />
+    
+		<result column="price" property="price" jdbcType="VARCHAR" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="parent_name_path" property="parentNamePath" jdbcType="VARCHAR" />
+    
+		<result column="target_client" property="targetClient" jdbcType="VARCHAR" />
+    
+		<result column="pro_desc" property="proDesc" jdbcType="VARCHAR" />
+    
+		<result column="pro_color_no" property="proColorNo" jdbcType="VARCHAR" />
+    
+		<result column="base_pro_no" property="baseProNo" jdbcType="VARCHAR" />
+    
+		<result column="parent_id_path" property="parentIdPath" jdbcType="VARCHAR" />
+    
+		<result column="bar_code" property="barCode" jdbcType="VARCHAR" />
+    
+		<result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    
+		<result column="size" property="size" jdbcType="VARCHAR" />
+    
+		<result column="capacity" property="capacity" jdbcType="VARCHAR" />
+    
+		<result column="specs_name" property="specsName" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="spuulier_name" property="spuulierName" jdbcType="VARCHAR" />
+    
+		<result column="pic_all" property="picAll" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="goods_attr3" property="goodsAttr3" jdbcType="VARCHAR" />
+    
+		<result column="version" property="version" jdbcType="INTEGER" />
+    
+		<result column="supplier_type" property="supplierType" jdbcType="VARCHAR" />
+    
+		<result column="goods_attr1" property="goodsAttr1" jdbcType="VARCHAR" />
+    
+		<result column="prime_cost" property="primeCost" jdbcType="VARCHAR" />
+    
+		<result column="base_status" property="baseStatus" jdbcType="VARCHAR" />
+    
+		<result column="goods_attr2" property="goodsAttr2" jdbcType="VARCHAR" />
+    
+		<result column="quantity" property="quantity" jdbcType="VARCHAR" />
+    
+		<result column="base_pro_id" property="baseProId" jdbcType="VARCHAR" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="INTEGER" />
+    
+		<result column="name" property="name" jdbcType="VARCHAR" />
+    
+		<result column="category_name" property="categoryName" jdbcType="VARCHAR" />
+    
+		<result column="supplier_id" property="supplierId" jdbcType="VARCHAR" />
+    
+		<result column="specs_id" property="specsId" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		rest_id as restId ,
+		volume as volume ,
+		goods_attr4 as goodsAttr4 ,
+		is_syn as isSyn ,
+		goods_attr5 as goodsAttr5 ,
+		appl_desc as applDesc ,
+		category_id as categoryId ,
+		pic as pic ,
+		price as price ,
+		create_by as createBy ,
+		parent_name_path as parentNamePath ,
+		target_client as targetClient ,
+		pro_desc as proDesc ,
+		pro_color_no as proColorNo ,
+		base_pro_no as baseProNo ,
+		parent_id_path as parentIdPath ,
+		bar_code as barCode ,
+		remarks as remarks ,
+		size as size ,
+		capacity as capacity ,
+		specs_name as specsName ,
+		create_time as createTime ,
+		spuulier_name as spuulierName ,
+		pic_all as picAll ,
+		update_time as updateTime ,
+		update_by as updateBy ,
+		pro_id as proId ,
+		goods_attr3 as goodsAttr3 ,
+		version as version ,
+		supplier_type as supplierType ,
+		goods_attr1 as goodsAttr1 ,
+		prime_cost as primeCost ,
+		base_status as baseStatus ,
+		goods_attr2 as goodsAttr2 ,
+		quantity as quantity ,
+		base_pro_id as baseProId ,
+		syn_version as synVersion ,
+		name as name ,
+		category_name as categoryName ,
+		supplier_id as supplierId ,
+		specs_id as specsId ,
+		 as  
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="restId != null"> and rest_id = #\{restId\}</if>
+				
+		  	    <if test="volume != null"> and volume = #\{volume\}</if>
+				
+		  	    <if test="goodsAttr4 != null"> and goods_attr4 = #\{goodsAttr4\}</if>
+				
+		  	    <if test="isSyn != null"> and is_syn = #\{isSyn\}</if>
+				
+		  	    <if test="goodsAttr5 != null"> and goods_attr5 = #\{goodsAttr5\}</if>
+				
+		  	    <if test="applDesc != null"> and appl_desc = #\{applDesc\}</if>
+				
+		  	    <if test="categoryId != null"> and category_id = #\{categoryId\}</if>
+				
+		  	    <if test="pic != null"> and pic = #\{pic\}</if>
+				
+		  	    <if test="price != null"> and price = #\{price\}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #\{createBy\}</if>
+				
+		  	    <if test="parentNamePath != null"> and parent_name_path = #\{parentNamePath\}</if>
+				
+		  	    <if test="targetClient != null"> and target_client = #\{targetClient\}</if>
+				
+		  	    <if test="proDesc != null"> and pro_desc = #\{proDesc\}</if>
+				
+		  	    <if test="proColorNo != null"> and pro_color_no = #\{proColorNo\}</if>
+				
+		  	    <if test="baseProNo != null"> and base_pro_no = #\{baseProNo\}</if>
+				
+		  	    <if test="parentIdPath != null"> and parent_id_path = #\{parentIdPath\}</if>
+				
+		  	    <if test="barCode != null"> and bar_code = #\{barCode\}</if>
+				
+		  	    <if test="remarks != null"> and remarks = #\{remarks\}</if>
+				
+		  	    <if test="size != null"> and size = #\{size\}</if>
+				
+		  	    <if test="capacity != null"> and capacity = #\{capacity\}</if>
+				
+		  	    <if test="specsName != null"> and specs_name = #\{specsName\}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #\{createTime\}</if>
+				
+		  	    <if test="spuulierName != null"> and spuulier_name = #\{spuulierName\}</if>
+				
+		  	    <if test="picAll != null"> and pic_all = #\{picAll\}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #\{updateTime\}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #\{updateBy\}</if>
+				
+		  	    <if test="proId != null"> and pro_id = #\{proId\}</if>
+				
+		  	    <if test="goodsAttr3 != null"> and goods_attr3 = #\{goodsAttr3\}</if>
+				
+		  	    <if test="version != null"> and version = #\{version\}</if>
+				
+		  	    <if test="supplierType != null"> and supplier_type = #\{supplierType\}</if>
+				
+		  	    <if test="goodsAttr1 != null"> and goods_attr1 = #\{goodsAttr1\}</if>
+				
+		  	    <if test="primeCost != null"> and prime_cost = #\{primeCost\}</if>
+				
+		  	    <if test="baseStatus != null"> and base_status = #\{baseStatus\}</if>
+				
+		  	    <if test="goodsAttr2 != null"> and goods_attr2 = #\{goodsAttr2\}</if>
+				
+		  	    <if test="quantity != null"> and quantity = #\{quantity\}</if>
+				
+		  	    <if test="baseProId != null"> and base_pro_id = #\{baseProId\}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #\{synVersion\}</if>
+				
+		  	    <if test="name != null"> and name = #\{name\}</if>
+				
+		  	    <if test="categoryName != null"> and category_name = #\{categoryName\}</if>
+				
+		  	    <if test="supplierId != null"> and supplier_id = #\{supplierId\}</if>
+				
+		  	    <if test="specsId != null"> and specs_id = #\{specsId\}</if>
+				
+		  	    <if test=" != null"> and  = #\{\}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by $\{sorting\}</if>
+		<if test="offset != null and limit != null">
+			limit #\{offset\}, #\{limit\}
+		</if>
+	</sql>
+	
+	<!-- 查询总数 -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(pro_id)
+		from b2b_product
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 查询 -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from b2b_product
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from b2b_product
+		where pro_id = #\{pro_id\}
+	</select>
+	
+	<!-- 根据ID删除 -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from b2b_product
+		where  pro_id = #\{pro_id\}
+	</delete>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- 添加 -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.B2bProductBean">
+		insert into b2b_product(
+		  	    rest_id  ,
+	
+		  	    volume  ,
+	
+		  	    goods_attr4  ,
+	
+		  	    is_syn  ,
+	
+		  	    goods_attr5  ,
+	
+		  	    appl_desc  ,
+	
+		  	    category_id  ,
+	
+		  	    pic  ,
+	
+		  	    price  ,
+	
+		  	    create_by  ,
+	
+		  	    parent_name_path  ,
+	
+		  	    target_client  ,
+	
+		  	    pro_desc  ,
+	
+		  	    pro_color_no  ,
+	
+		  	    base_pro_no  ,
+	
+		  	    parent_id_path  ,
+	
+		  	    bar_code  ,
+	
+		  	    remarks  ,
+	
+		  	    size  ,
+	
+		  	    capacity  ,
+	
+		  	    specs_name  ,
+	
+		  	    create_time  ,
+	
+		  	    spuulier_name  ,
+	
+		  	    pic_all  ,
+	
+		  	    update_time  ,
+	
+		  	    update_by  ,
+	
+		  	    pro_id  ,
+	
+		  	    goods_attr3  ,
+	
+		  	    version  ,
+	
+		  	    supplier_type  ,
+	
+		  	    goods_attr1  ,
+	
+		  	    prime_cost  ,
+	
+		  	    base_status  ,
+	
+		  	    goods_attr2  ,
+	
+		  	    quantity  ,
+	
+		  	    base_pro_id  ,
+	
+		  	    syn_version  ,
+	
+		  	    name  ,
+	
+		  	    category_name  ,
+	
+		  	    supplier_id  ,
+	
+		  	    specs_id  ,
+	
+		  	      
+	
+			
+		)
+		values (
+		  	    #\{restId \} ,
+		  	    #\{volume \} ,
+		  	    #\{goodsAttr4 \} ,
+		  	    #\{isSyn \} ,
+		  	    #\{goodsAttr5 \} ,
+		  	    #\{applDesc \} ,
+		  	    #\{categoryId \} ,
+		  	    #\{pic \} ,
+		  	    #\{price \} ,
+		  	    #\{createBy \} ,
+		  	    #\{parentNamePath \} ,
+		  	    #\{targetClient \} ,
+		  	    #\{proDesc \} ,
+		  	    #\{proColorNo \} ,
+		  	    #\{baseProNo \} ,
+		  	    #\{parentIdPath \} ,
+		  	    #\{barCode \} ,
+		  	    #\{remarks \} ,
+		  	    #\{size \} ,
+		  	    #\{capacity \} ,
+		  	    #\{specsName \} ,
+		  	    #\{createTime \} ,
+		  	    #\{spuulierName \} ,
+		  	    #\{picAll \} ,
+		  	    #\{updateTime \} ,
+		  	    #\{updateBy \} ,
+		  	    #\{proId \} ,
+		  	    #\{goodsAttr3 \} ,
+		  	    #\{version \} ,
+		  	    #\{supplierType \} ,
+		  	    #\{goodsAttr1 \} ,
+		  	    #\{primeCost \} ,
+		  	    #\{baseStatus \} ,
+		  	    #\{goodsAttr2 \} ,
+		  	    #\{quantity \} ,
+		  	    #\{baseProId \} ,
+		  	    #\{synVersion \} ,
+		  	    #\{name \} ,
+		  	    #\{categoryName \} ,
+		  	    #\{supplierId \} ,
+		  	    #\{specsId \} ,
+		  	    #\{ \} 
+		)
+	</insert>
+	
+	
+	<!-- 通过ID更新 -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.B2bProductBean">
+		update b2b_product
+		<set>
+		  	<if test=\"restId != null\">  rest_id = #\{restId\} ,</if>
+		  	<if test=\"volume != null\">  volume = #\{volume\} ,</if>
+		  	<if test=\"goodsAttr4 != null\">  goods_attr4 = #\{goodsAttr4\} ,</if>
+		  	<if test=\"isSyn != null\">  is_syn = #\{isSyn\} ,</if>
+		  	<if test=\"goodsAttr5 != null\">  goods_attr5 = #\{goodsAttr5\} ,</if>
+		  	<if test=\"applDesc != null\">  appl_desc = #\{applDesc\} ,</if>
+		  	<if test=\"categoryId != null\">  category_id = #\{categoryId\} ,</if>
+		  	<if test=\"pic != null\">  pic = #\{pic\} ,</if>
+		  	<if test=\"price != null\">  price = #\{price\} ,</if>
+		  	<if test=\"createBy != null\">  create_by = #\{createBy\} ,</if>
+		  	<if test=\"parentNamePath != null\">  parent_name_path = #\{parentNamePath\} ,</if>
+		  	<if test=\"targetClient != null\">  target_client = #\{targetClient\} ,</if>
+		  	<if test=\"proDesc != null\">  pro_desc = #\{proDesc\} ,</if>
+		  	<if test=\"proColorNo != null\">  pro_color_no = #\{proColorNo\} ,</if>
+		  	<if test=\"baseProNo != null\">  base_pro_no = #\{baseProNo\} ,</if>
+		  	<if test=\"parentIdPath != null\">  parent_id_path = #\{parentIdPath\} ,</if>
+		  	<if test=\"barCode != null\">  bar_code = #\{barCode\} ,</if>
+		  	<if test=\"remarks != null\">  remarks = #\{remarks\} ,</if>
+		  	<if test=\"size != null\">  size = #\{size\} ,</if>
+		  	<if test=\"capacity != null\">  capacity = #\{capacity\} ,</if>
+		  	<if test=\"specsName != null\">  specs_name = #\{specsName\} ,</if>
+		  	<if test=\"createTime != null\">  create_time = #\{createTime\} ,</if>
+		  	<if test=\"spuulierName != null\">  spuulier_name = #\{spuulierName\} ,</if>
+		  	<if test=\"picAll != null\">  pic_all = #\{picAll\} ,</if>
+		  	<if test=\"updateTime != null\">  update_time = #\{updateTime\} ,</if>
+		  	<if test=\"updateBy != null\">  update_by = #\{updateBy\} ,</if>
+		  	<if test=\"goodsAttr3 != null\">  goods_attr3 = #\{goodsAttr3\} ,</if>
+		  	<if test=\"version != null\">  version = #\{version\} ,</if>
+		  	<if test=\"supplierType != null\">  supplier_type = #\{supplierType\} ,</if>
+		  	<if test=\"goodsAttr1 != null\">  goods_attr1 = #\{goodsAttr1\} ,</if>
+		  	<if test=\"primeCost != null\">  prime_cost = #\{primeCost\} ,</if>
+		  	<if test=\"baseStatus != null\">  base_status = #\{baseStatus\} ,</if>
+		  	<if test=\"goodsAttr2 != null\">  goods_attr2 = #\{goodsAttr2\} ,</if>
+		  	<if test=\"quantity != null\">  quantity = #\{quantity\} ,</if>
+		  	<if test=\"baseProId != null\">  base_pro_id = #\{baseProId\} ,</if>
+		  	<if test=\"synVersion != null\">  syn_version = #\{synVersion\} ,</if>
+		  	<if test=\"name != null\">  name = #\{name\} ,</if>
+		  	<if test=\"categoryName != null\">  category_name = #\{categoryName\} ,</if>
+		  	<if test=\"supplierId != null\">  supplier_id = #\{supplierId\} ,</if>
+		  	<if test=\"specsId != null\">  specs_id = #\{specsId\} ,</if>
+		  	<if test=\" != null\">   = #\{\} </if>
+		</set>
+		where  pro_id = #\{pro_id\}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.B2bProductBean">
+		update b2b_product
+
+		set 
+		  	 rest_id = #\{restId\} ,
+		  	 volume = #\{volume\} ,
+		  	 goods_attr4 = #\{goodsAttr4\} ,
+		  	 is_syn = #\{isSyn\} ,
+		  	 goods_attr5 = #\{goodsAttr5\} ,
+		  	 appl_desc = #\{applDesc\} ,
+		  	 category_id = #\{categoryId\} ,
+		  	 pic = #\{pic\} ,
+		  	 price = #\{price\} ,
+		  	 create_by = #\{createBy\} ,
+		  	 parent_name_path = #\{parentNamePath\} ,
+		  	 target_client = #\{targetClient\} ,
+		  	 pro_desc = #\{proDesc\} ,
+		  	 pro_color_no = #\{proColorNo\} ,
+		  	 base_pro_no = #\{baseProNo\} ,
+		  	 parent_id_path = #\{parentIdPath\} ,
+		  	 bar_code = #\{barCode\} ,
+		  	 remarks = #\{remarks\} ,
+		  	 size = #\{size\} ,
+		  	 capacity = #\{capacity\} ,
+		  	 specs_name = #\{specsName\} ,
+		  	 create_time = #\{createTime\} ,
+		  	 spuulier_name = #\{spuulierName\} ,
+		  	 pic_all = #\{picAll\} ,
+		  	 update_time = #\{updateTime\} ,
+		  	 update_by = #\{updateBy\} ,
+		  	 goods_attr3 = #\{goodsAttr3\} ,
+		  	 version = #\{version\} ,
+		  	 supplier_type = #\{supplierType\} ,
+		  	 goods_attr1 = #\{goodsAttr1\} ,
+		  	 prime_cost = #\{primeCost\} ,
+		  	 base_status = #\{baseStatus\} ,
+		  	 goods_attr2 = #\{goodsAttr2\} ,
+		  	 quantity = #\{quantity\} ,
+		  	 base_pro_id = #\{baseProId\} ,
+		  	 syn_version = #\{synVersion\} ,
+		  	 name = #\{name\} ,
+		  	 category_name = #\{categoryName\} ,
+		  	 supplier_id = #\{supplierId\} ,
+		  	 specs_id = #\{specsId\} ,
+		  	  = #\{\} 
+	
+		where  pro_id = #\{pro_id\}
+	</update>
+	
+</mapper>

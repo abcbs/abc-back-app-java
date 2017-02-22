@@ -1,0 +1,26 @@
+﻿/* CSS Document */
+@charset "utf-8";
+*{margin: 0; padding: 0;}
+em{font-style:normal;}
+h1, h2, h3, h4, h5, h6{font-size:100%;font-weight:normal;}
+ol, ul,li {list-style: none;}
+body{line-height: 1.5; font-family:"Microsoft YaHei UI","Microsoft YaHei",SimSun,"Segoe UI",Tahoma,Helvetica,Sans-Serif;font-size:12px;}
+a{ text-decoration:none;}
+
+.login_jianpan{width:732px;height:244px; background:url(../images/images_p/tanchu_bg_1.png);padding-top:25px;}
+.login_jianpan a{float:left;display:inline;margin:7px 3px 0 3px;text-align:center;line-height:46px; vertical-align:middle;font-size:18px;font-weight:bold;color:#437725;}
+.shuzi{width:62px;height:46px;float:left;display:inline;background:url(../images/images_p/keyboard.png) no-repeat;}
+.shuzi:hover{width:62px;height:46px;float:left;display:inline;background:url(../images/images_p/keyboard_hover.png) no-repeat;color:#284120;}
+.jp_queding{color:#fff !important;font-size:16px !important;}
+.jp_daxie{padding-top:2px;height:44px;}
+.jp_daxie:hover{padding-top:2px;height:44px;}
+.jp_delete{padding-top:2px;height:44px;}
+.jp_delete:hover{padding-top:2px;height:44px;}
+.login_jianpan .ml_7{margin-left:29px;}
+.login_jianpan .ml_8{margin-left:64px;}
+
+.jt_daxie{width:62px;height:46px;float:left;display:inline;background:url(../images/images_p/keyboard_daxie.png) no-repeat;}
+
+
+
+

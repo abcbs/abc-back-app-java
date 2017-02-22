@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.B2bOrderItemBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.B2bOrderItemBean">
+		<id column="bd_id" property="bdId" jdbcType="VARCHAR" />
+	
+    
+		<result column="specs_id" property="specsId" jdbcType="VARCHAR" />
+    
+		<result column="storage_status" property="storageStatus" jdbcType="VARCHAR" />
+    
+		<result column="rmt_pkg_id" property="rmtPkgId" jdbcType="VARCHAR" />
+    
+		<result column="sls_pmtn_id" property="slsPmtnId" jdbcType="VARCHAR" />
+    
+		<result column="pro_name" property="proName" jdbcType="VARCHAR" />
+    
+		<result column="b_id" property="bId" jdbcType="VARCHAR" />
+    
+		<result column="order_pkg_code" property="orderPkgCode" jdbcType="VARCHAR" />
+    
+		<result column="price_agency_id" property="priceAgencyId" jdbcType="VARCHAR" />
+    
+		<result column="capacity" property="capacity" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="parent_id_path" property="parentIdPath" jdbcType="VARCHAR" />
+    
+		<result column="bd_no" property="bdNo" jdbcType="VARCHAR" />
+    
+		<result column="supplier_id" property="supplierId" jdbcType="VARCHAR" />
+    
+		<result column="damage_bd_id" property="damageBdId" jdbcType="VARCHAR" />
+    
+		<result column="rest_name" property="restName" jdbcType="VARCHAR" />
+    
+		<result column="pic" property="pic" jdbcType="VARCHAR" />
+    
+		<result column="quantity" property="quantity" jdbcType="VARCHAR" />
+    
+		<result column="category_id" property="categoryId" jdbcType="VARCHAR" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="size" property="size" jdbcType="VARCHAR" />
+    
+		<result column="is_syn" property="isSyn" jdbcType="VARCHAR" />
+    
+		<result column="supplier_name" property="supplierName" jdbcType="VARCHAR" />
+    
+		<result column="discount" property="discount" jdbcType="VARCHAR" />
+    
+		<result column="number_of_broken" property="numberOfBroken" jdbcType="VARCHAR" />
+    
+		<result column="specs_name" property="specsName" jdbcType="VARCHAR" />
+    
+		<result column="rest_id" property="restId" jdbcType="VARCHAR" />
+    
+		<result column="volume" property="volume" jdbcType="VARCHAR" />
+    
+		<result column="appl_desc" property="applDesc" jdbcType="VARCHAR" />
+    
+		<result column="pri_cat_line_id" property="priCatLineId" jdbcType="VARCHAR" />
+    
+		<result column="bar_code" property="barCode" jdbcType="VARCHAR" />
+    
+		<result column="rmt_detail_id" property="rmtDetailId" jdbcType="VARCHAR" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="amount_paid" property="amountPaid" jdbcType="VARCHAR" />
+    
+		<result column="order_pkg_id" property="orderPkgId" jdbcType="VARCHAR" />
+    
+		<result column="rmt_status" property="rmtStatus" jdbcType="VARCHAR" />
+    
+		<result column="parent_name_path" property="parentNamePath" jdbcType="VARCHAR" />
+    
+		<result column="cart_item_id" property="cartItemId" jdbcType="VARCHAR" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="base_pro_no" property="baseProNo" jdbcType="VARCHAR" />
+    
+		<result column="price" property="price" jdbcType="VARCHAR" />
+    
+		<result column="is_codeless" property="isCodeless" jdbcType="VARCHAR" />
+    
+		<result column="strategy_desc" property="strategyDesc" jdbcType="VARCHAR" />
+    
+		<result column="category_name" property="categoryName" jdbcType="VARCHAR" />
+    
+		<result column="privilege" property="privilege" jdbcType="VARCHAR" />
+    
+		<result column="subtotal" property="subtotal" jdbcType="VARCHAR" />
+    
+		<result column="version" property="version" jdbcType="BIGINT" />
+    
+		<result column="price_agency_name" property="priceAgencyName" jdbcType="VARCHAR" />
+    
+		<result column="start_point_qyt" property="startPointQyt" jdbcType="VARCHAR" />
+    
+		<result column="base_pro_id" property="baseProId" jdbcType="VARCHAR" />
+    
+		<result column="pro_color_no" property="proColorNo" jdbcType="VARCHAR" />
+    
+		<result column="pro_desc" property="proDesc" jdbcType="VARCHAR" />
+    
+		<result column="pro_id" property="proId" jdbcType="VARCHAR" />
+    
+		<result column="target_client" property="targetClient" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		specs_id as specsId ,
+		storage_status as storageStatus ,
+		 as  ,
+		rmt_pkg_id as rmtPkgId ,
+		sls_pmtn_id as slsPmtnId ,
+		pro_name as proName ,
+		b_id as bId ,
+		order_pkg_code as orderPkgCode ,
+		price_agency_id as priceAgencyId ,
+		capacity as capacity ,
+		update_time as updateTime ,
+		parent_id_path as parentIdPath ,
+		bd_no as bdNo ,
+		supplier_id as supplierId ,
+		damage_bd_id as damageBdId ,
+		rest_name as restName ,
+		pic as pic ,
+		quantity as quantity ,
+		category_id as categoryId ,
+		update_by as updateBy ,
+		size as size ,
+		is_syn as isSyn ,
+		supplier_name as supplierName ,
+		discount as discount ,
+		number_of_broken as numberOfBroken ,
+		specs_name as specsName ,
+		rest_id as restId ,
+		volume as volume ,
+		appl_desc as applDesc ,
+		pri_cat_line_id as priCatLineId ,
+		bar_code as barCode ,
+		rmt_detail_id as rmtDetailId ,
+		create_by as createBy ,
+		amount_paid as amountPaid ,
+		order_pkg_id as orderPkgId ,
+		rmt_status as rmtStatus ,
+		parent_name_path as parentNamePath ,
+		cart_item_id as cartItemId ,
+		syn_version as synVersion ,
+		create_time as createTime ,
+		base_pro_no as baseProNo ,
+		price as price ,
+		is_codeless as isCodeless ,
+		strategy_desc as strategyDesc ,
+		category_name as categoryName ,
+		privilege as privilege ,
+		subtotal as subtotal ,
+		version as version ,
+		bd_id as bdId ,
+		price_agency_name as priceAgencyName ,
+		start_point_qyt as startPointQyt ,
+		base_pro_id as baseProId ,
+		pro_color_no as proColorNo ,
+		pro_desc as proDesc ,
+		pro_id as proId ,
+		target_client as targetClient 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="specsId != null"> and specs_id = #\{specsId\}</if>
+				
+		  	    <if test="storageStatus != null"> and storage_status = #\{storageStatus\}</if>
+				
+		  	    <if test=" != null"> and  = #\{\}</if>
+				
+		  	    <if test="rmtPkgId != null"> and rmt_pkg_id = #\{rmtPkgId\}</if>
+				
+		  	    <if test="slsPmtnId != null"> and sls_pmtn_id = #\{slsPmtnId\}</if>
+				
+		  	    <if test="proName != null"> and pro_name = #\{proName\}</if>
+				
+		  	    <if test="bId != null"> and b_id = #\{bId\}</if>
+				
+		  	    <if test="orderPkgCode != null"> and order_pkg_code = #\{orderPkgCode\}</if>
+				
+		  	    <if test="priceAgencyId != null"> and price_agency_id = #\{priceAgencyId\}</if>
+				
+		  	    <if test="capacity != null"> and capacity = #\{capacity\}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #\{updateTime\}</if>
+				
+		  	    <if test="parentIdPath != null"> and parent_id_path = #\{parentIdPath\}</if>
+				
+		  	    <if test="bdNo != null"> and bd_no = #\{bdNo\}</if>
+				
+		  	    <if test="supplierId != null"> and supplier_id = #\{supplierId\}</if>
+				
+		  	    <if test="damageBdId != null"> and damage_bd_id = #\{damageBdId\}</if>
+				
+		  	    <if test="restName != null"> and rest_name = #\{restName\}</if>
+				
+		  	    <if test="pic != null"> and pic = #\{pic\}</if>
+				
+		  	    <if test="quantity != null"> and quantity = #\{quantity\}</if>
+				
+		  	    <if test="categoryId != null"> and category_id = #\{categoryId\}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #\{updateBy\}</if>
+				
+		  	    <if test="size != null"> and size = #\{size\}</if>
+				
+		  	    <if test="isSyn != null"> and is_syn = #\{isSyn\}</if>
+				
+		  	    <if test="supplierName != null"> and supplier_name = #\{supplierName\}</if>
+				
+		  	    <if test="discount != null"> and discount = #\{discount\}</if>
+				
+		  	    <if test="numberOfBroken != null"> and number_of_broken = #\{numberOfBroken\}</if>
+				
+		  	    <if test="specsName != null"> and specs_name = #\{specsName\}</if>
+				
+		  	    <if test="restId != null"> and rest_id = #\{restId\}</if>
+				
+		  	    <if test="volume != null"> and volume = #\{volume\}</if>
+				
+		  	    <if test="applDesc != null"> and appl_desc = #\{applDesc\}</if>
+				
+		  	    <if test="priCatLineId != null"> and pri_cat_line_id = #\{priCatLineId\}</if>
+				
+		  	    <if test="barCode != null"> and bar_code = #\{barCode\}</if>
+				
+		  	    <if test="rmtDetailId != null"> and rmt_detail_id = #\{rmtDetailId\}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #\{createBy\}</if>
+				
+		  	    <if test="amountPaid != null"> and amount_paid = #\{amountPaid\}</if>
+				
+		  	    <if test="orderPkgId != null"> and order_pkg_id = #\{orderPkgId\}</if>
+				
+		  	    <if test="rmtStatus != null"> and rmt_status = #\{rmtStatus\}</if>
+				
+		  	    <if test="parentNamePath != null"> and parent_name_path = #\{parentNamePath\}</if>
+				
+		  	    <if test="cartItemId != null"> and cart_item_id = #\{cartItemId\}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #\{synVersion\}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #\{createTime\}</if>
+				
+		  	    <if test="baseProNo != null"> and base_pro_no = #\{baseProNo\}</if>
+				
+		  	    <if test="price != null"> and price = #\{price\}</if>
+				
+		  	    <if test="isCodeless != null"> and is_codeless = #\{isCodeless\}</if>
+				
+		  	    <if test="strategyDesc != null"> and strategy_desc = #\{strategyDesc\}</if>
+				
+		  	    <if test="categoryName != null"> and category_name = #\{categoryName\}</if>
+				
+		  	    <if test="privilege != null"> and privilege = #\{privilege\}</if>
+				
+		  	    <if test="subtotal != null"> and subtotal = #\{subtotal\}</if>
+				
+		  	    <if test="version != null"> and version = #\{version\}</if>
+				
+		  	    <if test="bdId != null"> and bd_id = #\{bdId\}</if>
+				
+		  	    <if test="priceAgencyName != null"> and price_agency_name = #\{priceAgencyName\}</if>
+				
+		  	    <if test="startPointQyt != null"> and start_point_qyt = #\{startPointQyt\}</if>
+				
+		  	    <if test="baseProId != null"> and base_pro_id = #\{baseProId\}</if>
+				
+		  	    <if test="proColorNo != null"> and pro_color_no = #\{proColorNo\}</if>
+				
+		  	    <if test="proDesc != null"> and pro_desc = #\{proDesc\}</if>
+				
+		  	    <if test="proId != null"> and pro_id = #\{proId\}</if>
+				
+		  	    <if test="targetClient != null"> and target_client = #\{targetClient\}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by $\{sorting\}</if>
+		<if test="offset != null and limit != null">
+			limit #\{offset\}, #\{limit\}
+		</if>
+	</sql>
+	
+	<!-- 查询总数 -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(bd_id)
+		from b2b_order_item
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 查询 -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from b2b_order_item
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from b2b_order_item
+		where bd_id = #\{bd_id\}
+	</select>
+	
+	<!-- 根据ID删除 -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from b2b_order_item
+		where  bd_id = #\{bd_id\}
+	</delete>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- 添加 -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.B2bOrderItemBean">
+		insert into b2b_order_item(
+		  	    specs_id  ,
+	
+		  	    storage_status  ,
+	
+		  	      ,
+	
+		  	    rmt_pkg_id  ,
+	
+		  	    sls_pmtn_id  ,
+	
+		  	    pro_name  ,
+	
+		  	    b_id  ,
+	
+		  	    order_pkg_code  ,
+	
+		  	    price_agency_id  ,
+	
+		  	    capacity  ,
+	
+		  	    update_time  ,
+	
+		  	    parent_id_path  ,
+	
+		  	    bd_no  ,
+	
+		  	    supplier_id  ,
+	
+		  	    damage_bd_id  ,
+	
+		  	    rest_name  ,
+	
+		  	    pic  ,
+	
+		  	    quantity  ,
+	
+		  	    category_id  ,
+	
+		  	    update_by  ,
+	
+		  	    size  ,
+	
+		  	    is_syn  ,
+	
+		  	    supplier_name  ,
+	
+		  	    discount  ,
+	
+		  	    number_of_broken  ,
+	
+		  	    specs_name  ,
+	
+		  	    rest_id  ,
+	
+		  	    volume  ,
+	
+		  	    appl_desc  ,
+	
+		  	    pri_cat_line_id  ,
+	
+		  	    bar_code  ,
+	
+		  	    rmt_detail_id  ,
+	
+		  	    create_by  ,
+	
+		  	    amount_paid  ,
+	
+		  	    order_pkg_id  ,
+	
+		  	    rmt_status  ,
+	
+		  	    parent_name_path  ,
+	
+		  	    cart_item_id  ,
+	
+		  	    syn_version  ,
+	
+		  	    create_time  ,
+	
+		  	    base_pro_no  ,
+	
+		  	    price  ,
+	
+		  	    is_codeless  ,
+	
+		  	    strategy_desc  ,
+	
+		  	    category_name  ,
+	
+		  	    privilege  ,
+	
+		  	    subtotal  ,
+	
+		  	    version  ,
+	
+		  	    bd_id  ,
+	
+		  	    price_agency_name  ,
+	
+		  	    start_point_qyt  ,
+	
+		  	    base_pro_id  ,
+	
+		  	    pro_color_no  ,
+	
+		  	    pro_desc  ,
+	
+		  	    pro_id  ,
+	
+		  	    target_client  
+	
+			
+		)
+		values (
+		  	    #\{specsId \} ,
+		  	    #\{storageStatus \} ,
+		  	    #\{ \} ,
+		  	    #\{rmtPkgId \} ,
+		  	    #\{slsPmtnId \} ,
+		  	    #\{proName \} ,
+		  	    #\{bId \} ,
+		  	    #\{orderPkgCode \} ,
+		  	    #\{priceAgencyId \} ,
+		  	    #\{capacity \} ,
+		  	    #\{updateTime \} ,
+		  	    #\{parentIdPath \} ,
+		  	    #\{bdNo \} ,
+		  	    #\{supplierId \} ,
+		  	    #\{damageBdId \} ,
+		  	    #\{restName \} ,
+		  	    #\{pic \} ,
+		  	    #\{quantity \} ,
+		  	    #\{categoryId \} ,
+		  	    #\{updateBy \} ,
+		  	    #\{size \} ,
+		  	    #\{isSyn \} ,
+		  	    #\{supplierName \} ,
+		  	    #\{discount \} ,
+		  	    #\{numberOfBroken \} ,
+		  	    #\{specsName \} ,
+		  	    #\{restId \} ,
+		  	    #\{volume \} ,
+		  	    #\{applDesc \} ,
+		  	    #\{priCatLineId \} ,
+		  	    #\{barCode \} ,
+		  	    #\{rmtDetailId \} ,
+		  	    #\{createBy \} ,
+		  	    #\{amountPaid \} ,
+		  	    #\{orderPkgId \} ,
+		  	    #\{rmtStatus \} ,
+		  	    #\{parentNamePath \} ,
+		  	    #\{cartItemId \} ,
+		  	    #\{synVersion \} ,
+		  	    #\{createTime \} ,
+		  	    #\{baseProNo \} ,
+		  	    #\{price \} ,
+		  	    #\{isCodeless \} ,
+		  	    #\{strategyDesc \} ,
+		  	    #\{categoryName \} ,
+		  	    #\{privilege \} ,
+		  	    #\{subtotal \} ,
+		  	    #\{version \} ,
+		  	    #\{bdId \} ,
+		  	    #\{priceAgencyName \} ,
+		  	    #\{startPointQyt \} ,
+		  	    #\{baseProId \} ,
+		  	    #\{proColorNo \} ,
+		  	    #\{proDesc \} ,
+		  	    #\{proId \} ,
+		  	    #\{targetClient \} 
+		)
+	</insert>
+	
+	
+	<!-- 通过ID更新 -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.B2bOrderItemBean">
+		update b2b_order_item
+		<set>
+		  	<if test=\"specsId != null\">  specs_id = #\{specsId\} ,</if>
+		  	<if test=\"storageStatus != null\">  storage_status = #\{storageStatus\} ,</if>
+		  	<if test=\" != null\">   = #\{\} ,</if>
+		  	<if test=\"rmtPkgId != null\">  rmt_pkg_id = #\{rmtPkgId\} ,</if>
+		  	<if test=\"slsPmtnId != null\">  sls_pmtn_id = #\{slsPmtnId\} ,</if>
+		  	<if test=\"proName != null\">  pro_name = #\{proName\} ,</if>
+		  	<if test=\"bId != null\">  b_id = #\{bId\} ,</if>
+		  	<if test=\"orderPkgCode != null\">  order_pkg_code = #\{orderPkgCode\} ,</if>
+		  	<if test=\"priceAgencyId != null\">  price_agency_id = #\{priceAgencyId\} ,</if>
+		  	<if test=\"capacity != null\">  capacity = #\{capacity\} ,</if>
+		  	<if test=\"updateTime != null\">  update_time = #\{updateTime\} ,</if>
+		  	<if test=\"parentIdPath != null\">  parent_id_path = #\{parentIdPath\} ,</if>
+		  	<if test=\"bdNo != null\">  bd_no = #\{bdNo\} ,</if>
+		  	<if test=\"supplierId != null\">  supplier_id = #\{supplierId\} ,</if>
+		  	<if test=\"damageBdId != null\">  damage_bd_id = #\{damageBdId\} ,</if>
+		  	<if test=\"restName != null\">  rest_name = #\{restName\} ,</if>
+		  	<if test=\"pic != null\">  pic = #\{pic\} ,</if>
+		  	<if test=\"quantity != null\">  quantity = #\{quantity\} ,</if>
+		  	<if test=\"categoryId != null\">  category_id = #\{categoryId\} ,</if>
+		  	<if test=\"updateBy != null\">  update_by = #\{updateBy\} ,</if>
+		  	<if test=\"size != null\">  size = #\{size\} ,</if>
+		  	<if test=\"isSyn != null\">  is_syn = #\{isSyn\} ,</if>
+		  	<if test=\"supplierName != null\">  supplier_name = #\{supplierName\} ,</if>
+		  	<if test=\"discount != null\">  discount = #\{discount\} ,</if>
+		  	<if test=\"numberOfBroken != null\">  number_of_broken = #\{numberOfBroken\} ,</if>
+		  	<if test=\"specsName != null\">  specs_name = #\{specsName\} ,</if>
+		  	<if test=\"restId != null\">  rest_id = #\{restId\} ,</if>
+		  	<if test=\"volume != null\">  volume = #\{volume\} ,</if>
+		  	<if test=\"applDesc != null\">  appl_desc = #\{applDesc\} ,</if>
+		  	<if test=\"priCatLineId != null\">  pri_cat_line_id = #\{priCatLineId\} ,</if>
+		  	<if test=\"barCode != null\">  bar_code = #\{barCode\} ,</if>
+		  	<if test=\"rmtDetailId != null\">  rmt_detail_id = #\{rmtDetailId\} ,</if>
+		  	<if test=\"createBy != null\">  create_by = #\{createBy\} ,</if>
+		  	<if test=\"amountPaid != null\">  amount_paid = #\{amountPaid\} ,</if>
+		  	<if test=\"orderPkgId != null\">  order_pkg_id = #\{orderPkgId\} ,</if>
+		  	<if test=\"rmtStatus != null\">  rmt_status = #\{rmtStatus\} ,</if>
+		  	<if test=\"parentNamePath != null\">  parent_name_path = #\{parentNamePath\} ,</if>
+		  	<if test=\"cartItemId != null\">  cart_item_id = #\{cartItemId\} ,</if>
+		  	<if test=\"synVersion != null\">  syn_version = #\{synVersion\} ,</if>
+		  	<if test=\"createTime != null\">  create_time = #\{createTime\} ,</if>
+		  	<if test=\"baseProNo != null\">  base_pro_no = #\{baseProNo\} ,</if>
+		  	<if test=\"price != null\">  price = #\{price\} ,</if>
+		  	<if test=\"isCodeless != null\">  is_codeless = #\{isCodeless\} ,</if>
+		  	<if test=\"strategyDesc != null\">  strategy_desc = #\{strategyDesc\} ,</if>
+		  	<if test=\"categoryName != null\">  category_name = #\{categoryName\} ,</if>
+		  	<if test=\"privilege != null\">  privilege = #\{privilege\} ,</if>
+		  	<if test=\"subtotal != null\">  subtotal = #\{subtotal\} ,</if>
+		  	<if test=\"version != null\">  version = #\{version\} ,</if>
+		  	<if test=\"priceAgencyName != null\">  price_agency_name = #\{priceAgencyName\} ,</if>
+		  	<if test=\"startPointQyt != null\">  start_point_qyt = #\{startPointQyt\} ,</if>
+		  	<if test=\"baseProId != null\">  base_pro_id = #\{baseProId\} ,</if>
+		  	<if test=\"proColorNo != null\">  pro_color_no = #\{proColorNo\} ,</if>
+		  	<if test=\"proDesc != null\">  pro_desc = #\{proDesc\} ,</if>
+		  	<if test=\"proId != null\">  pro_id = #\{proId\} ,</if>
+		  	<if test=\"targetClient != null\">  target_client = #\{targetClient\} </if>
+		</set>
+		where  bd_id = #\{bd_id\}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.B2bOrderItemBean">
+		update b2b_order_item
+
+		set 
+		  	 specs_id = #\{specsId\} ,
+		  	 storage_status = #\{storageStatus\} ,
+		  	  = #\{\} ,
+		  	 rmt_pkg_id = #\{rmtPkgId\} ,
+		  	 sls_pmtn_id = #\{slsPmtnId\} ,
+		  	 pro_name = #\{proName\} ,
+		  	 b_id = #\{bId\} ,
+		  	 order_pkg_code = #\{orderPkgCode\} ,
+		  	 price_agency_id = #\{priceAgencyId\} ,
+		  	 capacity = #\{capacity\} ,
+		  	 update_time = #\{updateTime\} ,
+		  	 parent_id_path = #\{parentIdPath\} ,
+		  	 bd_no = #\{bdNo\} ,
+		  	 supplier_id = #\{supplierId\} ,
+		  	 damage_bd_id = #\{damageBdId\} ,
+		  	 rest_name = #\{restName\} ,
+		  	 pic = #\{pic\} ,
+		  	 quantity = #\{quantity\} ,
+		  	 category_id = #\{categoryId\} ,
+		  	 update_by = #\{updateBy\} ,
+		  	 size = #\{size\} ,
+		  	 is_syn = #\{isSyn\} ,
+		  	 supplier_name = #\{supplierName\} ,
+		  	 discount = #\{discount\} ,
+		  	 number_of_broken = #\{numberOfBroken\} ,
+		  	 specs_name = #\{specsName\} ,
+		  	 rest_id = #\{restId\} ,
+		  	 volume = #\{volume\} ,
+		  	 appl_desc = #\{applDesc\} ,
+		  	 pri_cat_line_id = #\{priCatLineId\} ,
+		  	 bar_code = #\{barCode\} ,
+		  	 rmt_detail_id = #\{rmtDetailId\} ,
+		  	 create_by = #\{createBy\} ,
+		  	 amount_paid = #\{amountPaid\} ,
+		  	 order_pkg_id = #\{orderPkgId\} ,
+		  	 rmt_status = #\{rmtStatus\} ,
+		  	 parent_name_path = #\{parentNamePath\} ,
+		  	 cart_item_id = #\{cartItemId\} ,
+		  	 syn_version = #\{synVersion\} ,
+		  	 create_time = #\{createTime\} ,
+		  	 base_pro_no = #\{baseProNo\} ,
+		  	 price = #\{price\} ,
+		  	 is_codeless = #\{isCodeless\} ,
+		  	 strategy_desc = #\{strategyDesc\} ,
+		  	 category_name = #\{categoryName\} ,
+		  	 privilege = #\{privilege\} ,
+		  	 subtotal = #\{subtotal\} ,
+		  	 version = #\{version\} ,
+		  	 price_agency_name = #\{priceAgencyName\} ,
+		  	 start_point_qyt = #\{startPointQyt\} ,
+		  	 base_pro_id = #\{baseProId\} ,
+		  	 pro_color_no = #\{proColorNo\} ,
+		  	 pro_desc = #\{proDesc\} ,
+		  	 pro_id = #\{proId\} ,
+		  	 target_client = #\{targetClient\} 
+	
+		where  bd_id = #\{bd_id\}
+	</update>
+	
+</mapper>

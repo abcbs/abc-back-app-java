@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.cwwarm.model.CwDonationBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.cwwarm.model.CwDonationBean">
+		<id column="cw_donation_id" property="cwDonationId" jdbcType="VARCHAR" />
+	
+    
+		<result column="dn_donated_phone" property="dnDonatedPhone" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="dn_life_status" property="dnLifeStatus" jdbcType="VARCHAR" />
+    
+		<result column="dn_donated_pic" property="dnDonatedPic" jdbcType="VARCHAR" />
+    
+		<result column="dn_donater_org_name" property="dnDonaterOrgName" jdbcType="VARCHAR" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="dn_donated_org" property="dnDonatedOrg" jdbcType="VARCHAR" />
+    
+		<result column="dn_donater_id" property="dnDonaterId" jdbcType="VARCHAR" />
+    
+		<result column="dn_donation_way" property="dnDonationWay" jdbcType="VARCHAR" />
+    
+		<result column="dn_donation_pic" property="dnDonationPic" jdbcType="VARCHAR" />
+    
+		<result column="dn_attr2" property="dnAttr2" jdbcType="VARCHAR" />
+    
+		<result column="dn_donated_detail_msg" property="dnDonatedDetailMsg" jdbcType="VARCHAR" />
+    
+		<result column="dn_donater_org" property="dnDonaterOrg" jdbcType="VARCHAR" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="cw_donation_type" property="cwDonationType" jdbcType="VARCHAR" />
+    
+		<result column="dn_donated_msg_id" property="dnDonatedMsgId" jdbcType="VARCHAR" />
+    
+		<result column="dn_donated_name" property="dnDonatedName" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="dn_donater_pic" property="dnDonaterPic" jdbcType="VARCHAR" />
+    
+		<result column="dn_attr1" property="dnAttr1" jdbcType="VARCHAR" />
+    
+		<result column="dn_donation_status" property="dnDonationStatus" jdbcType="VARCHAR" />
+    
+		<result column="dn_donate_goods_qty" property="dnDonateGoodsQty" jdbcType="VARCHAR" />
+    
+		<result column="dn_donater_name" property="dnDonaterName" jdbcType="VARCHAR" />
+    
+		<result column="dn_attr3" property="dnAttr3" jdbcType="VARCHAR" />
+    
+		<result column="dn_donated_id" property="dnDonatedId" jdbcType="VARCHAR" />
+    
+		<result column="dn_donated_org_name" property="dnDonatedOrgName" jdbcType="VARCHAR" />
+    
+		<result column="dn_attr4" property="dnAttr4" jdbcType="VARCHAR" />
+    
+		<result column="dn_donate_goods" property="dnDonateGoods" jdbcType="VARCHAR" />
+    
+		<result column="dn_donated_addr" property="dnDonatedAddr" jdbcType="VARCHAR" />
+    
+		<result column="dn_donation_desc" property="dnDonationDesc" jdbcType="VARCHAR" />
+    
+		<result column="dn_attr5" property="dnAttr5" jdbcType="VARCHAR" />
+    
+		<result column="dn_donater_phone" property="dnDonaterPhone" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		cw_donation_id as cwDonationId ,
+		dn_donated_phone as dnDonatedPhone ,
+		create_time as createTime ,
+		dn_life_status as dnLifeStatus ,
+		dn_donated_pic as dnDonatedPic ,
+		dn_donater_org_name as dnDonaterOrgName ,
+		create_by as createBy ,
+		dn_donated_org as dnDonatedOrg ,
+		dn_donater_id as dnDonaterId ,
+		dn_donation_way as dnDonationWay ,
+		dn_donation_pic as dnDonationPic ,
+		dn_attr2 as dnAttr2 ,
+		dn_donated_detail_msg as dnDonatedDetailMsg ,
+		dn_donater_org as dnDonaterOrg ,
+		update_by as updateBy ,
+		cw_donation_type as cwDonationType ,
+		dn_donated_msg_id as dnDonatedMsgId ,
+		dn_donated_name as dnDonatedName ,
+		update_time as updateTime ,
+		dn_donater_pic as dnDonaterPic ,
+		dn_attr1 as dnAttr1 ,
+		dn_donation_status as dnDonationStatus ,
+		dn_donate_goods_qty as dnDonateGoodsQty ,
+		dn_donater_name as dnDonaterName ,
+		dn_attr3 as dnAttr3 ,
+		dn_donated_id as dnDonatedId ,
+		dn_donated_org_name as dnDonatedOrgName ,
+		dn_attr4 as dnAttr4 ,
+		dn_donate_goods as dnDonateGoods ,
+		dn_donated_addr as dnDonatedAddr ,
+		dn_donation_desc as dnDonationDesc ,
+		dn_attr5 as dnAttr5 ,
+		dn_donater_phone as dnDonaterPhone 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="cwDonationId != null"> and cw_donation_id = #{cwDonationId}</if>
+				
+		  	    <if test="dnDonatedPhone != null"> and dn_donated_phone = #{dnDonatedPhone}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #{createTime}</if>
+				
+		  	    <if test="dnLifeStatus != null"> and dn_life_status = #{dnLifeStatus}</if>
+				
+		  	    <if test="dnDonatedPic != null"> and dn_donated_pic = #{dnDonatedPic}</if>
+				
+		  	    <if test="dnDonaterOrgName != null"> and dn_donater_org_name = #{dnDonaterOrgName}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #{createBy}</if>
+				
+		  	    <if test="dnDonatedOrg != null"> and dn_donated_org = #{dnDonatedOrg}</if>
+				
+		  	    <if test="dnDonaterId != null"> and dn_donater_id = #{dnDonaterId}</if>
+				
+		  	    <if test="dnDonationWay != null"> and dn_donation_way = #{dnDonationWay}</if>
+				
+		  	    <if test="dnDonationPic != null"> and dn_donation_pic = #{dnDonationPic}</if>
+				
+		  	    <if test="dnAttr2 != null"> and dn_attr2 = #{dnAttr2}</if>
+				
+		  	    <if test="dnDonatedDetailMsg != null"> and dn_donated_detail_msg = #{dnDonatedDetailMsg}</if>
+				
+		  	    <if test="dnDonaterOrg != null"> and dn_donater_org = #{dnDonaterOrg}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #{updateBy}</if>
+				
+		  	    <if test="cwDonationType != null"> and cw_donation_type = #{cwDonationType}</if>
+				
+		  	    <if test="dnDonatedMsgId != null"> and dn_donated_msg_id = #{dnDonatedMsgId}</if>
+				
+		  	    <if test="dnDonatedName != null"> and dn_donated_name = #{dnDonatedName}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #{updateTime}</if>
+				
+		  	    <if test="dnDonaterPic != null"> and dn_donater_pic = #{dnDonaterPic}</if>
+				
+		  	    <if test="dnAttr1 != null"> and dn_attr1 = #{dnAttr1}</if>
+				
+		  	    <if test="dnDonationStatus != null"> and dn_donation_status = #{dnDonationStatus}</if>
+				
+		  	    <if test="dnDonateGoodsQty != null"> and dn_donate_goods_qty = #{dnDonateGoodsQty}</if>
+				
+		  	    <if test="dnDonaterName != null"> and dn_donater_name = #{dnDonaterName}</if>
+				
+		  	    <if test="dnAttr3 != null"> and dn_attr3 = #{dnAttr3}</if>
+				
+		  	    <if test="dnDonatedId != null"> and dn_donated_id = #{dnDonatedId}</if>
+				
+		  	    <if test="dnDonatedOrgName != null"> and dn_donated_org_name = #{dnDonatedOrgName}</if>
+				
+		  	    <if test="dnAttr4 != null"> and dn_attr4 = #{dnAttr4}</if>
+				
+		  	    <if test="dnDonateGoods != null"> and dn_donate_goods = #{dnDonateGoods}</if>
+				
+		  	    <if test="dnDonatedAddr != null"> and dn_donated_addr = #{dnDonatedAddr}</if>
+				
+		  	    <if test="dnDonationDesc != null"> and dn_donation_desc = #{dnDonationDesc}</if>
+				
+		  	    <if test="dnAttr5 != null"> and dn_attr5 = #{dnAttr5}</if>
+				
+		  	    <if test="dnDonaterPhone != null"> and dn_donater_phone = #{dnDonaterPhone}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by ${sorting}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</sql>
+	
+	<!-- 查询总数 -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(cw_donation_id)
+		from cw_donation
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 查询 -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cw_donation
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cw_donation
+		where cw_donation_id = #{cwDonationId}
+	</select>
+	
+	<!-- 根据ID删除 -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cw_donation
+		where  cw_donation_id = #{cwDonationId}
+	</delete>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- 添加 -->	
+	<insert id="insert" parameterType="com.ndlan.cwwarm.model.CwDonationBean">
+		insert into cw_donation(
+		  	    cw_donation_id  ,
+	
+		  	    dn_donated_phone  ,
+	
+		  	    create_time  ,
+	
+		  	    dn_life_status  ,
+	
+		  	    dn_donated_pic  ,
+	
+		  	    dn_donater_org_name  ,
+	
+		  	    create_by  ,
+	
+		  	    dn_donated_org  ,
+	
+		  	    dn_donater_id  ,
+	
+		  	    dn_donation_way  ,
+	
+		  	    dn_donation_pic  ,
+	
+		  	    dn_attr2  ,
+	
+		  	    dn_donated_detail_msg  ,
+	
+		  	    dn_donater_org  ,
+	
+		  	    update_by  ,
+	
+		  	    cw_donation_type  ,
+	
+		  	    dn_donated_msg_id  ,
+	
+		  	    dn_donated_name  ,
+	
+		  	    update_time  ,
+	
+		  	    dn_donater_pic  ,
+	
+		  	    dn_attr1  ,
+	
+		  	    dn_donation_status  ,
+	
+		  	    dn_donate_goods_qty  ,
+	
+		  	    dn_donater_name  ,
+	
+		  	    dn_attr3  ,
+	
+		  	    dn_donated_id  ,
+	
+		  	    dn_donated_org_name  ,
+	
+		  	    dn_attr4  ,
+	
+		  	    dn_donate_goods  ,
+	
+		  	    dn_donated_addr  ,
+	
+		  	    dn_donation_desc  ,
+	
+		  	    dn_attr5  ,
+	
+		  	    dn_donater_phone  
+	
+			
+		)
+		values (
+		  	    #{cwDonationId } ,
+		  	    #{dnDonatedPhone } ,
+		  	    #{createTime } ,
+		  	    #{dnLifeStatus } ,
+		  	    #{dnDonatedPic } ,
+		  	    #{dnDonaterOrgName } ,
+		  	    #{createBy } ,
+		  	    #{dnDonatedOrg } ,
+		  	    #{dnDonaterId } ,
+		  	    #{dnDonationWay } ,
+		  	    #{dnDonationPic } ,
+		  	    #{dnAttr2 } ,
+		  	    #{dnDonatedDetailMsg } ,
+		  	    #{dnDonaterOrg } ,
+		  	    #{updateBy } ,
+		  	    #{cwDonationType } ,
+		  	    #{dnDonatedMsgId } ,
+		  	    #{dnDonatedName } ,
+		  	    #{updateTime } ,
+		  	    #{dnDonaterPic } ,
+		  	    #{dnAttr1 } ,
+		  	    #{dnDonationStatus } ,
+		  	    #{dnDonateGoodsQty } ,
+		  	    #{dnDonaterName } ,
+		  	    #{dnAttr3 } ,
+		  	    #{dnDonatedId } ,
+		  	    #{dnDonatedOrgName } ,
+		  	    #{dnAttr4 } ,
+		  	    #{dnDonateGoods } ,
+		  	    #{dnDonatedAddr } ,
+		  	    #{dnDonationDesc } ,
+		  	    #{dnAttr5 } ,
+		  	    #{dnDonaterPhone } 
+		)
+	</insert>
+	
+	
+	<!-- 通过ID更新 -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.cwwarm.model.CwDonationBean">
+		update cw_donation
+		<set>
+		  	<if test="dnDonatedPhone != null">  dn_donated_phone = #{dnDonatedPhone} ,</if>
+		  	<if test="createTime != null">  create_time = #{createTime} ,</if>
+		  	<if test="dnLifeStatus != null">  dn_life_status = #{dnLifeStatus} ,</if>
+		  	<if test="dnDonatedPic != null">  dn_donated_pic = #{dnDonatedPic} ,</if>
+		  	<if test="dnDonaterOrgName != null">  dn_donater_org_name = #{dnDonaterOrgName} ,</if>
+		  	<if test="createBy != null">  create_by = #{createBy} ,</if>
+		  	<if test="dnDonatedOrg != null">  dn_donated_org = #{dnDonatedOrg} ,</if>
+		  	<if test="dnDonaterId != null">  dn_donater_id = #{dnDonaterId} ,</if>
+		  	<if test="dnDonationWay != null">  dn_donation_way = #{dnDonationWay} ,</if>
+		  	<if test="dnDonationPic != null">  dn_donation_pic = #{dnDonationPic} ,</if>
+		  	<if test="dnAttr2 != null">  dn_attr2 = #{dnAttr2} ,</if>
+		  	<if test="dnDonatedDetailMsg != null">  dn_donated_detail_msg = #{dnDonatedDetailMsg} ,</if>
+		  	<if test="dnDonaterOrg != null">  dn_donater_org = #{dnDonaterOrg} ,</if>
+		  	<if test="updateBy != null">  update_by = #{updateBy} ,</if>
+		  	<if test="cwDonationType != null">  cw_donation_type = #{cwDonationType} ,</if>
+		  	<if test="dnDonatedMsgId != null">  dn_donated_msg_id = #{dnDonatedMsgId} ,</if>
+		  	<if test="dnDonatedName != null">  dn_donated_name = #{dnDonatedName} ,</if>
+		  	<if test="updateTime != null">  update_time = #{updateTime} ,</if>
+		  	<if test="dnDonaterPic != null">  dn_donater_pic = #{dnDonaterPic} ,</if>
+		  	<if test="dnAttr1 != null">  dn_attr1 = #{dnAttr1} ,</if>
+		  	<if test="dnDonationStatus != null">  dn_donation_status = #{dnDonationStatus} ,</if>
+		  	<if test="dnDonateGoodsQty != null">  dn_donate_goods_qty = #{dnDonateGoodsQty} ,</if>
+		  	<if test="dnDonaterName != null">  dn_donater_name = #{dnDonaterName} ,</if>
+		  	<if test="dnAttr3 != null">  dn_attr3 = #{dnAttr3} ,</if>
+		  	<if test="dnDonatedId != null">  dn_donated_id = #{dnDonatedId} ,</if>
+		  	<if test="dnDonatedOrgName != null">  dn_donated_org_name = #{dnDonatedOrgName} ,</if>
+		  	<if test="dnAttr4 != null">  dn_attr4 = #{dnAttr4} ,</if>
+		  	<if test="dnDonateGoods != null">  dn_donate_goods = #{dnDonateGoods} ,</if>
+		  	<if test="dnDonatedAddr != null">  dn_donated_addr = #{dnDonatedAddr} ,</if>
+		  	<if test="dnDonationDesc != null">  dn_donation_desc = #{dnDonationDesc} ,</if>
+		  	<if test="dnAttr5 != null">  dn_attr5 = #{dnAttr5} ,</if>
+		  	<if test="dnDonaterPhone != null">  dn_donater_phone = #{dnDonaterPhone} </if>
+		</set>
+		where  cw_donation_id = #{cwDonationId}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.cwwarm.model.CwDonationBean">
+		update cw_donation
+
+		set 
+		  	 dn_donated_phone = #{dnDonatedPhone} ,
+		  	 create_time = #{createTime} ,
+		  	 dn_life_status = #{dnLifeStatus} ,
+		  	 dn_donated_pic = #{dnDonatedPic} ,
+		  	 dn_donater_org_name = #{dnDonaterOrgName} ,
+		  	 create_by = #{createBy} ,
+		  	 dn_donated_org = #{dnDonatedOrg} ,
+		  	 dn_donater_id = #{dnDonaterId} ,
+		  	 dn_donation_way = #{dnDonationWay} ,
+		  	 dn_donation_pic = #{dnDonationPic} ,
+		  	 dn_attr2 = #{dnAttr2} ,
+		  	 dn_donated_detail_msg = #{dnDonatedDetailMsg} ,
+		  	 dn_donater_org = #{dnDonaterOrg} ,
+		  	 update_by = #{updateBy} ,
+		  	 cw_donation_type = #{cwDonationType} ,
+		  	 dn_donated_msg_id = #{dnDonatedMsgId} ,
+		  	 dn_donated_name = #{dnDonatedName} ,
+		  	 update_time = #{updateTime} ,
+		  	 dn_donater_pic = #{dnDonaterPic} ,
+		  	 dn_attr1 = #{dnAttr1} ,
+		  	 dn_donation_status = #{dnDonationStatus} ,
+		  	 dn_donate_goods_qty = #{dnDonateGoodsQty} ,
+		  	 dn_donater_name = #{dnDonaterName} ,
+		  	 dn_attr3 = #{dnAttr3} ,
+		  	 dn_donated_id = #{dnDonatedId} ,
+		  	 dn_donated_org_name = #{dnDonatedOrgName} ,
+		  	 dn_attr4 = #{dnAttr4} ,
+		  	 dn_donate_goods = #{dnDonateGoods} ,
+		  	 dn_donated_addr = #{dnDonatedAddr} ,
+		  	 dn_donation_desc = #{dnDonationDesc} ,
+		  	 dn_attr5 = #{dnAttr5} ,
+		  	 dn_donater_phone = #{dnDonaterPhone} 
+	
+		where  cw_donation_id = #{cwDonationId}
+	</update>
+	
+</mapper>

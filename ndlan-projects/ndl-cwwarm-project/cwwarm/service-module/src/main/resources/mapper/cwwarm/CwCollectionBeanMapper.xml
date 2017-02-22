@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.cwwarm.model.CwCollectionBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.cwwarm.model.CwCollectionBean">
+		<id column="cw_comment_id" property="cwCommentId" jdbcType="VARCHAR" />
+	
+    
+		<result column="clt_life_status" property="cltLifeStatus" jdbcType="VARCHAR" />
+    
+		<result column="clt_by_pic" property="cltByPic" jdbcType="VARCHAR" />
+    
+		<result column="clt_attr5" property="cltAttr5" jdbcType="VARCHAR" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="clt_obj_id" property="cltObjId" jdbcType="VARCHAR" />
+    
+		<result column="clt_by" property="cltBy" jdbcType="VARCHAR" />
+    
+		<result column="clt_by_name" property="cltByName" jdbcType="VARCHAR" />
+    
+		<result column="clt_attr1" property="cltAttr1" jdbcType="VARCHAR" />
+    
+		<result column="clt_attr3" property="cltAttr3" jdbcType="VARCHAR" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+    
+		<result column="clt_obj_type" property="cltObjType" jdbcType="VARCHAR" />
+    
+		<result column="clt_attr4" property="cltAttr4" jdbcType="VARCHAR" />
+    
+		<result column="clt_obj_msg" property="cltObjMsg" jdbcType="VARCHAR" />
+    
+		<result column="clt_busi_status" property="cltBusiStatus" jdbcType="VARCHAR" />
+    
+		<result column="clt_attr2" property="cltAttr2" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		clt_life_status as cltLifeStatus ,
+		clt_by_pic as cltByPic ,
+		clt_attr5 as cltAttr5 ,
+		create_by as createBy ,
+		update_time as updateTime ,
+		clt_obj_id as cltObjId ,
+		clt_by as cltBy ,
+		clt_by_name as cltByName ,
+		clt_attr1 as cltAttr1 ,
+		clt_attr3 as cltAttr3 ,
+		update_by as updateBy ,
+		create_time as createTime ,
+		remark as remark ,
+		clt_obj_type as cltObjType ,
+		clt_attr4 as cltAttr4 ,
+		clt_obj_msg as cltObjMsg ,
+		clt_busi_status as cltBusiStatus ,
+		clt_attr2 as cltAttr2 ,
+		cw_comment_id as cwCommentId 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="cltLifeStatus != null"> and clt_life_status = #{cltLifeStatus}</if>
+				
+		  	    <if test="cltByPic != null"> and clt_by_pic = #{cltByPic}</if>
+				
+		  	    <if test="cltAttr5 != null"> and clt_attr5 = #{cltAttr5}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #{createBy}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #{updateTime}</if>
+				
+		  	    <if test="cltObjId != null"> and clt_obj_id = #{cltObjId}</if>
+				
+		  	    <if test="cltBy != null"> and clt_by = #{cltBy}</if>
+				
+		  	    <if test="cltByName != null"> and clt_by_name = #{cltByName}</if>
+				
+		  	    <if test="cltAttr1 != null"> and clt_attr1 = #{cltAttr1}</if>
+				
+		  	    <if test="cltAttr3 != null"> and clt_attr3 = #{cltAttr3}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #{updateBy}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #{createTime}</if>
+				
+		  	    <if test="remark != null"> and remark = #{remark}</if>
+				
+		  	    <if test="cltObjType != null"> and clt_obj_type = #{cltObjType}</if>
+				
+		  	    <if test="cltAttr4 != null"> and clt_attr4 = #{cltAttr4}</if>
+				
+		  	    <if test="cltObjMsg != null"> and clt_obj_msg = #{cltObjMsg}</if>
+				
+		  	    <if test="cltBusiStatus != null"> and clt_busi_status = #{cltBusiStatus}</if>
+				
+		  	    <if test="cltAttr2 != null"> and clt_attr2 = #{cltAttr2}</if>
+				
+		  	    <if test="cwCommentId != null"> and cw_comment_id = #{cwCommentId}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by ${sorting}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</sql>
+	
+	<!-- 查询总数 -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(cw_comment_id)
+		from cw_collection
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 查询 -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cw_collection
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cw_collection
+		where cw_comment_id = #{cwCommentId}
+	</select>
+	
+	<!-- 根据ID删除 -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cw_collection
+		where  cw_comment_id = #{cwCommentId}
+	</delete>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- 添加 -->	
+	<insert id="insert" parameterType="com.ndlan.cwwarm.model.CwCollectionBean">
+		insert into cw_collection(
+		  	    clt_life_status  ,
+	
+		  	    clt_by_pic  ,
+	
+		  	    clt_attr5  ,
+	
+		  	    create_by  ,
+	
+		  	    update_time  ,
+	
+		  	    clt_obj_id  ,
+	
+		  	    clt_by  ,
+	
+		  	    clt_by_name  ,
+	
+		  	    clt_attr1  ,
+	
+		  	    clt_attr3  ,
+	
+		  	    update_by  ,
+	
+		  	    create_time  ,
+	
+		  	    remark  ,
+	
+		  	    clt_obj_type  ,
+	
+		  	    clt_attr4  ,
+	
+		  	    clt_obj_msg  ,
+	
+		  	    clt_busi_status  ,
+	
+		  	    clt_attr2  ,
+	
+		  	    cw_comment_id  
+	
+			
+		)
+		values (
+		  	    #{cltLifeStatus } ,
+		  	    #{cltByPic } ,
+		  	    #{cltAttr5 } ,
+		  	    #{createBy } ,
+		  	    #{updateTime } ,
+		  	    #{cltObjId } ,
+		  	    #{cltBy } ,
+		  	    #{cltByName } ,
+		  	    #{cltAttr1 } ,
+		  	    #{cltAttr3 } ,
+		  	    #{updateBy } ,
+		  	    #{createTime } ,
+		  	    #{remark } ,
+		  	    #{cltObjType } ,
+		  	    #{cltAttr4 } ,
+		  	    #{cltObjMsg } ,
+		  	    #{cltBusiStatus } ,
+		  	    #{cltAttr2 } ,
+		  	    #{cwCommentId } 
+		)
+	</insert>
+	
+	
+	<!-- 通过ID更新 -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.cwwarm.model.CwCollectionBean">
+		update cw_collection
+		<set>
+		  	<if test="cltLifeStatus != null">  clt_life_status = #{cltLifeStatus} ,</if>
+		  	<if test="cltByPic != null">  clt_by_pic = #{cltByPic} ,</if>
+		  	<if test="cltAttr5 != null">  clt_attr5 = #{cltAttr5} ,</if>
+		  	<if test="createBy != null">  create_by = #{createBy} ,</if>
+		  	<if test="updateTime != null">  update_time = #{updateTime} ,</if>
+		  	<if test="cltObjId != null">  clt_obj_id = #{cltObjId} ,</if>
+		  	<if test="cltBy != null">  clt_by = #{cltBy} ,</if>
+		  	<if test="cltByName != null">  clt_by_name = #{cltByName} ,</if>
+		  	<if test="cltAttr1 != null">  clt_attr1 = #{cltAttr1} ,</if>
+		  	<if test="cltAttr3 != null">  clt_attr3 = #{cltAttr3} ,</if>
+		  	<if test="updateBy != null">  update_by = #{updateBy} ,</if>
+		  	<if test="createTime != null">  create_time = #{createTime} ,</if>
+		  	<if test="remark != null">  remark = #{remark} ,</if>
+		  	<if test="cltObjType != null">  clt_obj_type = #{cltObjType} ,</if>
+		  	<if test="cltAttr4 != null">  clt_attr4 = #{cltAttr4} ,</if>
+		  	<if test="cltObjMsg != null">  clt_obj_msg = #{cltObjMsg} ,</if>
+		  	<if test="cltBusiStatus != null">  clt_busi_status = #{cltBusiStatus} ,</if>
+		  	<if test="cltAttr2 != null">  clt_attr2 = #{cltAttr2} ,</if>
+		</set>
+		where  cw_comment_id = #{cwCommentId}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.cwwarm.model.CwCollectionBean">
+		update cw_collection
+
+		set 
+		  	 clt_life_status = #{cltLifeStatus} ,
+		  	 clt_by_pic = #{cltByPic} ,
+		  	 clt_attr5 = #{cltAttr5} ,
+		  	 create_by = #{createBy} ,
+		  	 update_time = #{updateTime} ,
+		  	 clt_obj_id = #{cltObjId} ,
+		  	 clt_by = #{cltBy} ,
+		  	 clt_by_name = #{cltByName} ,
+		  	 clt_attr1 = #{cltAttr1} ,
+		  	 clt_attr3 = #{cltAttr3} ,
+		  	 update_by = #{updateBy} ,
+		  	 create_time = #{createTime} ,
+		  	 remark = #{remark} ,
+		  	 clt_obj_type = #{cltObjType} ,
+		  	 clt_attr4 = #{cltAttr4} ,
+		  	 clt_obj_msg = #{cltObjMsg} ,
+		  	 clt_busi_status = #{cltBusiStatus} ,
+		  	 clt_attr2 = #{cltAttr2} ,
+	
+		where  cw_comment_id = #{cwCommentId}
+	</update>
+	
+</mapper>

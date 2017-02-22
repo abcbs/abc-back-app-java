@@ -1,0 +1,11 @@
+.uboxstyle{float:left; margin-left:-7px;}
+.uboxstyle .select_box{width:212px;height:44px; font-size:14px;}
+.uboxstyle div.tag_select{display:block;width:182px;height:51px;background:url(../images/select_bg.png) 0 0;padding:0 15px;line-height:51px;}
+.uboxstyle div.tag_select_hover{display:block;width:182px;height:51px;background:transparent url(../images/select_bg.png) 0 0;padding:0 15px;line-height:51px;}
+.uboxstyle div.tag_select_open{display:block;width:182px;height:51px;background:transparent url(../images/select_bg.png) 0 -57px;padding:0 15px;line-height:51px;}
+
+.uboxstyle ul.tag_options{position:absolute;margin:0;list-style:none;background:transparent url(../images/select_bg.png) right bottom;width:212px;padding:0 0 12px 0;}
+.uboxstyle ul.tag_options li{background:transparent url(../images/select_bg.png) 0 -148px;display:block;width:182px;padding:0 15px;height:44px;line-height:44px;}
+
+.uboxstyle ul.tag_options li.open_hover{background:transparent url(../images/select_bg.png) 0 -192px;}
+

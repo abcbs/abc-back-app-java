@@ -1,0 +1,4 @@
+org\com\abc\sample\service\integration\SampleIntegrationApplication.class
+org\com\abc\sample\service\integration\HelloWorldService.class
+org\com\abc\sample\service\integration\SampleEndpoint.class
+org\com\abc\sample\service\integration\ServiceProperties.class

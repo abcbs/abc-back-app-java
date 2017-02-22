@@ -1,0 +1,98 @@
+/* CSS Document */
+@charset "utf-8";
+*{margin:0;padding:0;}
+ol, ul,li{list-style:none;}
+body{width:1280px;heigh:1024px; background:url(../../images/zizhu/zizu_body.jpg) no-repeat;}
+.left{float:left;}
+/*首页begin*/
+.header{width:1280px;height:54px;float:left;position:relative;background:url(../../images/zizhu/bg_2.png) repeat;}
+.header .logo{width:113px;height:37px;margin:5px auto;background:url(../../images/zizhu/logo.png);}
+.header .time{font-size:24px;color:#fff;position:absolute;top:7px;right:20px; word-spacing:20px;}
+.header .close{width:25px;height:29px;position:absolute;top:10px;left:25px;cursor:pointer;background:url(../../images/zizhu/zizu_bg1.png) -356px 0;}
+
+.main{width:1280px;height:970px;float:left;position:relative;}
+.djs{color:#fff;font-size:40px;position:absolute;top:80px;right:50px;}
+.address{color:#fff;font-size:16px; font-style:italic;position:absolute;bottom:10px;right:20px;}
+.dc_menu{width:360px;height:60px;margin:80px auto;}
+.dc_menu a{float:left;margin-right:22px;}
+.bell{width:32px;height:37px;display:block;cursor:pointer;background:url(../../images/zizhu/zizu_bg1.png);}
+.tea{width:33px;height:37px;display:block;cursor:pointer;background:url(../../images/zizhu/zizu_bg1.png) -53px 0;}
+.G2{width:120px;height:42px;display:block;float:left;margin-right:22px;cursor:pointer;background:url(../../images/zizhu/zizu_bg1.png) -115px 0;}
+.drink_glass{width:28px;height:42px;display:block;float:left;cursor:pointer;background:url(../../images/zizhu/zizu_bg1.png) -261px 0;}
+.plate{width:33px;height:37px;display:block;cursor:pointer;background:url(../../images/zizhu/zizu_bg1.png) -309px 0;}
+
+.system{width:200px;height:45px; margin:0 auto;color:#fff;font-size:32px;}
+/*自助午餐1样式*/
+.zizu_wu1{width:315px; height:350px;color:#fff;position:absolute; top:280px;left:10px;}
+.zizu_wu1 dt{width:315px;height:30px;float:left;color:#9d5101;text-align:center;font-size:24px;}
+.zizu_wu1 dd{width:315px;height:315px;display:block;float:left;background:url(../../images/zizhu/zizu_bg2.png);cursor:pointer;}
+.zizu_wu1 dd:hover{width:315px;height:315px;display:block;background:url(../../images/zizhu/zizu_bg2.png) 0 -315px;}
+.zizu_wu1 span{width:315px;heigth:20px;font-size:40px;text-align:center;display:block;float:left;margin-top:160px;}
+.zizu_wu1 i{width:315px;heigth:20px;font-size:28px;display:block;float:left;text-align:center;margin-top:10px;font-style:normal;}
+/*自助午餐2样式*/
+.zizu_wu2{width:315px; height:350px;color:#fff;position:absolute; top:420px;left:325px;}
+.zizu_wu2 dt{width:315px;height:30px;float:left;color:#9d5101;text-align:center;font-size:24px;}
+.zizu_wu2 dd{width:315px;height:315px;display:block;float:left;background:url(../../images/zizhu/zizu_bg2.png) -315px 0;cursor:pointer;}
+.zizu_wu2 dd:hover{width:315px;height:315px;display:block;background:url(../../images/zizhu/zizu_bg2.png) -315px -315px;}
+.zizu_wu2 span{width:315px;heigth:20px;font-size:40px;text-align:center;display:block;float:left;margin-top:160px;}
+.zizu_wu2 i{width:315px;heigth:20px;font-size:28px;display:block;float:left;text-align:center;margin-top:10px;font-style:normal;}
+/*自助晚餐1样式*/
+.zizu_wan1{width:315px; height:350px;color:#fff;position:absolute; top:420px;left:640px;}
+.zizu_wan1 dt{width:315px;height:30px;float:left;color:#9d5101;text-align:center;font-size:24px;}
+.zizu_wan1 dd{width:315px;height:315px;display:block;float:left;background:url(../../images/zizhu/zizu_bg2.png) -630px 0;cursor:pointer;}
+.zizu_wan1 dd:hover{width:315px;height:315px;display:block;background:url(../../images/zizhu/zizu_bg2.png) -630px -315px;}
+.zizu_wan1 span{width:315px;heigth:20px;font-size:40px;text-align:center;display:block;float:left;margin-top:160px;}
+.zizu_wan1 i{width:315px;heigth:20px;font-size:28px;display:block;float:left;text-align:center;margin-top:10px;font-style:normal;}
+/*自助晚餐2样式*/
+.zizu_wan2{width:315px; height:350px;color:#fff;position:absolute; top:280px;left:955px;}
+.zizu_wan2 dt{width:315px;height:30px;float:left;color:#9d5101;text-align:center;font-size:24px;}
+.zizu_wan2 dd{width:315px;height:315px;display:block;float:left;background:url(../../images/zizhu/zizu_bg2.png) -945px 0;cursor:pointer;}
+.zizu_wan2 dd:hover{width:315px;height:315px;display:block;background:url(../../images/zizhu/zizu_bg2.png) -945px -315px;}
+.zizu_wan2 span{width:315px;heigth:20px;font-size:40px;text-align:center;display:block;float:left;margin-top:160px;}
+.zizu_wan2 i{width:315px;heigth:20px;font-size:28px;display:block;float:left;text-align:center;margin-top:10px;font-style:normal;}
+/*选中时文字的颜色*/
+.text_yellow dt{color:#ff8800;}
+/*首页end*/
+.white_box1{width:900px;height:810px;float:left;margin:70px 0 0 190px;display:inline;background:url(../../images/zizhu/white_bg1.png);position:relative;}
+.title_1{width:180px;height:50px;margin:40px auto;padding-left:60px;color:#ff6600;font-size:40px;background:url(../../images/zizhu/zizu_bg1.png) 0 -110px;}
+.white_box2{width:900px;height:810px;float:left;margin:70px 0 0 190px;background:url(../../images/zizhu/white_bg2.png);position:relative;}
+.title_2{width:180px;height:50px;margin:40px auto;padding-left:60px;color:#ff6600;font-size:40px;background:url(../../images/zizhu/zizu_bg1.png) 0 -289px;}
+.white_box3{width:900px;height:810px;float:left;margin:70px 0 0 190px;background:url(../../images/zizhu/white_bg3.png);position:relative;}
+.title_3{width:180px;height:50px;margin:40px auto;padding-left:60px;color:#ff6600;font-size:40px;background:url(../../images/zizhu/zizu_bg1.png) 0 -239px;}
+.white_box4{width:900px;height:810px;float:left;margin:70px 0 0 190px;background:url(../../images/zizhu/white_bg4.png);position:relative;}
+.title_4{width:180px;height:50px;margin:40px auto;padding-left:60px;color:#ff6600;font-size:40px;background:url(../../images/zizhu/zizu_bg1.png) 0 -189px;}
+.can_list{width:710px;height:90px;float:left;margin-left:100px;display:inline;position:relative;}
+.can_list p{font-size:24px;color:#ff6600;float:left;height:80px;margin:8px 20px 0 0;display:inline;}
+.can_list span{font-size:24px;height:80px;float:left;margin-top:8px;}
+.caozuo_wrap{width:220px;height:80px;float:right;}
+.caozuo_wrap input{border:1px solid #ff6600;float:left;font-size:24px;height:52px;width:70px;margin-right:20px;}
+.minus{width:54px;height:54px;float:left;display:block;background:url(../../images/zizhu/zizu_bg1.png) -122px -49px;cursor:pointer;margin-right:20px;}
+.minus:hover{background:url(../../images/zizhu/zizu_bg1.png) 0 -49px;}
+.add{background:url(../../images/zizhu/zizu_bg1.png) -183px -49px;cursor:pointer;display:block;float:left;height:54px;width:54px;}
+.add:hover{background:url(../../images/zizhu/zizu_bg1.png) -61px -49px;}
+.tixing{background:url(../../images/zizhu/zizu_bg1.png) 0 -166px no-repeat;color:#ff0000;font-size:18px;height:23px;width:710px;padding-left:30px;position:absolute;bottom:10px;left:10px;}
+.zongjia{position:absolute;bottom:100px;left:100px;width:710px;height:90px;}
+.zongjia p{color:#ff6600;font-size:30px;float:left;font-weight:bold;}
+.zongjia span{float:right;font-size:30px;margin-right:50px;font-weight:bold;}
+
+.but_area{position:absolute;bottom:20px;left:100px;width:710px;height:90px;}
+/*共用按钮*/
+.but_zizu{cursor:pointer;color:#fff;width:166px;height:72px;display:block;float:left;font-size:22px;line-height:72px;text-align:center;vertial-align:middle;background:#ff8800;margin-right:10px;}
+.but_zizu:hover{background:#ff6600;}
+
+
+
+.pay_card{width:410px;height:249px;float:left;margin:200px 0 0 400px;display:inline;background:url(../../images/zizhu/bg_card.png);}
+.pay_card_bank{width:410px;height:249px;float:left;margin:200px 0 0 400px;display:inline;background:url(../../images/zizhu/bg_card_bank.png);}
+.input_area{width:278px;height:120px;float:left;margin:40px 0 0 460px;display:inline;}
+.input_area input{width:278px;height:54px;background:url(../../images/zizhu/zizu_bg1.png) 0 -346px; margin-bottom:10px;line-height:54px;vertical:middle;padding-left:8px;border:0;color:#fff;font-size:18px;}
+.but_wrap_3{width:528px;height:249px;float:left;margin:40px 0 0 360px;display:inline;}
+.but_wrap_1{width:528px;height:249px;float:left;margin:20px 0 0 560px;display:inline;}
+.but_wrap_2{width:528px;height:249px;float:left;margin:40px 0 0 480px;display:inline;}
+.zizu_face{width:295px;height:106px;float:left;margin:200px 0 0 500px;display:inline;background:url(../../images/zizhu/bg_4.png) 0 -55px no-repeat;}
+.zizu_face_fail{width:295px;height:106px;float:left;margin:200px 0 0 500px;display:inline;background:url(../../images/zizhu/bg_4.png) 0 -162px no-repeat;}
+.zizu_text_wrap{height:106px;position:absolute;left:50%;top:400px;}
+.zizu_text{position:relative;float:left;left:-50%;height:106px;font-size:36px;color:#fff;}
+.zizu_text span{font-size:48px;}
+.zizu_text_yellow{color:#ff8800;font-size:30px;width:360px;height:120px;float:left;margin:200px 0 0 460px;display:inline;}
+.zizu_text_fail{color:#fff;font-size:30px;width:360px;height:120px;float:left;margin:160px 0 0 490px;display:inline;}

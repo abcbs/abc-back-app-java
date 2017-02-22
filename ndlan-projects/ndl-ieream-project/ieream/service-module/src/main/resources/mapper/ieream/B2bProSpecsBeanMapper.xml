@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.B2bProSpecsBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.B2bProSpecsBean">
+		<id column="specs_id" property="specsId" jdbcType="VARCHAR" />
+	
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="specs_name" property="specsName" jdbcType="VARCHAR" />
+    
+		<result column="is_syn" property="isSyn" jdbcType="BIGINT" />
+    
+		<result column="volume" property="volume" jdbcType="VARCHAR" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="capacity" property="capacity" jdbcType="VARCHAR" />
+    
+		<result column="version" property="version" jdbcType="BIGINT" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+    
+		<result column="specs_status" property="specsStatus" jdbcType="VARCHAR" />
+    
+		<result column="size" property="size" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		update_time as updateTime ,
+		specs_name as specsName ,
+		is_syn as isSyn ,
+		specs_id as specsId ,
+		volume as volume ,
+		create_by as createBy ,
+		capacity as capacity ,
+		version as version ,
+		update_by as updateBy ,
+		create_time as createTime ,
+		syn_version as synVersion ,
+		specs_status as specsStatus ,
+		size as size 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="updateTime != null"> and update_time = #\{updateTime\}</if>
+				
+		  	    <if test="specsName != null"> and specs_name = #\{specsName\}</if>
+				
+		  	    <if test="isSyn != null"> and is_syn = #\{isSyn\}</if>
+				
+		  	    <if test="specsId != null"> and specs_id = #\{specsId\}</if>
+				
+		  	    <if test="volume != null"> and volume = #\{volume\}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #\{createBy\}</if>
+				
+		  	    <if test="capacity != null"> and capacity = #\{capacity\}</if>
+				
+		  	    <if test="version != null"> and version = #\{version\}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #\{updateBy\}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #\{createTime\}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #\{synVersion\}</if>
+				
+		  	    <if test="specsStatus != null"> and specs_status = #\{specsStatus\}</if>
+				
+		  	    <if test="size != null"> and size = #\{size\}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by $\{sorting\}</if>
+		<if test="offset != null and limit != null">
+			limit #\{offset\}, #\{limit\}
+		</if>
+	</sql>
+	
+	<!-- 查询总数 -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(specs_id)
+		from b2b_pro_specs
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 查询 -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from b2b_pro_specs
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from b2b_pro_specs
+		where specs_id = #\{specs_id\}
+	</select>
+	
+	<!-- 根据ID删除 -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from b2b_pro_specs
+		where  specs_id = #\{specs_id\}
+	</delete>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- 添加 -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.B2bProSpecsBean">
+		insert into b2b_pro_specs(
+		  	    update_time  ,
+	
+		  	    specs_name  ,
+	
+		  	    is_syn  ,
+	
+		  	    specs_id  ,
+	
+		  	    volume  ,
+	
+		  	    create_by  ,
+	
+		  	    capacity  ,
+	
+		  	    version  ,
+	
+		  	    update_by  ,
+	
+		  	    create_time  ,
+	
+		  	    syn_version  ,
+	
+		  	    specs_status  ,
+	
+		  	    size  
+	
+			
+		)
+		values (
+		  	    #\{updateTime \} ,
+		  	    #\{specsName \} ,
+		  	    #\{isSyn \} ,
+		  	    #\{specsId \} ,
+		  	    #\{volume \} ,
+		  	    #\{createBy \} ,
+		  	    #\{capacity \} ,
+		  	    #\{version \} ,
+		  	    #\{updateBy \} ,
+		  	    #\{createTime \} ,
+		  	    #\{synVersion \} ,
+		  	    #\{specsStatus \} ,
+		  	    #\{size \} 
+		)
+	</insert>
+	
+	
+	<!-- 通过ID更新 -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.B2bProSpecsBean">
+		update b2b_pro_specs
+		<set>
+		  	<if test=\"updateTime != null\">  update_time = #\{updateTime\} ,</if>
+		  	<if test=\"specsName != null\">  specs_name = #\{specsName\} ,</if>
+		  	<if test=\"isSyn != null\">  is_syn = #\{isSyn\} ,</if>
+		  	<if test=\"volume != null\">  volume = #\{volume\} ,</if>
+		  	<if test=\"createBy != null\">  create_by = #\{createBy\} ,</if>
+		  	<if test=\"capacity != null\">  capacity = #\{capacity\} ,</if>
+		  	<if test=\"version != null\">  version = #\{version\} ,</if>
+		  	<if test=\"updateBy != null\">  update_by = #\{updateBy\} ,</if>
+		  	<if test=\"createTime != null\">  create_time = #\{createTime\} ,</if>
+		  	<if test=\"synVersion != null\">  syn_version = #\{synVersion\} ,</if>
+		  	<if test=\"specsStatus != null\">  specs_status = #\{specsStatus\} ,</if>
+		  	<if test=\"size != null\">  size = #\{size\} </if>
+		</set>
+		where  specs_id = #\{specs_id\}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.B2bProSpecsBean">
+		update b2b_pro_specs
+
+		set 
+		  	 update_time = #\{updateTime\} ,
+		  	 specs_name = #\{specsName\} ,
+		  	 is_syn = #\{isSyn\} ,
+		  	 volume = #\{volume\} ,
+		  	 create_by = #\{createBy\} ,
+		  	 capacity = #\{capacity\} ,
+		  	 version = #\{version\} ,
+		  	 update_by = #\{updateBy\} ,
+		  	 create_time = #\{createTime\} ,
+		  	 syn_version = #\{synVersion\} ,
+		  	 specs_status = #\{specsStatus\} ,
+		  	 size = #\{size\} 
+	
+		where  specs_id = #\{specs_id\}
+	</update>
+	
+</mapper>

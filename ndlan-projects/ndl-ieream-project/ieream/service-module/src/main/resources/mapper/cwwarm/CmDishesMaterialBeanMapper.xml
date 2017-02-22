@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.CmDishesMaterialBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.CmDishesMaterialBean">
+		<id column="material_id" property="materialId" jdbcType="VARCHAR" />
+	
+    
+		<result column="rest_id" property="restId" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="sysdata_type" property="sysdataType" jdbcType="VARCHAR" />
+    
+		<result column="version" property="version" jdbcType="BIGINT" />
+    
+		<result column="is_syn" property="isSyn" jdbcType="VARCHAR" />
+    
+		<result column="enable_status" property="enableStatus" jdbcType="VARCHAR" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="show_seq" property="showSeq" jdbcType="BIGINT" />
+    
+		<result column="name" property="name" jdbcType="VARCHAR" />
+    
+		<result column="code" property="code" jdbcType="VARCHAR" />
+    
+		<result column="foreign_name" property="foreignName" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		rest_id as restId ,
+		create_time as createTime ,
+		sysdata_type as sysdataType ,
+		version as version ,
+		material_id as materialId ,
+		is_syn as isSyn ,
+		enable_status as enableStatus ,
+		update_by as updateBy ,
+		syn_version as synVersion ,
+		create_by as createBy ,
+		show_seq as showSeq ,
+		name as name ,
+		code as code ,
+		foreign_name as foreignName ,
+		update_time as updateTime 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="restId != null"> and rest_id = #{restId}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #{createTime}</if>
+				
+		  	    <if test="sysdataType != null"> and sysdata_type = #{sysdataType}</if>
+				
+		  	    <if test="version != null"> and version = #{version}</if>
+				
+		  	    <if test="materialId != null"> and material_id = #{materialId}</if>
+				
+		  	    <if test="isSyn != null"> and is_syn = #{isSyn}</if>
+				
+		  	    <if test="enableStatus != null"> and enable_status = #{enableStatus}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #{updateBy}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #{synVersion}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #{createBy}</if>
+				
+		  	    <if test="showSeq != null"> and show_seq = #{showSeq}</if>
+				
+		  	    <if test="name != null"> and name = #{name}</if>
+				
+		  	    <if test="code != null"> and code = #{code}</if>
+				
+		  	    <if test="foreignName != null"> and foreign_name = #{foreignName}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #{updateTime}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by ${sorting}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</sql>
+	
+	<!-- ��ѯ���� -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(material_id)
+		from cm_dishes_material
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ��ѯ -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cm_dishes_material
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ����ID��ѯ -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cm_dishes_material
+		where material_id = #{material_id}
+	</select>
+	
+	<!-- ����IDɾ�� -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cm_dishes_material
+		where  material_id = #{material_id}
+	</delete>
+	
+	<!-- ɾ�� -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- ��� -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.CmDishesMaterialBean">
+		insert into cm_dishes_material(
+		  	    rest_id  ,
+	
+		  	    create_time  ,
+	
+		  	    sysdata_type  ,
+	
+		  	    version  ,
+	
+		  	    material_id  ,
+	
+		  	    is_syn  ,
+	
+		  	    enable_status  ,
+	
+		  	    update_by  ,
+	
+		  	    syn_version  ,
+	
+		  	    create_by  ,
+	
+		  	    show_seq  ,
+	
+		  	    name  ,
+	
+		  	    code  ,
+	
+		  	    foreign_name  ,
+	
+		  	    update_time  
+	
+			
+		)
+		values (
+		  	    #{restId } ,
+		  	    #{createTime } ,
+		  	    #{sysdataType } ,
+		  	    #{version } ,
+		  	    #{materialId } ,
+		  	    #{isSyn } ,
+		  	    #{enableStatus } ,
+		  	    #{updateBy } ,
+		  	    #{synVersion } ,
+		  	    #{createBy } ,
+		  	    #{showSeq } ,
+		  	    #{name } ,
+		  	    #{code } ,
+		  	    #{foreignName } ,
+		  	    #{updateTime } 
+		)
+	</insert>
+	
+	
+	<!-- ͨ��ID���� -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.CmDishesMaterialBean">
+		update cm_dishes_material
+		<set>
+		  	<if test="restId != null">  rest_id = #{restId} ,</if>
+		  	<if test="createTime != null">  create_time = #{createTime} ,</if>
+		  	<if test="sysdataType != null">  sysdata_type = #{sysdataType} ,</if>
+		  	<if test="version != null">  version = #{version} ,</if>
+		  	<if test="isSyn != null">  is_syn = #{isSyn} ,</if>
+		  	<if test="enableStatus != null">  enable_status = #{enableStatus} ,</if>
+		  	<if test="updateBy != null">  update_by = #{updateBy} ,</if>
+		  	<if test="synVersion != null">  syn_version = #{synVersion} ,</if>
+		  	<if test="createBy != null">  create_by = #{createBy} ,</if>
+		  	<if test="showSeq != null">  show_seq = #{showSeq} ,</if>
+		  	<if test="name != null">  name = #{name} ,</if>
+		  	<if test="code != null">  code = #{code} ,</if>
+		  	<if test="foreignName != null">  foreign_name = #{foreignName} ,</if>
+		  	<if test="updateTime != null">  update_time = #{updateTime} </if>
+		</set>
+		where  material_id = #{material_id}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.CmDishesMaterialBean">
+		update cm_dishes_material
+
+		set 
+		  	 rest_id = #{restId} ,
+		  	 create_time = #{createTime} ,
+		  	 sysdata_type = #{sysdataType} ,
+		  	 version = #{version} ,
+		  	 is_syn = #{isSyn} ,
+		  	 enable_status = #{enableStatus} ,
+		  	 update_by = #{updateBy} ,
+		  	 syn_version = #{synVersion} ,
+		  	 create_by = #{createBy} ,
+		  	 show_seq = #{showSeq} ,
+		  	 name = #{name} ,
+		  	 code = #{code} ,
+		  	 foreign_name = #{foreignName} ,
+		  	 update_time = #{updateTime} 
+	
+		where  material_id = #{material_id}
+	</update>
+	
+</mapper>

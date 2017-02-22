@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.CmStorageBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.CmStorageBean">
+		<id column="storage_id" property="storageId" jdbcType="VARCHAR" />
+	
+    
+		<result column="manager_name" property="managerName" jdbcType="VARCHAR" />
+    
+		<result column="manager_phone" property="managerPhone" jdbcType="VARCHAR" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+    
+		<result column="rest_id" property="restId" jdbcType="VARCHAR" />
+    
+		<result column="manager_id" property="managerId" jdbcType="VARCHAR" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="storage_no" property="storageNo" jdbcType="VARCHAR" />
+    
+		<result column="state" property="state" jdbcType="VARCHAR" />
+    
+		<result column="is_syn" property="isSyn" jdbcType="VARCHAR" />
+    
+		<result column="storage_time" property="storageTime" jdbcType="DATE" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="version" property="version" jdbcType="BIGINT" />
+    
+		<result column="notes" property="notes" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		manager_name as managerName ,
+		manager_phone as managerPhone ,
+		syn_version as synVersion ,
+		rest_id as restId ,
+		manager_id as managerId ,
+		update_by as updateBy ,
+		create_by as createBy ,
+		update_time as updateTime ,
+		storage_no as storageNo ,
+		state as state ,
+		is_syn as isSyn ,
+		storage_time as storageTime ,
+		storage_id as storageId ,
+		create_time as createTime ,
+		version as version ,
+		notes as notes 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="managerName != null"> and manager_name = #{managerName}</if>
+				
+		  	    <if test="managerPhone != null"> and manager_phone = #{managerPhone}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #{synVersion}</if>
+				
+		  	    <if test="restId != null"> and rest_id = #{restId}</if>
+				
+		  	    <if test="managerId != null"> and manager_id = #{managerId}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #{updateBy}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #{createBy}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #{updateTime}</if>
+				
+		  	    <if test="storageNo != null"> and storage_no = #{storageNo}</if>
+				
+		  	    <if test="state != null"> and state = #{state}</if>
+				
+		  	    <if test="isSyn != null"> and is_syn = #{isSyn}</if>
+				
+		  	    <if test="storageTime != null"> and storage_time = #{storageTime}</if>
+				
+		  	    <if test="storageId != null"> and storage_id = #{storageId}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #{createTime}</if>
+				
+		  	    <if test="version != null"> and version = #{version}</if>
+				
+		  	    <if test="notes != null"> and notes = #{notes}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by ${sorting}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</sql>
+	
+	<!-- ��ѯ���� -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(storage_id)
+		from cm_storage
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ��ѯ -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cm_storage
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ����ID��ѯ -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cm_storage
+		where storage_id = #{storage_id}
+	</select>
+	
+	<!-- ����IDɾ�� -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cm_storage
+		where  storage_id = #{storage_id}
+	</delete>
+	
+	<!-- ɾ�� -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- ��� -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.CmStorageBean">
+		insert into cm_storage(
+		  	    manager_name  ,
+	
+		  	    manager_phone  ,
+	
+		  	    syn_version  ,
+	
+		  	    rest_id  ,
+	
+		  	    manager_id  ,
+	
+		  	    update_by  ,
+	
+		  	    create_by  ,
+	
+		  	    update_time  ,
+	
+		  	    storage_no  ,
+	
+		  	    state  ,
+	
+		  	    is_syn  ,
+	
+		  	    storage_time  ,
+	
+		  	    storage_id  ,
+	
+		  	    create_time  ,
+	
+		  	    version  ,
+	
+		  	    notes  
+	
+			
+		)
+		values (
+		  	    #{managerName } ,
+		  	    #{managerPhone } ,
+		  	    #{synVersion } ,
+		  	    #{restId } ,
+		  	    #{managerId } ,
+		  	    #{updateBy } ,
+		  	    #{createBy } ,
+		  	    #{updateTime } ,
+		  	    #{storageNo } ,
+		  	    #{state } ,
+		  	    #{isSyn } ,
+		  	    #{storageTime } ,
+		  	    #{storageId } ,
+		  	    #{createTime } ,
+		  	    #{version } ,
+		  	    #{notes } 
+		)
+	</insert>
+	
+	
+	<!-- ͨ��ID���� -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.CmStorageBean">
+		update cm_storage
+		<set>
+		  	<if test="managerName != null">  manager_name = #{managerName} ,</if>
+		  	<if test="managerPhone != null">  manager_phone = #{managerPhone} ,</if>
+		  	<if test="synVersion != null">  syn_version = #{synVersion} ,</if>
+		  	<if test="restId != null">  rest_id = #{restId} ,</if>
+		  	<if test="managerId != null">  manager_id = #{managerId} ,</if>
+		  	<if test="updateBy != null">  update_by = #{updateBy} ,</if>
+		  	<if test="createBy != null">  create_by = #{createBy} ,</if>
+		  	<if test="updateTime != null">  update_time = #{updateTime} ,</if>
+		  	<if test="storageNo != null">  storage_no = #{storageNo} ,</if>
+		  	<if test="state != null">  state = #{state} ,</if>
+		  	<if test="isSyn != null">  is_syn = #{isSyn} ,</if>
+		  	<if test="storageTime != null">  storage_time = #{storageTime} ,</if>
+		  	<if test="createTime != null">  create_time = #{createTime} ,</if>
+		  	<if test="version != null">  version = #{version} ,</if>
+		  	<if test="notes != null">  notes = #{notes} </if>
+		</set>
+		where  storage_id = #{storage_id}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.CmStorageBean">
+		update cm_storage
+
+		set 
+		  	 manager_name = #{managerName} ,
+		  	 manager_phone = #{managerPhone} ,
+		  	 syn_version = #{synVersion} ,
+		  	 rest_id = #{restId} ,
+		  	 manager_id = #{managerId} ,
+		  	 update_by = #{updateBy} ,
+		  	 create_by = #{createBy} ,
+		  	 update_time = #{updateTime} ,
+		  	 storage_no = #{storageNo} ,
+		  	 state = #{state} ,
+		  	 is_syn = #{isSyn} ,
+		  	 storage_time = #{storageTime} ,
+		  	 create_time = #{createTime} ,
+		  	 version = #{version} ,
+		  	 notes = #{notes} 
+	
+		where  storage_id = #{storage_id}
+	</update>
+	
+</mapper>

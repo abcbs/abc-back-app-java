@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.CmRestaurantAppraiseBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.CmRestaurantAppraiseBean">
+		<id column="ora_id" property="oraId" jdbcType="VARCHAR" />
+	
+    
+		<result column="publish_terminal" property="publishTerminal" jdbcType="VARCHAR" />
+    
+		<result column="mb_id" property="mbId" jdbcType="VARCHAR" />
+    
+		<result column="service_score" property="serviceScore" jdbcType="BIGINT" />
+    
+		<result column="serve_speed_score" property="serveSpeedScore" jdbcType="BIGINT" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="rest_id" property="restId" jdbcType="VARCHAR" />
+    
+		<result column="version" property="version" jdbcType="BIGINT" />
+    
+		<result column="recommend" property="recommend" jdbcType="VARCHAR" />
+    
+		<result column="comment" property="comment" jdbcType="VARCHAR" />
+    
+		<result column="environment_score" property="environmentScore" jdbcType="BIGINT" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="total_score" property="totalScore" jdbcType="BIGINT" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="taste_score" property="tasteScore" jdbcType="BIGINT" />
+    
+		<result column="is_syn" property="isSyn" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ora_id as oraId ,
+		publish_terminal as publishTerminal ,
+		mb_id as mbId ,
+		service_score as serviceScore ,
+		serve_speed_score as serveSpeedScore ,
+		syn_version as synVersion ,
+		update_by as updateBy ,
+		rest_id as restId ,
+		version as version ,
+		recommend as recommend ,
+		comment as comment ,
+		environment_score as environmentScore ,
+		create_by as createBy ,
+		total_score as totalScore ,
+		update_time as updateTime ,
+		taste_score as tasteScore ,
+		is_syn as isSyn ,
+		create_time as createTime 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="oraId != null"> and ora_id = #{oraId}</if>
+				
+		  	    <if test="publishTerminal != null"> and publish_terminal = #{publishTerminal}</if>
+				
+		  	    <if test="mbId != null"> and mb_id = #{mbId}</if>
+				
+		  	    <if test="serviceScore != null"> and service_score = #{serviceScore}</if>
+				
+		  	    <if test="serveSpeedScore != null"> and serve_speed_score = #{serveSpeedScore}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #{synVersion}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #{updateBy}</if>
+				
+		  	    <if test="restId != null"> and rest_id = #{restId}</if>
+				
+		  	    <if test="version != null"> and version = #{version}</if>
+				
+		  	    <if test="recommend != null"> and recommend = #{recommend}</if>
+				
+		  	    <if test="comment != null"> and comment = #{comment}</if>
+				
+		  	    <if test="environmentScore != null"> and environment_score = #{environmentScore}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #{createBy}</if>
+				
+		  	    <if test="totalScore != null"> and total_score = #{totalScore}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #{updateTime}</if>
+				
+		  	    <if test="tasteScore != null"> and taste_score = #{tasteScore}</if>
+				
+		  	    <if test="isSyn != null"> and is_syn = #{isSyn}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #{createTime}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by ${sorting}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</sql>
+	
+	<!-- ��ѯ���� -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(ora_id)
+		from cm_restaurant_appraise
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ��ѯ -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cm_restaurant_appraise
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ����ID��ѯ -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cm_restaurant_appraise
+		where ora_id = #{ora_id}
+	</select>
+	
+	<!-- ����IDɾ�� -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cm_restaurant_appraise
+		where  ora_id = #{ora_id}
+	</delete>
+	
+	<!-- ɾ�� -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- ��� -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.CmRestaurantAppraiseBean">
+		insert into cm_restaurant_appraise(
+		  	    ora_id  ,
+	
+		  	    publish_terminal  ,
+	
+		  	    mb_id  ,
+	
+		  	    service_score  ,
+	
+		  	    serve_speed_score  ,
+	
+		  	    syn_version  ,
+	
+		  	    update_by  ,
+	
+		  	    rest_id  ,
+	
+		  	    version  ,
+	
+		  	    recommend  ,
+	
+		  	    comment  ,
+	
+		  	    environment_score  ,
+	
+		  	    create_by  ,
+	
+		  	    total_score  ,
+	
+		  	    update_time  ,
+	
+		  	    taste_score  ,
+	
+		  	    is_syn  ,
+	
+		  	    create_time  
+	
+			
+		)
+		values (
+		  	    #{oraId } ,
+		  	    #{publishTerminal } ,
+		  	    #{mbId } ,
+		  	    #{serviceScore } ,
+		  	    #{serveSpeedScore } ,
+		  	    #{synVersion } ,
+		  	    #{updateBy } ,
+		  	    #{restId } ,
+		  	    #{version } ,
+		  	    #{recommend } ,
+		  	    #{comment } ,
+		  	    #{environmentScore } ,
+		  	    #{createBy } ,
+		  	    #{totalScore } ,
+		  	    #{updateTime } ,
+		  	    #{tasteScore } ,
+		  	    #{isSyn } ,
+		  	    #{createTime } 
+		)
+	</insert>
+	
+	
+	<!-- ͨ��ID���� -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.CmRestaurantAppraiseBean">
+		update cm_restaurant_appraise
+		<set>
+		  	<if test="publishTerminal != null">  publish_terminal = #{publishTerminal} ,</if>
+		  	<if test="mbId != null">  mb_id = #{mbId} ,</if>
+		  	<if test="serviceScore != null">  service_score = #{serviceScore} ,</if>
+		  	<if test="serveSpeedScore != null">  serve_speed_score = #{serveSpeedScore} ,</if>
+		  	<if test="synVersion != null">  syn_version = #{synVersion} ,</if>
+		  	<if test="updateBy != null">  update_by = #{updateBy} ,</if>
+		  	<if test="restId != null">  rest_id = #{restId} ,</if>
+		  	<if test="version != null">  version = #{version} ,</if>
+		  	<if test="recommend != null">  recommend = #{recommend} ,</if>
+		  	<if test="comment != null">  comment = #{comment} ,</if>
+		  	<if test="environmentScore != null">  environment_score = #{environmentScore} ,</if>
+		  	<if test="createBy != null">  create_by = #{createBy} ,</if>
+		  	<if test="totalScore != null">  total_score = #{totalScore} ,</if>
+		  	<if test="updateTime != null">  update_time = #{updateTime} ,</if>
+		  	<if test="tasteScore != null">  taste_score = #{tasteScore} ,</if>
+		  	<if test="isSyn != null">  is_syn = #{isSyn} ,</if>
+		  	<if test="createTime != null">  create_time = #{createTime} </if>
+		</set>
+		where  ora_id = #{ora_id}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.CmRestaurantAppraiseBean">
+		update cm_restaurant_appraise
+
+		set 
+		  	 publish_terminal = #{publishTerminal} ,
+		  	 mb_id = #{mbId} ,
+		  	 service_score = #{serviceScore} ,
+		  	 serve_speed_score = #{serveSpeedScore} ,
+		  	 syn_version = #{synVersion} ,
+		  	 update_by = #{updateBy} ,
+		  	 rest_id = #{restId} ,
+		  	 version = #{version} ,
+		  	 recommend = #{recommend} ,
+		  	 comment = #{comment} ,
+		  	 environment_score = #{environmentScore} ,
+		  	 create_by = #{createBy} ,
+		  	 total_score = #{totalScore} ,
+		  	 update_time = #{updateTime} ,
+		  	 taste_score = #{tasteScore} ,
+		  	 is_syn = #{isSyn} ,
+		  	 create_time = #{createTime} 
+	
+		where  ora_id = #{ora_id}
+	</update>
+	
+</mapper>

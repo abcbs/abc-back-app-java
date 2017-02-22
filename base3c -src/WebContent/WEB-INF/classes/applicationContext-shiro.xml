@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd"
+	default-lazy-init="true">
+
+	<description>Shiro安全配置</description>
+
+	<!-- Shiro's frontdesk business-tier object for web-enabled applications -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="shiroDbRealm" />
+		<property name="cacheManager" ref="shiroEhcacheManager" />
+	</bean>
+
+	<bean id="shiroDbRealm" class="com.ndlan.canyin.frontdesk.service.security.ShiroDbRealm" depends-on="employeeDao,restaurantDao,authorityModuleDao,roleDao,cashierDeskSettingDao">
+		<property name="employeeService" ref="employeeService"/>
+		<property name="defaultPermissions">
+   			<list>
+   				<value>security:change-password</value>
+   				<value>security:index</value>
+   			</list>
+   		</property>
+	</bean>
+	
+	<!-- 自定义对 shiro的连接约束,结合shiroSecurityFilter实现动态获取资源 -->
+	<bean id="chainDefinitionSectionMetaSource" class="com.ndlan.canyin.frontdesk.service.security.ChainDefinitionSectionMetaSource">
+		<!-- 默认的连接配置 -->
+		<property name="filterChainDefinitions">
+			<value>
+			
+			  /shoppingCart/** = anon
+			    /order/** = anon
+			    /member/** = anon
+			    /product/** = anon
+				/tradeQuery.do=anon
+				/run/barPay/** =anon
+				/report/yyfx/** =anon
+				/open/** = anon
+				/self/desc = anon
+				/login/clientLogin = anon
+				/login = mixAuth
+				/login/mobile* = anon
+				/static/** = anon
+				/message/** = anon
+				/self** = anon
+				/self/** = anon
+				/common/** = anon
+				/api/** = anon
+				/pop/** = anon	
+				/pop2/** = anon		
+				/index = perms[security:index]
+				/mobile/index/** = anon
+			    /mobile/index/getCookie = anon
+				/mxbapi/bldcb/silentlogin = anon
+				/mxbapi/bldcb/other/* = anon
+				/index/recieveData = anon
+				/mobile/table/open/callwaiterByMenu = anon
+			</value>
+		</property>
+	</bean>
+	
+	<bean id="customShiroFilter" class="com.ndlan.canyin.frontdesk.util.CustomShiroFilter" depends-on="jourDao">
+		<property name="jourService" ref="jourService" />
+	</bean>
+	<bean id="mixAuthentication" class="com.ndlan.canyin.frontdesk.service.security.MixAuthenticationFilter"> 
+	</bean>
+	
+	<!-- Shiro Filter -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+    	<property name="securityManager" ref="securityManager" />
+	    <property name="loginUrl" value="/login" />
+	    <property name="successUrl" value="/login/success" /> 
+	    <property name="filters">  
+            <map>
+				<entry key="csf" value-ref="customShiroFilter"/>
+				<entry key="mixAuth" value-ref="mixAuthentication"/>
+			</map>
+        </property>  
+	    <property name="filterChainDefinitionMap" ref="chainDefinitionSectionMetaSource" />
+	</bean>
+	
+	<!-- 用户授权信息Cache, 采用EhCache -->
+	<bean id="shiroEhcacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+		<property name="cacheManagerConfigFile" value="classpath:ehcache/ehcache-shiro.xml"/>
+	</bean>
+	
+	<!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+	
+	<bean id="transportClient" class="com.ndlan.canyin.frontdesk.transport.TransportClient"></bean>
+	<bean id="selfServiceCollective" class="com.ndlan.canyin.frontdesk.util.SelfServiceCollective" init-method="init"></bean>
+	<bean id="messageCenterNativeServer" class="com.ndlan.canyin.frontdesk.message.ware.MessageCenterNativeServer"></bean>
+</beans>

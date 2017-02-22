@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.cwwarm.model.CmRoleUserBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.cwwarm.model.CmRoleUserBean">
+		<id column="role_user_id" property="roleUserId" jdbcType="VARCHAR" />
+	
+    
+		<result column="fk_user_id" property="fkUserId" jdbcType="VARCHAR" />
+    
+		<result column="rest_id" property="restId" jdbcType="VARCHAR" />
+    
+		<result column="bar_path" property="barPath" jdbcType="VARCHAR" />
+    
+		<result column="fk_role_id" property="fkRoleId" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		fk_user_id as fkUserId ,
+		rest_id as restId ,
+		bar_path as barPath ,
+		fk_role_id as fkRoleId ,
+		role_user_id as roleUserId 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="fkUserId != null"> and fk_user_id = #{fkUserId}</if>
+				
+		  	    <if test="restId != null"> and rest_id = #{restId}</if>
+				
+		  	    <if test="barPath != null"> and bar_path = #{barPath}</if>
+				
+		  	    <if test="fkRoleId != null"> and fk_role_id = #{fkRoleId}</if>
+				
+		  	    <if test="roleUserId != null"> and role_user_id = #{roleUserId}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by ${sorting}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</sql>
+	
+	<!-- 查询总数 -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(role_user_id)
+		from cm_role_user
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 查询 -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cm_role_user
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cm_role_user
+		where role_user_id = #{roleUserId}
+	</select>
+	
+	<!-- 根据ID删除 -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cm_role_user
+		where  role_user_id = #{roleUserId}
+	</delete>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- 添加 -->	
+	<insert id="insert" parameterType="com.ndlan.cwwarm.model.CmRoleUserBean">
+		insert into cm_role_user(
+		  	    fk_user_id  ,
+	
+		  	    rest_id  ,
+	
+		  	    bar_path  ,
+	
+		  	    fk_role_id  ,
+	
+		  	    role_user_id  
+	
+			
+		)
+		values (
+		  	    #{fkUserId } ,
+		  	    #{restId } ,
+		  	    #{barPath } ,
+		  	    #{fkRoleId } ,
+		  	    #{roleUserId } 
+		)
+	</insert>
+	
+	
+	<!-- 通过ID更新 -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.cwwarm.model.CmRoleUserBean">
+		update cm_role_user
+		<set>
+		  	<if test="fkUserId != null">  fk_user_id = #{fkUserId} ,</if>
+		  	<if test="restId != null">  rest_id = #{restId} ,</if>
+		  	<if test="barPath != null">  bar_path = #{barPath} ,</if>
+		  	<if test="fkRoleId != null">  fk_role_id = #{fkRoleId} ,</if>
+		</set>
+		where  role_user_id = #{roleUserId}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.cwwarm.model.CmRoleUserBean">
+		update cm_role_user
+
+		set 
+		  	 fk_user_id = #{fkUserId} ,
+		  	 rest_id = #{restId} ,
+		  	 bar_path = #{barPath} ,
+		  	 fk_role_id = #{fkRoleId} ,
+	
+		where  role_user_id = #{roleUserId}
+	</update>
+	
+</mapper>

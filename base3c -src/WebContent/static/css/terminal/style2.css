@@ -1,0 +1,80 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{margin: 0; padding: 0; font-family:"冬青黑体简体中文 W3";}
+
+     /*----顶部区域---*/
+
+ 	/*----点餐界面背景--*/
+.time{ color:#FFF; float:left; margin:17px 0 0 15px; font-size:16px;display: block;width: 200px;}
+.hhg_logo{ background-image:url(../../images/teiminal/ksdc_02.png);  float:left; width:148px; height:46px; margin:1px 0 0 350px; }
+.mixi_logo{ background-image:url(../../images/teiminal/ksdc_05.png);
+width:98px; height:33px; float:right; margin:8px 20px 0 0;z-index: 9999;cursor: pointer;
+display: block;
+}
+
+
+ 
+/*--开始点餐界面*/
+.KS_father{ background-image:url(../../images/teiminal/ksdc.png); width:1280px; height:1024px;} 
+.ks_header{ padding-bottom:169px;}
+.KS_central { background:url(../../images/teiminal/ksdc_10.png) no-repeat; width:456px; height:158px; margin:0 0 0 411px;}
+.zzdcxt{ color:#FFF; font-family:"冬青黑体简体中文 W3"; font-size:42px; margin:422px 0 0 512px;}
+.KS_bottom{ background:url(../../images/teiminal/ksdc_14.png); width:255px; height:95px; margin:27px 0 0 512px; cursor:pointer;}
+
+
+
+
+
+
+
+ 	/*----银行卡支付界面--*/
+.YH_father{ background-image:url(../../images/teiminal/fp.png); width:1280px; height:1024px; } 
+.YH_miao{ color:#eb6100; text-align:right; font-family:"冬青黑体简体中文 W3"; font-size:36px; padding:78px 19px 0 0; }
+.YH_ka{ background-image:url(../../images/teiminal/yhzf_03.png); width:413px; height:261px; margin:148px 0 0 433px;}
+.YH_mima{ background-image:url(../../images/teiminal/yhzf_07.png); width:406px; height:54px; margin:100px 0 0 435px;}
+.YH_mima .YH_text{ width:386px; height:54px; color:#CCC; font-size:18px; border:none; background:none; padding:0 0 0 20px;}
+
+.YH_anniu ul{ list-style-type:none; margin:40px 0 0 332px;}
+.YH_anniu ul li{ float:left; cursor:pointer;}
+.YH_anniu .YH_anniu_li1{ background-image:url(../../images/teiminal/yhzf_11.png); width:202px; height:72px; }
+.YH_anniu .YH_anniu_li2{ background-image:url(../../images/teiminal/yhzf_13.png); width:202px; height:72px; margin-left:2px;}
+.YH_anniu .YH_anniu_li3{background-image:url(../../images/teiminal/yhzf_11__07.png); width:202px; height:72px;margin-left:2px;}
+.YH_anniu .YH_anniu_li1:hover{ background-image:url(../../images/teiminal/yhzf_11__03.png); width:202px; height:72px;}
+.YH_anniu .YH_anniu_li2:hover{ background-image:url(../../images/teiminal/yhzf_11__05.png); width:202px; height:72px;}
+.YH_anniu .YH_anniu_li3:hover{ background-image:url(../../images/teiminal/yhzf_15.png); width:202px; height:72px;}
+
+
+
+ 	/*----银行卡支付成功界面--*/
+
+.CG_bq{ background-image:url(../../images/teiminal/ZFCG_03.png); width:295px; height:106px; margin:129px 0 0 501px;}
+.CG_wz{ margin:126px 0 0 335px; color:#FFF; font-size:36px; font-family:"冬青黑体简体中文 W3";}
+.CG_wz span{ font-size:55px}
+.CG_xp{ margin:37px 0 0 400px; color:#ff8800; font-size:24px;}
+.CG_tc{ background-image:url(../../images/teiminal/ZFCG_07.png); width:202px; height:72px; margin:100px 0 0 539px; cursor:pointer;}
+.CG_tc:hover{ background-image:url(../../images/teiminal/ZFCG_07-1_03.png);width:202px; height:72px; margin:100px 0 0 539px;}
+
+/*----银行卡支付s失败界面--*/
+.Sbai_bq{ background-image:url(../../images/teiminal/ZFSB_03.png); width:289px; height:135px; margin:129px 0 0 501px;}
+.Sbai_wz{ margin:126px 0 0 444px; color:#FFF; font-size:45px; font-family:"冬青黑体简体中文 W3";}
+
+.Sbai_tc{ margin:165px 0 0 473px;}
+.Sbai_tc .Sbai_tc_tc{ background-image:url(../../images/teiminal/ZFCG_07.png); width:202px; height:72px; float:left;}
+.Sbai_tc .Sbai_tc_cd{ background-image:url(../../images/teiminal/ZFSB_09.png);width:202px; height:72px;float:left; margin-left:2px;}
+.Sbai_tc .Sbai_tc_tc:hover{ background-image:url(../../images/teiminal/ZFCG_07-1_03.png);width:202px; height:72px;float:left;} 
+.Sbai_tc .Sbai_tc_cd:hover{ background-image:url(../../images/teiminal/ZFSB_1_05.png);width:202px; height:72px;}
+
+ 	/*----银行卡支付界面--*/
+.HY_ka{ background-image:url(../../images/teiminal/hyk_03.png); width:407px; height:244px;margin:148px 0 0 433px;}
+.HY_zh{background-image:url(../../images/teiminal/yhzf_07.png); width:406px; height:54px; margin:100px 0 0 433px;}
+.HY_zh .HY_text1{ width:386px; height:54px; color:#CCC; font-size:18px; border:none; background:none; padding:0 0 0 20px;}
+.HY_mima{background-image:url(../../images/teiminal/yhzf_07.png); width:406px; height:54px; margin:7px 0 0 435px;}
+.HY_mima .HY_text2{ width:386px; height:54px; color:#CCC; font-size:18px; border:none; background:none; padding:0 0 0 20px;}
+
+
+
+
+
+
+

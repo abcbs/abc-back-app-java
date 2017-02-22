@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.ndlan.canyin.base.repository.mybatis.RestMemberInfo3cMyDao">
+	<select id="getMemberList"  resultType="com.ndlan.canyin.frontdesk.dto3c.memberinfo.MemberInfoEntityDto">
+		select
+			info.mb_id as mbId,
+			info.name as name,
+			info.gender as gender,
+			info.birthday_day as brithdayDay,
+			info.work as work,
+			info.edu as edu,
+			info.notes as notes,
+			info.email as email,
+			info.salesman_id as salesmanId,
+			(select name from cm_employee where emp_id=info.salesman_id) as salesmanName,
+			info.mobile as mobile,
+			card.card_no as cardNo,
+			class.name as cardType,
+			card.create_time as createTime,
+			card.card_status as cardStatus,
+			card.member_integral as memberIntegral,
+			card.balance as balance,
+			card.mc_id as mcId
+		from
+			cm_rest_member_info info
+		left join
+			cm_membership_card card on card.mb_id=info.mb_id 
+		left join
+			cm_membership_card_class class on card.mcclass_id=class.mcclass_id 
+		where
+			 info.rest_id=#{0}
+		 <if test="param2 !=null">
+			and info.name like #{1}
+				or info.mobile like #{1}
+		</if>
+		limit #{2},#{3} 
+	</select>
+	<select id="countMemberList" resultType="int">
+		select count(0) 
+		from
+			cm_rest_member_info info
+		left join
+			cm_membership_card card on card.mb_id=info.mb_id 
+		left join
+			cm_membership_card_class class on card.mcclass_id=class.mcclass_id 
+		where
+			 info.rest_id=#{0}
+		 <if test="param2 !=null">
+			and info.name like #{1}
+				or info.mobile like #{1}
+		</if> 
+	</select>
+	
+</mapper> 

@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.B2bShoppingCartPkgBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.B2bShoppingCartPkgBean">
+		<id column="cart_pkg_id" property="cartPkgId" jdbcType="VARCHAR" />
+	
+    
+		<result column="strategy_desc" property="strategyDesc" jdbcType="VARCHAR" />
+    
+		<result column="customer_name" property="customerName" jdbcType="VARCHAR" />
+    
+		<result column="rest_name" property="restName" jdbcType="VARCHAR" />
+    
+		<result column="derate" property="derate" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="cart_id" property="cartId" jdbcType="VARCHAR" />
+    
+		<result column="version" property="version" jdbcType="BIGINT" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+    
+		<result column="codeless_sum" property="codelessSum" jdbcType="VARCHAR" />
+    
+		<result column="supplier_id" property="supplierId" jdbcType="VARCHAR" />
+    
+		<result column="target_client" property="targetClient" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="discount" property="discount" jdbcType="VARCHAR" />
+    
+		<result column="amount" property="amount" jdbcType="VARCHAR" />
+    
+		<result column="customer_id" property="customerId" jdbcType="VARCHAR" />
+    
+		<result column="is_syn" property="isSyn" jdbcType="VARCHAR" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+    
+		<result column="rest_id" property="restId" jdbcType="VARCHAR" />
+    
+		<result column="amount_paid" property="amountPaid" jdbcType="VARCHAR" />
+    
+		<result column="pay_type" property="payType" jdbcType="VARCHAR" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="sls_pmtn_id" property="slsPmtnId" jdbcType="VARCHAR" />
+    
+		<result column="supplier_name" property="supplierName" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		strategy_desc as strategyDesc ,
+		customer_name as customerName ,
+		rest_name as restName ,
+		derate as derate ,
+		create_time as createTime ,
+		cart_id as cartId ,
+		version as version ,
+		create_by as createBy ,
+		remark as remark ,
+		codeless_sum as codelessSum ,
+		supplier_id as supplierId ,
+		target_client as targetClient ,
+		update_time as updateTime ,
+		discount as discount ,
+		amount as amount ,
+		customer_id as customerId ,
+		is_syn as isSyn ,
+		syn_version as synVersion ,
+		 as  ,
+		rest_id as restId ,
+		amount_paid as amountPaid ,
+		pay_type as payType ,
+		update_by as updateBy ,
+		sls_pmtn_id as slsPmtnId ,
+		supplier_name as supplierName ,
+		cart_pkg_id as cartPkgId 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="strategyDesc != null"> and strategy_desc = #\{strategyDesc\}</if>
+				
+		  	    <if test="customerName != null"> and customer_name = #\{customerName\}</if>
+				
+		  	    <if test="restName != null"> and rest_name = #\{restName\}</if>
+				
+		  	    <if test="derate != null"> and derate = #\{derate\}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #\{createTime\}</if>
+				
+		  	    <if test="cartId != null"> and cart_id = #\{cartId\}</if>
+				
+		  	    <if test="version != null"> and version = #\{version\}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #\{createBy\}</if>
+				
+		  	    <if test="remark != null"> and remark = #\{remark\}</if>
+				
+		  	    <if test="codelessSum != null"> and codeless_sum = #\{codelessSum\}</if>
+				
+		  	    <if test="supplierId != null"> and supplier_id = #\{supplierId\}</if>
+				
+		  	    <if test="targetClient != null"> and target_client = #\{targetClient\}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #\{updateTime\}</if>
+				
+		  	    <if test="discount != null"> and discount = #\{discount\}</if>
+				
+		  	    <if test="amount != null"> and amount = #\{amount\}</if>
+				
+		  	    <if test="customerId != null"> and customer_id = #\{customerId\}</if>
+				
+		  	    <if test="isSyn != null"> and is_syn = #\{isSyn\}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #\{synVersion\}</if>
+				
+		  	    <if test=" != null"> and  = #\{\}</if>
+				
+		  	    <if test="restId != null"> and rest_id = #\{restId\}</if>
+				
+		  	    <if test="amountPaid != null"> and amount_paid = #\{amountPaid\}</if>
+				
+		  	    <if test="payType != null"> and pay_type = #\{payType\}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #\{updateBy\}</if>
+				
+		  	    <if test="slsPmtnId != null"> and sls_pmtn_id = #\{slsPmtnId\}</if>
+				
+		  	    <if test="supplierName != null"> and supplier_name = #\{supplierName\}</if>
+				
+		  	    <if test="cartPkgId != null"> and cart_pkg_id = #\{cartPkgId\}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by $\{sorting\}</if>
+		<if test="offset != null and limit != null">
+			limit #\{offset\}, #\{limit\}
+		</if>
+	</sql>
+	
+	<!-- 查询总数 -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(cart_pkg_id)
+		from b2b_shopping_cart_pkg
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 查询 -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from b2b_shopping_cart_pkg
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from b2b_shopping_cart_pkg
+		where cart_pkg_id = #\{cart_pkg_id\}
+	</select>
+	
+	<!-- 根据ID删除 -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from b2b_shopping_cart_pkg
+		where  cart_pkg_id = #\{cart_pkg_id\}
+	</delete>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- 添加 -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.B2bShoppingCartPkgBean">
+		insert into b2b_shopping_cart_pkg(
+		  	    strategy_desc  ,
+	
+		  	    customer_name  ,
+	
+		  	    rest_name  ,
+	
+		  	    derate  ,
+	
+		  	    create_time  ,
+	
+		  	    cart_id  ,
+	
+		  	    version  ,
+	
+		  	    create_by  ,
+	
+		  	    remark  ,
+	
+		  	    codeless_sum  ,
+	
+		  	    supplier_id  ,
+	
+		  	    target_client  ,
+	
+		  	    update_time  ,
+	
+		  	    discount  ,
+	
+		  	    amount  ,
+	
+		  	    customer_id  ,
+	
+		  	    is_syn  ,
+	
+		  	    syn_version  ,
+	
+		  	      ,
+	
+		  	    rest_id  ,
+	
+		  	    amount_paid  ,
+	
+		  	    pay_type  ,
+	
+		  	    update_by  ,
+	
+		  	    sls_pmtn_id  ,
+	
+		  	    supplier_name  ,
+	
+		  	    cart_pkg_id  
+	
+			
+		)
+		values (
+		  	    #\{strategyDesc \} ,
+		  	    #\{customerName \} ,
+		  	    #\{restName \} ,
+		  	    #\{derate \} ,
+		  	    #\{createTime \} ,
+		  	    #\{cartId \} ,
+		  	    #\{version \} ,
+		  	    #\{createBy \} ,
+		  	    #\{remark \} ,
+		  	    #\{codelessSum \} ,
+		  	    #\{supplierId \} ,
+		  	    #\{targetClient \} ,
+		  	    #\{updateTime \} ,
+		  	    #\{discount \} ,
+		  	    #\{amount \} ,
+		  	    #\{customerId \} ,
+		  	    #\{isSyn \} ,
+		  	    #\{synVersion \} ,
+		  	    #\{ \} ,
+		  	    #\{restId \} ,
+		  	    #\{amountPaid \} ,
+		  	    #\{payType \} ,
+		  	    #\{updateBy \} ,
+		  	    #\{slsPmtnId \} ,
+		  	    #\{supplierName \} ,
+		  	    #\{cartPkgId \} 
+		)
+	</insert>
+	
+	
+	<!-- 通过ID更新 -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.B2bShoppingCartPkgBean">
+		update b2b_shopping_cart_pkg
+		<set>
+		  	<if test=\"strategyDesc != null\">  strategy_desc = #\{strategyDesc\} ,</if>
+		  	<if test=\"customerName != null\">  customer_name = #\{customerName\} ,</if>
+		  	<if test=\"restName != null\">  rest_name = #\{restName\} ,</if>
+		  	<if test=\"derate != null\">  derate = #\{derate\} ,</if>
+		  	<if test=\"createTime != null\">  create_time = #\{createTime\} ,</if>
+		  	<if test=\"cartId != null\">  cart_id = #\{cartId\} ,</if>
+		  	<if test=\"version != null\">  version = #\{version\} ,</if>
+		  	<if test=\"createBy != null\">  create_by = #\{createBy\} ,</if>
+		  	<if test=\"remark != null\">  remark = #\{remark\} ,</if>
+		  	<if test=\"codelessSum != null\">  codeless_sum = #\{codelessSum\} ,</if>
+		  	<if test=\"supplierId != null\">  supplier_id = #\{supplierId\} ,</if>
+		  	<if test=\"targetClient != null\">  target_client = #\{targetClient\} ,</if>
+		  	<if test=\"updateTime != null\">  update_time = #\{updateTime\} ,</if>
+		  	<if test=\"discount != null\">  discount = #\{discount\} ,</if>
+		  	<if test=\"amount != null\">  amount = #\{amount\} ,</if>
+		  	<if test=\"customerId != null\">  customer_id = #\{customerId\} ,</if>
+		  	<if test=\"isSyn != null\">  is_syn = #\{isSyn\} ,</if>
+		  	<if test=\"synVersion != null\">  syn_version = #\{synVersion\} ,</if>
+		  	<if test=\" != null\">   = #\{\} ,</if>
+		  	<if test=\"restId != null\">  rest_id = #\{restId\} ,</if>
+		  	<if test=\"amountPaid != null\">  amount_paid = #\{amountPaid\} ,</if>
+		  	<if test=\"payType != null\">  pay_type = #\{payType\} ,</if>
+		  	<if test=\"updateBy != null\">  update_by = #\{updateBy\} ,</if>
+		  	<if test=\"slsPmtnId != null\">  sls_pmtn_id = #\{slsPmtnId\} ,</if>
+		  	<if test=\"supplierName != null\">  supplier_name = #\{supplierName\} ,</if>
+		</set>
+		where  cart_pkg_id = #\{cart_pkg_id\}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.B2bShoppingCartPkgBean">
+		update b2b_shopping_cart_pkg
+
+		set 
+		  	 strategy_desc = #\{strategyDesc\} ,
+		  	 customer_name = #\{customerName\} ,
+		  	 rest_name = #\{restName\} ,
+		  	 derate = #\{derate\} ,
+		  	 create_time = #\{createTime\} ,
+		  	 cart_id = #\{cartId\} ,
+		  	 version = #\{version\} ,
+		  	 create_by = #\{createBy\} ,
+		  	 remark = #\{remark\} ,
+		  	 codeless_sum = #\{codelessSum\} ,
+		  	 supplier_id = #\{supplierId\} ,
+		  	 target_client = #\{targetClient\} ,
+		  	 update_time = #\{updateTime\} ,
+		  	 discount = #\{discount\} ,
+		  	 amount = #\{amount\} ,
+		  	 customer_id = #\{customerId\} ,
+		  	 is_syn = #\{isSyn\} ,
+		  	 syn_version = #\{synVersion\} ,
+		  	  = #\{\} ,
+		  	 rest_id = #\{restId\} ,
+		  	 amount_paid = #\{amountPaid\} ,
+		  	 pay_type = #\{payType\} ,
+		  	 update_by = #\{updateBy\} ,
+		  	 sls_pmtn_id = #\{slsPmtnId\} ,
+		  	 supplier_name = #\{supplierName\} ,
+	
+		where  cart_pkg_id = #\{cart_pkg_id\}
+	</update>
+	
+</mapper>

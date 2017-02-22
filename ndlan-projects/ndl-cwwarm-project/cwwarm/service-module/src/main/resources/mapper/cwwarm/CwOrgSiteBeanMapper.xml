@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.cwwarm.model.CwOrgSiteBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.cwwarm.model.CwOrgSiteBean">
+		<id column="cw_org_site_id" property="cwOrgSiteId" jdbcType="VARCHAR" />
+	
+    
+		<result column="ost_life_status" property="ostLifeStatus" jdbcType="VARCHAR" />
+    
+		<result column="ost_site_addr_city" property="ostSiteAddrCity" jdbcType="VARCHAR" />
+    
+		<result column="ost_site_contacts_phone" property="ostSiteContactsPhone" jdbcType="VARCHAR" />
+    
+		<result column="ost_busi_status" property="ostBusiStatus" jdbcType="VARCHAR" />
+    
+		<result column="ost_parent_site_name_path" property="ostParentSiteNamePath" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="ost_parent_id" property="ostParentId" jdbcType="VARCHAR" />
+    
+		<result column="ost_site_grade" property="ostSiteGrade" jdbcType="VARCHAR" />
+    
+		<result column="ost_site_addr_detail" property="ostSiteAddrDetail" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="ost_site_addr_province" property="ostSiteAddrProvince" jdbcType="VARCHAR" />
+    
+		<result column="ost_site_contacts" property="ostSiteContacts" jdbcType="VARCHAR" />
+    
+		<result column="ost_site_addr_county" property="ostSiteAddrCounty" jdbcType="VARCHAR" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="ost_parent_site_name" property="ostParentSiteName" jdbcType="VARCHAR" />
+    
+		<result column="ost_parent_id_path" property="ostParentIdPath" jdbcType="VARCHAR" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="ost_site_name" property="ostSiteName" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ost_life_status as ostLifeStatus ,
+		ost_site_addr_city as ostSiteAddrCity ,
+		ost_site_contacts_phone as ostSiteContactsPhone ,
+		ost_busi_status as ostBusiStatus ,
+		ost_parent_site_name_path as ostParentSiteNamePath ,
+		create_time as createTime ,
+		ost_parent_id as ostParentId ,
+		ost_site_grade as ostSiteGrade ,
+		ost_site_addr_detail as ostSiteAddrDetail ,
+		update_time as updateTime ,
+		ost_site_addr_province as ostSiteAddrProvince ,
+		ost_site_contacts as ostSiteContacts ,
+		ost_site_addr_county as ostSiteAddrCounty ,
+		create_by as createBy ,
+		ost_parent_site_name as ostParentSiteName ,
+		ost_parent_id_path as ostParentIdPath ,
+		update_by as updateBy ,
+		cw_org_site_id as cwOrgSiteId ,
+		ost_site_name as ostSiteName 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="ostLifeStatus != null"> and ost_life_status = #{ostLifeStatus}</if>
+				
+		  	    <if test="ostSiteAddrCity != null"> and ost_site_addr_city = #{ostSiteAddrCity}</if>
+				
+		  	    <if test="ostSiteContactsPhone != null"> and ost_site_contacts_phone = #{ostSiteContactsPhone}</if>
+				
+		  	    <if test="ostBusiStatus != null"> and ost_busi_status = #{ostBusiStatus}</if>
+				
+		  	    <if test="ostParentSiteNamePath != null"> and ost_parent_site_name_path = #{ostParentSiteNamePath}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #{createTime}</if>
+				
+		  	    <if test="ostParentId != null"> and ost_parent_id = #{ostParentId}</if>
+				
+		  	    <if test="ostSiteGrade != null"> and ost_site_grade = #{ostSiteGrade}</if>
+				
+		  	    <if test="ostSiteAddrDetail != null"> and ost_site_addr_detail = #{ostSiteAddrDetail}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #{updateTime}</if>
+				
+		  	    <if test="ostSiteAddrProvince != null"> and ost_site_addr_province = #{ostSiteAddrProvince}</if>
+				
+		  	    <if test="ostSiteContacts != null"> and ost_site_contacts = #{ostSiteContacts}</if>
+				
+		  	    <if test="ostSiteAddrCounty != null"> and ost_site_addr_county = #{ostSiteAddrCounty}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #{createBy}</if>
+				
+		  	    <if test="ostParentSiteName != null"> and ost_parent_site_name = #{ostParentSiteName}</if>
+				
+		  	    <if test="ostParentIdPath != null"> and ost_parent_id_path = #{ostParentIdPath}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #{updateBy}</if>
+				
+		  	    <if test="cwOrgSiteId != null"> and cw_org_site_id = #{cwOrgSiteId}</if>
+				
+		  	    <if test="ostSiteName != null"> and ost_site_name = #{ostSiteName}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by ${sorting}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</sql>
+	
+	<!-- 查询总数 -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(cw_org_site_id)
+		from cw_org_site
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 查询 -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cw_org_site
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cw_org_site
+		where cw_org_site_id = #{cwOrgSiteId}
+	</select>
+	
+	<!-- 根据ID删除 -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cw_org_site
+		where  cw_org_site_id = #{cwOrgSiteId}
+	</delete>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- 添加 -->	
+	<insert id="insert" parameterType="com.ndlan.cwwarm.model.CwOrgSiteBean">
+		insert into cw_org_site(
+		  	    ost_life_status  ,
+	
+		  	    ost_site_addr_city  ,
+	
+		  	    ost_site_contacts_phone  ,
+	
+		  	    ost_busi_status  ,
+	
+		  	    ost_parent_site_name_path  ,
+	
+		  	    create_time  ,
+	
+		  	    ost_parent_id  ,
+	
+		  	    ost_site_grade  ,
+	
+		  	    ost_site_addr_detail  ,
+	
+		  	    update_time  ,
+	
+		  	    ost_site_addr_province  ,
+	
+		  	    ost_site_contacts  ,
+	
+		  	    ost_site_addr_county  ,
+	
+		  	    create_by  ,
+	
+		  	    ost_parent_site_name  ,
+	
+		  	    ost_parent_id_path  ,
+	
+		  	    update_by  ,
+	
+		  	    cw_org_site_id  ,
+	
+		  	    ost_site_name  
+	
+			
+		)
+		values (
+		  	    #{ostLifeStatus } ,
+		  	    #{ostSiteAddrCity } ,
+		  	    #{ostSiteContactsPhone } ,
+		  	    #{ostBusiStatus } ,
+		  	    #{ostParentSiteNamePath } ,
+		  	    #{createTime } ,
+		  	    #{ostParentId } ,
+		  	    #{ostSiteGrade } ,
+		  	    #{ostSiteAddrDetail } ,
+		  	    #{updateTime } ,
+		  	    #{ostSiteAddrProvince } ,
+		  	    #{ostSiteContacts } ,
+		  	    #{ostSiteAddrCounty } ,
+		  	    #{createBy } ,
+		  	    #{ostParentSiteName } ,
+		  	    #{ostParentIdPath } ,
+		  	    #{updateBy } ,
+		  	    #{cwOrgSiteId } ,
+		  	    #{ostSiteName } 
+		)
+	</insert>
+	
+	
+	<!-- 通过ID更新 -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.cwwarm.model.CwOrgSiteBean">
+		update cw_org_site
+		<set>
+		  	<if test="ostLifeStatus != null">  ost_life_status = #{ostLifeStatus} ,</if>
+		  	<if test="ostSiteAddrCity != null">  ost_site_addr_city = #{ostSiteAddrCity} ,</if>
+		  	<if test="ostSiteContactsPhone != null">  ost_site_contacts_phone = #{ostSiteContactsPhone} ,</if>
+		  	<if test="ostBusiStatus != null">  ost_busi_status = #{ostBusiStatus} ,</if>
+		  	<if test="ostParentSiteNamePath != null">  ost_parent_site_name_path = #{ostParentSiteNamePath} ,</if>
+		  	<if test="createTime != null">  create_time = #{createTime} ,</if>
+		  	<if test="ostParentId != null">  ost_parent_id = #{ostParentId} ,</if>
+		  	<if test="ostSiteGrade != null">  ost_site_grade = #{ostSiteGrade} ,</if>
+		  	<if test="ostSiteAddrDetail != null">  ost_site_addr_detail = #{ostSiteAddrDetail} ,</if>
+		  	<if test="updateTime != null">  update_time = #{updateTime} ,</if>
+		  	<if test="ostSiteAddrProvince != null">  ost_site_addr_province = #{ostSiteAddrProvince} ,</if>
+		  	<if test="ostSiteContacts != null">  ost_site_contacts = #{ostSiteContacts} ,</if>
+		  	<if test="ostSiteAddrCounty != null">  ost_site_addr_county = #{ostSiteAddrCounty} ,</if>
+		  	<if test="createBy != null">  create_by = #{createBy} ,</if>
+		  	<if test="ostParentSiteName != null">  ost_parent_site_name = #{ostParentSiteName} ,</if>
+		  	<if test="ostParentIdPath != null">  ost_parent_id_path = #{ostParentIdPath} ,</if>
+		  	<if test="updateBy != null">  update_by = #{updateBy} ,</if>
+		  	<if test="ostSiteName != null">  ost_site_name = #{ostSiteName} </if>
+		</set>
+		where  cw_org_site_id = #{cwOrgSiteId}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.cwwarm.model.CwOrgSiteBean">
+		update cw_org_site
+
+		set 
+		  	 ost_life_status = #{ostLifeStatus} ,
+		  	 ost_site_addr_city = #{ostSiteAddrCity} ,
+		  	 ost_site_contacts_phone = #{ostSiteContactsPhone} ,
+		  	 ost_busi_status = #{ostBusiStatus} ,
+		  	 ost_parent_site_name_path = #{ostParentSiteNamePath} ,
+		  	 create_time = #{createTime} ,
+		  	 ost_parent_id = #{ostParentId} ,
+		  	 ost_site_grade = #{ostSiteGrade} ,
+		  	 ost_site_addr_detail = #{ostSiteAddrDetail} ,
+		  	 update_time = #{updateTime} ,
+		  	 ost_site_addr_province = #{ostSiteAddrProvince} ,
+		  	 ost_site_contacts = #{ostSiteContacts} ,
+		  	 ost_site_addr_county = #{ostSiteAddrCounty} ,
+		  	 create_by = #{createBy} ,
+		  	 ost_parent_site_name = #{ostParentSiteName} ,
+		  	 ost_parent_id_path = #{ostParentIdPath} ,
+		  	 update_by = #{updateBy} ,
+		  	 ost_site_name = #{ostSiteName} 
+	
+		where  cw_org_site_id = #{cwOrgSiteId}
+	</update>
+	
+</mapper>

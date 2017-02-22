@@ -1,0 +1,5 @@
+org\com\abc\sample\service\bitronix\AccountRepository.class
+org\com\abc\sample\service\bitronix\SampleBitronixApplication.class
+org\com\abc\sample\service\bitronix\Account.class
+org\com\abc\sample\service\bitronix\Messages.class
+org\com\abc\sample\service\bitronix\AccountService.class

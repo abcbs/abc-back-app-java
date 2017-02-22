@@ -1,0 +1,3 @@
+org\com\abc\sample\service\mongodb\SampleMongoApplication.class
+org\com\abc\sample\service\mongodb\CustomerRepository.class
+org\com\abc\sample\service\mongodb\Customer.class

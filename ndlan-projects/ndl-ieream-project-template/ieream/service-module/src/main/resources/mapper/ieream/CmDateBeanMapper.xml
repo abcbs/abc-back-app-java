@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.CmDateBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.CmDateBean">
+	
+    
+		<result column="date" property="date" jdbcType="DATE" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		date as date ,
+		 as  
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="date != null"> and date = #\{date\}</if>
+				
+		  	    <if test=" != null"> and  = #\{\}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by $\{sorting\}</if>
+		<if test="offset != null and limit != null">
+			limit #\{offset\}, #\{limit\}
+		</if>
+	</sql>
+	
+	<!-- 查询总数 -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(id)
+		from cm_date
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 查询 -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cm_date
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cm_date
+		where id = #\{id\}
+	</select>
+	
+	<!-- 根据ID删除 -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cm_date
+		where  id = #\{id\}
+	</delete>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- 添加 -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.CmDateBean">
+		insert into cm_date(
+		  	    date  ,
+	
+		  	      
+	
+			
+		)
+		values (
+		  	    #\{date \} ,
+		  	    #\{ \} 
+		)
+	</insert>
+	
+	
+	<!-- 通过ID更新 -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.CmDateBean">
+		update cm_date
+		<set>
+		  	<if test=\"date != null\">  date = #\{date\} ,</if>
+		</set>
+		where  id = #\{id\}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.CmDateBean">
+		update cm_date
+
+		set 
+		  	 date = #\{date\} ,
+	
+		where  id = #\{id\}
+	</update>
+	
+</mapper>

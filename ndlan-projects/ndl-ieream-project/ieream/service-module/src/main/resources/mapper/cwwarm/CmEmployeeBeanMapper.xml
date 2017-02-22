@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.CmEmployeeBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.CmEmployeeBean">
+		<id column="emp_id" property="empId" jdbcType="VARCHAR" />
+	
+    
+		<result column="emer_con_tel" property="emerConTel" jdbcType="VARCHAR" />
+    
+		<result column="sysdata_type" property="sysdataType" jdbcType="VARCHAR" />
+    
+		<result column="authorization_make" property="authorizationMake" jdbcType="VARCHAR" />
+    
+		<result column="salt" property="salt" jdbcType="VARCHAR" />
+    
+		<result column="emp_status" property="empStatus" jdbcType="VARCHAR" />
+    
+		<result column="job_pic" property="jobPic" jdbcType="VARCHAR" />
+    
+		<result column="bar_path" property="barPath" jdbcType="VARCHAR" />
+    
+		<result column="is_syn" property="isSyn" jdbcType="VARCHAR" />
+    
+		<result column="residence_adr" property="residenceAdr" jdbcType="VARCHAR" />
+    
+		<result column="emer_contact" property="emerContact" jdbcType="VARCHAR" />
+    
+		<result column="adr_province" property="adrProvince" jdbcType="VARCHAR" />
+    
+		<result column="login_password" property="loginPassword" jdbcType="VARCHAR" />
+    
+		<result column="store_id" property="storeId" jdbcType="VARCHAR" />
+    
+		<result column="login_username" property="loginUsername" jdbcType="VARCHAR" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+    
+		<result column="name" property="name" jdbcType="VARCHAR" />
+    
+		<result column="authorization_code" property="authorizationCode" jdbcType="VARCHAR" />
+    
+		<result column="id_card" property="idCard" jdbcType="VARCHAR" />
+    
+		<result column="job_status" property="jobStatus" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="res__province" property="resProvince" jdbcType="VARCHAR" />
+    
+		<result column="plain_password" property="plainPassword" jdbcType="VARCHAR" />
+    
+		<result column="emp_num" property="empNum" jdbcType="VARCHAR" />
+    
+		<result column="res_city" property="resCity" jdbcType="VARCHAR" />
+    
+		<result column="adr_city" property="adrCity" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="version" property="version" jdbcType="BIGINT" />
+    
+		<result column="address" property="address" jdbcType="VARCHAR" />
+    
+		<result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="gender" property="gender" jdbcType="VARCHAR" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="rest_id" property="restId" jdbcType="VARCHAR" />
+    
+		<result column="belong_rest" property="belongRest" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		emer_con_tel as emerConTel ,
+		sysdata_type as sysdataType ,
+		authorization_make as authorizationMake ,
+		salt as salt ,
+		emp_status as empStatus ,
+		job_pic as jobPic ,
+		bar_path as barPath ,
+		is_syn as isSyn ,
+		residence_adr as residenceAdr ,
+		emer_contact as emerContact ,
+		emp_id as empId ,
+		adr_province as adrProvince ,
+		login_password as loginPassword ,
+		store_id as storeId ,
+		login_username as loginUsername ,
+		syn_version as synVersion ,
+		name as name ,
+		authorization_code as authorizationCode ,
+		id_card as idCard ,
+		job_status as jobStatus ,
+		update_time as updateTime ,
+		res__province as resProvince ,
+		plain_password as plainPassword ,
+		emp_num as empNum ,
+		res_city as resCity ,
+		adr_city as adrCity ,
+		create_time as createTime ,
+		version as version ,
+		address as address ,
+		mobile as mobile ,
+		create_by as createBy ,
+		gender as gender ,
+		update_by as updateBy ,
+		rest_id as restId ,
+		belong_rest as belongRest 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="emerConTel != null"> and emer_con_tel = #{emerConTel}</if>
+				
+		  	    <if test="sysdataType != null"> and sysdata_type = #{sysdataType}</if>
+				
+		  	    <if test="authorizationMake != null"> and authorization_make = #{authorizationMake}</if>
+				
+		  	    <if test="salt != null"> and salt = #{salt}</if>
+				
+		  	    <if test="empStatus != null"> and emp_status = #{empStatus}</if>
+				
+		  	    <if test="jobPic != null"> and job_pic = #{jobPic}</if>
+				
+		  	    <if test="barPath != null"> and bar_path = #{barPath}</if>
+				
+		  	    <if test="isSyn != null"> and is_syn = #{isSyn}</if>
+				
+		  	    <if test="residenceAdr != null"> and residence_adr = #{residenceAdr}</if>
+				
+		  	    <if test="emerContact != null"> and emer_contact = #{emerContact}</if>
+				
+		  	    <if test="empId != null"> and emp_id = #{empId}</if>
+				
+		  	    <if test="adrProvince != null"> and adr_province = #{adrProvince}</if>
+				
+		  	    <if test="loginPassword != null"> and login_password = #{loginPassword}</if>
+				
+		  	    <if test="storeId != null"> and store_id = #{storeId}</if>
+				
+		  	    <if test="loginUsername != null"> and login_username = #{loginUsername}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #{synVersion}</if>
+				
+		  	    <if test="name != null"> and name = #{name}</if>
+				
+		  	    <if test="authorizationCode != null"> and authorization_code = #{authorizationCode}</if>
+				
+		  	    <if test="idCard != null"> and id_card = #{idCard}</if>
+				
+		  	    <if test="jobStatus != null"> and job_status = #{jobStatus}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #{updateTime}</if>
+				
+		  	    <if test="resProvince != null"> and res__province = #{resProvince}</if>
+				
+		  	    <if test="plainPassword != null"> and plain_password = #{plainPassword}</if>
+				
+		  	    <if test="empNum != null"> and emp_num = #{empNum}</if>
+				
+		  	    <if test="resCity != null"> and res_city = #{resCity}</if>
+				
+		  	    <if test="adrCity != null"> and adr_city = #{adrCity}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #{createTime}</if>
+				
+		  	    <if test="version != null"> and version = #{version}</if>
+				
+		  	    <if test="address != null"> and address = #{address}</if>
+				
+		  	    <if test="mobile != null"> and mobile = #{mobile}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #{createBy}</if>
+				
+		  	    <if test="gender != null"> and gender = #{gender}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #{updateBy}</if>
+				
+		  	    <if test="restId != null"> and rest_id = #{restId}</if>
+				
+		  	    <if test="belongRest != null"> and belong_rest = #{belongRest}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by ${sorting}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</sql>
+	
+	<!-- ��ѯ���� -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(emp_id)
+		from cm_employee
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ��ѯ -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cm_employee
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ����ID��ѯ -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cm_employee
+		where emp_id = #{emp_id}
+	</select>
+	
+	<!-- ����IDɾ�� -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cm_employee
+		where  emp_id = #{emp_id}
+	</delete>
+	
+	<!-- ɾ�� -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- ��� -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.CmEmployeeBean">
+		insert into cm_employee(
+		  	    emer_con_tel  ,
+	
+		  	    sysdata_type  ,
+	
+		  	    authorization_make  ,
+	
+		  	    salt  ,
+	
+		  	    emp_status  ,
+	
+		  	    job_pic  ,
+	
+		  	    bar_path  ,
+	
+		  	    is_syn  ,
+	
+		  	    residence_adr  ,
+	
+		  	    emer_contact  ,
+	
+		  	    emp_id  ,
+	
+		  	    adr_province  ,
+	
+		  	    login_password  ,
+	
+		  	    store_id  ,
+	
+		  	    login_username  ,
+	
+		  	    syn_version  ,
+	
+		  	    name  ,
+	
+		  	    authorization_code  ,
+	
+		  	    id_card  ,
+	
+		  	    job_status  ,
+	
+		  	    update_time  ,
+	
+		  	    res__province  ,
+	
+		  	    plain_password  ,
+	
+		  	    emp_num  ,
+	
+		  	    res_city  ,
+	
+		  	    adr_city  ,
+	
+		  	    create_time  ,
+	
+		  	    version  ,
+	
+		  	    address  ,
+	
+		  	    mobile  ,
+	
+		  	    create_by  ,
+	
+		  	    gender  ,
+	
+		  	    update_by  ,
+	
+		  	    rest_id  ,
+	
+		  	    belong_rest  
+	
+			
+		)
+		values (
+		  	    #{emerConTel } ,
+		  	    #{sysdataType } ,
+		  	    #{authorizationMake } ,
+		  	    #{salt } ,
+		  	    #{empStatus } ,
+		  	    #{jobPic } ,
+		  	    #{barPath } ,
+		  	    #{isSyn } ,
+		  	    #{residenceAdr } ,
+		  	    #{emerContact } ,
+		  	    #{empId } ,
+		  	    #{adrProvince } ,
+		  	    #{loginPassword } ,
+		  	    #{storeId } ,
+		  	    #{loginUsername } ,
+		  	    #{synVersion } ,
+		  	    #{name } ,
+		  	    #{authorizationCode } ,
+		  	    #{idCard } ,
+		  	    #{jobStatus } ,
+		  	    #{updateTime } ,
+		  	    #{resProvince } ,
+		  	    #{plainPassword } ,
+		  	    #{empNum } ,
+		  	    #{resCity } ,
+		  	    #{adrCity } ,
+		  	    #{createTime } ,
+		  	    #{version } ,
+		  	    #{address } ,
+		  	    #{mobile } ,
+		  	    #{createBy } ,
+		  	    #{gender } ,
+		  	    #{updateBy } ,
+		  	    #{restId } ,
+		  	    #{belongRest } 
+		)
+	</insert>
+	
+	
+	<!-- ͨ��ID���� -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.CmEmployeeBean">
+		update cm_employee
+		<set>
+		  	<if test="emerConTel != null">  emer_con_tel = #{emerConTel} ,</if>
+		  	<if test="sysdataType != null">  sysdata_type = #{sysdataType} ,</if>
+		  	<if test="authorizationMake != null">  authorization_make = #{authorizationMake} ,</if>
+		  	<if test="salt != null">  salt = #{salt} ,</if>
+		  	<if test="empStatus != null">  emp_status = #{empStatus} ,</if>
+		  	<if test="jobPic != null">  job_pic = #{jobPic} ,</if>
+		  	<if test="barPath != null">  bar_path = #{barPath} ,</if>
+		  	<if test="isSyn != null">  is_syn = #{isSyn} ,</if>
+		  	<if test="residenceAdr != null">  residence_adr = #{residenceAdr} ,</if>
+		  	<if test="emerContact != null">  emer_contact = #{emerContact} ,</if>
+		  	<if test="adrProvince != null">  adr_province = #{adrProvince} ,</if>
+		  	<if test="loginPassword != null">  login_password = #{loginPassword} ,</if>
+		  	<if test="storeId != null">  store_id = #{storeId} ,</if>
+		  	<if test="loginUsername != null">  login_username = #{loginUsername} ,</if>
+		  	<if test="synVersion != null">  syn_version = #{synVersion} ,</if>
+		  	<if test="name != null">  name = #{name} ,</if>
+		  	<if test="authorizationCode != null">  authorization_code = #{authorizationCode} ,</if>
+		  	<if test="idCard != null">  id_card = #{idCard} ,</if>
+		  	<if test="jobStatus != null">  job_status = #{jobStatus} ,</if>
+		  	<if test="updateTime != null">  update_time = #{updateTime} ,</if>
+		  	<if test="resProvince != null">  res__province = #{resProvince} ,</if>
+		  	<if test="plainPassword != null">  plain_password = #{plainPassword} ,</if>
+		  	<if test="empNum != null">  emp_num = #{empNum} ,</if>
+		  	<if test="resCity != null">  res_city = #{resCity} ,</if>
+		  	<if test="adrCity != null">  adr_city = #{adrCity} ,</if>
+		  	<if test="createTime != null">  create_time = #{createTime} ,</if>
+		  	<if test="version != null">  version = #{version} ,</if>
+		  	<if test="address != null">  address = #{address} ,</if>
+		  	<if test="mobile != null">  mobile = #{mobile} ,</if>
+		  	<if test="createBy != null">  create_by = #{createBy} ,</if>
+		  	<if test="gender != null">  gender = #{gender} ,</if>
+		  	<if test="updateBy != null">  update_by = #{updateBy} ,</if>
+		  	<if test="restId != null">  rest_id = #{restId} ,</if>
+		  	<if test="belongRest != null">  belong_rest = #{belongRest} </if>
+		</set>
+		where  emp_id = #{emp_id}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.CmEmployeeBean">
+		update cm_employee
+
+		set 
+		  	 emer_con_tel = #{emerConTel} ,
+		  	 sysdata_type = #{sysdataType} ,
+		  	 authorization_make = #{authorizationMake} ,
+		  	 salt = #{salt} ,
+		  	 emp_status = #{empStatus} ,
+		  	 job_pic = #{jobPic} ,
+		  	 bar_path = #{barPath} ,
+		  	 is_syn = #{isSyn} ,
+		  	 residence_adr = #{residenceAdr} ,
+		  	 emer_contact = #{emerContact} ,
+		  	 adr_province = #{adrProvince} ,
+		  	 login_password = #{loginPassword} ,
+		  	 store_id = #{storeId} ,
+		  	 login_username = #{loginUsername} ,
+		  	 syn_version = #{synVersion} ,
+		  	 name = #{name} ,
+		  	 authorization_code = #{authorizationCode} ,
+		  	 id_card = #{idCard} ,
+		  	 job_status = #{jobStatus} ,
+		  	 update_time = #{updateTime} ,
+		  	 res__province = #{resProvince} ,
+		  	 plain_password = #{plainPassword} ,
+		  	 emp_num = #{empNum} ,
+		  	 res_city = #{resCity} ,
+		  	 adr_city = #{adrCity} ,
+		  	 create_time = #{createTime} ,
+		  	 version = #{version} ,
+		  	 address = #{address} ,
+		  	 mobile = #{mobile} ,
+		  	 create_by = #{createBy} ,
+		  	 gender = #{gender} ,
+		  	 update_by = #{updateBy} ,
+		  	 rest_id = #{restId} ,
+		  	 belong_rest = #{belongRest} 
+	
+		where  emp_id = #{emp_id}
+	</update>
+	
+</mapper>

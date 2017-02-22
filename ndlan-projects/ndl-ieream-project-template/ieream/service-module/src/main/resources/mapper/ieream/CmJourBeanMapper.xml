@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.CmJourBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.CmJourBean">
+		<id column="jour_id" property="jourId" jdbcType="VARCHAR" />
+	
+    
+		<result column="bill_no" property="billNo" jdbcType="VARCHAR" />
+    
+		<result column="terminal_type" property="terminalType" jdbcType="VARCHAR" />
+    
+		<result column="terminal_no" property="terminalNo" jdbcType="VARCHAR" />
+    
+		<result column="operator" property="operator" jdbcType="VARCHAR" />
+    
+		<result column="version" property="version" jdbcType="BIGINT" />
+    
+		<result column="rest_id" property="restId" jdbcType="VARCHAR" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+    
+		<result column="is_syn" property="isSyn" jdbcType="VARCHAR" />
+    
+		<result column="tab_id" property="tabId" jdbcType="VARCHAR" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="internal_jour_no" property="internalJourNo" jdbcType="VARCHAR" />
+    
+		<result column="terminal_mac" property="terminalMac" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="jour_no" property="jourNo" jdbcType="VARCHAR" />
+    
+		<result column="note" property="note" jdbcType="VARCHAR" />
+    
+		<result column="operate_type" property="operateType" jdbcType="VARCHAR" />
+    
+		<result column="action_url" property="actionUrl" jdbcType="VARCHAR" />
+    
+		<result column="function_no" property="functionNo" jdbcType="VARCHAR" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="bill_id" property="billId" jdbcType="VARCHAR" />
+    
+		<result column="jour_status" property="jourStatus" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="return_no" property="returnNo" jdbcType="VARCHAR" />
+    
+		<result column="terminal_ip" property="terminalIp" jdbcType="VARCHAR" />
+    
+		<result column="jour_time" property="jourTime" jdbcType="DATE" />
+    
+		<result column="return_message" property="returnMessage" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		bill_no as billNo ,
+		terminal_type as terminalType ,
+		terminal_no as terminalNo ,
+		operator as operator ,
+		version as version ,
+		rest_id as restId ,
+		syn_version as synVersion ,
+		is_syn as isSyn ,
+		tab_id as tabId ,
+		update_by as updateBy ,
+		internal_jour_no as internalJourNo ,
+		terminal_mac as terminalMac ,
+		create_time as createTime ,
+		jour_no as jourNo ,
+		note as note ,
+		operate_type as operateType ,
+		action_url as actionUrl ,
+		function_no as functionNo ,
+		create_by as createBy ,
+		bill_id as billId ,
+		jour_status as jourStatus ,
+		update_time as updateTime ,
+		return_no as returnNo ,
+		terminal_ip as terminalIp ,
+		jour_time as jourTime ,
+		return_message as returnMessage ,
+		jour_id as jourId 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="billNo != null"> and bill_no = #\{billNo\}</if>
+				
+		  	    <if test="terminalType != null"> and terminal_type = #\{terminalType\}</if>
+				
+		  	    <if test="terminalNo != null"> and terminal_no = #\{terminalNo\}</if>
+				
+		  	    <if test="operator != null"> and operator = #\{operator\}</if>
+				
+		  	    <if test="version != null"> and version = #\{version\}</if>
+				
+		  	    <if test="restId != null"> and rest_id = #\{restId\}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #\{synVersion\}</if>
+				
+		  	    <if test="isSyn != null"> and is_syn = #\{isSyn\}</if>
+				
+		  	    <if test="tabId != null"> and tab_id = #\{tabId\}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #\{updateBy\}</if>
+				
+		  	    <if test="internalJourNo != null"> and internal_jour_no = #\{internalJourNo\}</if>
+				
+		  	    <if test="terminalMac != null"> and terminal_mac = #\{terminalMac\}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #\{createTime\}</if>
+				
+		  	    <if test="jourNo != null"> and jour_no = #\{jourNo\}</if>
+				
+		  	    <if test="note != null"> and note = #\{note\}</if>
+				
+		  	    <if test="operateType != null"> and operate_type = #\{operateType\}</if>
+				
+		  	    <if test="actionUrl != null"> and action_url = #\{actionUrl\}</if>
+				
+		  	    <if test="functionNo != null"> and function_no = #\{functionNo\}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #\{createBy\}</if>
+				
+		  	    <if test="billId != null"> and bill_id = #\{billId\}</if>
+				
+		  	    <if test="jourStatus != null"> and jour_status = #\{jourStatus\}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #\{updateTime\}</if>
+				
+		  	    <if test="returnNo != null"> and return_no = #\{returnNo\}</if>
+				
+		  	    <if test="terminalIp != null"> and terminal_ip = #\{terminalIp\}</if>
+				
+		  	    <if test="jourTime != null"> and jour_time = #\{jourTime\}</if>
+				
+		  	    <if test="returnMessage != null"> and return_message = #\{returnMessage\}</if>
+				
+		  	    <if test="jourId != null"> and jour_id = #\{jourId\}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by $\{sorting\}</if>
+		<if test="offset != null and limit != null">
+			limit #\{offset\}, #\{limit\}
+		</if>
+	</sql>
+	
+	<!-- 查询总数 -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(jour_id)
+		from cm_jour
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 查询 -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cm_jour
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cm_jour
+		where jour_id = #\{jour_id\}
+	</select>
+	
+	<!-- 根据ID删除 -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cm_jour
+		where  jour_id = #\{jour_id\}
+	</delete>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- 添加 -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.CmJourBean">
+		insert into cm_jour(
+		  	    bill_no  ,
+	
+		  	    terminal_type  ,
+	
+		  	    terminal_no  ,
+	
+		  	    operator  ,
+	
+		  	    version  ,
+	
+		  	    rest_id  ,
+	
+		  	    syn_version  ,
+	
+		  	    is_syn  ,
+	
+		  	    tab_id  ,
+	
+		  	    update_by  ,
+	
+		  	    internal_jour_no  ,
+	
+		  	    terminal_mac  ,
+	
+		  	    create_time  ,
+	
+		  	    jour_no  ,
+	
+		  	    note  ,
+	
+		  	    operate_type  ,
+	
+		  	    action_url  ,
+	
+		  	    function_no  ,
+	
+		  	    create_by  ,
+	
+		  	    bill_id  ,
+	
+		  	    jour_status  ,
+	
+		  	    update_time  ,
+	
+		  	    return_no  ,
+	
+		  	    terminal_ip  ,
+	
+		  	    jour_time  ,
+	
+		  	    return_message  ,
+	
+		  	    jour_id  
+	
+			
+		)
+		values (
+		  	    #\{billNo \} ,
+		  	    #\{terminalType \} ,
+		  	    #\{terminalNo \} ,
+		  	    #\{operator \} ,
+		  	    #\{version \} ,
+		  	    #\{restId \} ,
+		  	    #\{synVersion \} ,
+		  	    #\{isSyn \} ,
+		  	    #\{tabId \} ,
+		  	    #\{updateBy \} ,
+		  	    #\{internalJourNo \} ,
+		  	    #\{terminalMac \} ,
+		  	    #\{createTime \} ,
+		  	    #\{jourNo \} ,
+		  	    #\{note \} ,
+		  	    #\{operateType \} ,
+		  	    #\{actionUrl \} ,
+		  	    #\{functionNo \} ,
+		  	    #\{createBy \} ,
+		  	    #\{billId \} ,
+		  	    #\{jourStatus \} ,
+		  	    #\{updateTime \} ,
+		  	    #\{returnNo \} ,
+		  	    #\{terminalIp \} ,
+		  	    #\{jourTime \} ,
+		  	    #\{returnMessage \} ,
+		  	    #\{jourId \} 
+		)
+	</insert>
+	
+	
+	<!-- 通过ID更新 -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.CmJourBean">
+		update cm_jour
+		<set>
+		  	<if test=\"billNo != null\">  bill_no = #\{billNo\} ,</if>
+		  	<if test=\"terminalType != null\">  terminal_type = #\{terminalType\} ,</if>
+		  	<if test=\"terminalNo != null\">  terminal_no = #\{terminalNo\} ,</if>
+		  	<if test=\"operator != null\">  operator = #\{operator\} ,</if>
+		  	<if test=\"version != null\">  version = #\{version\} ,</if>
+		  	<if test=\"restId != null\">  rest_id = #\{restId\} ,</if>
+		  	<if test=\"synVersion != null\">  syn_version = #\{synVersion\} ,</if>
+		  	<if test=\"isSyn != null\">  is_syn = #\{isSyn\} ,</if>
+		  	<if test=\"tabId != null\">  tab_id = #\{tabId\} ,</if>
+		  	<if test=\"updateBy != null\">  update_by = #\{updateBy\} ,</if>
+		  	<if test=\"internalJourNo != null\">  internal_jour_no = #\{internalJourNo\} ,</if>
+		  	<if test=\"terminalMac != null\">  terminal_mac = #\{terminalMac\} ,</if>
+		  	<if test=\"createTime != null\">  create_time = #\{createTime\} ,</if>
+		  	<if test=\"jourNo != null\">  jour_no = #\{jourNo\} ,</if>
+		  	<if test=\"note != null\">  note = #\{note\} ,</if>
+		  	<if test=\"operateType != null\">  operate_type = #\{operateType\} ,</if>
+		  	<if test=\"actionUrl != null\">  action_url = #\{actionUrl\} ,</if>
+		  	<if test=\"functionNo != null\">  function_no = #\{functionNo\} ,</if>
+		  	<if test=\"createBy != null\">  create_by = #\{createBy\} ,</if>
+		  	<if test=\"billId != null\">  bill_id = #\{billId\} ,</if>
+		  	<if test=\"jourStatus != null\">  jour_status = #\{jourStatus\} ,</if>
+		  	<if test=\"updateTime != null\">  update_time = #\{updateTime\} ,</if>
+		  	<if test=\"returnNo != null\">  return_no = #\{returnNo\} ,</if>
+		  	<if test=\"terminalIp != null\">  terminal_ip = #\{terminalIp\} ,</if>
+		  	<if test=\"jourTime != null\">  jour_time = #\{jourTime\} ,</if>
+		  	<if test=\"returnMessage != null\">  return_message = #\{returnMessage\} ,</if>
+		</set>
+		where  jour_id = #\{jour_id\}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.CmJourBean">
+		update cm_jour
+
+		set 
+		  	 bill_no = #\{billNo\} ,
+		  	 terminal_type = #\{terminalType\} ,
+		  	 terminal_no = #\{terminalNo\} ,
+		  	 operator = #\{operator\} ,
+		  	 version = #\{version\} ,
+		  	 rest_id = #\{restId\} ,
+		  	 syn_version = #\{synVersion\} ,
+		  	 is_syn = #\{isSyn\} ,
+		  	 tab_id = #\{tabId\} ,
+		  	 update_by = #\{updateBy\} ,
+		  	 internal_jour_no = #\{internalJourNo\} ,
+		  	 terminal_mac = #\{terminalMac\} ,
+		  	 create_time = #\{createTime\} ,
+		  	 jour_no = #\{jourNo\} ,
+		  	 note = #\{note\} ,
+		  	 operate_type = #\{operateType\} ,
+		  	 action_url = #\{actionUrl\} ,
+		  	 function_no = #\{functionNo\} ,
+		  	 create_by = #\{createBy\} ,
+		  	 bill_id = #\{billId\} ,
+		  	 jour_status = #\{jourStatus\} ,
+		  	 update_time = #\{updateTime\} ,
+		  	 return_no = #\{returnNo\} ,
+		  	 terminal_ip = #\{terminalIp\} ,
+		  	 jour_time = #\{jourTime\} ,
+		  	 return_message = #\{returnMessage\} ,
+	
+		where  jour_id = #\{jour_id\}
+	</update>
+	
+</mapper>

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.CmEmployeeWorkBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.CmEmployeeWorkBean">
+		<id column="work_id" property="workId" jdbcType="VARCHAR" />
+	
+    
+		<result column="emp_id" property="empId" jdbcType="VARCHAR" />
+    
+		<result column="is_syn" property="isSyn" jdbcType="VARCHAR" />
+    
+		<result column="emp_op_content" property="empOpContent" jdbcType="VARCHAR" />
+    
+		<result column="version" property="version" jdbcType="BIGINT" />
+    
+		<result column="bill_no" property="billNo" jdbcType="VARCHAR" />
+    
+		<result column="tab_no" property="tabNo" jdbcType="VARCHAR" />
+    
+		<result column="emp_op_type" property="empOpType" jdbcType="VARCHAR" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="rest_id" property="restId" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		emp_id as empId ,
+		is_syn as isSyn ,
+		emp_op_content as empOpContent ,
+		work_id as workId ,
+		version as version ,
+		bill_no as billNo ,
+		tab_no as tabNo ,
+		emp_op_type as empOpType ,
+		syn_version as synVersion ,
+		update_by as updateBy ,
+		create_by as createBy ,
+		create_time as createTime ,
+		rest_id as restId ,
+		update_time as updateTime 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="empId != null"> and emp_id = #\{empId\}</if>
+				
+		  	    <if test="isSyn != null"> and is_syn = #\{isSyn\}</if>
+				
+		  	    <if test="empOpContent != null"> and emp_op_content = #\{empOpContent\}</if>
+				
+		  	    <if test="workId != null"> and work_id = #\{workId\}</if>
+				
+		  	    <if test="version != null"> and version = #\{version\}</if>
+				
+		  	    <if test="billNo != null"> and bill_no = #\{billNo\}</if>
+				
+		  	    <if test="tabNo != null"> and tab_no = #\{tabNo\}</if>
+				
+		  	    <if test="empOpType != null"> and emp_op_type = #\{empOpType\}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #\{synVersion\}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #\{updateBy\}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #\{createBy\}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #\{createTime\}</if>
+				
+		  	    <if test="restId != null"> and rest_id = #\{restId\}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #\{updateTime\}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by $\{sorting\}</if>
+		<if test="offset != null and limit != null">
+			limit #\{offset\}, #\{limit\}
+		</if>
+	</sql>
+	
+	<!-- 查询总数 -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(work_id)
+		from cm_employee_work
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 查询 -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cm_employee_work
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cm_employee_work
+		where work_id = #\{work_id\}
+	</select>
+	
+	<!-- 根据ID删除 -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cm_employee_work
+		where  work_id = #\{work_id\}
+	</delete>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- 添加 -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.CmEmployeeWorkBean">
+		insert into cm_employee_work(
+		  	    emp_id  ,
+	
+		  	    is_syn  ,
+	
+		  	    emp_op_content  ,
+	
+		  	    work_id  ,
+	
+		  	    version  ,
+	
+		  	    bill_no  ,
+	
+		  	    tab_no  ,
+	
+		  	    emp_op_type  ,
+	
+		  	    syn_version  ,
+	
+		  	    update_by  ,
+	
+		  	    create_by  ,
+	
+		  	    create_time  ,
+	
+		  	    rest_id  ,
+	
+		  	    update_time  
+	
+			
+		)
+		values (
+		  	    #\{empId \} ,
+		  	    #\{isSyn \} ,
+		  	    #\{empOpContent \} ,
+		  	    #\{workId \} ,
+		  	    #\{version \} ,
+		  	    #\{billNo \} ,
+		  	    #\{tabNo \} ,
+		  	    #\{empOpType \} ,
+		  	    #\{synVersion \} ,
+		  	    #\{updateBy \} ,
+		  	    #\{createBy \} ,
+		  	    #\{createTime \} ,
+		  	    #\{restId \} ,
+		  	    #\{updateTime \} 
+		)
+	</insert>
+	
+	
+	<!-- 通过ID更新 -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.CmEmployeeWorkBean">
+		update cm_employee_work
+		<set>
+		  	<if test=\"empId != null\">  emp_id = #\{empId\} ,</if>
+		  	<if test=\"isSyn != null\">  is_syn = #\{isSyn\} ,</if>
+		  	<if test=\"empOpContent != null\">  emp_op_content = #\{empOpContent\} ,</if>
+		  	<if test=\"version != null\">  version = #\{version\} ,</if>
+		  	<if test=\"billNo != null\">  bill_no = #\{billNo\} ,</if>
+		  	<if test=\"tabNo != null\">  tab_no = #\{tabNo\} ,</if>
+		  	<if test=\"empOpType != null\">  emp_op_type = #\{empOpType\} ,</if>
+		  	<if test=\"synVersion != null\">  syn_version = #\{synVersion\} ,</if>
+		  	<if test=\"updateBy != null\">  update_by = #\{updateBy\} ,</if>
+		  	<if test=\"createBy != null\">  create_by = #\{createBy\} ,</if>
+		  	<if test=\"createTime != null\">  create_time = #\{createTime\} ,</if>
+		  	<if test=\"restId != null\">  rest_id = #\{restId\} ,</if>
+		  	<if test=\"updateTime != null\">  update_time = #\{updateTime\} </if>
+		</set>
+		where  work_id = #\{work_id\}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.CmEmployeeWorkBean">
+		update cm_employee_work
+
+		set 
+		  	 emp_id = #\{empId\} ,
+		  	 is_syn = #\{isSyn\} ,
+		  	 emp_op_content = #\{empOpContent\} ,
+		  	 version = #\{version\} ,
+		  	 bill_no = #\{billNo\} ,
+		  	 tab_no = #\{tabNo\} ,
+		  	 emp_op_type = #\{empOpType\} ,
+		  	 syn_version = #\{synVersion\} ,
+		  	 update_by = #\{updateBy\} ,
+		  	 create_by = #\{createBy\} ,
+		  	 create_time = #\{createTime\} ,
+		  	 rest_id = #\{restId\} ,
+		  	 update_time = #\{updateTime\} 
+	
+		where  work_id = #\{work_id\}
+	</update>
+	
+</mapper>

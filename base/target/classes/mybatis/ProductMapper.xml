@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.ndlan.canyin.base.repository.mybatis.ProductMyDao">
+
+	<select id="findProductList" parameterType="int" resultType="com.ndlan.canyin.base.entity.base3c.productinfo.ProductModel">
+			select 
+			a.pro_id as proId,   
+			a.name as name,
+			a.pro_desc as proDesc,
+			a.pic as pic,
+			a.quantity as quantity,
+			a.prime_cost as primeCost,
+			a.price as price,
+			a.discount as discount,
+			a.privilege as privilege,
+			a.promotion_status as promotionStatus,
+			a.promotion_price as promotionPrice,
+			a.bar_code as barCode,
+			a.affter_discount as affterDiscount,
+			a.rest_id as restId,
+			a.status as status,
+			a.discount_type as discountType,
+			b.trademark as trademark,
+			b.official_bar_code as officialBarCode,
+			b.item_no as itemNo,
+			b.recommended_price as recommendedPrice
+			
+			
+			from base3c_product a
+			left join base3c_base_product b on  b.base_pro_id=a.base_pro_id
+			where a.rest_id ='${restId}' 
+				and a.status ='1'		
+			<if test="key !=null">
+				and a.bar_code like '%${key}%' or a.name like '%${key}%'
+			
+			</if>
+			
+			<if test="parentCategoryId !=null">
+				and a.parent_category_id ='${parentCategoryId}'
+			
+			</if>
+			
+			<if test="categoryId !=null">
+				and a.category_id ='${categoryId}'
+			
+			</if>
+			
+			limit ${start},${pageSize} 
+	
+	</select>
+	
+	<select id="findProductCount" parameterType="int" resultType="int">
+			select count(*) from base3c_product a
+			where a.rest_id ='${restId}'
+			<if test="key !=null">
+				and a.bar_code ='%${key}%' or a.name ='%${key}%'
+			</if>
+			<if test="parentCategoryId !=null">
+				and a.parent_category_id ='${parentCategoryId}'
+			</if>
+			<if test="categoryId !=null">
+				and a.category_id ='${categoryId}'
+			</if>
+	
+	</select>    
+	
+</mapper> 

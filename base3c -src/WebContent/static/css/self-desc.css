@@ -1,0 +1,33 @@
+/* CSS Document */
+@charset "utf-8";
+a{text-decoration: none;}
+.diancan_body{width:1024px;float:left;margin:0;}
+.diancan_header{background:#d2d2d2;float:left;width:1024px;height:60px;margin:0;}
+.diancan_logo{background:url(../images/self/diancan_bg.png) -215px 0;float:left;width:246px;height:36px;margin:18px 0 0 18px;}
+.diancan_text_area{float:left;display:inline;background:url(../images/self/diancan_bg.png) -10px -86px no-repeat;width:950px;margin-left:37px;height:300px; position:relative;}
+.diancan_text_area h3{width:950px;color:#ff8800;float:left;font-size:22px;display:inline;height:20px;text-align:center;margin-left:37px;margin:40px 0;}
+.diancan_text_area p{width:950px;color:#888;float:left;font-size:18px;display:inline;text-indent:24px;line-height:36px;margin-left:37px;margin:0;}
+.diancan_text_area a{padding:15px 0 0 30px;background:#76ca40;font-size:22px;color:#fff;display:block;position:absolute;right:37px; bottom:38px;width:170px;height:45px;cursor:pointer;}
+.diancan_text_area a i{float:left;font-style:normal;}
+.diancan_text_area a span{width:40px;height:40px;display:block;float:right;margin:-6px 30px 0 0;background:url(../images/self/diancan_bg.png) -151px 0;}
+.ewm_area{float:left;width:980px;margin:0;position:relative;}
+.ewm_title{background:url(../images/self/diancan_bg.png) -10px -86px no-repeat;float:left;display:inline;width:950px;height:90px;margin:0 0 40px 37px;}
+.ewm_title h3{width:950px;text-align:center;color:#ff8800;font-size:22px;margin:40px 0 10px 0;}
+.ewm_title h4{width:950px;text-align:center;color:#ff8800;font-size:14px;margin:0 0 20px 0;font-weight:200;}
+.ewm_wrap{float:left;width:980px;margin:0 0 0 7px;display:inline;}
+.ewm{float:left;width:214px;height:363px;background:#76ca40;margin:0 0 30px 30px;display:inline;position:relative;}
+.ewm img{float:left;margin:20px 0 0 20px;display:inline;}
+.ewm_text{position:absolute;top:190px;left:20px;}
+.p_aload{background:url(../images/self/load.png) no-repeat;font-size:14px;padding-left:15px;position:absolute;right:0px;top:50px;dispaly:block;width:97px;height:39px;color:#fff;line-height:35px;text-align:center;}
+/*.ewm_text{position:absolute;bottom:20px;left:20px;}
+.ewm p{width:174px;float:left;margin:20px 0 0 0;display:inline;word-wrap:break-word;}*/
+.ewm p{width:174px;float:left;margin:20px 0 0 0;display:inline;word-wrap:break-word;height:35px;font-family:"微软雅黑";line-height:25px;font-size:14px;}
+.ewm_text a{text-decoration:underline;}
+.ewm_text a:hover{color:#f00;}
+
+.top{cursor:pointer;width:64px;height:64px;background:url(../images/self/diancan_bg.png) 0 0;display:block;position:absolute;bottom:0;right:10px;}
+.top:hover{background:url(../images/self/diancan_bg.png) -64px 0;}
+.diancan_footer{background:url(../images/self/diancan_bg.png) -10px -86px no-repeat;float:left;display:inline;width:950px;height:60px; margin:20px 0 0 37px;}
+.diancan_footer p{font-family:"微软雅黑";float:left;font-size:14px;display:inline;width:680px;height:40px; margin:20px 0 0 180px;word-spacing:12px}
+.diancan_footer p a{color:#76CA40;}
+

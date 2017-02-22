@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.Base3cBillReturnItemBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.Base3cBillReturnItemBean">
+		<id column="br_id" property="brId" jdbcType="VARCHAR" />
+	
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="version" property="version" jdbcType="BIGINT" />
+    
+		<result column="pay_status" property="payStatus" jdbcType="VARCHAR" />
+    
+		<result column="is_syn" property="isSyn" jdbcType="VARCHAR" />
+    
+		<result column="b_id" property="bId" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="return_total" property="returnTotal" jdbcType="VARCHAR" />
+    
+		<result column="pro_desc" property="proDesc" jdbcType="VARCHAR" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+    
+		<result column="pic" property="pic" jdbcType="VARCHAR" />
+    
+		<result column="subtotal" property="subtotal" jdbcType="VARCHAR" />
+    
+		<result column="return_price" property="returnPrice" jdbcType="VARCHAR" />
+    
+		<result column="discount" property="discount" jdbcType="VARCHAR" />
+    
+		<result column="category_id" property="categoryId" jdbcType="VARCHAR" />
+    
+		<result column="bar_Code" property="barCode" jdbcType="VARCHAR" />
+    
+		<result column="rest_id" property="restId" jdbcType="VARCHAR" />
+    
+		<result column="pro_id" property="proId" jdbcType="VARCHAR" />
+    
+		<result column="bd_id" property="bdId" jdbcType="VARCHAR" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="derate" property="derate" jdbcType="VARCHAR" />
+    
+		<result column="price" property="price" jdbcType="VARCHAR" />
+    
+		<result column="name" property="name" jdbcType="VARCHAR" />
+    
+		<result column="return_type" property="returnType" jdbcType="VARCHAR" />
+    
+		<result column="bd_no" property="bdNo" jdbcType="VARCHAR" />
+    
+		<result column="return_reason" property="returnReason" jdbcType="VARCHAR" />
+    
+		<result column="return_quantity" property="returnQuantity" jdbcType="VARCHAR" />
+    
+		<result column="quantity" property="quantity" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		create_by as createBy ,
+		version as version ,
+		pay_status as payStatus ,
+		is_syn as isSyn ,
+		b_id as bId ,
+		update_time as updateTime ,
+		return_total as returnTotal ,
+		pro_desc as proDesc ,
+		syn_version as synVersion ,
+		pic as pic ,
+		subtotal as subtotal ,
+		return_price as returnPrice ,
+		discount as discount ,
+		category_id as categoryId ,
+		bar_Code as barCode ,
+		br_id as brId ,
+		rest_id as restId ,
+		pro_id as proId ,
+		bd_id as bdId ,
+		update_by as updateBy ,
+		derate as derate ,
+		price as price ,
+		name as name ,
+		return_type as returnType ,
+		bd_no as bdNo ,
+		return_reason as returnReason ,
+		return_quantity as returnQuantity ,
+		quantity as quantity ,
+		create_time as createTime 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="createBy != null"> and create_by = #\{createBy\}</if>
+				
+		  	    <if test="version != null"> and version = #\{version\}</if>
+				
+		  	    <if test="payStatus != null"> and pay_status = #\{payStatus\}</if>
+				
+		  	    <if test="isSyn != null"> and is_syn = #\{isSyn\}</if>
+				
+		  	    <if test="bId != null"> and b_id = #\{bId\}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #\{updateTime\}</if>
+				
+		  	    <if test="returnTotal != null"> and return_total = #\{returnTotal\}</if>
+				
+		  	    <if test="proDesc != null"> and pro_desc = #\{proDesc\}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #\{synVersion\}</if>
+				
+		  	    <if test="pic != null"> and pic = #\{pic\}</if>
+				
+		  	    <if test="subtotal != null"> and subtotal = #\{subtotal\}</if>
+				
+		  	    <if test="returnPrice != null"> and return_price = #\{returnPrice\}</if>
+				
+		  	    <if test="discount != null"> and discount = #\{discount\}</if>
+				
+		  	    <if test="categoryId != null"> and category_id = #\{categoryId\}</if>
+				
+		  	    <if test="barCode != null"> and bar_Code = #\{barCode\}</if>
+				
+		  	    <if test="brId != null"> and br_id = #\{brId\}</if>
+				
+		  	    <if test="restId != null"> and rest_id = #\{restId\}</if>
+				
+		  	    <if test="proId != null"> and pro_id = #\{proId\}</if>
+				
+		  	    <if test="bdId != null"> and bd_id = #\{bdId\}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #\{updateBy\}</if>
+				
+		  	    <if test="derate != null"> and derate = #\{derate\}</if>
+				
+		  	    <if test="price != null"> and price = #\{price\}</if>
+				
+		  	    <if test="name != null"> and name = #\{name\}</if>
+				
+		  	    <if test="returnType != null"> and return_type = #\{returnType\}</if>
+				
+		  	    <if test="bdNo != null"> and bd_no = #\{bdNo\}</if>
+				
+		  	    <if test="returnReason != null"> and return_reason = #\{returnReason\}</if>
+				
+		  	    <if test="returnQuantity != null"> and return_quantity = #\{returnQuantity\}</if>
+				
+		  	    <if test="quantity != null"> and quantity = #\{quantity\}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #\{createTime\}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by $\{sorting\}</if>
+		<if test="offset != null and limit != null">
+			limit #\{offset\}, #\{limit\}
+		</if>
+	</sql>
+	
+	<!-- 查询总数 -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(br_id)
+		from base3c_bill_return_item
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 查询 -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from base3c_bill_return_item
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from base3c_bill_return_item
+		where br_id = #\{br_id\}
+	</select>
+	
+	<!-- 根据ID删除 -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from base3c_bill_return_item
+		where  br_id = #\{br_id\}
+	</delete>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- 添加 -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.Base3cBillReturnItemBean">
+		insert into base3c_bill_return_item(
+		  	    create_by  ,
+	
+		  	    version  ,
+	
+		  	    pay_status  ,
+	
+		  	    is_syn  ,
+	
+		  	    b_id  ,
+	
+		  	    update_time  ,
+	
+		  	    return_total  ,
+	
+		  	    pro_desc  ,
+	
+		  	    syn_version  ,
+	
+		  	    pic  ,
+	
+		  	    subtotal  ,
+	
+		  	    return_price  ,
+	
+		  	    discount  ,
+	
+		  	    category_id  ,
+	
+		  	    bar_Code  ,
+	
+		  	    br_id  ,
+	
+		  	    rest_id  ,
+	
+		  	    pro_id  ,
+	
+		  	    bd_id  ,
+	
+		  	    update_by  ,
+	
+		  	    derate  ,
+	
+		  	    price  ,
+	
+		  	    name  ,
+	
+		  	    return_type  ,
+	
+		  	    bd_no  ,
+	
+		  	    return_reason  ,
+	
+		  	    return_quantity  ,
+	
+		  	    quantity  ,
+	
+		  	    create_time  
+	
+			
+		)
+		values (
+		  	    #\{createBy \} ,
+		  	    #\{version \} ,
+		  	    #\{payStatus \} ,
+		  	    #\{isSyn \} ,
+		  	    #\{bId \} ,
+		  	    #\{updateTime \} ,
+		  	    #\{returnTotal \} ,
+		  	    #\{proDesc \} ,
+		  	    #\{synVersion \} ,
+		  	    #\{pic \} ,
+		  	    #\{subtotal \} ,
+		  	    #\{returnPrice \} ,
+		  	    #\{discount \} ,
+		  	    #\{categoryId \} ,
+		  	    #\{barCode \} ,
+		  	    #\{brId \} ,
+		  	    #\{restId \} ,
+		  	    #\{proId \} ,
+		  	    #\{bdId \} ,
+		  	    #\{updateBy \} ,
+		  	    #\{derate \} ,
+		  	    #\{price \} ,
+		  	    #\{name \} ,
+		  	    #\{returnType \} ,
+		  	    #\{bdNo \} ,
+		  	    #\{returnReason \} ,
+		  	    #\{returnQuantity \} ,
+		  	    #\{quantity \} ,
+		  	    #\{createTime \} 
+		)
+	</insert>
+	
+	
+	<!-- 通过ID更新 -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.Base3cBillReturnItemBean">
+		update base3c_bill_return_item
+		<set>
+		  	<if test=\"createBy != null\">  create_by = #\{createBy\} ,</if>
+		  	<if test=\"version != null\">  version = #\{version\} ,</if>
+		  	<if test=\"payStatus != null\">  pay_status = #\{payStatus\} ,</if>
+		  	<if test=\"isSyn != null\">  is_syn = #\{isSyn\} ,</if>
+		  	<if test=\"bId != null\">  b_id = #\{bId\} ,</if>
+		  	<if test=\"updateTime != null\">  update_time = #\{updateTime\} ,</if>
+		  	<if test=\"returnTotal != null\">  return_total = #\{returnTotal\} ,</if>
+		  	<if test=\"proDesc != null\">  pro_desc = #\{proDesc\} ,</if>
+		  	<if test=\"synVersion != null\">  syn_version = #\{synVersion\} ,</if>
+		  	<if test=\"pic != null\">  pic = #\{pic\} ,</if>
+		  	<if test=\"subtotal != null\">  subtotal = #\{subtotal\} ,</if>
+		  	<if test=\"returnPrice != null\">  return_price = #\{returnPrice\} ,</if>
+		  	<if test=\"discount != null\">  discount = #\{discount\} ,</if>
+		  	<if test=\"categoryId != null\">  category_id = #\{categoryId\} ,</if>
+		  	<if test=\"barCode != null\">  bar_Code = #\{barCode\} ,</if>
+		  	<if test=\"restId != null\">  rest_id = #\{restId\} ,</if>
+		  	<if test=\"proId != null\">  pro_id = #\{proId\} ,</if>
+		  	<if test=\"bdId != null\">  bd_id = #\{bdId\} ,</if>
+		  	<if test=\"updateBy != null\">  update_by = #\{updateBy\} ,</if>
+		  	<if test=\"derate != null\">  derate = #\{derate\} ,</if>
+		  	<if test=\"price != null\">  price = #\{price\} ,</if>
+		  	<if test=\"name != null\">  name = #\{name\} ,</if>
+		  	<if test=\"returnType != null\">  return_type = #\{returnType\} ,</if>
+		  	<if test=\"bdNo != null\">  bd_no = #\{bdNo\} ,</if>
+		  	<if test=\"returnReason != null\">  return_reason = #\{returnReason\} ,</if>
+		  	<if test=\"returnQuantity != null\">  return_quantity = #\{returnQuantity\} ,</if>
+		  	<if test=\"quantity != null\">  quantity = #\{quantity\} ,</if>
+		  	<if test=\"createTime != null\">  create_time = #\{createTime\} </if>
+		</set>
+		where  br_id = #\{br_id\}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.Base3cBillReturnItemBean">
+		update base3c_bill_return_item
+
+		set 
+		  	 create_by = #\{createBy\} ,
+		  	 version = #\{version\} ,
+		  	 pay_status = #\{payStatus\} ,
+		  	 is_syn = #\{isSyn\} ,
+		  	 b_id = #\{bId\} ,
+		  	 update_time = #\{updateTime\} ,
+		  	 return_total = #\{returnTotal\} ,
+		  	 pro_desc = #\{proDesc\} ,
+		  	 syn_version = #\{synVersion\} ,
+		  	 pic = #\{pic\} ,
+		  	 subtotal = #\{subtotal\} ,
+		  	 return_price = #\{returnPrice\} ,
+		  	 discount = #\{discount\} ,
+		  	 category_id = #\{categoryId\} ,
+		  	 bar_Code = #\{barCode\} ,
+		  	 rest_id = #\{restId\} ,
+		  	 pro_id = #\{proId\} ,
+		  	 bd_id = #\{bdId\} ,
+		  	 update_by = #\{updateBy\} ,
+		  	 derate = #\{derate\} ,
+		  	 price = #\{price\} ,
+		  	 name = #\{name\} ,
+		  	 return_type = #\{returnType\} ,
+		  	 bd_no = #\{bdNo\} ,
+		  	 return_reason = #\{returnReason\} ,
+		  	 return_quantity = #\{returnQuantity\} ,
+		  	 quantity = #\{quantity\} ,
+		  	 create_time = #\{createTime\} 
+	
+		where  br_id = #\{br_id\}
+	</update>
+	
+</mapper>

@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.CmTableOrderBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.CmTableOrderBean">
+		<id column="order_id" property="orderId" jdbcType="VARCHAR" />
+	
+    
+		<result column="online_uob_id" property="onlineUobId" jdbcType="VARCHAR" />
+    
+		<result column="ccd_id" property="ccdId" jdbcType="VARCHAR" />
+    
+		<result column="rest_id" property="restId" jdbcType="VARCHAR" />
+    
+		<result column="notes" property="notes" jdbcType="VARCHAR" />
+    
+		<result column="people_num" property="peopleNum" jdbcType="BIGINT" />
+    
+		<result column="avoidfood_id_array" property="avoidfoodIdArray" jdbcType="VARCHAR" />
+    
+		<result column="pungent_level" property="pungentLevel" jdbcType="BIGINT" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="gender" property="gender" jdbcType="VARCHAR" />
+    
+		<result column="order_way" property="orderWay" jdbcType="VARCHAR" />
+    
+		<result column="order_people_name" property="orderPeopleName" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="cpt_id" property="cptId" jdbcType="VARCHAR" />
+    
+		<result column="bill_from" property="billFrom" jdbcType="VARCHAR" />
+    
+		<result column="cancle_reason" property="cancleReason" jdbcType="VARCHAR" />
+    
+		<result column="online_dining_time" property="onlineDiningTime" jdbcType="DATE" />
+    
+		<result column="online_area_name" property="onlineAreaName" jdbcType="VARCHAR" />
+    
+		<result column="mb_id" property="mbId" jdbcType="VARCHAR" />
+    
+		<result column="online_gender" property="onlineGender" jdbcType="VARCHAR" />
+    
+		<result column="dining_time" property="diningTime" jdbcType="DATE" />
+    
+		<result column="moling_mode_cost" property="molingModeCost" jdbcType="DOUBLE" />
+    
+		<result column="taste_name_array" property="tasteNameArray" jdbcType="VARCHAR" />
+    
+		<result column="online_telphone" property="onlineTelphone" jdbcType="VARCHAR" />
+    
+		<result column="avoidfood_name_array" property="avoidfoodNameArray" jdbcType="VARCHAR" />
+    
+		<result column="order_time" property="orderTime" jdbcType="DATE" />
+    
+		<result column="ori_cost" property="oriCost" jdbcType="DOUBLE" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="tab_id" property="tabId" jdbcType="VARCHAR" />
+    
+		<result column="online_order_id" property="onlineOrderId" jdbcType="VARCHAR" />
+    
+		<result column="telphone" property="telphone" jdbcType="VARCHAR" />
+    
+		<result column="online_area_id" property="onlineAreaId" jdbcType="VARCHAR" />
+    
+		<result column="bill_id" property="billId" jdbcType="VARCHAR" />
+    
+		<result column="version" property="version" jdbcType="BIGINT" />
+    
+		<result column="order_status" property="orderStatus" jdbcType="VARCHAR" />
+    
+		<result column="tab_no" property="tabNo" jdbcType="VARCHAR" />
+    
+		<result column="online_payment_type" property="onlinePaymentType" jdbcType="VARCHAR" />
+    
+		<result column="online_order_no" property="onlineOrderNo" jdbcType="VARCHAR" />
+    
+		<result column="prepay" property="prepay" jdbcType="DOUBLE" />
+    
+		<result column="online_people_num" property="onlinePeopleNum" jdbcType="BIGINT" />
+    
+		<result column="taste_id_array" property="tasteIdArray" jdbcType="VARCHAR" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+    
+		<result column="mc_id" property="mcId" jdbcType="VARCHAR" />
+    
+		<result column="sales_mg_id" property="salesMgId" jdbcType="VARCHAR" />
+    
+		<result column="order_people_name_code" property="orderPeopleNameCode" jdbcType="VARCHAR" />
+    
+		<result column="online_user_mobile" property="onlineUserMobile" jdbcType="VARCHAR" />
+    
+		<result column="online_mobile" property="onlineMobile" jdbcType="VARCHAR" />
+    
+		<result column="online_order_people_name" property="onlineOrderPeopleName" jdbcType="VARCHAR" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="is_moling" property="isMoling" jdbcType="VARCHAR" />
+    
+		<result column="is_syn" property="isSyn" jdbcType="VARCHAR" />
+    
+		<result column="waiter_id" property="waiterId" jdbcType="VARCHAR" />
+    
+		<result column="meal_standard" property="mealStandard" jdbcType="VARCHAR" />
+    
+		<result column="order_no" property="orderNo" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		online_uob_id as onlineUobId ,
+		ccd_id as ccdId ,
+		rest_id as restId ,
+		notes as notes ,
+		people_num as peopleNum ,
+		avoidfood_id_array as avoidfoodIdArray ,
+		pungent_level as pungentLevel ,
+		create_time as createTime ,
+		gender as gender ,
+		order_way as orderWay ,
+		order_people_name as orderPeopleName ,
+		update_time as updateTime ,
+		cpt_id as cptId ,
+		bill_from as billFrom ,
+		order_id as orderId ,
+		cancle_reason as cancleReason ,
+		online_dining_time as onlineDiningTime ,
+		online_area_name as onlineAreaName ,
+		mb_id as mbId ,
+		online_gender as onlineGender ,
+		dining_time as diningTime ,
+		moling_mode_cost as molingModeCost ,
+		taste_name_array as tasteNameArray ,
+		online_telphone as onlineTelphone ,
+		avoidfood_name_array as avoidfoodNameArray ,
+		order_time as orderTime ,
+		ori_cost as oriCost ,
+		update_by as updateBy ,
+		tab_id as tabId ,
+		online_order_id as onlineOrderId ,
+		telphone as telphone ,
+		online_area_id as onlineAreaId ,
+		bill_id as billId ,
+		version as version ,
+		order_status as orderStatus ,
+		tab_no as tabNo ,
+		online_payment_type as onlinePaymentType ,
+		online_order_no as onlineOrderNo ,
+		prepay as prepay ,
+		online_people_num as onlinePeopleNum ,
+		taste_id_array as tasteIdArray ,
+		syn_version as synVersion ,
+		mc_id as mcId ,
+		sales_mg_id as salesMgId ,
+		order_people_name_code as orderPeopleNameCode ,
+		online_user_mobile as onlineUserMobile ,
+		online_mobile as onlineMobile ,
+		online_order_people_name as onlineOrderPeopleName ,
+		create_by as createBy ,
+		is_moling as isMoling ,
+		is_syn as isSyn ,
+		waiter_id as waiterId ,
+		meal_standard as mealStandard ,
+		order_no as orderNo 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="onlineUobId != null"> and online_uob_id = #\{onlineUobId\}</if>
+				
+		  	    <if test="ccdId != null"> and ccd_id = #\{ccdId\}</if>
+				
+		  	    <if test="restId != null"> and rest_id = #\{restId\}</if>
+				
+		  	    <if test="notes != null"> and notes = #\{notes\}</if>
+				
+		  	    <if test="peopleNum != null"> and people_num = #\{peopleNum\}</if>
+				
+		  	    <if test="avoidfoodIdArray != null"> and avoidfood_id_array = #\{avoidfoodIdArray\}</if>
+				
+		  	    <if test="pungentLevel != null"> and pungent_level = #\{pungentLevel\}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #\{createTime\}</if>
+				
+		  	    <if test="gender != null"> and gender = #\{gender\}</if>
+				
+		  	    <if test="orderWay != null"> and order_way = #\{orderWay\}</if>
+				
+		  	    <if test="orderPeopleName != null"> and order_people_name = #\{orderPeopleName\}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #\{updateTime\}</if>
+				
+		  	    <if test="cptId != null"> and cpt_id = #\{cptId\}</if>
+				
+		  	    <if test="billFrom != null"> and bill_from = #\{billFrom\}</if>
+				
+		  	    <if test="orderId != null"> and order_id = #\{orderId\}</if>
+				
+		  	    <if test="cancleReason != null"> and cancle_reason = #\{cancleReason\}</if>
+				
+		  	    <if test="onlineDiningTime != null"> and online_dining_time = #\{onlineDiningTime\}</if>
+				
+		  	    <if test="onlineAreaName != null"> and online_area_name = #\{onlineAreaName\}</if>
+				
+		  	    <if test="mbId != null"> and mb_id = #\{mbId\}</if>
+				
+		  	    <if test="onlineGender != null"> and online_gender = #\{onlineGender\}</if>
+				
+		  	    <if test="diningTime != null"> and dining_time = #\{diningTime\}</if>
+				
+		  	    <if test="molingModeCost != null"> and moling_mode_cost = #\{molingModeCost\}</if>
+				
+		  	    <if test="tasteNameArray != null"> and taste_name_array = #\{tasteNameArray\}</if>
+				
+		  	    <if test="onlineTelphone != null"> and online_telphone = #\{onlineTelphone\}</if>
+				
+		  	    <if test="avoidfoodNameArray != null"> and avoidfood_name_array = #\{avoidfoodNameArray\}</if>
+				
+		  	    <if test="orderTime != null"> and order_time = #\{orderTime\}</if>
+				
+		  	    <if test="oriCost != null"> and ori_cost = #\{oriCost\}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #\{updateBy\}</if>
+				
+		  	    <if test="tabId != null"> and tab_id = #\{tabId\}</if>
+				
+		  	    <if test="onlineOrderId != null"> and online_order_id = #\{onlineOrderId\}</if>
+				
+		  	    <if test="telphone != null"> and telphone = #\{telphone\}</if>
+				
+		  	    <if test="onlineAreaId != null"> and online_area_id = #\{onlineAreaId\}</if>
+				
+		  	    <if test="billId != null"> and bill_id = #\{billId\}</if>
+				
+		  	    <if test="version != null"> and version = #\{version\}</if>
+				
+		  	    <if test="orderStatus != null"> and order_status = #\{orderStatus\}</if>
+				
+		  	    <if test="tabNo != null"> and tab_no = #\{tabNo\}</if>
+				
+		  	    <if test="onlinePaymentType != null"> and online_payment_type = #\{onlinePaymentType\}</if>
+				
+		  	    <if test="onlineOrderNo != null"> and online_order_no = #\{onlineOrderNo\}</if>
+				
+		  	    <if test="prepay != null"> and prepay = #\{prepay\}</if>
+				
+		  	    <if test="onlinePeopleNum != null"> and online_people_num = #\{onlinePeopleNum\}</if>
+				
+		  	    <if test="tasteIdArray != null"> and taste_id_array = #\{tasteIdArray\}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #\{synVersion\}</if>
+				
+		  	    <if test="mcId != null"> and mc_id = #\{mcId\}</if>
+				
+		  	    <if test="salesMgId != null"> and sales_mg_id = #\{salesMgId\}</if>
+				
+		  	    <if test="orderPeopleNameCode != null"> and order_people_name_code = #\{orderPeopleNameCode\}</if>
+				
+		  	    <if test="onlineUserMobile != null"> and online_user_mobile = #\{onlineUserMobile\}</if>
+				
+		  	    <if test="onlineMobile != null"> and online_mobile = #\{onlineMobile\}</if>
+				
+		  	    <if test="onlineOrderPeopleName != null"> and online_order_people_name = #\{onlineOrderPeopleName\}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #\{createBy\}</if>
+				
+		  	    <if test="isMoling != null"> and is_moling = #\{isMoling\}</if>
+				
+		  	    <if test="isSyn != null"> and is_syn = #\{isSyn\}</if>
+				
+		  	    <if test="waiterId != null"> and waiter_id = #\{waiterId\}</if>
+				
+		  	    <if test="mealStandard != null"> and meal_standard = #\{mealStandard\}</if>
+				
+		  	    <if test="orderNo != null"> and order_no = #\{orderNo\}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by $\{sorting\}</if>
+		<if test="offset != null and limit != null">
+			limit #\{offset\}, #\{limit\}
+		</if>
+	</sql>
+	
+	<!-- 查询总数 -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(order_id)
+		from cm_table_order
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 查询 -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cm_table_order
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cm_table_order
+		where order_id = #\{order_id\}
+	</select>
+	
+	<!-- 根据ID删除 -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cm_table_order
+		where  order_id = #\{order_id\}
+	</delete>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- 添加 -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.CmTableOrderBean">
+		insert into cm_table_order(
+		  	    online_uob_id  ,
+	
+		  	    ccd_id  ,
+	
+		  	    rest_id  ,
+	
+		  	    notes  ,
+	
+		  	    people_num  ,
+	
+		  	    avoidfood_id_array  ,
+	
+		  	    pungent_level  ,
+	
+		  	    create_time  ,
+	
+		  	    gender  ,
+	
+		  	    order_way  ,
+	
+		  	    order_people_name  ,
+	
+		  	    update_time  ,
+	
+		  	    cpt_id  ,
+	
+		  	    bill_from  ,
+	
+		  	    order_id  ,
+	
+		  	    cancle_reason  ,
+	
+		  	    online_dining_time  ,
+	
+		  	    online_area_name  ,
+	
+		  	    mb_id  ,
+	
+		  	    online_gender  ,
+	
+		  	    dining_time  ,
+	
+		  	    moling_mode_cost  ,
+	
+		  	    taste_name_array  ,
+	
+		  	    online_telphone  ,
+	
+		  	    avoidfood_name_array  ,
+	
+		  	    order_time  ,
+	
+		  	    ori_cost  ,
+	
+		  	    update_by  ,
+	
+		  	    tab_id  ,
+	
+		  	    online_order_id  ,
+	
+		  	    telphone  ,
+	
+		  	    online_area_id  ,
+	
+		  	    bill_id  ,
+	
+		  	    version  ,
+	
+		  	    order_status  ,
+	
+		  	    tab_no  ,
+	
+		  	    online_payment_type  ,
+	
+		  	    online_order_no  ,
+	
+		  	    prepay  ,
+	
+		  	    online_people_num  ,
+	
+		  	    taste_id_array  ,
+	
+		  	    syn_version  ,
+	
+		  	    mc_id  ,
+	
+		  	    sales_mg_id  ,
+	
+		  	    order_people_name_code  ,
+	
+		  	    online_user_mobile  ,
+	
+		  	    online_mobile  ,
+	
+		  	    online_order_people_name  ,
+	
+		  	    create_by  ,
+	
+		  	    is_moling  ,
+	
+		  	    is_syn  ,
+	
+		  	    waiter_id  ,
+	
+		  	    meal_standard  ,
+	
+		  	    order_no  
+	
+			
+		)
+		values (
+		  	    #\{onlineUobId \} ,
+		  	    #\{ccdId \} ,
+		  	    #\{restId \} ,
+		  	    #\{notes \} ,
+		  	    #\{peopleNum \} ,
+		  	    #\{avoidfoodIdArray \} ,
+		  	    #\{pungentLevel \} ,
+		  	    #\{createTime \} ,
+		  	    #\{gender \} ,
+		  	    #\{orderWay \} ,
+		  	    #\{orderPeopleName \} ,
+		  	    #\{updateTime \} ,
+		  	    #\{cptId \} ,
+		  	    #\{billFrom \} ,
+		  	    #\{orderId \} ,
+		  	    #\{cancleReason \} ,
+		  	    #\{onlineDiningTime \} ,
+		  	    #\{onlineAreaName \} ,
+		  	    #\{mbId \} ,
+		  	    #\{onlineGender \} ,
+		  	    #\{diningTime \} ,
+		  	    #\{molingModeCost \} ,
+		  	    #\{tasteNameArray \} ,
+		  	    #\{onlineTelphone \} ,
+		  	    #\{avoidfoodNameArray \} ,
+		  	    #\{orderTime \} ,
+		  	    #\{oriCost \} ,
+		  	    #\{updateBy \} ,
+		  	    #\{tabId \} ,
+		  	    #\{onlineOrderId \} ,
+		  	    #\{telphone \} ,
+		  	    #\{onlineAreaId \} ,
+		  	    #\{billId \} ,
+		  	    #\{version \} ,
+		  	    #\{orderStatus \} ,
+		  	    #\{tabNo \} ,
+		  	    #\{onlinePaymentType \} ,
+		  	    #\{onlineOrderNo \} ,
+		  	    #\{prepay \} ,
+		  	    #\{onlinePeopleNum \} ,
+		  	    #\{tasteIdArray \} ,
+		  	    #\{synVersion \} ,
+		  	    #\{mcId \} ,
+		  	    #\{salesMgId \} ,
+		  	    #\{orderPeopleNameCode \} ,
+		  	    #\{onlineUserMobile \} ,
+		  	    #\{onlineMobile \} ,
+		  	    #\{onlineOrderPeopleName \} ,
+		  	    #\{createBy \} ,
+		  	    #\{isMoling \} ,
+		  	    #\{isSyn \} ,
+		  	    #\{waiterId \} ,
+		  	    #\{mealStandard \} ,
+		  	    #\{orderNo \} 
+		)
+	</insert>
+	
+	
+	<!-- 通过ID更新 -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.CmTableOrderBean">
+		update cm_table_order
+		<set>
+		  	<if test=\"onlineUobId != null\">  online_uob_id = #\{onlineUobId\} ,</if>
+		  	<if test=\"ccdId != null\">  ccd_id = #\{ccdId\} ,</if>
+		  	<if test=\"restId != null\">  rest_id = #\{restId\} ,</if>
+		  	<if test=\"notes != null\">  notes = #\{notes\} ,</if>
+		  	<if test=\"peopleNum != null\">  people_num = #\{peopleNum\} ,</if>
+		  	<if test=\"avoidfoodIdArray != null\">  avoidfood_id_array = #\{avoidfoodIdArray\} ,</if>
+		  	<if test=\"pungentLevel != null\">  pungent_level = #\{pungentLevel\} ,</if>
+		  	<if test=\"createTime != null\">  create_time = #\{createTime\} ,</if>
+		  	<if test=\"gender != null\">  gender = #\{gender\} ,</if>
+		  	<if test=\"orderWay != null\">  order_way = #\{orderWay\} ,</if>
+		  	<if test=\"orderPeopleName != null\">  order_people_name = #\{orderPeopleName\} ,</if>
+		  	<if test=\"updateTime != null\">  update_time = #\{updateTime\} ,</if>
+		  	<if test=\"cptId != null\">  cpt_id = #\{cptId\} ,</if>
+		  	<if test=\"billFrom != null\">  bill_from = #\{billFrom\} ,</if>
+		  	<if test=\"cancleReason != null\">  cancle_reason = #\{cancleReason\} ,</if>
+		  	<if test=\"onlineDiningTime != null\">  online_dining_time = #\{onlineDiningTime\} ,</if>
+		  	<if test=\"onlineAreaName != null\">  online_area_name = #\{onlineAreaName\} ,</if>
+		  	<if test=\"mbId != null\">  mb_id = #\{mbId\} ,</if>
+		  	<if test=\"onlineGender != null\">  online_gender = #\{onlineGender\} ,</if>
+		  	<if test=\"diningTime != null\">  dining_time = #\{diningTime\} ,</if>
+		  	<if test=\"molingModeCost != null\">  moling_mode_cost = #\{molingModeCost\} ,</if>
+		  	<if test=\"tasteNameArray != null\">  taste_name_array = #\{tasteNameArray\} ,</if>
+		  	<if test=\"onlineTelphone != null\">  online_telphone = #\{onlineTelphone\} ,</if>
+		  	<if test=\"avoidfoodNameArray != null\">  avoidfood_name_array = #\{avoidfoodNameArray\} ,</if>
+		  	<if test=\"orderTime != null\">  order_time = #\{orderTime\} ,</if>
+		  	<if test=\"oriCost != null\">  ori_cost = #\{oriCost\} ,</if>
+		  	<if test=\"updateBy != null\">  update_by = #\{updateBy\} ,</if>
+		  	<if test=\"tabId != null\">  tab_id = #\{tabId\} ,</if>
+		  	<if test=\"onlineOrderId != null\">  online_order_id = #\{onlineOrderId\} ,</if>
+		  	<if test=\"telphone != null\">  telphone = #\{telphone\} ,</if>
+		  	<if test=\"onlineAreaId != null\">  online_area_id = #\{onlineAreaId\} ,</if>
+		  	<if test=\"billId != null\">  bill_id = #\{billId\} ,</if>
+		  	<if test=\"version != null\">  version = #\{version\} ,</if>
+		  	<if test=\"orderStatus != null\">  order_status = #\{orderStatus\} ,</if>
+		  	<if test=\"tabNo != null\">  tab_no = #\{tabNo\} ,</if>
+		  	<if test=\"onlinePaymentType != null\">  online_payment_type = #\{onlinePaymentType\} ,</if>
+		  	<if test=\"onlineOrderNo != null\">  online_order_no = #\{onlineOrderNo\} ,</if>
+		  	<if test=\"prepay != null\">  prepay = #\{prepay\} ,</if>
+		  	<if test=\"onlinePeopleNum != null\">  online_people_num = #\{onlinePeopleNum\} ,</if>
+		  	<if test=\"tasteIdArray != null\">  taste_id_array = #\{tasteIdArray\} ,</if>
+		  	<if test=\"synVersion != null\">  syn_version = #\{synVersion\} ,</if>
+		  	<if test=\"mcId != null\">  mc_id = #\{mcId\} ,</if>
+		  	<if test=\"salesMgId != null\">  sales_mg_id = #\{salesMgId\} ,</if>
+		  	<if test=\"orderPeopleNameCode != null\">  order_people_name_code = #\{orderPeopleNameCode\} ,</if>
+		  	<if test=\"onlineUserMobile != null\">  online_user_mobile = #\{onlineUserMobile\} ,</if>
+		  	<if test=\"onlineMobile != null\">  online_mobile = #\{onlineMobile\} ,</if>
+		  	<if test=\"onlineOrderPeopleName != null\">  online_order_people_name = #\{onlineOrderPeopleName\} ,</if>
+		  	<if test=\"createBy != null\">  create_by = #\{createBy\} ,</if>
+		  	<if test=\"isMoling != null\">  is_moling = #\{isMoling\} ,</if>
+		  	<if test=\"isSyn != null\">  is_syn = #\{isSyn\} ,</if>
+		  	<if test=\"waiterId != null\">  waiter_id = #\{waiterId\} ,</if>
+		  	<if test=\"mealStandard != null\">  meal_standard = #\{mealStandard\} ,</if>
+		  	<if test=\"orderNo != null\">  order_no = #\{orderNo\} </if>
+		</set>
+		where  order_id = #\{order_id\}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.CmTableOrderBean">
+		update cm_table_order
+
+		set 
+		  	 online_uob_id = #\{onlineUobId\} ,
+		  	 ccd_id = #\{ccdId\} ,
+		  	 rest_id = #\{restId\} ,
+		  	 notes = #\{notes\} ,
+		  	 people_num = #\{peopleNum\} ,
+		  	 avoidfood_id_array = #\{avoidfoodIdArray\} ,
+		  	 pungent_level = #\{pungentLevel\} ,
+		  	 create_time = #\{createTime\} ,
+		  	 gender = #\{gender\} ,
+		  	 order_way = #\{orderWay\} ,
+		  	 order_people_name = #\{orderPeopleName\} ,
+		  	 update_time = #\{updateTime\} ,
+		  	 cpt_id = #\{cptId\} ,
+		  	 bill_from = #\{billFrom\} ,
+		  	 cancle_reason = #\{cancleReason\} ,
+		  	 online_dining_time = #\{onlineDiningTime\} ,
+		  	 online_area_name = #\{onlineAreaName\} ,
+		  	 mb_id = #\{mbId\} ,
+		  	 online_gender = #\{onlineGender\} ,
+		  	 dining_time = #\{diningTime\} ,
+		  	 moling_mode_cost = #\{molingModeCost\} ,
+		  	 taste_name_array = #\{tasteNameArray\} ,
+		  	 online_telphone = #\{onlineTelphone\} ,
+		  	 avoidfood_name_array = #\{avoidfoodNameArray\} ,
+		  	 order_time = #\{orderTime\} ,
+		  	 ori_cost = #\{oriCost\} ,
+		  	 update_by = #\{updateBy\} ,
+		  	 tab_id = #\{tabId\} ,
+		  	 online_order_id = #\{onlineOrderId\} ,
+		  	 telphone = #\{telphone\} ,
+		  	 online_area_id = #\{onlineAreaId\} ,
+		  	 bill_id = #\{billId\} ,
+		  	 version = #\{version\} ,
+		  	 order_status = #\{orderStatus\} ,
+		  	 tab_no = #\{tabNo\} ,
+		  	 online_payment_type = #\{onlinePaymentType\} ,
+		  	 online_order_no = #\{onlineOrderNo\} ,
+		  	 prepay = #\{prepay\} ,
+		  	 online_people_num = #\{onlinePeopleNum\} ,
+		  	 taste_id_array = #\{tasteIdArray\} ,
+		  	 syn_version = #\{synVersion\} ,
+		  	 mc_id = #\{mcId\} ,
+		  	 sales_mg_id = #\{salesMgId\} ,
+		  	 order_people_name_code = #\{orderPeopleNameCode\} ,
+		  	 online_user_mobile = #\{onlineUserMobile\} ,
+		  	 online_mobile = #\{onlineMobile\} ,
+		  	 online_order_people_name = #\{onlineOrderPeopleName\} ,
+		  	 create_by = #\{createBy\} ,
+		  	 is_moling = #\{isMoling\} ,
+		  	 is_syn = #\{isSyn\} ,
+		  	 waiter_id = #\{waiterId\} ,
+		  	 meal_standard = #\{mealStandard\} ,
+		  	 order_no = #\{orderNo\} 
+	
+		where  order_id = #\{order_id\}
+	</update>
+	
+</mapper>

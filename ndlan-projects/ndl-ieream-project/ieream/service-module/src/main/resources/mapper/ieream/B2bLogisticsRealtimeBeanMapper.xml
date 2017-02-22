@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.B2bLogisticsRealtimeBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.B2bLogisticsRealtimeBean">
+		<id column="logistics_realtime_id" property="logisticsRealtimeId" jdbcType="VARCHAR" />
+	
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="logistics_line_id" property="logisticsLineId" jdbcType="VARCHAR" />
+    
+		<result column="version" property="version" jdbcType="BIGINT" />
+    
+		<result column="curr_address" property="currAddress" jdbcType="VARCHAR" />
+    
+		<result column="next_address" property="nextAddress" jdbcType="VARCHAR" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="logistics_line_code" property="logisticsLineCode" jdbcType="VARCHAR" />
+    
+		<result column="curr_date" property="currDate" jdbcType="DATE" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+    
+		<result column="is_syn" property="isSyn" jdbcType="BIGINT" />
+    
+		<result column="remake" property="remake" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		create_by as createBy ,
+		logistics_line_id as logisticsLineId ,
+		version as version ,
+		curr_address as currAddress ,
+		 as  ,
+		next_address as nextAddress ,
+		update_by as updateBy ,
+		create_time as createTime ,
+		logistics_line_code as logisticsLineCode ,
+		curr_date as currDate ,
+		update_time as updateTime ,
+		syn_version as synVersion ,
+		is_syn as isSyn ,
+		remake as remake ,
+		logistics_realtime_id as logisticsRealtimeId 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="createBy != null"> and create_by = #\{createBy\}</if>
+				
+		  	    <if test="logisticsLineId != null"> and logistics_line_id = #\{logisticsLineId\}</if>
+				
+		  	    <if test="version != null"> and version = #\{version\}</if>
+				
+		  	    <if test="currAddress != null"> and curr_address = #\{currAddress\}</if>
+				
+		  	    <if test=" != null"> and  = #\{\}</if>
+				
+		  	    <if test="nextAddress != null"> and next_address = #\{nextAddress\}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #\{updateBy\}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #\{createTime\}</if>
+				
+		  	    <if test="logisticsLineCode != null"> and logistics_line_code = #\{logisticsLineCode\}</if>
+				
+		  	    <if test="currDate != null"> and curr_date = #\{currDate\}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #\{updateTime\}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #\{synVersion\}</if>
+				
+		  	    <if test="isSyn != null"> and is_syn = #\{isSyn\}</if>
+				
+		  	    <if test="remake != null"> and remake = #\{remake\}</if>
+				
+		  	    <if test="logisticsRealtimeId != null"> and logistics_realtime_id = #\{logisticsRealtimeId\}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by $\{sorting\}</if>
+		<if test="offset != null and limit != null">
+			limit #\{offset\}, #\{limit\}
+		</if>
+	</sql>
+	
+	<!-- 查询总数 -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(logistics_realtime_id)
+		from b2b_logistics_realtime
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 查询 -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from b2b_logistics_realtime
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from b2b_logistics_realtime
+		where logistics_realtime_id = #\{logistics_realtime_id\}
+	</select>
+	
+	<!-- 根据ID删除 -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from b2b_logistics_realtime
+		where  logistics_realtime_id = #\{logistics_realtime_id\}
+	</delete>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- 添加 -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.B2bLogisticsRealtimeBean">
+		insert into b2b_logistics_realtime(
+		  	    create_by  ,
+	
+		  	    logistics_line_id  ,
+	
+		  	    version  ,
+	
+		  	    curr_address  ,
+	
+		  	      ,
+	
+		  	    next_address  ,
+	
+		  	    update_by  ,
+	
+		  	    create_time  ,
+	
+		  	    logistics_line_code  ,
+	
+		  	    curr_date  ,
+	
+		  	    update_time  ,
+	
+		  	    syn_version  ,
+	
+		  	    is_syn  ,
+	
+		  	    remake  ,
+	
+		  	    logistics_realtime_id  
+	
+			
+		)
+		values (
+		  	    #\{createBy \} ,
+		  	    #\{logisticsLineId \} ,
+		  	    #\{version \} ,
+		  	    #\{currAddress \} ,
+		  	    #\{ \} ,
+		  	    #\{nextAddress \} ,
+		  	    #\{updateBy \} ,
+		  	    #\{createTime \} ,
+		  	    #\{logisticsLineCode \} ,
+		  	    #\{currDate \} ,
+		  	    #\{updateTime \} ,
+		  	    #\{synVersion \} ,
+		  	    #\{isSyn \} ,
+		  	    #\{remake \} ,
+		  	    #\{logisticsRealtimeId \} 
+		)
+	</insert>
+	
+	
+	<!-- 通过ID更新 -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.B2bLogisticsRealtimeBean">
+		update b2b_logistics_realtime
+		<set>
+		  	<if test=\"createBy != null\">  create_by = #\{createBy\} ,</if>
+		  	<if test=\"logisticsLineId != null\">  logistics_line_id = #\{logisticsLineId\} ,</if>
+		  	<if test=\"version != null\">  version = #\{version\} ,</if>
+		  	<if test=\"currAddress != null\">  curr_address = #\{currAddress\} ,</if>
+		  	<if test=\" != null\">   = #\{\} ,</if>
+		  	<if test=\"nextAddress != null\">  next_address = #\{nextAddress\} ,</if>
+		  	<if test=\"updateBy != null\">  update_by = #\{updateBy\} ,</if>
+		  	<if test=\"createTime != null\">  create_time = #\{createTime\} ,</if>
+		  	<if test=\"logisticsLineCode != null\">  logistics_line_code = #\{logisticsLineCode\} ,</if>
+		  	<if test=\"currDate != null\">  curr_date = #\{currDate\} ,</if>
+		  	<if test=\"updateTime != null\">  update_time = #\{updateTime\} ,</if>
+		  	<if test=\"synVersion != null\">  syn_version = #\{synVersion\} ,</if>
+		  	<if test=\"isSyn != null\">  is_syn = #\{isSyn\} ,</if>
+		  	<if test=\"remake != null\">  remake = #\{remake\} ,</if>
+		</set>
+		where  logistics_realtime_id = #\{logistics_realtime_id\}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.B2bLogisticsRealtimeBean">
+		update b2b_logistics_realtime
+
+		set 
+		  	 create_by = #\{createBy\} ,
+		  	 logistics_line_id = #\{logisticsLineId\} ,
+		  	 version = #\{version\} ,
+		  	 curr_address = #\{currAddress\} ,
+		  	  = #\{\} ,
+		  	 next_address = #\{nextAddress\} ,
+		  	 update_by = #\{updateBy\} ,
+		  	 create_time = #\{createTime\} ,
+		  	 logistics_line_code = #\{logisticsLineCode\} ,
+		  	 curr_date = #\{currDate\} ,
+		  	 update_time = #\{updateTime\} ,
+		  	 syn_version = #\{synVersion\} ,
+		  	 is_syn = #\{isSyn\} ,
+		  	 remake = #\{remake\} ,
+	
+		where  logistics_realtime_id = #\{logistics_realtime_id\}
+	</update>
+	
+</mapper>

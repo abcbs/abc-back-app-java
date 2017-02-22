@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.CmWorkstationBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.CmWorkstationBean">
+		<id column="ws_id" property="wsId" jdbcType="VARCHAR" />
+	
+    
+		<result column="ws_name" property="wsName" jdbcType="VARCHAR" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+    
+		<result column="is_syn" property="isSyn" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="last_time" property="lastTime" jdbcType="DATE" />
+    
+		<result column="notes" property="notes" jdbcType="VARCHAR" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="mac" property="mac" jdbcType="VARCHAR" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="version" property="version" jdbcType="BIGINT" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="rest_id" property="restId" jdbcType="VARCHAR" />
+    
+		<result column="ip" property="ip" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ws_name as wsName ,
+		syn_version as synVersion ,
+		 as  ,
+		is_syn as isSyn ,
+		create_time as createTime ,
+		last_time as lastTime ,
+		notes as notes ,
+		create_by as createBy ,
+		mac as mac ,
+		update_by as updateBy ,
+		ws_id as wsId ,
+		version as version ,
+		update_time as updateTime ,
+		rest_id as restId ,
+		ip as ip 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="wsName != null"> and ws_name = #{wsName}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #{synVersion}</if>
+				
+		  	    <if test=" != null"> and  = #{}</if>
+				
+		  	    <if test="isSyn != null"> and is_syn = #{isSyn}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #{createTime}</if>
+				
+		  	    <if test="lastTime != null"> and last_time = #{lastTime}</if>
+				
+		  	    <if test="notes != null"> and notes = #{notes}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #{createBy}</if>
+				
+		  	    <if test="mac != null"> and mac = #{mac}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #{updateBy}</if>
+				
+		  	    <if test="wsId != null"> and ws_id = #{wsId}</if>
+				
+		  	    <if test="version != null"> and version = #{version}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #{updateTime}</if>
+				
+		  	    <if test="restId != null"> and rest_id = #{restId}</if>
+				
+		  	    <if test="ip != null"> and ip = #{ip}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by ${sorting}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</sql>
+	
+	<!-- ��ѯ���� -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(ws_id)
+		from cm_workstation
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ��ѯ -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cm_workstation
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ����ID��ѯ -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cm_workstation
+		where ws_id = #{ws_id}
+	</select>
+	
+	<!-- ����IDɾ�� -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cm_workstation
+		where  ws_id = #{ws_id}
+	</delete>
+	
+	<!-- ɾ�� -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- ��� -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.CmWorkstationBean">
+		insert into cm_workstation(
+		  	    ws_name  ,
+	
+		  	    syn_version  ,
+	
+		  	      ,
+	
+		  	    is_syn  ,
+	
+		  	    create_time  ,
+	
+		  	    last_time  ,
+	
+		  	    notes  ,
+	
+		  	    create_by  ,
+	
+		  	    mac  ,
+	
+		  	    update_by  ,
+	
+		  	    ws_id  ,
+	
+		  	    version  ,
+	
+		  	    update_time  ,
+	
+		  	    rest_id  ,
+	
+		  	    ip  
+	
+			
+		)
+		values (
+		  	    #{wsName } ,
+		  	    #{synVersion } ,
+		  	    #{ } ,
+		  	    #{isSyn } ,
+		  	    #{createTime } ,
+		  	    #{lastTime } ,
+		  	    #{notes } ,
+		  	    #{createBy } ,
+		  	    #{mac } ,
+		  	    #{updateBy } ,
+		  	    #{wsId } ,
+		  	    #{version } ,
+		  	    #{updateTime } ,
+		  	    #{restId } ,
+		  	    #{ip } 
+		)
+	</insert>
+	
+	
+	<!-- ͨ��ID���� -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.CmWorkstationBean">
+		update cm_workstation
+		<set>
+		  	<if test="wsName != null">  ws_name = #{wsName} ,</if>
+		  	<if test="synVersion != null">  syn_version = #{synVersion} ,</if>
+		  	<if test=" != null">   = #{} ,</if>
+		  	<if test="isSyn != null">  is_syn = #{isSyn} ,</if>
+		  	<if test="createTime != null">  create_time = #{createTime} ,</if>
+		  	<if test="lastTime != null">  last_time = #{lastTime} ,</if>
+		  	<if test="notes != null">  notes = #{notes} ,</if>
+		  	<if test="createBy != null">  create_by = #{createBy} ,</if>
+		  	<if test="mac != null">  mac = #{mac} ,</if>
+		  	<if test="updateBy != null">  update_by = #{updateBy} ,</if>
+		  	<if test="version != null">  version = #{version} ,</if>
+		  	<if test="updateTime != null">  update_time = #{updateTime} ,</if>
+		  	<if test="restId != null">  rest_id = #{restId} ,</if>
+		  	<if test="ip != null">  ip = #{ip} </if>
+		</set>
+		where  ws_id = #{ws_id}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.CmWorkstationBean">
+		update cm_workstation
+
+		set 
+		  	 ws_name = #{wsName} ,
+		  	 syn_version = #{synVersion} ,
+		  	  = #{} ,
+		  	 is_syn = #{isSyn} ,
+		  	 create_time = #{createTime} ,
+		  	 last_time = #{lastTime} ,
+		  	 notes = #{notes} ,
+		  	 create_by = #{createBy} ,
+		  	 mac = #{mac} ,
+		  	 update_by = #{updateBy} ,
+		  	 version = #{version} ,
+		  	 update_time = #{updateTime} ,
+		  	 rest_id = #{restId} ,
+		  	 ip = #{ip} 
+	
+		where  ws_id = #{ws_id}
+	</update>
+	
+</mapper>

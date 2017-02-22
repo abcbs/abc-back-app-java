@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.BaseMembershipCardClassBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.BaseMembershipCardClassBean">
+		<id column="mcclass_id" property="mcclassId" jdbcType="VARCHAR" />
+	
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+    
+		<result column="ccd_id" property="ccdId" jdbcType="VARCHAR" />
+    
+		<result column="version" property="version" jdbcType="BIGINT" />
+    
+		<result column="is_consume_integral" property="isConsumeIntegral" jdbcType="VARCHAR" />
+    
+		<result column="name" property="name" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="cash_pledge" property="cashPledge" jdbcType="DOUBLE" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="is_syn" property="isSyn" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		create_by as createBy ,
+		mcclass_id as mcclassId ,
+		update_by as updateBy ,
+		syn_version as synVersion ,
+		ccd_id as ccdId ,
+		version as version ,
+		is_consume_integral as isConsumeIntegral ,
+		name as name ,
+		update_time as updateTime ,
+		cash_pledge as cashPledge ,
+		create_time as createTime ,
+		is_syn as isSyn 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="createBy != null"> and create_by = #{createBy}</if>
+				
+		  	    <if test="mcclassId != null"> and mcclass_id = #{mcclassId}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #{updateBy}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #{synVersion}</if>
+				
+		  	    <if test="ccdId != null"> and ccd_id = #{ccdId}</if>
+				
+		  	    <if test="version != null"> and version = #{version}</if>
+				
+		  	    <if test="isConsumeIntegral != null"> and is_consume_integral = #{isConsumeIntegral}</if>
+				
+		  	    <if test="name != null"> and name = #{name}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #{updateTime}</if>
+				
+		  	    <if test="cashPledge != null"> and cash_pledge = #{cashPledge}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #{createTime}</if>
+				
+		  	    <if test="isSyn != null"> and is_syn = #{isSyn}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by ${sorting}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</sql>
+	
+	<!-- ��ѯ���� -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(mcclass_id)
+		from base_membership_card_class
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ��ѯ -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from base_membership_card_class
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ����ID��ѯ -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from base_membership_card_class
+		where mcclass_id = #{mcclass_id}
+	</select>
+	
+	<!-- ����IDɾ�� -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from base_membership_card_class
+		where  mcclass_id = #{mcclass_id}
+	</delete>
+	
+	<!-- ɾ�� -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- ��� -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.BaseMembershipCardClassBean">
+		insert into base_membership_card_class(
+		  	    create_by  ,
+	
+		  	    mcclass_id  ,
+	
+		  	    update_by  ,
+	
+		  	    syn_version  ,
+	
+		  	    ccd_id  ,
+	
+		  	    version  ,
+	
+		  	    is_consume_integral  ,
+	
+		  	    name  ,
+	
+		  	    update_time  ,
+	
+		  	    cash_pledge  ,
+	
+		  	    create_time  ,
+	
+		  	    is_syn  
+	
+			
+		)
+		values (
+		  	    #{createBy } ,
+		  	    #{mcclassId } ,
+		  	    #{updateBy } ,
+		  	    #{synVersion } ,
+		  	    #{ccdId } ,
+		  	    #{version } ,
+		  	    #{isConsumeIntegral } ,
+		  	    #{name } ,
+		  	    #{updateTime } ,
+		  	    #{cashPledge } ,
+		  	    #{createTime } ,
+		  	    #{isSyn } 
+		)
+	</insert>
+	
+	
+	<!-- ͨ��ID���� -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.BaseMembershipCardClassBean">
+		update base_membership_card_class
+		<set>
+		  	<if test="createBy != null">  create_by = #{createBy} ,</if>
+		  	<if test="updateBy != null">  update_by = #{updateBy} ,</if>
+		  	<if test="synVersion != null">  syn_version = #{synVersion} ,</if>
+		  	<if test="ccdId != null">  ccd_id = #{ccdId} ,</if>
+		  	<if test="version != null">  version = #{version} ,</if>
+		  	<if test="isConsumeIntegral != null">  is_consume_integral = #{isConsumeIntegral} ,</if>
+		  	<if test="name != null">  name = #{name} ,</if>
+		  	<if test="updateTime != null">  update_time = #{updateTime} ,</if>
+		  	<if test="cashPledge != null">  cash_pledge = #{cashPledge} ,</if>
+		  	<if test="createTime != null">  create_time = #{createTime} ,</if>
+		  	<if test="isSyn != null">  is_syn = #{isSyn} </if>
+		</set>
+		where  mcclass_id = #{mcclass_id}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.BaseMembershipCardClassBean">
+		update base_membership_card_class
+
+		set 
+		  	 create_by = #{createBy} ,
+		  	 update_by = #{updateBy} ,
+		  	 syn_version = #{synVersion} ,
+		  	 ccd_id = #{ccdId} ,
+		  	 version = #{version} ,
+		  	 is_consume_integral = #{isConsumeIntegral} ,
+		  	 name = #{name} ,
+		  	 update_time = #{updateTime} ,
+		  	 cash_pledge = #{cashPledge} ,
+		  	 create_time = #{createTime} ,
+		  	 is_syn = #{isSyn} 
+	
+		where  mcclass_id = #{mcclass_id}
+	</update>
+	
+</mapper>

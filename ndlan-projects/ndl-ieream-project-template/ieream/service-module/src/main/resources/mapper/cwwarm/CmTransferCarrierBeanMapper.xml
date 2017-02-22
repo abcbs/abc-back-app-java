@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.CmTransferCarrierBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.CmTransferCarrierBean">
+	
+    
+		<result column="is_syn" property="isSyn" jdbcType="VARCHAR" />
+    
+		<result column="rest_id" property="restId" jdbcType="VARCHAR" />
+    
+		<result column="syn_version_id" property="synVersionId" jdbcType="VARCHAR" />
+    
+		<result column="method" property="method" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="transaction_id" property="transactionId" jdbcType="BIGINT" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="seq" property="seq" jdbcType="BIGINT" />
+    
+		<result column="content" property="content" jdbcType="VARCHAR" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="version" property="version" jdbcType="BIGINT" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="command" property="command" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		is_syn as isSyn ,
+		rest_id as restId ,
+		syn_version_id as synVersionId ,
+		method as method ,
+		update_time as updateTime ,
+		transaction_id as transactionId ,
+		create_time as createTime ,
+		seq as seq ,
+		content as content ,
+		syn_version as synVersion ,
+		create_by as createBy ,
+		 as  ,
+		version as version ,
+		 as  ,
+		update_by as updateBy ,
+		command as command 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="isSyn != null"> and is_syn = #{isSyn}</if>
+				
+		  	    <if test="restId != null"> and rest_id = #{restId}</if>
+				
+		  	    <if test="synVersionId != null"> and syn_version_id = #{synVersionId}</if>
+				
+		  	    <if test="method != null"> and method = #{method}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #{updateTime}</if>
+				
+		  	    <if test="transactionId != null"> and transaction_id = #{transactionId}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #{createTime}</if>
+				
+		  	    <if test="seq != null"> and seq = #{seq}</if>
+				
+		  	    <if test="content != null"> and content = #{content}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #{synVersion}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #{createBy}</if>
+				
+		  	    <if test=" != null"> and  = #{}</if>
+				
+		  	    <if test="version != null"> and version = #{version}</if>
+				
+		  	    <if test=" != null"> and  = #{}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #{updateBy}</if>
+				
+		  	    <if test="command != null"> and command = #{command}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by ${sorting}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</sql>
+	
+	<!-- ��ѯ���� -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(id)
+		from cm_transfer_carrier
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ��ѯ -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cm_transfer_carrier
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ����ID��ѯ -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cm_transfer_carrier
+		where id = #{id}
+	</select>
+	
+	<!-- ����IDɾ�� -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cm_transfer_carrier
+		where  id = #{id}
+	</delete>
+	
+	<!-- ɾ�� -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- ��� -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.CmTransferCarrierBean">
+		insert into cm_transfer_carrier(
+		  	    is_syn  ,
+	
+		  	    rest_id  ,
+	
+		  	    syn_version_id  ,
+	
+		  	    method  ,
+	
+		  	    update_time  ,
+	
+		  	    transaction_id  ,
+	
+		  	    create_time  ,
+	
+		  	    seq  ,
+	
+		  	    content  ,
+	
+		  	    syn_version  ,
+	
+		  	    create_by  ,
+	
+		  	      ,
+	
+		  	    version  ,
+	
+		  	      ,
+	
+		  	    update_by  ,
+	
+		  	    command  
+	
+			
+		)
+		values (
+		  	    #{isSyn } ,
+		  	    #{restId } ,
+		  	    #{synVersionId } ,
+		  	    #{method } ,
+		  	    #{updateTime } ,
+		  	    #{transactionId } ,
+		  	    #{createTime } ,
+		  	    #{seq } ,
+		  	    #{content } ,
+		  	    #{synVersion } ,
+		  	    #{createBy } ,
+		  	    #{ } ,
+		  	    #{version } ,
+		  	    #{ } ,
+		  	    #{updateBy } ,
+		  	    #{command } 
+		)
+	</insert>
+	
+	
+	<!-- ͨ��ID���� -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.CmTransferCarrierBean">
+		update cm_transfer_carrier
+		<set>
+		  	<if test="isSyn != null">  is_syn = #{isSyn} ,</if>
+		  	<if test="restId != null">  rest_id = #{restId} ,</if>
+		  	<if test="synVersionId != null">  syn_version_id = #{synVersionId} ,</if>
+		  	<if test="method != null">  method = #{method} ,</if>
+		  	<if test="updateTime != null">  update_time = #{updateTime} ,</if>
+		  	<if test="transactionId != null">  transaction_id = #{transactionId} ,</if>
+		  	<if test="createTime != null">  create_time = #{createTime} ,</if>
+		  	<if test="seq != null">  seq = #{seq} ,</if>
+		  	<if test="content != null">  content = #{content} ,</if>
+		  	<if test="synVersion != null">  syn_version = #{synVersion} ,</if>
+		  	<if test="createBy != null">  create_by = #{createBy} ,</if>
+		  	<if test="version != null">  version = #{version} ,</if>
+		  	<if test=" != null">   = #{} ,</if>
+		  	<if test="updateBy != null">  update_by = #{updateBy} ,</if>
+		  	<if test="command != null">  command = #{command} </if>
+		</set>
+		where  id = #{id}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.CmTransferCarrierBean">
+		update cm_transfer_carrier
+
+		set 
+		  	 is_syn = #{isSyn} ,
+		  	 rest_id = #{restId} ,
+		  	 syn_version_id = #{synVersionId} ,
+		  	 method = #{method} ,
+		  	 update_time = #{updateTime} ,
+		  	 transaction_id = #{transactionId} ,
+		  	 create_time = #{createTime} ,
+		  	 seq = #{seq} ,
+		  	 content = #{content} ,
+		  	 syn_version = #{synVersion} ,
+		  	 create_by = #{createBy} ,
+		  	 version = #{version} ,
+		  	  = #{} ,
+		  	 update_by = #{updateBy} ,
+		  	 command = #{command} 
+	
+		where  id = #{id}
+	</update>
+	
+</mapper>

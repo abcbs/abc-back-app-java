@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.CmCashDishesTypeDiscountBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.CmCashDishesTypeDiscountBean">
+		<id column="ccdtd_id" property="ccdtdId" jdbcType="VARCHAR" />
+	
+    
+		<result column="is_syn" property="isSyn" jdbcType="VARCHAR" />
+    
+		<result column="category_dicount" property="categoryDicount" jdbcType="BIGINT" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="ccd_id" property="ccdId" jdbcType="VARCHAR" />
+    
+		<result column="rest_id" property="restId" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="category_id" property="categoryId" jdbcType="VARCHAR" />
+    
+		<result column="version" property="version" jdbcType="BIGINT" />
+    
+		<result column="ds_category_id" property="dsCategoryId" jdbcType="VARCHAR" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		is_syn as isSyn ,
+		category_dicount as categoryDicount ,
+		update_time as updateTime ,
+		ccd_id as ccdId ,
+		rest_id as restId ,
+		create_time as createTime ,
+		update_by as updateBy ,
+		category_id as categoryId ,
+		version as version ,
+		ds_category_id as dsCategoryId ,
+		ccdtd_id as ccdtdId ,
+		create_by as createBy ,
+		syn_version as synVersion 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="isSyn != null"> and is_syn = #\{isSyn\}</if>
+				
+		  	    <if test="categoryDicount != null"> and category_dicount = #\{categoryDicount\}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #\{updateTime\}</if>
+				
+		  	    <if test="ccdId != null"> and ccd_id = #\{ccdId\}</if>
+				
+		  	    <if test="restId != null"> and rest_id = #\{restId\}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #\{createTime\}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #\{updateBy\}</if>
+				
+		  	    <if test="categoryId != null"> and category_id = #\{categoryId\}</if>
+				
+		  	    <if test="version != null"> and version = #\{version\}</if>
+				
+		  	    <if test="dsCategoryId != null"> and ds_category_id = #\{dsCategoryId\}</if>
+				
+		  	    <if test="ccdtdId != null"> and ccdtd_id = #\{ccdtdId\}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #\{createBy\}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #\{synVersion\}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by $\{sorting\}</if>
+		<if test="offset != null and limit != null">
+			limit #\{offset\}, #\{limit\}
+		</if>
+	</sql>
+	
+	<!-- 查询总数 -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(ccdtd_id)
+		from cm_cash_dishes_type_discount
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 查询 -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cm_cash_dishes_type_discount
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cm_cash_dishes_type_discount
+		where ccdtd_id = #\{ccdtd_id\}
+	</select>
+	
+	<!-- 根据ID删除 -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cm_cash_dishes_type_discount
+		where  ccdtd_id = #\{ccdtd_id\}
+	</delete>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- 添加 -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.CmCashDishesTypeDiscountBean">
+		insert into cm_cash_dishes_type_discount(
+		  	    is_syn  ,
+	
+		  	    category_dicount  ,
+	
+		  	    update_time  ,
+	
+		  	    ccd_id  ,
+	
+		  	    rest_id  ,
+	
+		  	    create_time  ,
+	
+		  	    update_by  ,
+	
+		  	    category_id  ,
+	
+		  	    version  ,
+	
+		  	    ds_category_id  ,
+	
+		  	    ccdtd_id  ,
+	
+		  	    create_by  ,
+	
+		  	    syn_version  
+	
+			
+		)
+		values (
+		  	    #\{isSyn \} ,
+		  	    #\{categoryDicount \} ,
+		  	    #\{updateTime \} ,
+		  	    #\{ccdId \} ,
+		  	    #\{restId \} ,
+		  	    #\{createTime \} ,
+		  	    #\{updateBy \} ,
+		  	    #\{categoryId \} ,
+		  	    #\{version \} ,
+		  	    #\{dsCategoryId \} ,
+		  	    #\{ccdtdId \} ,
+		  	    #\{createBy \} ,
+		  	    #\{synVersion \} 
+		)
+	</insert>
+	
+	
+	<!-- 通过ID更新 -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.CmCashDishesTypeDiscountBean">
+		update cm_cash_dishes_type_discount
+		<set>
+		  	<if test=\"isSyn != null\">  is_syn = #\{isSyn\} ,</if>
+		  	<if test=\"categoryDicount != null\">  category_dicount = #\{categoryDicount\} ,</if>
+		  	<if test=\"updateTime != null\">  update_time = #\{updateTime\} ,</if>
+		  	<if test=\"ccdId != null\">  ccd_id = #\{ccdId\} ,</if>
+		  	<if test=\"restId != null\">  rest_id = #\{restId\} ,</if>
+		  	<if test=\"createTime != null\">  create_time = #\{createTime\} ,</if>
+		  	<if test=\"updateBy != null\">  update_by = #\{updateBy\} ,</if>
+		  	<if test=\"categoryId != null\">  category_id = #\{categoryId\} ,</if>
+		  	<if test=\"version != null\">  version = #\{version\} ,</if>
+		  	<if test=\"dsCategoryId != null\">  ds_category_id = #\{dsCategoryId\} ,</if>
+		  	<if test=\"createBy != null\">  create_by = #\{createBy\} ,</if>
+		  	<if test=\"synVersion != null\">  syn_version = #\{synVersion\} </if>
+		</set>
+		where  ccdtd_id = #\{ccdtd_id\}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.CmCashDishesTypeDiscountBean">
+		update cm_cash_dishes_type_discount
+
+		set 
+		  	 is_syn = #\{isSyn\} ,
+		  	 category_dicount = #\{categoryDicount\} ,
+		  	 update_time = #\{updateTime\} ,
+		  	 ccd_id = #\{ccdId\} ,
+		  	 rest_id = #\{restId\} ,
+		  	 create_time = #\{createTime\} ,
+		  	 update_by = #\{updateBy\} ,
+		  	 category_id = #\{categoryId\} ,
+		  	 version = #\{version\} ,
+		  	 ds_category_id = #\{dsCategoryId\} ,
+		  	 create_by = #\{createBy\} ,
+		  	 syn_version = #\{synVersion\} 
+	
+		where  ccdtd_id = #\{ccdtd_id\}
+	</update>
+	
+</mapper>

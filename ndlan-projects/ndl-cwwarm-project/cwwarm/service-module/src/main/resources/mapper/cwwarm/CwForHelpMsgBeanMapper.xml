@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.cwwarm.model.CwForHelpMsgBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.cwwarm.model.CwForHelpMsgBean">
+		<id column="cw_help_msg_id" property="cwHelpMsgId" jdbcType="VARCHAR" />
+	
+    
+		<result column="fhb_contact_addr" property="fhbContactAddr" jdbcType="VARCHAR" />
+    
+		<result column="fhb_contact_phone" property="fhbContactPhone" jdbcType="VARCHAR" />
+    
+		<result column="for_help_by_type" property="forHelpByType" jdbcType="VARCHAR" />
+    
+		<result column="fhb_join_qty" property="fhbJoinQty" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="for_help_org" property="forHelpOrg" jdbcType="VARCHAR" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="fhb_default_pic" property="fhbDefaultPic" jdbcType="VARCHAR" />
+    
+		<result column="fhb_rcv_goods_qty" property="fhbRcvGoodsQty" jdbcType="VARCHAR" />
+    
+		<result column="fhb_msg_type" property="fhbMsgType" jdbcType="VARCHAR" />
+    
+		<result column="fhb_contact" property="fhbContact" jdbcType="VARCHAR" />
+    
+		<result column="for_help_by" property="forHelpBy" jdbcType="VARCHAR" />
+    
+		<result column="fhb_rcv_love_qty" property="fhbRcvLoveQty" jdbcType="VARCHAR" />
+    
+		<result column="fhb_status" property="fhbStatus" jdbcType="VARCHAR" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="fhb_pic" property="fhbPic" jdbcType="VARCHAR" />
+    
+		<result column="for_help_busi_type" property="forHelpBusiType" jdbcType="VARCHAR" />
+    
+		<result column="fhb_occur_datetime" property="fhbOccurDatetime" jdbcType="DATE" />
+    
+		<result column="fhb_collection_qty" property="fhbCollectionQty" jdbcType="VARCHAR" />
+    
+		<result column="for_help_type" property="forHelpType" jdbcType="VARCHAR" />
+    
+		<result column="for_help_busi" property="forHelpBusi" jdbcType="VARCHAR" />
+    
+		<result column="fhb_occur_place" property="fhbOccurPlace" jdbcType="VARCHAR" />
+    
+		<result column="for_help_by_name" property="forHelpByName" jdbcType="VARCHAR" />
+    
+		<result column="fhb_comment_qty" property="fhbCommentQty" jdbcType="VARCHAR" />
+    
+		<result column="for_help_org_name" property="forHelpOrgName" jdbcType="VARCHAR" />
+    
+		<result column="fhb_detail_msg" property="fhbDetailMsg" jdbcType="VARCHAR" />
+    
+		<result column="fhb_life_status" property="fhbLifeStatus" jdbcType="VARCHAR" />
+    
+		<result column="for_help_by_pic" property="forHelpByPic" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		fhb_contact_addr as fhbContactAddr ,
+		fhb_contact_phone as fhbContactPhone ,
+		for_help_by_type as forHelpByType ,
+		fhb_join_qty as fhbJoinQty ,
+		create_time as createTime ,
+		for_help_org as forHelpOrg ,
+		create_by as createBy ,
+		fhb_default_pic as fhbDefaultPic ,
+		fhb_rcv_goods_qty as fhbRcvGoodsQty ,
+		fhb_msg_type as fhbMsgType ,
+		fhb_contact as fhbContact ,
+		for_help_by as forHelpBy ,
+		fhb_rcv_love_qty as fhbRcvLoveQty ,
+		fhb_status as fhbStatus ,
+		update_by as updateBy ,
+		update_time as updateTime ,
+		fhb_pic as fhbPic ,
+		for_help_busi_type as forHelpBusiType ,
+		fhb_occur_datetime as fhbOccurDatetime ,
+		fhb_collection_qty as fhbCollectionQty ,
+		for_help_type as forHelpType ,
+		for_help_busi as forHelpBusi ,
+		fhb_occur_place as fhbOccurPlace ,
+		for_help_by_name as forHelpByName ,
+		fhb_comment_qty as fhbCommentQty ,
+		cw_help_msg_id as cwHelpMsgId ,
+		for_help_org_name as forHelpOrgName ,
+		fhb_detail_msg as fhbDetailMsg ,
+		fhb_life_status as fhbLifeStatus ,
+		for_help_by_pic as forHelpByPic 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="fhbContactAddr != null"> and fhb_contact_addr = #{fhbContactAddr}</if>
+				
+		  	    <if test="fhbContactPhone != null"> and fhb_contact_phone = #{fhbContactPhone}</if>
+				
+		  	    <if test="forHelpByType != null"> and for_help_by_type = #{forHelpByType}</if>
+				
+		  	    <if test="fhbJoinQty != null"> and fhb_join_qty = #{fhbJoinQty}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #{createTime}</if>
+				
+		  	    <if test="forHelpOrg != null"> and for_help_org = #{forHelpOrg}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #{createBy}</if>
+				
+		  	    <if test="fhbDefaultPic != null"> and fhb_default_pic = #{fhbDefaultPic}</if>
+				
+		  	    <if test="fhbRcvGoodsQty != null"> and fhb_rcv_goods_qty = #{fhbRcvGoodsQty}</if>
+				
+		  	    <if test="fhbMsgType != null"> and fhb_msg_type = #{fhbMsgType}</if>
+				
+		  	    <if test="fhbContact != null"> and fhb_contact = #{fhbContact}</if>
+				
+		  	    <if test="forHelpBy != null"> and for_help_by = #{forHelpBy}</if>
+				
+		  	    <if test="fhbRcvLoveQty != null"> and fhb_rcv_love_qty = #{fhbRcvLoveQty}</if>
+				
+		  	    <if test="fhbStatus != null"> and fhb_status = #{fhbStatus}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #{updateBy}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #{updateTime}</if>
+				
+		  	    <if test="fhbPic != null"> and fhb_pic = #{fhbPic}</if>
+				
+		  	    <if test="forHelpBusiType != null"> and for_help_busi_type = #{forHelpBusiType}</if>
+				
+		  	    <if test="fhbOccurDatetime != null"> and fhb_occur_datetime = #{fhbOccurDatetime}</if>
+				
+		  	    <if test="fhbCollectionQty != null"> and fhb_collection_qty = #{fhbCollectionQty}</if>
+				
+		  	    <if test="forHelpType != null"> and for_help_type = #{forHelpType}</if>
+				
+		  	    <if test="forHelpBusi != null"> and for_help_busi = #{forHelpBusi}</if>
+				
+		  	    <if test="fhbOccurPlace != null"> and fhb_occur_place = #{fhbOccurPlace}</if>
+				
+		  	    <if test="forHelpByName != null"> and for_help_by_name = #{forHelpByName}</if>
+				
+		  	    <if test="fhbCommentQty != null"> and fhb_comment_qty = #{fhbCommentQty}</if>
+				
+		  	    <if test="cwHelpMsgId != null"> and cw_help_msg_id = #{cwHelpMsgId}</if>
+				
+		  	    <if test="forHelpOrgName != null"> and for_help_org_name = #{forHelpOrgName}</if>
+				
+		  	    <if test="fhbDetailMsg != null"> and fhb_detail_msg = #{fhbDetailMsg}</if>
+				
+		  	    <if test="fhbLifeStatus != null"> and fhb_life_status = #{fhbLifeStatus}</if>
+				
+		  	    <if test="forHelpByPic != null"> and for_help_by_pic = #{forHelpByPic}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by ${sorting}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</sql>
+	
+	<!-- 查询总数 -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(cw_help_msg_id)
+		from cw_for_help_msg
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 查询 -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cw_for_help_msg
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cw_for_help_msg
+		where cw_help_msg_id = #{cwHelpMsgId}
+	</select>
+	
+	<!-- 根据ID删除 -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cw_for_help_msg
+		where  cw_help_msg_id = #{cwHelpMsgId}
+	</delete>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- 添加 -->	
+	<insert id="insert" parameterType="com.ndlan.cwwarm.model.CwForHelpMsgBean">
+		insert into cw_for_help_msg(
+		  	    fhb_contact_addr  ,
+	
+		  	    fhb_contact_phone  ,
+	
+		  	    for_help_by_type  ,
+	
+		  	    fhb_join_qty  ,
+	
+		  	    create_time  ,
+	
+		  	    for_help_org  ,
+	
+		  	    create_by  ,
+	
+		  	    fhb_default_pic  ,
+	
+		  	    fhb_rcv_goods_qty  ,
+	
+		  	    fhb_msg_type  ,
+	
+		  	    fhb_contact  ,
+	
+		  	    for_help_by  ,
+	
+		  	    fhb_rcv_love_qty  ,
+	
+		  	    fhb_status  ,
+	
+		  	    update_by  ,
+	
+		  	    update_time  ,
+	
+		  	    fhb_pic  ,
+	
+		  	    for_help_busi_type  ,
+	
+		  	    fhb_occur_datetime  ,
+	
+		  	    fhb_collection_qty  ,
+	
+		  	    for_help_type  ,
+	
+		  	    for_help_busi  ,
+	
+		  	    fhb_occur_place  ,
+	
+		  	    for_help_by_name  ,
+	
+		  	    fhb_comment_qty  ,
+	
+		  	    cw_help_msg_id  ,
+	
+		  	    for_help_org_name  ,
+	
+		  	    fhb_detail_msg  ,
+	
+		  	    fhb_life_status  ,
+	
+		  	    for_help_by_pic  
+	
+			
+		)
+		values (
+		  	    #{fhbContactAddr } ,
+		  	    #{fhbContactPhone } ,
+		  	    #{forHelpByType } ,
+		  	    #{fhbJoinQty } ,
+		  	    #{createTime } ,
+		  	    #{forHelpOrg } ,
+		  	    #{createBy } ,
+		  	    #{fhbDefaultPic } ,
+		  	    #{fhbRcvGoodsQty } ,
+		  	    #{fhbMsgType } ,
+		  	    #{fhbContact } ,
+		  	    #{forHelpBy } ,
+		  	    #{fhbRcvLoveQty } ,
+		  	    #{fhbStatus } ,
+		  	    #{updateBy } ,
+		  	    #{updateTime } ,
+		  	    #{fhbPic } ,
+		  	    #{forHelpBusiType } ,
+		  	    #{fhbOccurDatetime } ,
+		  	    #{fhbCollectionQty } ,
+		  	    #{forHelpType } ,
+		  	    #{forHelpBusi } ,
+		  	    #{fhbOccurPlace } ,
+		  	    #{forHelpByName } ,
+		  	    #{fhbCommentQty } ,
+		  	    #{cwHelpMsgId } ,
+		  	    #{forHelpOrgName } ,
+		  	    #{fhbDetailMsg } ,
+		  	    #{fhbLifeStatus } ,
+		  	    #{forHelpByPic } 
+		)
+	</insert>
+	
+	
+	<!-- 通过ID更新 -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.cwwarm.model.CwForHelpMsgBean">
+		update cw_for_help_msg
+		<set>
+		  	<if test="fhbContactAddr != null">  fhb_contact_addr = #{fhbContactAddr} ,</if>
+		  	<if test="fhbContactPhone != null">  fhb_contact_phone = #{fhbContactPhone} ,</if>
+		  	<if test="forHelpByType != null">  for_help_by_type = #{forHelpByType} ,</if>
+		  	<if test="fhbJoinQty != null">  fhb_join_qty = #{fhbJoinQty} ,</if>
+		  	<if test="createTime != null">  create_time = #{createTime} ,</if>
+		  	<if test="forHelpOrg != null">  for_help_org = #{forHelpOrg} ,</if>
+		  	<if test="createBy != null">  create_by = #{createBy} ,</if>
+		  	<if test="fhbDefaultPic != null">  fhb_default_pic = #{fhbDefaultPic} ,</if>
+		  	<if test="fhbRcvGoodsQty != null">  fhb_rcv_goods_qty = #{fhbRcvGoodsQty} ,</if>
+		  	<if test="fhbMsgType != null">  fhb_msg_type = #{fhbMsgType} ,</if>
+		  	<if test="fhbContact != null">  fhb_contact = #{fhbContact} ,</if>
+		  	<if test="forHelpBy != null">  for_help_by = #{forHelpBy} ,</if>
+		  	<if test="fhbRcvLoveQty != null">  fhb_rcv_love_qty = #{fhbRcvLoveQty} ,</if>
+		  	<if test="fhbStatus != null">  fhb_status = #{fhbStatus} ,</if>
+		  	<if test="updateBy != null">  update_by = #{updateBy} ,</if>
+		  	<if test="updateTime != null">  update_time = #{updateTime} ,</if>
+		  	<if test="fhbPic != null">  fhb_pic = #{fhbPic} ,</if>
+		  	<if test="forHelpBusiType != null">  for_help_busi_type = #{forHelpBusiType} ,</if>
+		  	<if test="fhbOccurDatetime != null">  fhb_occur_datetime = #{fhbOccurDatetime} ,</if>
+		  	<if test="fhbCollectionQty != null">  fhb_collection_qty = #{fhbCollectionQty} ,</if>
+		  	<if test="forHelpType != null">  for_help_type = #{forHelpType} ,</if>
+		  	<if test="forHelpBusi != null">  for_help_busi = #{forHelpBusi} ,</if>
+		  	<if test="fhbOccurPlace != null">  fhb_occur_place = #{fhbOccurPlace} ,</if>
+		  	<if test="forHelpByName != null">  for_help_by_name = #{forHelpByName} ,</if>
+		  	<if test="fhbCommentQty != null">  fhb_comment_qty = #{fhbCommentQty} ,</if>
+		  	<if test="forHelpOrgName != null">  for_help_org_name = #{forHelpOrgName} ,</if>
+		  	<if test="fhbDetailMsg != null">  fhb_detail_msg = #{fhbDetailMsg} ,</if>
+		  	<if test="fhbLifeStatus != null">  fhb_life_status = #{fhbLifeStatus} ,</if>
+		  	<if test="forHelpByPic != null">  for_help_by_pic = #{forHelpByPic} </if>
+		</set>
+		where  cw_help_msg_id = #{cwHelpMsgId}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.cwwarm.model.CwForHelpMsgBean">
+		update cw_for_help_msg
+
+		set 
+		  	 fhb_contact_addr = #{fhbContactAddr} ,
+		  	 fhb_contact_phone = #{fhbContactPhone} ,
+		  	 for_help_by_type = #{forHelpByType} ,
+		  	 fhb_join_qty = #{fhbJoinQty} ,
+		  	 create_time = #{createTime} ,
+		  	 for_help_org = #{forHelpOrg} ,
+		  	 create_by = #{createBy} ,
+		  	 fhb_default_pic = #{fhbDefaultPic} ,
+		  	 fhb_rcv_goods_qty = #{fhbRcvGoodsQty} ,
+		  	 fhb_msg_type = #{fhbMsgType} ,
+		  	 fhb_contact = #{fhbContact} ,
+		  	 for_help_by = #{forHelpBy} ,
+		  	 fhb_rcv_love_qty = #{fhbRcvLoveQty} ,
+		  	 fhb_status = #{fhbStatus} ,
+		  	 update_by = #{updateBy} ,
+		  	 update_time = #{updateTime} ,
+		  	 fhb_pic = #{fhbPic} ,
+		  	 for_help_busi_type = #{forHelpBusiType} ,
+		  	 fhb_occur_datetime = #{fhbOccurDatetime} ,
+		  	 fhb_collection_qty = #{fhbCollectionQty} ,
+		  	 for_help_type = #{forHelpType} ,
+		  	 for_help_busi = #{forHelpBusi} ,
+		  	 fhb_occur_place = #{fhbOccurPlace} ,
+		  	 for_help_by_name = #{forHelpByName} ,
+		  	 fhb_comment_qty = #{fhbCommentQty} ,
+		  	 for_help_org_name = #{forHelpOrgName} ,
+		  	 fhb_detail_msg = #{fhbDetailMsg} ,
+		  	 fhb_life_status = #{fhbLifeStatus} ,
+		  	 for_help_by_pic = #{forHelpByPic} 
+	
+		where  cw_help_msg_id = #{cwHelpMsgId}
+	</update>
+	
+</mapper>

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.CmSysVersionSettingBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.CmSysVersionSettingBean">
+		<id column="svs_id" property="svsId" jdbcType="VARCHAR" />
+	
+    
+		<result column="auto_update" property="autoUpdate" jdbcType="VARCHAR" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="rest_id" property="restId" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="is_syn" property="isSyn" jdbcType="VARCHAR" />
+    
+		<result column="version" property="version" jdbcType="BIGINT" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+    
+		<result column="curr_version_id" property="currVersionId" jdbcType="BIGINT" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="version_update_time" property="versionUpdateTime" jdbcType="DATE" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		auto_update as autoUpdate ,
+		update_by as updateBy ,
+		rest_id as restId ,
+		update_time as updateTime ,
+		create_by as createBy ,
+		is_syn as isSyn ,
+		version as version ,
+		svs_id as svsId ,
+		syn_version as synVersion ,
+		curr_version_id as currVersionId ,
+		create_time as createTime ,
+		version_update_time as versionUpdateTime 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="autoUpdate != null"> and auto_update = #{autoUpdate}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #{updateBy}</if>
+				
+		  	    <if test="restId != null"> and rest_id = #{restId}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #{updateTime}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #{createBy}</if>
+				
+		  	    <if test="isSyn != null"> and is_syn = #{isSyn}</if>
+				
+		  	    <if test="version != null"> and version = #{version}</if>
+				
+		  	    <if test="svsId != null"> and svs_id = #{svsId}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #{synVersion}</if>
+				
+		  	    <if test="currVersionId != null"> and curr_version_id = #{currVersionId}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #{createTime}</if>
+				
+		  	    <if test="versionUpdateTime != null"> and version_update_time = #{versionUpdateTime}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by ${sorting}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</sql>
+	
+	<!-- ��ѯ���� -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(svs_id)
+		from cm_sys_version_setting
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ��ѯ -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cm_sys_version_setting
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ����ID��ѯ -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cm_sys_version_setting
+		where svs_id = #{svs_id}
+	</select>
+	
+	<!-- ����IDɾ�� -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cm_sys_version_setting
+		where  svs_id = #{svs_id}
+	</delete>
+	
+	<!-- ɾ�� -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- ��� -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.CmSysVersionSettingBean">
+		insert into cm_sys_version_setting(
+		  	    auto_update  ,
+	
+		  	    update_by  ,
+	
+		  	    rest_id  ,
+	
+		  	    update_time  ,
+	
+		  	    create_by  ,
+	
+		  	    is_syn  ,
+	
+		  	    version  ,
+	
+		  	    svs_id  ,
+	
+		  	    syn_version  ,
+	
+		  	    curr_version_id  ,
+	
+		  	    create_time  ,
+	
+		  	    version_update_time  
+	
+			
+		)
+		values (
+		  	    #{autoUpdate } ,
+		  	    #{updateBy } ,
+		  	    #{restId } ,
+		  	    #{updateTime } ,
+		  	    #{createBy } ,
+		  	    #{isSyn } ,
+		  	    #{version } ,
+		  	    #{svsId } ,
+		  	    #{synVersion } ,
+		  	    #{currVersionId } ,
+		  	    #{createTime } ,
+		  	    #{versionUpdateTime } 
+		)
+	</insert>
+	
+	
+	<!-- ͨ��ID���� -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.CmSysVersionSettingBean">
+		update cm_sys_version_setting
+		<set>
+		  	<if test="autoUpdate != null">  auto_update = #{autoUpdate} ,</if>
+		  	<if test="updateBy != null">  update_by = #{updateBy} ,</if>
+		  	<if test="restId != null">  rest_id = #{restId} ,</if>
+		  	<if test="updateTime != null">  update_time = #{updateTime} ,</if>
+		  	<if test="createBy != null">  create_by = #{createBy} ,</if>
+		  	<if test="isSyn != null">  is_syn = #{isSyn} ,</if>
+		  	<if test="version != null">  version = #{version} ,</if>
+		  	<if test="synVersion != null">  syn_version = #{synVersion} ,</if>
+		  	<if test="currVersionId != null">  curr_version_id = #{currVersionId} ,</if>
+		  	<if test="createTime != null">  create_time = #{createTime} ,</if>
+		  	<if test="versionUpdateTime != null">  version_update_time = #{versionUpdateTime} </if>
+		</set>
+		where  svs_id = #{svs_id}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.CmSysVersionSettingBean">
+		update cm_sys_version_setting
+
+		set 
+		  	 auto_update = #{autoUpdate} ,
+		  	 update_by = #{updateBy} ,
+		  	 rest_id = #{restId} ,
+		  	 update_time = #{updateTime} ,
+		  	 create_by = #{createBy} ,
+		  	 is_syn = #{isSyn} ,
+		  	 version = #{version} ,
+		  	 syn_version = #{synVersion} ,
+		  	 curr_version_id = #{currVersionId} ,
+		  	 create_time = #{createTime} ,
+		  	 version_update_time = #{versionUpdateTime} 
+	
+		where  svs_id = #{svs_id}
+	</update>
+	
+</mapper>

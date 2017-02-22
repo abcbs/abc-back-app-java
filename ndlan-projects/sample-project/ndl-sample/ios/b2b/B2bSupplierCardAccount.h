@@ -1,0 +1,64 @@
+#import <Foundation/Foundation.h>
+
+
+@interface B2bSupplierCardAccount : NSObject
+	
+	
+    /**
+     * ?¡è???¡§
+     **/
+    @property(nonatomic,copy)NSString * remake ;
+    /**
+     * ¨¨?¡±¨¨????¡¤
+     **/
+    @property(nonatomic,copy)NSString * catNo ;
+    /**
+     * ??????¨¦??¨¨?¡è???1??????0?????¡ë
+     **/
+    @property(nonatomic,copy)NSString * isDefault ;
+    /**
+     * ¨¨?¡±????¨C????
+     **/
+    @property(nonatomic,copy)NSString * phoneNo ;
+    /**
+     * ?????????¨¨?????¨¨????¡¤
+     **/
+    @property(nonatomic,copy)NSString * cardholderId ;
+    /**
+     * ??????????¡®?¨¨???¢ã?card_no+cardholder_name?¢ã¡®
+     **/
+    @property(nonatomic,copy)NSString * cardinfoSummay ;
+    /**
+     * ???¨¨????????
+     **/
+    @property(nonatomic,copy)NSString * branch ;
+    /**
+     * ?¡±?¨¨????????
+     **/
+    @property(nonatomic,copy)NSString * subbranch ;
+    /**
+     * ¨¨????¡¤???¨¦¡±?
+     **/
+    @property(nonatomic,copy)NSString * supCardAcntId ;
+    /**
+     * ??¢ã??¡¤¨¨??
+     **/
+    @property(nonatomic,copy)NSString * bank ;
+    /**
+     * ?????¡±???Id
+     **/
+    @property(nonatomic,copy)NSString * supplierId ;
+    /**
+     * ?????¡¤
+     **/
+    @property(nonatomic,copy)NSString * cardNo ;
+    /**
+     * ??????????¡ì¡°???
+     **/
+    @property(nonatomic,copy)NSString * cardholderName ;
+    /**
+     * ?????¡±???????¡ì¡ã
+     **/
+    @property(nonatomic,copy)NSString * supplierName ;
+ 
+@end

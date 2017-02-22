@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.cwwarm.model.CwPartakeBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.cwwarm.model.CwPartakeBean">
+		<id column="cw_partake_id" property="cwPartakeId" jdbcType="VARCHAR" />
+	
+    
+		<result column="ptk_attr5" property="ptkAttr5" jdbcType="VARCHAR" />
+    
+		<result column="ptk_by_pic" property="ptkByPic" jdbcType="VARCHAR" />
+    
+		<result column="ptk_attr1" property="ptkAttr1" jdbcType="VARCHAR" />
+    
+		<result column="ptk_busi_status" property="ptkBusiStatus" jdbcType="VARCHAR" />
+    
+		<result column="ptk_attr4" property="ptkAttr4" jdbcType="VARCHAR" />
+    
+		<result column="ptk_obj_id" property="ptkObjId" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="ptk_attr3" property="ptkAttr3" jdbcType="VARCHAR" />
+    
+		<result column="ptk_life_status" property="ptkLifeStatus" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="ptk_attr2" property="ptkAttr2" jdbcType="VARCHAR" />
+    
+		<result column="ptk_by_name" property="ptkByName" jdbcType="VARCHAR" />
+    
+		<result column="ptk_obj_type" property="ptkObjType" jdbcType="VARCHAR" />
+    
+		<result column="ptk_obj_msg" property="ptkObjMsg" jdbcType="VARCHAR" />
+    
+		<result column="ptk_remark" property="ptkRemark" jdbcType="VARCHAR" />
+    
+		<result column="ptk_by" property="ptkBy" jdbcType="VARCHAR" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ptk_attr5 as ptkAttr5 ,
+		ptk_by_pic as ptkByPic ,
+		ptk_attr1 as ptkAttr1 ,
+		ptk_busi_status as ptkBusiStatus ,
+		ptk_attr4 as ptkAttr4 ,
+		ptk_obj_id as ptkObjId ,
+		create_time as createTime ,
+		ptk_attr3 as ptkAttr3 ,
+		ptk_life_status as ptkLifeStatus ,
+		update_time as updateTime ,
+		update_by as updateBy ,
+		cw_partake_id as cwPartakeId ,
+		ptk_attr2 as ptkAttr2 ,
+		ptk_by_name as ptkByName ,
+		ptk_obj_type as ptkObjType ,
+		ptk_obj_msg as ptkObjMsg ,
+		ptk_remark as ptkRemark ,
+		ptk_by as ptkBy ,
+		create_by as createBy 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="ptkAttr5 != null"> and ptk_attr5 = #{ptkAttr5}</if>
+				
+		  	    <if test="ptkByPic != null"> and ptk_by_pic = #{ptkByPic}</if>
+				
+		  	    <if test="ptkAttr1 != null"> and ptk_attr1 = #{ptkAttr1}</if>
+				
+		  	    <if test="ptkBusiStatus != null"> and ptk_busi_status = #{ptkBusiStatus}</if>
+				
+		  	    <if test="ptkAttr4 != null"> and ptk_attr4 = #{ptkAttr4}</if>
+				
+		  	    <if test="ptkObjId != null"> and ptk_obj_id = #{ptkObjId}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #{createTime}</if>
+				
+		  	    <if test="ptkAttr3 != null"> and ptk_attr3 = #{ptkAttr3}</if>
+				
+		  	    <if test="ptkLifeStatus != null"> and ptk_life_status = #{ptkLifeStatus}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #{updateTime}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #{updateBy}</if>
+				
+		  	    <if test="cwPartakeId != null"> and cw_partake_id = #{cwPartakeId}</if>
+				
+		  	    <if test="ptkAttr2 != null"> and ptk_attr2 = #{ptkAttr2}</if>
+				
+		  	    <if test="ptkByName != null"> and ptk_by_name = #{ptkByName}</if>
+				
+		  	    <if test="ptkObjType != null"> and ptk_obj_type = #{ptkObjType}</if>
+				
+		  	    <if test="ptkObjMsg != null"> and ptk_obj_msg = #{ptkObjMsg}</if>
+				
+		  	    <if test="ptkRemark != null"> and ptk_remark = #{ptkRemark}</if>
+				
+		  	    <if test="ptkBy != null"> and ptk_by = #{ptkBy}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #{createBy}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by ${sorting}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</sql>
+	
+	<!-- 查询总数 -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(cw_partake_id)
+		from cw_partake
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 查询 -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cw_partake
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cw_partake
+		where cw_partake_id = #{cwPartakeId}
+	</select>
+	
+	<!-- 根据ID删除 -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cw_partake
+		where  cw_partake_id = #{cwPartakeId}
+	</delete>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- 添加 -->	
+	<insert id="insert" parameterType="com.ndlan.cwwarm.model.CwPartakeBean">
+		insert into cw_partake(
+		  	    ptk_attr5  ,
+	
+		  	    ptk_by_pic  ,
+	
+		  	    ptk_attr1  ,
+	
+		  	    ptk_busi_status  ,
+	
+		  	    ptk_attr4  ,
+	
+		  	    ptk_obj_id  ,
+	
+		  	    create_time  ,
+	
+		  	    ptk_attr3  ,
+	
+		  	    ptk_life_status  ,
+	
+		  	    update_time  ,
+	
+		  	    update_by  ,
+	
+		  	    cw_partake_id  ,
+	
+		  	    ptk_attr2  ,
+	
+		  	    ptk_by_name  ,
+	
+		  	    ptk_obj_type  ,
+	
+		  	    ptk_obj_msg  ,
+	
+		  	    ptk_remark  ,
+	
+		  	    ptk_by  ,
+	
+		  	    create_by  
+	
+			
+		)
+		values (
+		  	    #{ptkAttr5 } ,
+		  	    #{ptkByPic } ,
+		  	    #{ptkAttr1 } ,
+		  	    #{ptkBusiStatus } ,
+		  	    #{ptkAttr4 } ,
+		  	    #{ptkObjId } ,
+		  	    #{createTime } ,
+		  	    #{ptkAttr3 } ,
+		  	    #{ptkLifeStatus } ,
+		  	    #{updateTime } ,
+		  	    #{updateBy } ,
+		  	    #{cwPartakeId } ,
+		  	    #{ptkAttr2 } ,
+		  	    #{ptkByName } ,
+		  	    #{ptkObjType } ,
+		  	    #{ptkObjMsg } ,
+		  	    #{ptkRemark } ,
+		  	    #{ptkBy } ,
+		  	    #{createBy } 
+		)
+	</insert>
+	
+	
+	<!-- 通过ID更新 -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.cwwarm.model.CwPartakeBean">
+		update cw_partake
+		<set>
+		  	<if test="ptkAttr5 != null">  ptk_attr5 = #{ptkAttr5} ,</if>
+		  	<if test="ptkByPic != null">  ptk_by_pic = #{ptkByPic} ,</if>
+		  	<if test="ptkAttr1 != null">  ptk_attr1 = #{ptkAttr1} ,</if>
+		  	<if test="ptkBusiStatus != null">  ptk_busi_status = #{ptkBusiStatus} ,</if>
+		  	<if test="ptkAttr4 != null">  ptk_attr4 = #{ptkAttr4} ,</if>
+		  	<if test="ptkObjId != null">  ptk_obj_id = #{ptkObjId} ,</if>
+		  	<if test="createTime != null">  create_time = #{createTime} ,</if>
+		  	<if test="ptkAttr3 != null">  ptk_attr3 = #{ptkAttr3} ,</if>
+		  	<if test="ptkLifeStatus != null">  ptk_life_status = #{ptkLifeStatus} ,</if>
+		  	<if test="updateTime != null">  update_time = #{updateTime} ,</if>
+		  	<if test="updateBy != null">  update_by = #{updateBy} ,</if>
+		  	<if test="ptkAttr2 != null">  ptk_attr2 = #{ptkAttr2} ,</if>
+		  	<if test="ptkByName != null">  ptk_by_name = #{ptkByName} ,</if>
+		  	<if test="ptkObjType != null">  ptk_obj_type = #{ptkObjType} ,</if>
+		  	<if test="ptkObjMsg != null">  ptk_obj_msg = #{ptkObjMsg} ,</if>
+		  	<if test="ptkRemark != null">  ptk_remark = #{ptkRemark} ,</if>
+		  	<if test="ptkBy != null">  ptk_by = #{ptkBy} ,</if>
+		  	<if test="createBy != null">  create_by = #{createBy} </if>
+		</set>
+		where  cw_partake_id = #{cwPartakeId}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.cwwarm.model.CwPartakeBean">
+		update cw_partake
+
+		set 
+		  	 ptk_attr5 = #{ptkAttr5} ,
+		  	 ptk_by_pic = #{ptkByPic} ,
+		  	 ptk_attr1 = #{ptkAttr1} ,
+		  	 ptk_busi_status = #{ptkBusiStatus} ,
+		  	 ptk_attr4 = #{ptkAttr4} ,
+		  	 ptk_obj_id = #{ptkObjId} ,
+		  	 create_time = #{createTime} ,
+		  	 ptk_attr3 = #{ptkAttr3} ,
+		  	 ptk_life_status = #{ptkLifeStatus} ,
+		  	 update_time = #{updateTime} ,
+		  	 update_by = #{updateBy} ,
+		  	 ptk_attr2 = #{ptkAttr2} ,
+		  	 ptk_by_name = #{ptkByName} ,
+		  	 ptk_obj_type = #{ptkObjType} ,
+		  	 ptk_obj_msg = #{ptkObjMsg} ,
+		  	 ptk_remark = #{ptkRemark} ,
+		  	 ptk_by = #{ptkBy} ,
+		  	 create_by = #{createBy} 
+	
+		where  cw_partake_id = #{cwPartakeId}
+	</update>
+	
+</mapper>

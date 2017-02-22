@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.cwwarm.model.CwUserExtendBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.cwwarm.model.CwUserExtendBean">
+		<id column="cw_user_extend_id" property="cwUserExtendId" jdbcType="VARCHAR" />
+	
+    
+		<result column="authorization_make" property="authorizationMake" jdbcType="VARCHAR" />
+    
+		<result column="cue_busi_status" property="cueBusiStatus" jdbcType="VARCHAR" />
+    
+		<result column="residence_adr" property="residenceAdr" jdbcType="VARCHAR" />
+    
+		<result column="emp_num" property="empNum" jdbcType="VARCHAR" />
+    
+		<result column="job_pic" property="jobPic" jdbcType="VARCHAR" />
+    
+		<result column="sysdata_type" property="sysdataType" jdbcType="VARCHAR" />
+    
+		<result column="login_username" property="loginUsername" jdbcType="VARCHAR" />
+    
+		<result column="name" property="name" jdbcType="VARCHAR" />
+    
+		<result column="cue_comment_qty" property="cueCommentQty" jdbcType="VARCHAR" />
+    
+		<result column="rest_id" property="restId" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="moblie" property="moblie" jdbcType="VARCHAR" />
+    
+		<result column="address" property="address" jdbcType="VARCHAR" />
+    
+		<result column="cue_join_qty" property="cueJoinQty" jdbcType="VARCHAR" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="emp_status" property="empStatus" jdbcType="VARCHAR" />
+    
+		<result column="gender" property="gender" jdbcType="VARCHAR" />
+    
+		<result column="cue_rcv_goods_qty" property="cueRcvGoodsQty" jdbcType="VARCHAR" />
+    
+		<result column="emp_id" property="empId" jdbcType="VARCHAR" />
+    
+		<result column="cue_collection_qty" property="cueCollectionQty" jdbcType="VARCHAR" />
+    
+		<result column="cue_life_status" property="cueLifeStatus" jdbcType="VARCHAR" />
+    
+		<result column="bar_path" property="barPath" jdbcType="VARCHAR" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="authorization_code" property="authorizationCode" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="id_card" property="idCard" jdbcType="VARCHAR" />
+    
+		<result column="emer_contact" property="emerContact" jdbcType="VARCHAR" />
+    
+		<result column="cue_rcv_love_qty" property="cueRcvLoveQty" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		authorization_make as authorizationMake ,
+		cw_user_extend_id as cwUserExtendId ,
+		cue_busi_status as cueBusiStatus ,
+		residence_adr as residenceAdr ,
+		emp_num as empNum ,
+		job_pic as jobPic ,
+		sysdata_type as sysdataType ,
+		login_username as loginUsername ,
+		name as name ,
+		cue_comment_qty as cueCommentQty ,
+		rest_id as restId ,
+		update_time as updateTime ,
+		moblie as moblie ,
+		address as address ,
+		cue_join_qty as cueJoinQty ,
+		update_by as updateBy ,
+		emp_status as empStatus ,
+		gender as gender ,
+		cue_rcv_goods_qty as cueRcvGoodsQty ,
+		emp_id as empId ,
+		cue_collection_qty as cueCollectionQty ,
+		cue_life_status as cueLifeStatus ,
+		bar_path as barPath ,
+		create_by as createBy ,
+		authorization_code as authorizationCode ,
+		create_time as createTime ,
+		id_card as idCard ,
+		emer_contact as emerContact ,
+		cue_rcv_love_qty as cueRcvLoveQty 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="authorizationMake != null"> and authorization_make = #{authorizationMake}</if>
+				
+		  	    <if test="cwUserExtendId != null"> and cw_user_extend_id = #{cwUserExtendId}</if>
+				
+		  	    <if test="cueBusiStatus != null"> and cue_busi_status = #{cueBusiStatus}</if>
+				
+		  	    <if test="residenceAdr != null"> and residence_adr = #{residenceAdr}</if>
+				
+		  	    <if test="empNum != null"> and emp_num = #{empNum}</if>
+				
+		  	    <if test="jobPic != null"> and job_pic = #{jobPic}</if>
+				
+		  	    <if test="sysdataType != null"> and sysdata_type = #{sysdataType}</if>
+				
+		  	    <if test="loginUsername != null"> and login_username = #{loginUsername}</if>
+				
+		  	    <if test="name != null"> and name = #{name}</if>
+				
+		  	    <if test="cueCommentQty != null"> and cue_comment_qty = #{cueCommentQty}</if>
+				
+		  	    <if test="restId != null"> and rest_id = #{restId}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #{updateTime}</if>
+				
+		  	    <if test="moblie != null"> and moblie = #{moblie}</if>
+				
+		  	    <if test="address != null"> and address = #{address}</if>
+				
+		  	    <if test="cueJoinQty != null"> and cue_join_qty = #{cueJoinQty}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #{updateBy}</if>
+				
+		  	    <if test="empStatus != null"> and emp_status = #{empStatus}</if>
+				
+		  	    <if test="gender != null"> and gender = #{gender}</if>
+				
+		  	    <if test="cueRcvGoodsQty != null"> and cue_rcv_goods_qty = #{cueRcvGoodsQty}</if>
+				
+		  	    <if test="empId != null"> and emp_id = #{empId}</if>
+				
+		  	    <if test="cueCollectionQty != null"> and cue_collection_qty = #{cueCollectionQty}</if>
+				
+		  	    <if test="cueLifeStatus != null"> and cue_life_status = #{cueLifeStatus}</if>
+				
+		  	    <if test="barPath != null"> and bar_path = #{barPath}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #{createBy}</if>
+				
+		  	    <if test="authorizationCode != null"> and authorization_code = #{authorizationCode}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #{createTime}</if>
+				
+		  	    <if test="idCard != null"> and id_card = #{idCard}</if>
+				
+		  	    <if test="emerContact != null"> and emer_contact = #{emerContact}</if>
+				
+		  	    <if test="cueRcvLoveQty != null"> and cue_rcv_love_qty = #{cueRcvLoveQty}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by ${sorting}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</sql>
+	
+	<!-- 查询总数 -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(cw_user_extend_id)
+		from cw_user_extend
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 查询 -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cw_user_extend
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cw_user_extend
+		where cw_user_extend_id = #{cwUserExtendId}
+	</select>
+	
+	<!-- 根据ID删除 -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cw_user_extend
+		where  cw_user_extend_id = #{cwUserExtendId}
+	</delete>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- 添加 -->	
+	<insert id="insert" parameterType="com.ndlan.cwwarm.model.CwUserExtendBean">
+		insert into cw_user_extend(
+		  	    authorization_make  ,
+	
+		  	    cw_user_extend_id  ,
+	
+		  	    cue_busi_status  ,
+	
+		  	    residence_adr  ,
+	
+		  	    emp_num  ,
+	
+		  	    job_pic  ,
+	
+		  	    sysdata_type  ,
+	
+		  	    login_username  ,
+	
+		  	    name  ,
+	
+		  	    cue_comment_qty  ,
+	
+		  	    rest_id  ,
+	
+		  	    update_time  ,
+	
+		  	    moblie  ,
+	
+		  	    address  ,
+	
+		  	    cue_join_qty  ,
+	
+		  	    update_by  ,
+	
+		  	    emp_status  ,
+	
+		  	    gender  ,
+	
+		  	    cue_rcv_goods_qty  ,
+	
+		  	    emp_id  ,
+	
+		  	    cue_collection_qty  ,
+	
+		  	    cue_life_status  ,
+	
+		  	    bar_path  ,
+	
+		  	    create_by  ,
+	
+		  	    authorization_code  ,
+	
+		  	    create_time  ,
+	
+		  	    id_card  ,
+	
+		  	    emer_contact  ,
+	
+		  	    cue_rcv_love_qty  
+	
+			
+		)
+		values (
+		  	    #{authorizationMake } ,
+		  	    #{cwUserExtendId } ,
+		  	    #{cueBusiStatus } ,
+		  	    #{residenceAdr } ,
+		  	    #{empNum } ,
+		  	    #{jobPic } ,
+		  	    #{sysdataType } ,
+		  	    #{loginUsername } ,
+		  	    #{name } ,
+		  	    #{cueCommentQty } ,
+		  	    #{restId } ,
+		  	    #{updateTime } ,
+		  	    #{moblie } ,
+		  	    #{address } ,
+		  	    #{cueJoinQty } ,
+		  	    #{updateBy } ,
+		  	    #{empStatus } ,
+		  	    #{gender } ,
+		  	    #{cueRcvGoodsQty } ,
+		  	    #{empId } ,
+		  	    #{cueCollectionQty } ,
+		  	    #{cueLifeStatus } ,
+		  	    #{barPath } ,
+		  	    #{createBy } ,
+		  	    #{authorizationCode } ,
+		  	    #{createTime } ,
+		  	    #{idCard } ,
+		  	    #{emerContact } ,
+		  	    #{cueRcvLoveQty } 
+		)
+	</insert>
+	
+	
+	<!-- 通过ID更新 -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.cwwarm.model.CwUserExtendBean">
+		update cw_user_extend
+		<set>
+		  	<if test="authorizationMake != null">  authorization_make = #{authorizationMake} ,</if>
+		  	<if test="cueBusiStatus != null">  cue_busi_status = #{cueBusiStatus} ,</if>
+		  	<if test="residenceAdr != null">  residence_adr = #{residenceAdr} ,</if>
+		  	<if test="empNum != null">  emp_num = #{empNum} ,</if>
+		  	<if test="jobPic != null">  job_pic = #{jobPic} ,</if>
+		  	<if test="sysdataType != null">  sysdata_type = #{sysdataType} ,</if>
+		  	<if test="loginUsername != null">  login_username = #{loginUsername} ,</if>
+		  	<if test="name != null">  name = #{name} ,</if>
+		  	<if test="cueCommentQty != null">  cue_comment_qty = #{cueCommentQty} ,</if>
+		  	<if test="restId != null">  rest_id = #{restId} ,</if>
+		  	<if test="updateTime != null">  update_time = #{updateTime} ,</if>
+		  	<if test="moblie != null">  moblie = #{moblie} ,</if>
+		  	<if test="address != null">  address = #{address} ,</if>
+		  	<if test="cueJoinQty != null">  cue_join_qty = #{cueJoinQty} ,</if>
+		  	<if test="updateBy != null">  update_by = #{updateBy} ,</if>
+		  	<if test="empStatus != null">  emp_status = #{empStatus} ,</if>
+		  	<if test="gender != null">  gender = #{gender} ,</if>
+		  	<if test="cueRcvGoodsQty != null">  cue_rcv_goods_qty = #{cueRcvGoodsQty} ,</if>
+		  	<if test="empId != null">  emp_id = #{empId} ,</if>
+		  	<if test="cueCollectionQty != null">  cue_collection_qty = #{cueCollectionQty} ,</if>
+		  	<if test="cueLifeStatus != null">  cue_life_status = #{cueLifeStatus} ,</if>
+		  	<if test="barPath != null">  bar_path = #{barPath} ,</if>
+		  	<if test="createBy != null">  create_by = #{createBy} ,</if>
+		  	<if test="authorizationCode != null">  authorization_code = #{authorizationCode} ,</if>
+		  	<if test="createTime != null">  create_time = #{createTime} ,</if>
+		  	<if test="idCard != null">  id_card = #{idCard} ,</if>
+		  	<if test="emerContact != null">  emer_contact = #{emerContact} ,</if>
+		  	<if test="cueRcvLoveQty != null">  cue_rcv_love_qty = #{cueRcvLoveQty} </if>
+		</set>
+		where  cw_user_extend_id = #{cwUserExtendId}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.cwwarm.model.CwUserExtendBean">
+		update cw_user_extend
+
+		set 
+		  	 authorization_make = #{authorizationMake} ,
+		  	 cue_busi_status = #{cueBusiStatus} ,
+		  	 residence_adr = #{residenceAdr} ,
+		  	 emp_num = #{empNum} ,
+		  	 job_pic = #{jobPic} ,
+		  	 sysdata_type = #{sysdataType} ,
+		  	 login_username = #{loginUsername} ,
+		  	 name = #{name} ,
+		  	 cue_comment_qty = #{cueCommentQty} ,
+		  	 rest_id = #{restId} ,
+		  	 update_time = #{updateTime} ,
+		  	 moblie = #{moblie} ,
+		  	 address = #{address} ,
+		  	 cue_join_qty = #{cueJoinQty} ,
+		  	 update_by = #{updateBy} ,
+		  	 emp_status = #{empStatus} ,
+		  	 gender = #{gender} ,
+		  	 cue_rcv_goods_qty = #{cueRcvGoodsQty} ,
+		  	 emp_id = #{empId} ,
+		  	 cue_collection_qty = #{cueCollectionQty} ,
+		  	 cue_life_status = #{cueLifeStatus} ,
+		  	 bar_path = #{barPath} ,
+		  	 create_by = #{createBy} ,
+		  	 authorization_code = #{authorizationCode} ,
+		  	 create_time = #{createTime} ,
+		  	 id_card = #{idCard} ,
+		  	 emer_contact = #{emerContact} ,
+		  	 cue_rcv_love_qty = #{cueRcvLoveQty} 
+	
+		where  cw_user_extend_id = #{cwUserExtendId}
+	</update>
+	
+</mapper>

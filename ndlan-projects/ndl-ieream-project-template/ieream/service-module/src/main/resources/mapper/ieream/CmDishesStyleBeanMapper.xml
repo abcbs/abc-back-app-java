@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.CmDishesStyleBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.CmDishesStyleBean">
+		<id column="dashes_style_id" property="dashesStyleId" jdbcType="VARCHAR" />
+	
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="sysdata_type" property="sysdataType" jdbcType="VARCHAR" />
+    
+		<result column="rest_id" property="restId" jdbcType="VARCHAR" />
+    
+		<result column="code" property="code" jdbcType="VARCHAR" />
+    
+		<result column="show_seq" property="showSeq" jdbcType="BIGINT" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="style_type" property="styleType" jdbcType="VARCHAR" />
+    
+		<result column="enable_status" property="enableStatus" jdbcType="VARCHAR" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="foreign_name" property="foreignName" jdbcType="VARCHAR" />
+    
+		<result column="version" property="version" jdbcType="BIGINT" />
+    
+		<result column="is_syn" property="isSyn" jdbcType="VARCHAR" />
+    
+		<result column="name" property="name" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		syn_version as synVersion ,
+		update_time as updateTime ,
+		sysdata_type as sysdataType ,
+		rest_id as restId ,
+		code as code ,
+		show_seq as showSeq ,
+		dashes_style_id as dashesStyleId ,
+		create_by as createBy ,
+		style_type as styleType ,
+		enable_status as enableStatus ,
+		update_by as updateBy ,
+		create_time as createTime ,
+		foreign_name as foreignName ,
+		version as version ,
+		is_syn as isSyn ,
+		name as name 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="synVersion != null"> and syn_version = #\{synVersion\}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #\{updateTime\}</if>
+				
+		  	    <if test="sysdataType != null"> and sysdata_type = #\{sysdataType\}</if>
+				
+		  	    <if test="restId != null"> and rest_id = #\{restId\}</if>
+				
+		  	    <if test="code != null"> and code = #\{code\}</if>
+				
+		  	    <if test="showSeq != null"> and show_seq = #\{showSeq\}</if>
+				
+		  	    <if test="dashesStyleId != null"> and dashes_style_id = #\{dashesStyleId\}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #\{createBy\}</if>
+				
+		  	    <if test="styleType != null"> and style_type = #\{styleType\}</if>
+				
+		  	    <if test="enableStatus != null"> and enable_status = #\{enableStatus\}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #\{updateBy\}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #\{createTime\}</if>
+				
+		  	    <if test="foreignName != null"> and foreign_name = #\{foreignName\}</if>
+				
+		  	    <if test="version != null"> and version = #\{version\}</if>
+				
+		  	    <if test="isSyn != null"> and is_syn = #\{isSyn\}</if>
+				
+		  	    <if test="name != null"> and name = #\{name\}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by $\{sorting\}</if>
+		<if test="offset != null and limit != null">
+			limit #\{offset\}, #\{limit\}
+		</if>
+	</sql>
+	
+	<!-- 查询总数 -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(dashes_style_id)
+		from cm_dishes_style
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 查询 -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cm_dishes_style
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cm_dishes_style
+		where dashes_style_id = #\{dashes_style_id\}
+	</select>
+	
+	<!-- 根据ID删除 -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cm_dishes_style
+		where  dashes_style_id = #\{dashes_style_id\}
+	</delete>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- 添加 -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.CmDishesStyleBean">
+		insert into cm_dishes_style(
+		  	    syn_version  ,
+	
+		  	    update_time  ,
+	
+		  	    sysdata_type  ,
+	
+		  	    rest_id  ,
+	
+		  	    code  ,
+	
+		  	    show_seq  ,
+	
+		  	    dashes_style_id  ,
+	
+		  	    create_by  ,
+	
+		  	    style_type  ,
+	
+		  	    enable_status  ,
+	
+		  	    update_by  ,
+	
+		  	    create_time  ,
+	
+		  	    foreign_name  ,
+	
+		  	    version  ,
+	
+		  	    is_syn  ,
+	
+		  	    name  
+	
+			
+		)
+		values (
+		  	    #\{synVersion \} ,
+		  	    #\{updateTime \} ,
+		  	    #\{sysdataType \} ,
+		  	    #\{restId \} ,
+		  	    #\{code \} ,
+		  	    #\{showSeq \} ,
+		  	    #\{dashesStyleId \} ,
+		  	    #\{createBy \} ,
+		  	    #\{styleType \} ,
+		  	    #\{enableStatus \} ,
+		  	    #\{updateBy \} ,
+		  	    #\{createTime \} ,
+		  	    #\{foreignName \} ,
+		  	    #\{version \} ,
+		  	    #\{isSyn \} ,
+		  	    #\{name \} 
+		)
+	</insert>
+	
+	
+	<!-- 通过ID更新 -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.CmDishesStyleBean">
+		update cm_dishes_style
+		<set>
+		  	<if test=\"synVersion != null\">  syn_version = #\{synVersion\} ,</if>
+		  	<if test=\"updateTime != null\">  update_time = #\{updateTime\} ,</if>
+		  	<if test=\"sysdataType != null\">  sysdata_type = #\{sysdataType\} ,</if>
+		  	<if test=\"restId != null\">  rest_id = #\{restId\} ,</if>
+		  	<if test=\"code != null\">  code = #\{code\} ,</if>
+		  	<if test=\"showSeq != null\">  show_seq = #\{showSeq\} ,</if>
+		  	<if test=\"createBy != null\">  create_by = #\{createBy\} ,</if>
+		  	<if test=\"styleType != null\">  style_type = #\{styleType\} ,</if>
+		  	<if test=\"enableStatus != null\">  enable_status = #\{enableStatus\} ,</if>
+		  	<if test=\"updateBy != null\">  update_by = #\{updateBy\} ,</if>
+		  	<if test=\"createTime != null\">  create_time = #\{createTime\} ,</if>
+		  	<if test=\"foreignName != null\">  foreign_name = #\{foreignName\} ,</if>
+		  	<if test=\"version != null\">  version = #\{version\} ,</if>
+		  	<if test=\"isSyn != null\">  is_syn = #\{isSyn\} ,</if>
+		  	<if test=\"name != null\">  name = #\{name\} </if>
+		</set>
+		where  dashes_style_id = #\{dashes_style_id\}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.CmDishesStyleBean">
+		update cm_dishes_style
+
+		set 
+		  	 syn_version = #\{synVersion\} ,
+		  	 update_time = #\{updateTime\} ,
+		  	 sysdata_type = #\{sysdataType\} ,
+		  	 rest_id = #\{restId\} ,
+		  	 code = #\{code\} ,
+		  	 show_seq = #\{showSeq\} ,
+		  	 create_by = #\{createBy\} ,
+		  	 style_type = #\{styleType\} ,
+		  	 enable_status = #\{enableStatus\} ,
+		  	 update_by = #\{updateBy\} ,
+		  	 create_time = #\{createTime\} ,
+		  	 foreign_name = #\{foreignName\} ,
+		  	 version = #\{version\} ,
+		  	 is_syn = #\{isSyn\} ,
+		  	 name = #\{name\} 
+	
+		where  dashes_style_id = #\{dashes_style_id\}
+	</update>
+	
+</mapper>

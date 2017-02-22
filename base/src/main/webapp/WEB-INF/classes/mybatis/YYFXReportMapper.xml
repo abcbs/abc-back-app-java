@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ndlan.canyin.base.repository.report.yyfx.YYFXReportMyDao">
+<!--一天内的上座率 -->
+		<select id="getTimeDivSeatOccupancyRateStat"  resultType="java.util.HashMap">
+SELECT
+			DATE_FORMAT(bill.create_time, '%H') AS time_hour,
+			SUM(bill.people_num)/(SELECT SUM(ct.seat) FROM cm_table ct WHERE ct.rest_id = '${restId}')*100 as attendance
+		FROM
+			cm_diner_bill bill
+		WHERE
+			DATE_FORMAT(
+				bill.create_time,
+				'%Y-%m-%d'
+			) = '${selectedDate}'
+		AND bill.rest_id = '${restId}'
+ AND bill.bill_type= 1
+GROUP BY time_hour
+	</select>
+	<!--近7天的上座率 -->
+	<select id="get7DayDivSeatOccupancyRateStat"  resultType="java.util.HashMap">
+SELECT
+			DATE_FORMAT(bill.create_time, '%Y-%m-%d') AS date_day,
+			SUM(bill.people_num)/(SELECT SUM(ct.seat) FROM cm_table ct WHERE ct.rest_id = '${restId}')*100 as attendance
+		FROM
+			cm_diner_bill bill
+		WHERE
+<![CDATA[DATE_FORMAT(
+				bill.create_time,
+				'%Y-%m-%d'
+			) >= '${startDate}']]>
+<![CDATA[ AND
+			DATE_FORMAT(
+				bill.create_time,
+				'%Y-%m-%d'
+			) <= '${endDate}']]>
+		AND bill.rest_id = '${restId}'
+ AND bill.bill_type= 1
+GROUP BY date_day
+	</select>
+	
+	<!-- 后台营收总和 -->
+	<select id="getFastfoodDinnerYingShouzonghe" resultType="java.util.HashMap">
+		SELECT
+	     DATE_FORMAT( adb.pay_time,'%Y-%m-%d') AS TIME,
+	     
+		
+		((SELECT SUM(cc.ori_cost) FROM cm_diner_bill cc WHERE cc.bill_type=1 AND cc.rest_id='${restId}')/SUM(adb.ori_cost))*100 AS shitang,
+		((SELECT SUM(cc.ori_cost) FROM cm_diner_bill cc WHERE cc.bill_type=2 AND cc.rest_id='${restId}')/SUM(adb.ori_cost))*100 AS waimai,
+		((SELECT SUM(cc.ori_cost) FROM cm_diner_bill cc WHERE cc.bill_type=3 AND cc.rest_id='${restId}')/SUM(adb.ori_cost))*100 AS zizhu,
+		((SELECT SUM(cc.ori_cost) FROM cm_diner_bill cc WHERE cc.bill_type=4 AND cc.rest_id='${restId}')/SUM(adb.ori_cost))*100 AS kuaican,
+		SUM(adb.ori_cost) AS totalmoney
+		   FROM
+		   
+		    cm_diner_bill  adb
+		    
+		WHERE
+		
+		adb.rest_id ='${restId}'
+
+	</select>
+	
+	
+	<!-- 前台营收总和 -->
+
+<select id="getFastfoodDinnerYingShouzongheFrontWeb" resultType="java.util.HashMap">
+		SELECT
+		DATE_FORMAT( adb.pay_time,'%Y-%m-%d') AS TIME,
+		((SELECT SUM(cc.ori_cost) FROM cm_diner_bill cc WHERE cc.bill_type=1 AND cc.mb_id is null 
+		 <if test="pageType == 'today'">
+				and DATE_FORMAT( cc.bill_time,'%Y-%m-%d') >= DATE_FORMAT( NOW(),'%Y-%m-%d')
+		</if>
+			
+		<if test="pageType == '7day'">
+				and DATE_FORMAT( cc.bill_time,'%Y-%m-%d') >= DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 7 DAY),'%Y-%m-%d')
+		</if>
+		<if test="startDate != null">
+				<![CDATA[and DATE_FORMAT(cc.bill_time,'%Y-%m-%d') >= '${startDate}']]>
+		</if>
+		<if test="endDate != null">
+				<![CDATA[and DATE_FORMAT(cc.bill_time,'%Y-%m-%d') <= '${endDate}']]>
+		</if>
+		
+		 AND cc.rest_id='${restId}')/SUM(adb.ori_cost))*100 AS shitang,
+		((SELECT SUM(cc.ori_cost) FROM cm_diner_bill cc WHERE cc.bill_type=2
+			<if test="pageType == 'today'">
+				and DATE_FORMAT( cc.bill_time,'%Y-%m-%d') >= DATE_FORMAT( NOW(),'%Y-%m-%d')
+		</if>
+			
+		<if test="pageType == '7day'">
+				and DATE_FORMAT( cc.bill_time,'%Y-%m-%d') >= DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 7 DAY),'%Y-%m-%d')
+		</if>
+		<if test="startDate != null">
+				<![CDATA[and DATE_FORMAT(cc.bill_time,'%Y-%m-%d') >= '${startDate}']]>
+		</if>
+		<if test="endDate != null">
+				<![CDATA[and DATE_FORMAT(cc.bill_time,'%Y-%m-%d') <= '${endDate}']]>
+		</if>
+		
+		 AND cc.rest_id='${restId}')/SUM(adb.ori_cost))*100 AS waimai,
+		((SELECT SUM(cc.ori_cost) FROM cm_diner_bill cc WHERE cc.bill_type=1
+			<if test="pageType == 'today'">
+				and DATE_FORMAT( cc.bill_time,'%Y-%m-%d') >= DATE_FORMAT( NOW(),'%Y-%m-%d')
+		</if>
+			
+		<if test="pageType == '7day'">
+				and DATE_FORMAT( cc.bill_time,'%Y-%m-%d') >= DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 7 DAY),'%Y-%m-%d')
+		</if>
+		<if test="startDate != null">
+				<![CDATA[and DATE_FORMAT(cc.bill_time,'%Y-%m-%d') >= '${startDate}']]>
+		</if>
+		<if test="endDate != null">
+				<![CDATA[and DATE_FORMAT(cc.bill_time,'%Y-%m-%d') <= '${endDate}']]>
+		</if>
+		<!-- AND cc.mb_id is not null -->
+		  AND cc.mb_id is not null AND cc.rest_id='${restId}')/SUM(adb.ori_cost))*100 AS yuding,
+		<!-- ((SELECT SUM(cc.ori_cost) FROM cm_diner_bill cc WHERE cc.bill_type=3 AND cc.rest_id='${restId}')/SUM(adb.ori_cost))*100 AS zizhu, 
+		((SELECT SUM(cc.ori_cost) FROM cm_diner_bill cc WHERE cc.bill_type=4 AND cc.rest_id='${restId}')/SUM(adb.ori_cost))*100 AS kuaican,-->
+		SUM(adb.ori_cost) AS totalmoney
+		   FROM
+		   
+		    cm_diner_bill  adb
+		    
+		WHERE
+		adb.rest_id ='${restId}'
+		AND adb.bill_type in (1,2)
+		<if test="pageType == 'today'">
+				and DATE_FORMAT( adb.bill_time,'%Y-%m-%d') >= DATE_FORMAT( NOW(),'%Y-%m-%d')
+		</if>
+			
+		<if test="pageType == '7day'">
+				and DATE_FORMAT( adb.bill_time,'%Y-%m-%d') >= DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 7 DAY),'%Y-%m-%d')
+		</if>
+		<if test="startDate != null">
+				<![CDATA[and DATE_FORMAT(adb.bill_time,'%Y-%m-%d') >= '${startDate}']]>
+		</if>
+		<if test="endDate != null">
+				<![CDATA[and DATE_FORMAT(adb.bill_time,'%Y-%m-%d') <= '${endDate}']]>
+		</if>
+		
+
+	</select>
+	
+	<!--  #翻台率 -->
+
+
+	<select id="getDiscountStat" resultType="java.util.HashMap">
+ SELECT
+	DATE_FORMAT(bill.pay_time, '%H') AS time_hour,
+	(COUNT(bill.bill_id) - (SELECT SUM(ct.seat)  FROM cm_table ct WHERE ct.rest_id='${restId}'))
+/(SELECT SUM(ct.seat)  FROM cm_table ct WHERE ct.rest_id='${restId}')*100 as  TableTurnoverRate
+
+FROM
+	cm_diner_bill bill
+WHERE
+	DATE_FORMAT(
+		bill.create_time,
+		'%Y-%m-%d'
+	) = '${startDate}'
+AND bill.rest_id='${restId}'
+and bill.pay_time is not null
+AND bill.bill_type= 1
+GROUP BY
+	time_hour
+
+	</select>
+	
+	<select id="get7DayDiscountStat" resultType="java.util.HashMap">
+ SELECT
+	DATE_FORMAT(bill.create_time, '%Y-%m-%d') AS date_day,
+	(COUNT(bill.bill_id) - (SELECT SUM(ct.seat)  FROM cm_table ct WHERE ct.rest_id='${restId}'))
+/(SELECT SUM(ct.seat)  FROM cm_table ct WHERE ct.rest_id='${restId}')*100 as  TableTurnoverRate
+FROM
+	cm_diner_bill bill
+WHERE
+<![CDATA[	DATE_FORMAT(
+				bill.pay_time,
+				'%Y-%m-%d'
+			) >= '${startDate}']]>
+<![CDATA[AND
+			DATE_FORMAT(
+				bill.pay_time,
+				'%Y-%m-%d'
+			) <= '${endDate}']]>
+AND bill.rest_id='${restId}'
+AND bill.bill_type= 1
+GROUP BY
+	date_day
+
+	</select>
+	
+	
+		<!-- 月平均翻台率 = (月餐桌使用次数-（总台位数×2餐×30日）)×100% / 总台位数×2餐×30日 -->
+	<select id="getTableAreaStat" resultType="java.util.HashMap">
+	 SELECT 
+   DISTINCT DATE_FORMAT(abd.pay_time,'%Y-%m-%d') AS TIME,
+   ((((SELECT COUNT(*) AS zonghe   FROM cm_diner_bill abd WHERE  abd.bill_type=1 AND abd.pay_time LIKE '2015-07-27%' AND abd.`rest_id`='${restId}')-(
+   (SELECT SUM(ct.seat)  FROM cm_table ct WHERE ct.rest_id='${restId}')*2*30
+   
+   ))*100 )/(SELECT SUM(ct.seat)  FROM cm_table ct WHERE ct.rest_id='${restId}')*2*30) AS a
+   
+   
+   FROM cm_diner_bill abd
+  WHERE abd.pay_time LIKE '2015-%'
+	
+	</select>
+	
+		<select id="getPaymentTypeStat" resultType="java.util.HashMap">
+		select
+		count(cdbp.cpt_id) as cptIdCount,
+		cpt.payment_name as paymentName,
+		sum(cdbp.money) as totalmoney
+		from
+		cm_diner_bill cdb ,
+		cm_diner_bill_payment cdbp left join cm_payment_type cpt on cpt.cpt_id = cdbp.cpt_id
+		where
+		cdb.rest_id = '${restId}' and
+		cdb.bill_id = cdbp.bill_id and
+		cdb.bill_status = '3' and
+		cdb.is_valid = '1'
+		<if test="startDate != null">
+				<![CDATA[and DATE_FORMAT(cdb.pay_time,'%Y-%m-%d') >= '${startDate}']]>
+		</if>
+		<if test="endDate != null">
+				<![CDATA[and DATE_FORMAT(cdb.pay_time,'%Y-%m-%d') <= '${endDate}']]>
+		</if>
+		group by
+		cdbp.cpt_id
+	</select>
+	
+	
+	<select id="getPaymentTypeAllTotalmoney" resultType="java.util.HashMap">
+		select
+		count(cdbp.cpt_id) as allCptIdCount,
+		sum(cdbp.money) as allTotalmoney
+		from
+		cm_diner_bill cdb ,
+		cm_diner_bill_payment cdbp left join cm_payment_type cpt on cpt.cpt_id = cdbp.cpt_id
+		where
+		cdb.rest_id = '${restId}' and
+		cdb.bill_id = cdbp.bill_id and
+		cdb.bill_status = '3' and
+		cdb.is_valid = '1'
+		<if test="startDate != null">
+				<![CDATA[and DATE_FORMAT(cdb.pay_time,'%Y-%m-%d') >= '${startDate}']]>
+		</if>
+		<if test="endDate != null">
+				<![CDATA[and DATE_FORMAT(cdb.pay_time,'%Y-%m-%d') <= '${endDate}']]>
+		</if>
+	</select>
+	
+	
+	
+	<select id="getPaymentTypeStats" resultType="java.util.HashMap">
+		select
+		count(cdbp.cpt_id) as cptIdCount,
+		cpt.payment_name as paymentName,
+		sum(cdbp.money) as totalmoney
+		from
+		cm_diner_bill cdb ,
+		cm_diner_bill_payment cdbp left join cm_payment_type cpt on cpt.cpt_id = cdbp.cpt_id
+		where
+		cdb.rest_id = '${restId}' and
+		cdb.bill_id = cdbp.bill_id and
+		cdb.bill_status = '3' and
+		cdb.is_valid = '1'
+		<if test="startDate != null">
+				<![CDATA[and DATE_FORMAT(cdb.pay_time,'%Y-%m-%d') >= '${startDate}']]>
+		</if>
+		<if test="endDate != null">
+				<![CDATA[and DATE_FORMAT(cdb.pay_time,'%Y-%m-%d') <= '${endDate}']]>
+		</if>
+		<if test="pageType == 'today'">
+				and DATE_FORMAT( cdb.pay_time,'%Y-%m-%d') >= DATE_FORMAT( NOW(),'%Y-%m-%d')
+		</if>
+			
+		<if test="pageType == '7day'">
+				and DATE_FORMAT( cdb.pay_time,'%Y-%m-%d') >= DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 7 DAY),'%Y-%m-%d')
+		</if>
+		group by
+		cdbp.cpt_id
+	</select>
+	
+	
+	<select id="getPaymentTypeAllTotalmoneys" resultType="java.util.HashMap">
+		select
+		count(cdbp.cpt_id) as allCptIdCount,
+		sum(cdbp.money) as allTotalmoney
+		from
+		cm_diner_bill cdb ,
+		cm_diner_bill_payment cdbp left join cm_payment_type cpt on cpt.cpt_id = cdbp.cpt_id
+		where
+		cdb.rest_id = '${restId}' and
+		cdb.bill_id = cdbp.bill_id and
+		cdb.bill_status = '3' and
+		cdb.is_valid = '1'
+		<if test="startDate != null">
+				<![CDATA[and DATE_FORMAT(cdb.pay_time,'%Y-%m-%d') >= '${startDate}']]>
+		</if>
+		<if test="endDate != null">
+				<![CDATA[and DATE_FORMAT(cdb.pay_time,'%Y-%m-%d') <= '${endDate}']]>
+		</if>
+		<if test="pageType == 'today'">
+				and DATE_FORMAT( cdb.pay_time,'%Y-%m-%d') >= DATE_FORMAT( NOW(),'%Y-%m-%d')
+		</if>
+			
+		<if test="pageType == '7day'">
+				and DATE_FORMAT( cdb.pay_time,'%Y-%m-%d') >= DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 7 DAY),'%Y-%m-%d')
+		</if>
+	</select>
+	
+	
+	
+	
+		<select id="getTop10" resultType="java.util.HashMap">
+		     	SELECT
+				bb.dishes_name as disheName,
+				sum(bb.unit_num) AS total
+				FROM
+					cm_diner_bill aa,
+					cm_diner_bill_dishes bb
+				WHERE
+					aa.bill_id = bb.bill_id
+				
+				<if test="sorting == 'desc'">
+					AND aa.bill_status = 3
+				</if>
+			<if test="startDate != null and startDate!= ''">
+			<![CDATA[and DATE_FORMAT(aa.bill_time,'%Y-%m-%d') >= '${startDate}']]>
+			</if>
+			<if test="endDate != null and endDate != ''">
+					<![CDATA[and DATE_FORMAT(aa.bill_time,'%Y-%m-%d') <= '${endDate}']]>
+			</if>
+			<if test="pageType == 'today'">
+				and DATE_FORMAT( aa.bill_time,'%Y-%m-%d') >= DATE_FORMAT( NOW(),'%Y-%m-%d')
+			</if>
+			
+			<if test="pageType == '7day'">
+				and DATE_FORMAT( aa.bill_time,'%Y-%m-%d') >= DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 7 DAY),'%Y-%m-%d')
+			</if>
+			<if test="categoryId !=null and categoryId!= ''">
+				and bb.category_id='${categoryId}'
+			</if>
+				and aa.rest_id='${restId}'
+				AND bb.dishes_name IS NOT NULL
+			
+				GROUP BY
+					bb.dishes_name
+				order by total ${sorting} 
+				limit 0,10 	
+	    </select>
+	    
+	    <select id="getSetTop10" resultType="java.util.HashMap">
+		     	SELECT
+				gg.ds_name as disheName,
+				sum(gg.unit_num) AS total
+				FROM
+					cm_diner_bill ff,
+					cm_diner_bill_dishes_set gg
+				WHERE
+					ff.bill_id = gg.bill_id
+			<if test="pageType == 'today'">
+				and DATE_FORMAT( ff.bill_time,'%Y-%m-%d') >= DATE_FORMAT( NOW(),'%Y-%m-%d')
+			</if>
+			<if test="pageType == '7day'">
+				and DATE_FORMAT( ff.bill_time,'%Y-%m-%d') >= DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 7 DAY),'%Y-%m-%d')
+			</if>
+			<if test="dsId !=null">
+				and gg.ds_id='${dsId}'
+			</if>
+				and ff.rest_id='${restId}'
+			
+				AND gg.ds_name IS NOT NULL
+				AND ff.bill_status = 3
+			
+			
+				GROUP BY
+					gg.ds_name
+	    </select>
+	
+	
+</mapper> 

@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.Base3cShoppingCartBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.Base3cShoppingCartBean">
+		<id column="cart_id" property="cartId" jdbcType="VARCHAR" />
+	
+    
+		<result column="all_discount" property="allDiscount" jdbcType="VARCHAR" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="is_discount_privilege" property="isDiscountPrivilege" jdbcType="VARCHAR" />
+    
+		<result column="discount_type" property="discountType" jdbcType="VARCHAR" />
+    
+		<result column="befor_discount_total" property="beforDiscountTotal" jdbcType="VARCHAR" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="mb_id" property="mbId" jdbcType="VARCHAR" />
+    
+		<result column="codeless_sum" property="codelessSum" jdbcType="VARCHAR" />
+    
+		<result column="is_syn" property="isSyn" jdbcType="VARCHAR" />
+    
+		<result column="rest_id" property="restId" jdbcType="VARCHAR" />
+    
+		<result column="customer_name" property="customerName" jdbcType="VARCHAR" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="version" property="version" jdbcType="BIGINT" />
+    
+		<result column="total" property="total" jdbcType="VARCHAR" />
+    
+		<result column="all_privilege" property="allPrivilege" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		all_discount as allDiscount ,
+		create_by as createBy ,
+		is_discount_privilege as isDiscountPrivilege ,
+		discount_type as discountType ,
+		befor_discount_total as beforDiscountTotal ,
+		update_by as updateBy ,
+		mb_id as mbId ,
+		 as  ,
+		codeless_sum as codelessSum ,
+		is_syn as isSyn ,
+		cart_id as cartId ,
+		rest_id as restId ,
+		customer_name as customerName ,
+		syn_version as synVersion ,
+		update_time as updateTime ,
+		version as version ,
+		total as total ,
+		all_privilege as allPrivilege ,
+		create_time as createTime 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="allDiscount != null"> and all_discount = #{allDiscount}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #{createBy}</if>
+				
+		  	    <if test="isDiscountPrivilege != null"> and is_discount_privilege = #{isDiscountPrivilege}</if>
+				
+		  	    <if test="discountType != null"> and discount_type = #{discountType}</if>
+				
+		  	    <if test="beforDiscountTotal != null"> and befor_discount_total = #{beforDiscountTotal}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #{updateBy}</if>
+				
+		  	    <if test="mbId != null"> and mb_id = #{mbId}</if>
+				
+		  	    <if test=" != null"> and  = #{}</if>
+				
+		  	    <if test="codelessSum != null"> and codeless_sum = #{codelessSum}</if>
+				
+		  	    <if test="isSyn != null"> and is_syn = #{isSyn}</if>
+				
+		  	    <if test="cartId != null"> and cart_id = #{cartId}</if>
+				
+		  	    <if test="restId != null"> and rest_id = #{restId}</if>
+				
+		  	    <if test="customerName != null"> and customer_name = #{customerName}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #{synVersion}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #{updateTime}</if>
+				
+		  	    <if test="version != null"> and version = #{version}</if>
+				
+		  	    <if test="total != null"> and total = #{total}</if>
+				
+		  	    <if test="allPrivilege != null"> and all_privilege = #{allPrivilege}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #{createTime}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by ${sorting}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</sql>
+	
+	<!-- ��ѯ���� -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(cart_id)
+		from base3c_shopping_cart
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ��ѯ -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from base3c_shopping_cart
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ����ID��ѯ -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from base3c_shopping_cart
+		where cart_id = #{cart_id}
+	</select>
+	
+	<!-- ����IDɾ�� -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from base3c_shopping_cart
+		where  cart_id = #{cart_id}
+	</delete>
+	
+	<!-- ɾ�� -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- ��� -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.Base3cShoppingCartBean">
+		insert into base3c_shopping_cart(
+		  	    all_discount  ,
+	
+		  	    create_by  ,
+	
+		  	    is_discount_privilege  ,
+	
+		  	    discount_type  ,
+	
+		  	    befor_discount_total  ,
+	
+		  	    update_by  ,
+	
+		  	    mb_id  ,
+	
+		  	      ,
+	
+		  	    codeless_sum  ,
+	
+		  	    is_syn  ,
+	
+		  	    cart_id  ,
+	
+		  	    rest_id  ,
+	
+		  	    customer_name  ,
+	
+		  	    syn_version  ,
+	
+		  	    update_time  ,
+	
+		  	    version  ,
+	
+		  	    total  ,
+	
+		  	    all_privilege  ,
+	
+		  	    create_time  
+	
+			
+		)
+		values (
+		  	    #{allDiscount } ,
+		  	    #{createBy } ,
+		  	    #{isDiscountPrivilege } ,
+		  	    #{discountType } ,
+		  	    #{beforDiscountTotal } ,
+		  	    #{updateBy } ,
+		  	    #{mbId } ,
+		  	    #{ } ,
+		  	    #{codelessSum } ,
+		  	    #{isSyn } ,
+		  	    #{cartId } ,
+		  	    #{restId } ,
+		  	    #{customerName } ,
+		  	    #{synVersion } ,
+		  	    #{updateTime } ,
+		  	    #{version } ,
+		  	    #{total } ,
+		  	    #{allPrivilege } ,
+		  	    #{createTime } 
+		)
+	</insert>
+	
+	
+	<!-- ͨ��ID���� -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.Base3cShoppingCartBean">
+		update base3c_shopping_cart
+		<set>
+		  	<if test="allDiscount != null">  all_discount = #{allDiscount} ,</if>
+		  	<if test="createBy != null">  create_by = #{createBy} ,</if>
+		  	<if test="isDiscountPrivilege != null">  is_discount_privilege = #{isDiscountPrivilege} ,</if>
+		  	<if test="discountType != null">  discount_type = #{discountType} ,</if>
+		  	<if test="beforDiscountTotal != null">  befor_discount_total = #{beforDiscountTotal} ,</if>
+		  	<if test="updateBy != null">  update_by = #{updateBy} ,</if>
+		  	<if test="mbId != null">  mb_id = #{mbId} ,</if>
+		  	<if test=" != null">   = #{} ,</if>
+		  	<if test="codelessSum != null">  codeless_sum = #{codelessSum} ,</if>
+		  	<if test="isSyn != null">  is_syn = #{isSyn} ,</if>
+		  	<if test="restId != null">  rest_id = #{restId} ,</if>
+		  	<if test="customerName != null">  customer_name = #{customerName} ,</if>
+		  	<if test="synVersion != null">  syn_version = #{synVersion} ,</if>
+		  	<if test="updateTime != null">  update_time = #{updateTime} ,</if>
+		  	<if test="version != null">  version = #{version} ,</if>
+		  	<if test="total != null">  total = #{total} ,</if>
+		  	<if test="allPrivilege != null">  all_privilege = #{allPrivilege} ,</if>
+		  	<if test="createTime != null">  create_time = #{createTime} </if>
+		</set>
+		where  cart_id = #{cart_id}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.Base3cShoppingCartBean">
+		update base3c_shopping_cart
+
+		set 
+		  	 all_discount = #{allDiscount} ,
+		  	 create_by = #{createBy} ,
+		  	 is_discount_privilege = #{isDiscountPrivilege} ,
+		  	 discount_type = #{discountType} ,
+		  	 befor_discount_total = #{beforDiscountTotal} ,
+		  	 update_by = #{updateBy} ,
+		  	 mb_id = #{mbId} ,
+		  	  = #{} ,
+		  	 codeless_sum = #{codelessSum} ,
+		  	 is_syn = #{isSyn} ,
+		  	 rest_id = #{restId} ,
+		  	 customer_name = #{customerName} ,
+		  	 syn_version = #{synVersion} ,
+		  	 update_time = #{updateTime} ,
+		  	 version = #{version} ,
+		  	 total = #{total} ,
+		  	 all_privilege = #{allPrivilege} ,
+		  	 create_time = #{createTime} 
+	
+		where  cart_id = #{cart_id}
+	</update>
+	
+</mapper>

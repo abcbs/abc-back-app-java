@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.CmMembershipCardClassBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.CmMembershipCardClassBean">
+		<id column="mcclass_id" property="mcclassId" jdbcType="VARCHAR" />
+	
+    
+		<result column="version" property="version" jdbcType="BIGINT" />
+    
+		<result column="name" property="name" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="ccd_id" property="ccdId" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="is_syn" property="isSyn" jdbcType="VARCHAR" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="cash_pledge" property="cashPledge" jdbcType="DOUBLE" />
+    
+		<result column="rest_id" property="restId" jdbcType="VARCHAR" />
+    
+		<result column="is_consume_integral" property="isConsumeIntegral" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		version as version ,
+		name as name ,
+		update_time as updateTime ,
+		ccd_id as ccdId ,
+		create_time as createTime ,
+		create_by as createBy ,
+		is_syn as isSyn ,
+		mcclass_id as mcclassId ,
+		syn_version as synVersion ,
+		update_by as updateBy ,
+		cash_pledge as cashPledge ,
+		rest_id as restId ,
+		is_consume_integral as isConsumeIntegral 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="version != null"> and version = #\{version\}</if>
+				
+		  	    <if test="name != null"> and name = #\{name\}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #\{updateTime\}</if>
+				
+		  	    <if test="ccdId != null"> and ccd_id = #\{ccdId\}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #\{createTime\}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #\{createBy\}</if>
+				
+		  	    <if test="isSyn != null"> and is_syn = #\{isSyn\}</if>
+				
+		  	    <if test="mcclassId != null"> and mcclass_id = #\{mcclassId\}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #\{synVersion\}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #\{updateBy\}</if>
+				
+		  	    <if test="cashPledge != null"> and cash_pledge = #\{cashPledge\}</if>
+				
+		  	    <if test="restId != null"> and rest_id = #\{restId\}</if>
+				
+		  	    <if test="isConsumeIntegral != null"> and is_consume_integral = #\{isConsumeIntegral\}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by $\{sorting\}</if>
+		<if test="offset != null and limit != null">
+			limit #\{offset\}, #\{limit\}
+		</if>
+	</sql>
+	
+	<!-- 查询总数 -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(mcclass_id)
+		from cm_membership_card_class
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 查询 -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cm_membership_card_class
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cm_membership_card_class
+		where mcclass_id = #\{mcclass_id\}
+	</select>
+	
+	<!-- 根据ID删除 -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cm_membership_card_class
+		where  mcclass_id = #\{mcclass_id\}
+	</delete>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- 添加 -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.CmMembershipCardClassBean">
+		insert into cm_membership_card_class(
+		  	    version  ,
+	
+		  	    name  ,
+	
+		  	    update_time  ,
+	
+		  	    ccd_id  ,
+	
+		  	    create_time  ,
+	
+		  	    create_by  ,
+	
+		  	    is_syn  ,
+	
+		  	    mcclass_id  ,
+	
+		  	    syn_version  ,
+	
+		  	    update_by  ,
+	
+		  	    cash_pledge  ,
+	
+		  	    rest_id  ,
+	
+		  	    is_consume_integral  
+	
+			
+		)
+		values (
+		  	    #\{version \} ,
+		  	    #\{name \} ,
+		  	    #\{updateTime \} ,
+		  	    #\{ccdId \} ,
+		  	    #\{createTime \} ,
+		  	    #\{createBy \} ,
+		  	    #\{isSyn \} ,
+		  	    #\{mcclassId \} ,
+		  	    #\{synVersion \} ,
+		  	    #\{updateBy \} ,
+		  	    #\{cashPledge \} ,
+		  	    #\{restId \} ,
+		  	    #\{isConsumeIntegral \} 
+		)
+	</insert>
+	
+	
+	<!-- 通过ID更新 -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.CmMembershipCardClassBean">
+		update cm_membership_card_class
+		<set>
+		  	<if test=\"version != null\">  version = #\{version\} ,</if>
+		  	<if test=\"name != null\">  name = #\{name\} ,</if>
+		  	<if test=\"updateTime != null\">  update_time = #\{updateTime\} ,</if>
+		  	<if test=\"ccdId != null\">  ccd_id = #\{ccdId\} ,</if>
+		  	<if test=\"createTime != null\">  create_time = #\{createTime\} ,</if>
+		  	<if test=\"createBy != null\">  create_by = #\{createBy\} ,</if>
+		  	<if test=\"isSyn != null\">  is_syn = #\{isSyn\} ,</if>
+		  	<if test=\"synVersion != null\">  syn_version = #\{synVersion\} ,</if>
+		  	<if test=\"updateBy != null\">  update_by = #\{updateBy\} ,</if>
+		  	<if test=\"cashPledge != null\">  cash_pledge = #\{cashPledge\} ,</if>
+		  	<if test=\"restId != null\">  rest_id = #\{restId\} ,</if>
+		  	<if test=\"isConsumeIntegral != null\">  is_consume_integral = #\{isConsumeIntegral\} </if>
+		</set>
+		where  mcclass_id = #\{mcclass_id\}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.CmMembershipCardClassBean">
+		update cm_membership_card_class
+
+		set 
+		  	 version = #\{version\} ,
+		  	 name = #\{name\} ,
+		  	 update_time = #\{updateTime\} ,
+		  	 ccd_id = #\{ccdId\} ,
+		  	 create_time = #\{createTime\} ,
+		  	 create_by = #\{createBy\} ,
+		  	 is_syn = #\{isSyn\} ,
+		  	 syn_version = #\{synVersion\} ,
+		  	 update_by = #\{updateBy\} ,
+		  	 cash_pledge = #\{cashPledge\} ,
+		  	 rest_id = #\{restId\} ,
+		  	 is_consume_integral = #\{isConsumeIntegral\} 
+	
+		where  mcclass_id = #\{mcclass_id\}
+	</update>
+	
+</mapper>

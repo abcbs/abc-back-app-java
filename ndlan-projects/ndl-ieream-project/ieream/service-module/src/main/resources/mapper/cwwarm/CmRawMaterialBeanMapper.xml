@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.CmRawMaterialBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.CmRawMaterialBean">
+		<id column="rm_id" property="rmId" jdbcType="VARCHAR" />
+	
+    
+		<result column="stock_count" property="stockCount" jdbcType="FLOAT" />
+    
+		<result column="rest_id" property="restId" jdbcType="VARCHAR" />
+    
+		<result column="rm_name" property="rmName" jdbcType="VARCHAR" />
+    
+		<result column="unit_id" property="unitId" jdbcType="VARCHAR" />
+    
+		<result column="code" property="code" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="surplus_stock_count" property="surplusStockCount" jdbcType="FLOAT" />
+    
+		<result column="material_id" property="materialId" jdbcType="VARCHAR" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="price" property="price" jdbcType="DOUBLE" />
+    
+		<result column="package_capacity" property="packageCapacity" jdbcType="VARCHAR" />
+    
+		<result column="warn_count" property="warnCount" jdbcType="FLOAT" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="is_syn" property="isSyn" jdbcType="VARCHAR" />
+    
+		<result column="sh_id" property="shId" jdbcType="VARCHAR" />
+    
+		<result column="version" property="version" jdbcType="VARCHAR" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		stock_count as stockCount ,
+		rest_id as restId ,
+		rm_name as rmName ,
+		unit_id as unitId ,
+		code as code ,
+		update_time as updateTime ,
+		surplus_stock_count as surplusStockCount ,
+		material_id as materialId ,
+		syn_version as synVersion ,
+		create_time as createTime ,
+		price as price ,
+		rm_id as rmId ,
+		package_capacity as packageCapacity ,
+		warn_count as warnCount ,
+		create_by as createBy ,
+		is_syn as isSyn ,
+		sh_id as shId ,
+		version as version ,
+		update_by as updateBy 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="stockCount != null"> and stock_count = #{stockCount}</if>
+				
+		  	    <if test="restId != null"> and rest_id = #{restId}</if>
+				
+		  	    <if test="rmName != null"> and rm_name = #{rmName}</if>
+				
+		  	    <if test="unitId != null"> and unit_id = #{unitId}</if>
+				
+		  	    <if test="code != null"> and code = #{code}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #{updateTime}</if>
+				
+		  	    <if test="surplusStockCount != null"> and surplus_stock_count = #{surplusStockCount}</if>
+				
+		  	    <if test="materialId != null"> and material_id = #{materialId}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #{synVersion}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #{createTime}</if>
+				
+		  	    <if test="price != null"> and price = #{price}</if>
+				
+		  	    <if test="rmId != null"> and rm_id = #{rmId}</if>
+				
+		  	    <if test="packageCapacity != null"> and package_capacity = #{packageCapacity}</if>
+				
+		  	    <if test="warnCount != null"> and warn_count = #{warnCount}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #{createBy}</if>
+				
+		  	    <if test="isSyn != null"> and is_syn = #{isSyn}</if>
+				
+		  	    <if test="shId != null"> and sh_id = #{shId}</if>
+				
+		  	    <if test="version != null"> and version = #{version}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #{updateBy}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by ${sorting}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</sql>
+	
+	<!-- ��ѯ���� -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(rm_id)
+		from cm_raw_material
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ��ѯ -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cm_raw_material
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- ����ID��ѯ -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cm_raw_material
+		where rm_id = #{rm_id}
+	</select>
+	
+	<!-- ����IDɾ�� -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cm_raw_material
+		where  rm_id = #{rm_id}
+	</delete>
+	
+	<!-- ɾ�� -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- ��� -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.CmRawMaterialBean">
+		insert into cm_raw_material(
+		  	    stock_count  ,
+	
+		  	    rest_id  ,
+	
+		  	    rm_name  ,
+	
+		  	    unit_id  ,
+	
+		  	    code  ,
+	
+		  	    update_time  ,
+	
+		  	    surplus_stock_count  ,
+	
+		  	    material_id  ,
+	
+		  	    syn_version  ,
+	
+		  	    create_time  ,
+	
+		  	    price  ,
+	
+		  	    rm_id  ,
+	
+		  	    package_capacity  ,
+	
+		  	    warn_count  ,
+	
+		  	    create_by  ,
+	
+		  	    is_syn  ,
+	
+		  	    sh_id  ,
+	
+		  	    version  ,
+	
+		  	    update_by  
+	
+			
+		)
+		values (
+		  	    #{stockCount } ,
+		  	    #{restId } ,
+		  	    #{rmName } ,
+		  	    #{unitId } ,
+		  	    #{code } ,
+		  	    #{updateTime } ,
+		  	    #{surplusStockCount } ,
+		  	    #{materialId } ,
+		  	    #{synVersion } ,
+		  	    #{createTime } ,
+		  	    #{price } ,
+		  	    #{rmId } ,
+		  	    #{packageCapacity } ,
+		  	    #{warnCount } ,
+		  	    #{createBy } ,
+		  	    #{isSyn } ,
+		  	    #{shId } ,
+		  	    #{version } ,
+		  	    #{updateBy } 
+		)
+	</insert>
+	
+	
+	<!-- ͨ��ID���� -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.CmRawMaterialBean">
+		update cm_raw_material
+		<set>
+		  	<if test="stockCount != null">  stock_count = #{stockCount} ,</if>
+		  	<if test="restId != null">  rest_id = #{restId} ,</if>
+		  	<if test="rmName != null">  rm_name = #{rmName} ,</if>
+		  	<if test="unitId != null">  unit_id = #{unitId} ,</if>
+		  	<if test="code != null">  code = #{code} ,</if>
+		  	<if test="updateTime != null">  update_time = #{updateTime} ,</if>
+		  	<if test="surplusStockCount != null">  surplus_stock_count = #{surplusStockCount} ,</if>
+		  	<if test="materialId != null">  material_id = #{materialId} ,</if>
+		  	<if test="synVersion != null">  syn_version = #{synVersion} ,</if>
+		  	<if test="createTime != null">  create_time = #{createTime} ,</if>
+		  	<if test="price != null">  price = #{price} ,</if>
+		  	<if test="packageCapacity != null">  package_capacity = #{packageCapacity} ,</if>
+		  	<if test="warnCount != null">  warn_count = #{warnCount} ,</if>
+		  	<if test="createBy != null">  create_by = #{createBy} ,</if>
+		  	<if test="isSyn != null">  is_syn = #{isSyn} ,</if>
+		  	<if test="shId != null">  sh_id = #{shId} ,</if>
+		  	<if test="version != null">  version = #{version} ,</if>
+		  	<if test="updateBy != null">  update_by = #{updateBy} </if>
+		</set>
+		where  rm_id = #{rm_id}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.CmRawMaterialBean">
+		update cm_raw_material
+
+		set 
+		  	 stock_count = #{stockCount} ,
+		  	 rest_id = #{restId} ,
+		  	 rm_name = #{rmName} ,
+		  	 unit_id = #{unitId} ,
+		  	 code = #{code} ,
+		  	 update_time = #{updateTime} ,
+		  	 surplus_stock_count = #{surplusStockCount} ,
+		  	 material_id = #{materialId} ,
+		  	 syn_version = #{synVersion} ,
+		  	 create_time = #{createTime} ,
+		  	 price = #{price} ,
+		  	 package_capacity = #{packageCapacity} ,
+		  	 warn_count = #{warnCount} ,
+		  	 create_by = #{createBy} ,
+		  	 is_syn = #{isSyn} ,
+		  	 sh_id = #{shId} ,
+		  	 version = #{version} ,
+		  	 update_by = #{updateBy} 
+	
+		where  rm_id = #{rm_id}
+	</update>
+	
+</mapper>

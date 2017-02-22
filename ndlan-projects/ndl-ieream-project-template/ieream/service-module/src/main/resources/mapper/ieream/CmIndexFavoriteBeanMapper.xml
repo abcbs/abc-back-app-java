@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.CmIndexFavoriteBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.CmIndexFavoriteBean">
+		<id column="if_id" property="ifId" jdbcType="VARCHAR" />
+	
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="module_size" property="moduleSize" jdbcType="VARCHAR" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="show_seq" property="showSeq" jdbcType="BIGINT" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="cam_id" property="camId" jdbcType="VARCHAR" />
+    
+		<result column="is_syn" property="isSyn" jdbcType="VARCHAR" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+    
+		<result column="emp_id" property="empId" jdbcType="VARCHAR" />
+    
+		<result column="model_name" property="modelName" jdbcType="VARCHAR" />
+    
+		<result column="version" property="version" jdbcType="BIGINT" />
+    
+		<result column="rest_id" property="restId" jdbcType="VARCHAR" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		create_time as createTime ,
+		module_size as moduleSize ,
+		create_by as createBy ,
+		show_seq as showSeq ,
+		update_time as updateTime ,
+		cam_id as camId ,
+		is_syn as isSyn ,
+		syn_version as synVersion ,
+		emp_id as empId ,
+		model_name as modelName ,
+		version as version ,
+		rest_id as restId ,
+		update_by as updateBy ,
+		if_id as ifId 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="createTime != null"> and create_time = #\{createTime\}</if>
+				
+		  	    <if test="moduleSize != null"> and module_size = #\{moduleSize\}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #\{createBy\}</if>
+				
+		  	    <if test="showSeq != null"> and show_seq = #\{showSeq\}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #\{updateTime\}</if>
+				
+		  	    <if test="camId != null"> and cam_id = #\{camId\}</if>
+				
+		  	    <if test="isSyn != null"> and is_syn = #\{isSyn\}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #\{synVersion\}</if>
+				
+		  	    <if test="empId != null"> and emp_id = #\{empId\}</if>
+				
+		  	    <if test="modelName != null"> and model_name = #\{modelName\}</if>
+				
+		  	    <if test="version != null"> and version = #\{version\}</if>
+				
+		  	    <if test="restId != null"> and rest_id = #\{restId\}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #\{updateBy\}</if>
+				
+		  	    <if test="ifId != null"> and if_id = #\{ifId\}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by $\{sorting\}</if>
+		<if test="offset != null and limit != null">
+			limit #\{offset\}, #\{limit\}
+		</if>
+	</sql>
+	
+	<!-- 查询总数 -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(if_id)
+		from cm_index_favorite
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 查询 -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cm_index_favorite
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cm_index_favorite
+		where if_id = #\{if_id\}
+	</select>
+	
+	<!-- 根据ID删除 -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cm_index_favorite
+		where  if_id = #\{if_id\}
+	</delete>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- 添加 -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.CmIndexFavoriteBean">
+		insert into cm_index_favorite(
+		  	    create_time  ,
+	
+		  	    module_size  ,
+	
+		  	    create_by  ,
+	
+		  	    show_seq  ,
+	
+		  	    update_time  ,
+	
+		  	    cam_id  ,
+	
+		  	    is_syn  ,
+	
+		  	    syn_version  ,
+	
+		  	    emp_id  ,
+	
+		  	    model_name  ,
+	
+		  	    version  ,
+	
+		  	    rest_id  ,
+	
+		  	    update_by  ,
+	
+		  	    if_id  
+	
+			
+		)
+		values (
+		  	    #\{createTime \} ,
+		  	    #\{moduleSize \} ,
+		  	    #\{createBy \} ,
+		  	    #\{showSeq \} ,
+		  	    #\{updateTime \} ,
+		  	    #\{camId \} ,
+		  	    #\{isSyn \} ,
+		  	    #\{synVersion \} ,
+		  	    #\{empId \} ,
+		  	    #\{modelName \} ,
+		  	    #\{version \} ,
+		  	    #\{restId \} ,
+		  	    #\{updateBy \} ,
+		  	    #\{ifId \} 
+		)
+	</insert>
+	
+	
+	<!-- 通过ID更新 -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.CmIndexFavoriteBean">
+		update cm_index_favorite
+		<set>
+		  	<if test=\"createTime != null\">  create_time = #\{createTime\} ,</if>
+		  	<if test=\"moduleSize != null\">  module_size = #\{moduleSize\} ,</if>
+		  	<if test=\"createBy != null\">  create_by = #\{createBy\} ,</if>
+		  	<if test=\"showSeq != null\">  show_seq = #\{showSeq\} ,</if>
+		  	<if test=\"updateTime != null\">  update_time = #\{updateTime\} ,</if>
+		  	<if test=\"camId != null\">  cam_id = #\{camId\} ,</if>
+		  	<if test=\"isSyn != null\">  is_syn = #\{isSyn\} ,</if>
+		  	<if test=\"synVersion != null\">  syn_version = #\{synVersion\} ,</if>
+		  	<if test=\"empId != null\">  emp_id = #\{empId\} ,</if>
+		  	<if test=\"modelName != null\">  model_name = #\{modelName\} ,</if>
+		  	<if test=\"version != null\">  version = #\{version\} ,</if>
+		  	<if test=\"restId != null\">  rest_id = #\{restId\} ,</if>
+		  	<if test=\"updateBy != null\">  update_by = #\{updateBy\} ,</if>
+		</set>
+		where  if_id = #\{if_id\}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.CmIndexFavoriteBean">
+		update cm_index_favorite
+
+		set 
+		  	 create_time = #\{createTime\} ,
+		  	 module_size = #\{moduleSize\} ,
+		  	 create_by = #\{createBy\} ,
+		  	 show_seq = #\{showSeq\} ,
+		  	 update_time = #\{updateTime\} ,
+		  	 cam_id = #\{camId\} ,
+		  	 is_syn = #\{isSyn\} ,
+		  	 syn_version = #\{synVersion\} ,
+		  	 emp_id = #\{empId\} ,
+		  	 model_name = #\{modelName\} ,
+		  	 version = #\{version\} ,
+		  	 rest_id = #\{restId\} ,
+		  	 update_by = #\{updateBy\} ,
+	
+		where  if_id = #\{if_id\}
+	</update>
+	
+</mapper>

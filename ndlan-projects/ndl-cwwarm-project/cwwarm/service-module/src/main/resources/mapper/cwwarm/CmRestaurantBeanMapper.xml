@@ -1,0 +1,1483 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.cwwarm.model.CmRestaurantBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.cwwarm.model.CmRestaurantBean">
+		<id column="rest_id" property="restId" jdbcType="VARCHAR" />
+	
+    
+		<result column="mid" property="mid" jdbcType="VARCHAR" />
+    
+		<result column="adr_city" property="adrCity" jdbcType="VARCHAR" />
+    
+		<result column="syn_database_status" property="synDatabaseStatus" jdbcType="VARCHAR" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="delivery_charge" property="deliveryCharge" jdbcType="BIGINT" />
+    
+		<result column="fangwu" property="fangwu" jdbcType="VARCHAR" />
+    
+		<result column="service_score" property="serviceScore" jdbcType="BIGINT" />
+    
+		<result column="overlaycoordinate_x" property="overlaycoordinateX" jdbcType="VARCHAR" />
+    
+		<result column="dashes_style_id_array" property="dashesStyleIdArray" jdbcType="VARCHAR" />
+    
+		<result column="sn" property="sn" jdbcType="VARCHAR" />
+    
+		<result column="notes" property="notes" jdbcType="VARCHAR" />
+    
+		<result column="store_name" property="storeName" jdbcType="VARCHAR" />
+    
+		<result column="msg" property="msg" jdbcType="VARCHAR" />
+    
+		<result column="description" property="description" jdbcType="VARCHAR" />
+    
+		<result column="bus_stop" property="busStop" jdbcType="VARCHAR" />
+    
+		<result column="busi_end" property="busiEnd" jdbcType="VARCHAR" />
+    
+		<result column="busi_supper_start" property="busiSupperStart" jdbcType="VARCHAR" />
+    
+		<result column="take_out_status" property="takeOutStatus" jdbcType="BIGINT" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="bank_branch" property="bankBranch" jdbcType="VARCHAR" />
+    
+		<result column="cons_per_person" property="consPerPerson" jdbcType="BIGINT" />
+    
+		<result column="file11" property="file11" jdbcType="VARCHAR" />
+    
+		<result column="subway" property="subway" jdbcType="VARCHAR" />
+    
+		<result column="store_id" property="storeId" jdbcType="VARCHAR" />
+    
+		<result column="foreign_la" property="foreignLa" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="linkman_tel" property="linkmanTel" jdbcType="VARCHAR" />
+    
+		<result column="syn_version_id" property="synVersionId" jdbcType="VARCHAR" />
+    
+		<result column="denglumima" property="denglumima" jdbcType="VARCHAR" />
+    
+		<result column="bar_path" property="barPath" jdbcType="VARCHAR" />
+    
+		<result column="parentshop_id" property="parentshopId" jdbcType="VARCHAR" />
+    
+		<result column="file13" property="file13" jdbcType="VARCHAR" />
+    
+		<result column="busi_takeout_supper_end" property="busiTakeoutSupperEnd" jdbcType="VARCHAR" />
+    
+		<result column="overlaycoordinate_y" property="overlaycoordinateY" jdbcType="VARCHAR" />
+    
+		<result column="taste_score" property="tasteScore" jdbcType="BIGINT" />
+    
+		<result column="linkman_phone" property="linkmanPhone" jdbcType="VARCHAR" />
+    
+		<result column="tilecoordinate_y" property="tilecoordinateY" jdbcType="VARCHAR" />
+    
+		<result column="file3" property="file3" jdbcType="VARCHAR" />
+    
+		<result column="busi_hours_close" property="busiHoursClose" jdbcType="VARCHAR" />
+    
+		<result column="event_summary" property="eventSummary" jdbcType="VARCHAR" />
+    
+		<result column="busi_breakfast_name" property="busiBreakfastName" jdbcType="VARCHAR" />
+    
+		<result column="invoice_status" property="invoiceStatus" jdbcType="VARCHAR" />
+    
+		<result column="linkman_name" property="linkmanName" jdbcType="VARCHAR" />
+    
+		<result column="busi_supper_end" property="busiSupperEnd" jdbcType="VARCHAR" />
+    
+		<result column="zhucema" property="zhucema" jdbcType="VARCHAR" />
+    
+		<result column="mch_addr" property="mchAddr" jdbcType="VARCHAR" />
+    
+		<result column="juridical_person" property="juridicalPerson" jdbcType="VARCHAR" />
+    
+		<result column="adr_province" property="adrProvince" jdbcType="VARCHAR" />
+    
+		<result column="settle_bank" property="settleBank" jdbcType="VARCHAR" />
+    
+		<result column="viewportcoordinate_y" property="viewportcoordinateY" jdbcType="VARCHAR" />
+    
+		<result column="province" property="province" jdbcType="VARCHAR" />
+    
+		<result column="file1" property="file1" jdbcType="VARCHAR" />
+    
+		<result column="online_order_status" property="onlineOrderStatus" jdbcType="VARCHAR" />
+    
+		<result column="bank_name" property="bankName" jdbcType="VARCHAR" />
+    
+		<result column="kaihuo" property="kaihuo" jdbcType="VARCHAR" />
+    
+		<result column="complaint_tel" property="complaintTel" jdbcType="VARCHAR" />
+    
+		<result column="email" property="email" jdbcType="VARCHAR" />
+    
+		<result column="dining_env" property="diningEnv" jdbcType="VARCHAR" />
+    
+		<result column="busi_takeout_lunch_end" property="busiTakeoutLunchEnd" jdbcType="VARCHAR" />
+    
+		<result column="busi_start" property="busiStart" jdbcType="VARCHAR" />
+    
+		<result column="cert_type" property="certType" jdbcType="VARCHAR" />
+    
+		<result column="is_band_cloud_account" property="isBandCloudAccount" jdbcType="VARCHAR" />
+    
+		<result column="business_license" property="businessLicense" jdbcType="VARCHAR" />
+    
+		<result column="busi_hours_open" property="busiHoursOpen" jdbcType="VARCHAR" />
+    
+		<result column="online_order_phone" property="onlineOrderPhone" jdbcType="VARCHAR" />
+    
+		<result column="xianchang" property="xianchang" jdbcType="VARCHAR" />
+    
+		<result column="rest_name" property="restName" jdbcType="VARCHAR" />
+    
+		<result column="busi_breakfast_end" property="busiBreakfastEnd" jdbcType="VARCHAR" />
+    
+		<result column="special_style" property="specialStyle" jdbcType="VARCHAR" />
+    
+		<result column="join_authentication" property="joinAuthentication" jdbcType="BIGINT" />
+    
+		<result column="shebeileixing" property="shebeileixing" jdbcType="VARCHAR" />
+    
+		<result column="online_order_dish_status" property="onlineOrderDishStatus" jdbcType="VARCHAR" />
+    
+		<result column="viewportcoordinate_x" property="viewportcoordinateX" jdbcType="VARCHAR" />
+    
+		<result column="shop_type" property="shopType" jdbcType="VARCHAR" />
+    
+		<result column="adr_detail" property="adrDetail" jdbcType="VARCHAR" />
+    
+		<result column="busi_lunch_start" property="busiLunchStart" jdbcType="VARCHAR" />
+    
+		<result column="shop_status" property="shopStatus" jdbcType="VARCHAR" />
+    
+		<result column="file14" property="file14" jdbcType="VARCHAR" />
+    
+		<result column="juridical_phone" property="juridicalPhone" jdbcType="VARCHAR" />
+    
+		<result column="settle_accno" property="settleAccno" jdbcType="VARCHAR" />
+    
+		<result column="shangleixing" property="shangleixing" jdbcType="VARCHAR" />
+    
+		<result column="code" property="code" jdbcType="VARCHAR" />
+    
+		<result column="busi_supper_name" property="busiSupperName" jdbcType="VARCHAR" />
+    
+		<result column="take_out_end" property="takeOutEnd" jdbcType="VARCHAR" />
+    
+		<result column="dishes_style_name_array" property="dishesStyleNameArray" jdbcType="VARCHAR" />
+    
+		<result column="pixelcoordinate_y" property="pixelcoordinateY" jdbcType="VARCHAR" />
+    
+		<result column="busi_lunch_name" property="busiLunchName" jdbcType="VARCHAR" />
+    
+		<result column="cert_expdate" property="certExpdate" jdbcType="VARCHAR" />
+    
+		<result column="zhouzhijiguo" property="zhouzhijiguo" jdbcType="VARCHAR" />
+    
+		<result column="serve_speed_score" property="serveSpeedScore" jdbcType="BIGINT" />
+    
+		<result column="cloud_password" property="cloudPassword" jdbcType="VARCHAR" />
+    
+		<result column="acc_name" property="accName" jdbcType="VARCHAR" />
+    
+		<result column="cloud_username" property="cloudUsername" jdbcType="VARCHAR" />
+    
+		<result column="adr_area" property="adrArea" jdbcType="VARCHAR" />
+    
+		<result column="city" property="city" jdbcType="VARCHAR" />
+    
+		<result column="busi_latesnack_start" property="busiLatesnackStart" jdbcType="VARCHAR" />
+    
+		<result column="event_notice" property="eventNotice" jdbcType="VARCHAR" />
+    
+		<result column="pixelcoordinate_x" property="pixelcoordinateX" jdbcType="VARCHAR" />
+    
+		<result column="order_days" property="orderDays" jdbcType="BIGINT" />
+    
+		<result column="online_takeout_prompts" property="onlineTakeoutPrompts" jdbcType="VARCHAR" />
+    
+		<result column="tilecoordinate_x" property="tilecoordinateX" jdbcType="VARCHAR" />
+    
+		<result column="syn_data_complete_time" property="synDataCompleteTime" jdbcType="DATE" />
+    
+		<result column="bank_account" property="bankAccount" jdbcType="VARCHAR" />
+    
+		<result column="account_type" property="accountType" jdbcType="VARCHAR" />
+    
+		<result column="c_name" property="cName" jdbcType="VARCHAR" />
+    
+		<result column="busi_latesnack_name" property="busiLatesnackName" jdbcType="VARCHAR" />
+    
+		<result column="special_env" property="specialEnv" jdbcType="VARCHAR" />
+    
+		<result column="manager" property="manager" jdbcType="VARCHAR" />
+    
+		<result column="busi_takeout_lunch_start" property="busiTakeoutLunchStart" jdbcType="VARCHAR" />
+    
+		<result column="rest_area" property="restArea" jdbcType="BIGINT" />
+    
+		<result column="file2" property="file2" jdbcType="VARCHAR" />
+    
+		<result column="send_price" property="sendPrice" jdbcType="BIGINT" />
+    
+		<result column="total_score" property="totalScore" jdbcType="BIGINT" />
+    
+		<result column="order_tel" property="orderTel" jdbcType="VARCHAR" />
+    
+		<result column="busi_takeout_supper_start" property="busiTakeoutSupperStart" jdbcType="VARCHAR" />
+    
+		<result column="merchant_id" property="merchantId" jdbcType="VARCHAR" />
+    
+		<result column="area_code" property="areaCode" jdbcType="VARCHAR" />
+    
+		<result column="is_private" property="isPrivate" jdbcType="VARCHAR" />
+    
+		<result column="worldcoordinate_x" property="worldcoordinateX" jdbcType="VARCHAR" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="online_rest_status" property="onlineRestStatus" jdbcType="VARCHAR" />
+    
+		<result column="busi_breakfast_start" property="busiBreakfastStart" jdbcType="VARCHAR" />
+    
+		<result column="file12" property="file12" jdbcType="VARCHAR" />
+    
+		<result column="delivery_range" property="deliveryRange" jdbcType="BIGINT" />
+    
+		<result column="advertising_slogan" property="advertisingSlogan" jdbcType="VARCHAR" />
+    
+		<result column="online_order_prompts" property="onlineOrderPrompts" jdbcType="VARCHAR" />
+    
+		<result column="lng" property="lng" jdbcType="VARCHAR" />
+    
+		<result column="juridical_id" property="juridicalId" jdbcType="VARCHAR" />
+    
+		<result column="busi_latesnack_end" property="busiLatesnackEnd" jdbcType="VARCHAR" />
+    
+		<result column="rest_examine" property="restExamine" jdbcType="VARCHAR" />
+    
+		<result column="worldcoordinate_y" property="worldcoordinateY" jdbcType="VARCHAR" />
+    
+		<result column="busi_lunch_end" property="busiLunchEnd" jdbcType="VARCHAR" />
+    
+		<result column="environment_score" property="environmentScore" jdbcType="BIGINT" />
+    
+		<result column="lat" property="lat" jdbcType="VARCHAR" />
+    
+		<result column="dishes_style_type_array" property="dishesStyleTypeArray" jdbcType="VARCHAR" />
+    
+		<result column="shuiwu" property="shuiwu" jdbcType="VARCHAR" />
+    
+		<result column="file4" property="file4" jdbcType="VARCHAR" />
+    
+		<result column="take_out_start" property="takeOutStart" jdbcType="VARCHAR" />
+    
+		<result column="syn_data_time" property="synDataTime" jdbcType="DATE" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		mid as mid ,
+		adr_city as adrCity ,
+		syn_database_status as synDatabaseStatus ,
+		update_by as updateBy ,
+		delivery_charge as deliveryCharge ,
+		fangwu as fangwu ,
+		service_score as serviceScore ,
+		overlaycoordinate_x as overlaycoordinateX ,
+		dashes_style_id_array as dashesStyleIdArray ,
+		sn as sn ,
+		notes as notes ,
+		store_name as storeName ,
+		msg as msg ,
+		description as description ,
+		bus_stop as busStop ,
+		busi_end as busiEnd ,
+		busi_supper_start as busiSupperStart ,
+		take_out_status as takeOutStatus ,
+		create_time as createTime ,
+		bank_branch as bankBranch ,
+		cons_per_person as consPerPerson ,
+		file11 as file11 ,
+		subway as subway ,
+		store_id as storeId ,
+		foreign_la as foreignLa ,
+		update_time as updateTime ,
+		linkman_tel as linkmanTel ,
+		syn_version_id as synVersionId ,
+		denglumima as denglumima ,
+		bar_path as barPath ,
+		parentshop_id as parentshopId ,
+		file13 as file13 ,
+		busi_takeout_supper_end as busiTakeoutSupperEnd ,
+		overlaycoordinate_y as overlaycoordinateY ,
+		taste_score as tasteScore ,
+		linkman_phone as linkmanPhone ,
+		tilecoordinate_y as tilecoordinateY ,
+		file3 as file3 ,
+		busi_hours_close as busiHoursClose ,
+		event_summary as eventSummary ,
+		busi_breakfast_name as busiBreakfastName ,
+		invoice_status as invoiceStatus ,
+		linkman_name as linkmanName ,
+		busi_supper_end as busiSupperEnd ,
+		zhucema as zhucema ,
+		mch_addr as mchAddr ,
+		juridical_person as juridicalPerson ,
+		adr_province as adrProvince ,
+		settle_bank as settleBank ,
+		viewportcoordinate_y as viewportcoordinateY ,
+		province as province ,
+		file1 as file1 ,
+		online_order_status as onlineOrderStatus ,
+		bank_name as bankName ,
+		kaihuo as kaihuo ,
+		complaint_tel as complaintTel ,
+		email as email ,
+		dining_env as diningEnv ,
+		busi_takeout_lunch_end as busiTakeoutLunchEnd ,
+		busi_start as busiStart ,
+		cert_type as certType ,
+		is_band_cloud_account as isBandCloudAccount ,
+		business_license as businessLicense ,
+		busi_hours_open as busiHoursOpen ,
+		online_order_phone as onlineOrderPhone ,
+		xianchang as xianchang ,
+		rest_name as restName ,
+		busi_breakfast_end as busiBreakfastEnd ,
+		special_style as specialStyle ,
+		join_authentication as joinAuthentication ,
+		shebeileixing as shebeileixing ,
+		online_order_dish_status as onlineOrderDishStatus ,
+		rest_id as restId ,
+		viewportcoordinate_x as viewportcoordinateX ,
+		shop_type as shopType ,
+		adr_detail as adrDetail ,
+		busi_lunch_start as busiLunchStart ,
+		shop_status as shopStatus ,
+		file14 as file14 ,
+		juridical_phone as juridicalPhone ,
+		settle_accno as settleAccno ,
+		shangleixing as shangleixing ,
+		code as code ,
+		busi_supper_name as busiSupperName ,
+		take_out_end as takeOutEnd ,
+		dishes_style_name_array as dishesStyleNameArray ,
+		pixelcoordinate_y as pixelcoordinateY ,
+		busi_lunch_name as busiLunchName ,
+		cert_expdate as certExpdate ,
+		zhouzhijiguo as zhouzhijiguo ,
+		serve_speed_score as serveSpeedScore ,
+		cloud_password as cloudPassword ,
+		acc_name as accName ,
+		cloud_username as cloudUsername ,
+		adr_area as adrArea ,
+		city as city ,
+		busi_latesnack_start as busiLatesnackStart ,
+		event_notice as eventNotice ,
+		pixelcoordinate_x as pixelcoordinateX ,
+		order_days as orderDays ,
+		online_takeout_prompts as onlineTakeoutPrompts ,
+		tilecoordinate_x as tilecoordinateX ,
+		syn_data_complete_time as synDataCompleteTime ,
+		bank_account as bankAccount ,
+		account_type as accountType ,
+		c_name as cName ,
+		busi_latesnack_name as busiLatesnackName ,
+		special_env as specialEnv ,
+		manager as manager ,
+		busi_takeout_lunch_start as busiTakeoutLunchStart ,
+		rest_area as restArea ,
+		file2 as file2 ,
+		send_price as sendPrice ,
+		total_score as totalScore ,
+		order_tel as orderTel ,
+		busi_takeout_supper_start as busiTakeoutSupperStart ,
+		merchant_id as merchantId ,
+		area_code as areaCode ,
+		is_private as isPrivate ,
+		worldcoordinate_x as worldcoordinateX ,
+		create_by as createBy ,
+		online_rest_status as onlineRestStatus ,
+		busi_breakfast_start as busiBreakfastStart ,
+		file12 as file12 ,
+		delivery_range as deliveryRange ,
+		advertising_slogan as advertisingSlogan ,
+		online_order_prompts as onlineOrderPrompts ,
+		lng as lng ,
+		juridical_id as juridicalId ,
+		busi_latesnack_end as busiLatesnackEnd ,
+		rest_examine as restExamine ,
+		worldcoordinate_y as worldcoordinateY ,
+		busi_lunch_end as busiLunchEnd ,
+		environment_score as environmentScore ,
+		lat as lat ,
+		dishes_style_type_array as dishesStyleTypeArray ,
+		shuiwu as shuiwu ,
+		file4 as file4 ,
+		take_out_start as takeOutStart ,
+		syn_data_time as synDataTime 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="mid != null"> and mid = #{mid}</if>
+				
+		  	    <if test="adrCity != null"> and adr_city = #{adrCity}</if>
+				
+		  	    <if test="synDatabaseStatus != null"> and syn_database_status = #{synDatabaseStatus}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #{updateBy}</if>
+				
+		  	    <if test="deliveryCharge != null"> and delivery_charge = #{deliveryCharge}</if>
+				
+		  	    <if test="fangwu != null"> and fangwu = #{fangwu}</if>
+				
+		  	    <if test="serviceScore != null"> and service_score = #{serviceScore}</if>
+				
+		  	    <if test="overlaycoordinateX != null"> and overlaycoordinate_x = #{overlaycoordinateX}</if>
+				
+		  	    <if test="dashesStyleIdArray != null"> and dashes_style_id_array = #{dashesStyleIdArray}</if>
+				
+		  	    <if test="sn != null"> and sn = #{sn}</if>
+				
+		  	    <if test="notes != null"> and notes = #{notes}</if>
+				
+		  	    <if test="storeName != null"> and store_name = #{storeName}</if>
+				
+		  	    <if test="msg != null"> and msg = #{msg}</if>
+				
+		  	    <if test="description != null"> and description = #{description}</if>
+				
+		  	    <if test="busStop != null"> and bus_stop = #{busStop}</if>
+				
+		  	    <if test="busiEnd != null"> and busi_end = #{busiEnd}</if>
+				
+		  	    <if test="busiSupperStart != null"> and busi_supper_start = #{busiSupperStart}</if>
+				
+		  	    <if test="takeOutStatus != null"> and take_out_status = #{takeOutStatus}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #{createTime}</if>
+				
+		  	    <if test="bankBranch != null"> and bank_branch = #{bankBranch}</if>
+				
+		  	    <if test="consPerPerson != null"> and cons_per_person = #{consPerPerson}</if>
+				
+		  	    <if test="file11 != null"> and file11 = #{file11}</if>
+				
+		  	    <if test="subway != null"> and subway = #{subway}</if>
+				
+		  	    <if test="storeId != null"> and store_id = #{storeId}</if>
+				
+		  	    <if test="foreignLa != null"> and foreign_la = #{foreignLa}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #{updateTime}</if>
+				
+		  	    <if test="linkmanTel != null"> and linkman_tel = #{linkmanTel}</if>
+				
+		  	    <if test="synVersionId != null"> and syn_version_id = #{synVersionId}</if>
+				
+		  	    <if test="denglumima != null"> and denglumima = #{denglumima}</if>
+				
+		  	    <if test="barPath != null"> and bar_path = #{barPath}</if>
+				
+		  	    <if test="parentshopId != null"> and parentshop_id = #{parentshopId}</if>
+				
+		  	    <if test="file13 != null"> and file13 = #{file13}</if>
+				
+		  	    <if test="busiTakeoutSupperEnd != null"> and busi_takeout_supper_end = #{busiTakeoutSupperEnd}</if>
+				
+		  	    <if test="overlaycoordinateY != null"> and overlaycoordinate_y = #{overlaycoordinateY}</if>
+				
+		  	    <if test="tasteScore != null"> and taste_score = #{tasteScore}</if>
+				
+		  	    <if test="linkmanPhone != null"> and linkman_phone = #{linkmanPhone}</if>
+				
+		  	    <if test="tilecoordinateY != null"> and tilecoordinate_y = #{tilecoordinateY}</if>
+				
+		  	    <if test="file3 != null"> and file3 = #{file3}</if>
+				
+		  	    <if test="busiHoursClose != null"> and busi_hours_close = #{busiHoursClose}</if>
+				
+		  	    <if test="eventSummary != null"> and event_summary = #{eventSummary}</if>
+				
+		  	    <if test="busiBreakfastName != null"> and busi_breakfast_name = #{busiBreakfastName}</if>
+				
+		  	    <if test="invoiceStatus != null"> and invoice_status = #{invoiceStatus}</if>
+				
+		  	    <if test="linkmanName != null"> and linkman_name = #{linkmanName}</if>
+				
+		  	    <if test="busiSupperEnd != null"> and busi_supper_end = #{busiSupperEnd}</if>
+				
+		  	    <if test="zhucema != null"> and zhucema = #{zhucema}</if>
+				
+		  	    <if test="mchAddr != null"> and mch_addr = #{mchAddr}</if>
+				
+		  	    <if test="juridicalPerson != null"> and juridical_person = #{juridicalPerson}</if>
+				
+		  	    <if test="adrProvince != null"> and adr_province = #{adrProvince}</if>
+				
+		  	    <if test="settleBank != null"> and settle_bank = #{settleBank}</if>
+				
+		  	    <if test="viewportcoordinateY != null"> and viewportcoordinate_y = #{viewportcoordinateY}</if>
+				
+		  	    <if test="province != null"> and province = #{province}</if>
+				
+		  	    <if test="file1 != null"> and file1 = #{file1}</if>
+				
+		  	    <if test="onlineOrderStatus != null"> and online_order_status = #{onlineOrderStatus}</if>
+				
+		  	    <if test="bankName != null"> and bank_name = #{bankName}</if>
+				
+		  	    <if test="kaihuo != null"> and kaihuo = #{kaihuo}</if>
+				
+		  	    <if test="complaintTel != null"> and complaint_tel = #{complaintTel}</if>
+				
+		  	    <if test="email != null"> and email = #{email}</if>
+				
+		  	    <if test="diningEnv != null"> and dining_env = #{diningEnv}</if>
+				
+		  	    <if test="busiTakeoutLunchEnd != null"> and busi_takeout_lunch_end = #{busiTakeoutLunchEnd}</if>
+				
+		  	    <if test="busiStart != null"> and busi_start = #{busiStart}</if>
+				
+		  	    <if test="certType != null"> and cert_type = #{certType}</if>
+				
+		  	    <if test="isBandCloudAccount != null"> and is_band_cloud_account = #{isBandCloudAccount}</if>
+				
+		  	    <if test="businessLicense != null"> and business_license = #{businessLicense}</if>
+				
+		  	    <if test="busiHoursOpen != null"> and busi_hours_open = #{busiHoursOpen}</if>
+				
+		  	    <if test="onlineOrderPhone != null"> and online_order_phone = #{onlineOrderPhone}</if>
+				
+		  	    <if test="xianchang != null"> and xianchang = #{xianchang}</if>
+				
+		  	    <if test="restName != null"> and rest_name = #{restName}</if>
+				
+		  	    <if test="busiBreakfastEnd != null"> and busi_breakfast_end = #{busiBreakfastEnd}</if>
+				
+		  	    <if test="specialStyle != null"> and special_style = #{specialStyle}</if>
+				
+		  	    <if test="joinAuthentication != null"> and join_authentication = #{joinAuthentication}</if>
+				
+		  	    <if test="shebeileixing != null"> and shebeileixing = #{shebeileixing}</if>
+				
+		  	    <if test="onlineOrderDishStatus != null"> and online_order_dish_status = #{onlineOrderDishStatus}</if>
+				
+		  	    <if test="restId != null"> and rest_id = #{restId}</if>
+				
+		  	    <if test="viewportcoordinateX != null"> and viewportcoordinate_x = #{viewportcoordinateX}</if>
+				
+		  	    <if test="shopType != null"> and shop_type = #{shopType}</if>
+				
+		  	    <if test="adrDetail != null"> and adr_detail = #{adrDetail}</if>
+				
+		  	    <if test="busiLunchStart != null"> and busi_lunch_start = #{busiLunchStart}</if>
+				
+		  	    <if test="shopStatus != null"> and shop_status = #{shopStatus}</if>
+				
+		  	    <if test="file14 != null"> and file14 = #{file14}</if>
+				
+		  	    <if test="juridicalPhone != null"> and juridical_phone = #{juridicalPhone}</if>
+				
+		  	    <if test="settleAccno != null"> and settle_accno = #{settleAccno}</if>
+				
+		  	    <if test="shangleixing != null"> and shangleixing = #{shangleixing}</if>
+				
+		  	    <if test="code != null"> and code = #{code}</if>
+				
+		  	    <if test="busiSupperName != null"> and busi_supper_name = #{busiSupperName}</if>
+				
+		  	    <if test="takeOutEnd != null"> and take_out_end = #{takeOutEnd}</if>
+				
+		  	    <if test="dishesStyleNameArray != null"> and dishes_style_name_array = #{dishesStyleNameArray}</if>
+				
+		  	    <if test="pixelcoordinateY != null"> and pixelcoordinate_y = #{pixelcoordinateY}</if>
+				
+		  	    <if test="busiLunchName != null"> and busi_lunch_name = #{busiLunchName}</if>
+				
+		  	    <if test="certExpdate != null"> and cert_expdate = #{certExpdate}</if>
+				
+		  	    <if test="zhouzhijiguo != null"> and zhouzhijiguo = #{zhouzhijiguo}</if>
+				
+		  	    <if test="serveSpeedScore != null"> and serve_speed_score = #{serveSpeedScore}</if>
+				
+		  	    <if test="cloudPassword != null"> and cloud_password = #{cloudPassword}</if>
+				
+		  	    <if test="accName != null"> and acc_name = #{accName}</if>
+				
+		  	    <if test="cloudUsername != null"> and cloud_username = #{cloudUsername}</if>
+				
+		  	    <if test="adrArea != null"> and adr_area = #{adrArea}</if>
+				
+		  	    <if test="city != null"> and city = #{city}</if>
+				
+		  	    <if test="busiLatesnackStart != null"> and busi_latesnack_start = #{busiLatesnackStart}</if>
+				
+		  	    <if test="eventNotice != null"> and event_notice = #{eventNotice}</if>
+				
+		  	    <if test="pixelcoordinateX != null"> and pixelcoordinate_x = #{pixelcoordinateX}</if>
+				
+		  	    <if test="orderDays != null"> and order_days = #{orderDays}</if>
+				
+		  	    <if test="onlineTakeoutPrompts != null"> and online_takeout_prompts = #{onlineTakeoutPrompts}</if>
+				
+		  	    <if test="tilecoordinateX != null"> and tilecoordinate_x = #{tilecoordinateX}</if>
+				
+		  	    <if test="synDataCompleteTime != null"> and syn_data_complete_time = #{synDataCompleteTime}</if>
+				
+		  	    <if test="bankAccount != null"> and bank_account = #{bankAccount}</if>
+				
+		  	    <if test="accountType != null"> and account_type = #{accountType}</if>
+				
+		  	    <if test="cName != null"> and c_name = #{cName}</if>
+				
+		  	    <if test="busiLatesnackName != null"> and busi_latesnack_name = #{busiLatesnackName}</if>
+				
+		  	    <if test="specialEnv != null"> and special_env = #{specialEnv}</if>
+				
+		  	    <if test="manager != null"> and manager = #{manager}</if>
+				
+		  	    <if test="busiTakeoutLunchStart != null"> and busi_takeout_lunch_start = #{busiTakeoutLunchStart}</if>
+				
+		  	    <if test="restArea != null"> and rest_area = #{restArea}</if>
+				
+		  	    <if test="file2 != null"> and file2 = #{file2}</if>
+				
+		  	    <if test="sendPrice != null"> and send_price = #{sendPrice}</if>
+				
+		  	    <if test="totalScore != null"> and total_score = #{totalScore}</if>
+				
+		  	    <if test="orderTel != null"> and order_tel = #{orderTel}</if>
+				
+		  	    <if test="busiTakeoutSupperStart != null"> and busi_takeout_supper_start = #{busiTakeoutSupperStart}</if>
+				
+		  	    <if test="merchantId != null"> and merchant_id = #{merchantId}</if>
+				
+		  	    <if test="areaCode != null"> and area_code = #{areaCode}</if>
+				
+		  	    <if test="isPrivate != null"> and is_private = #{isPrivate}</if>
+				
+		  	    <if test="worldcoordinateX != null"> and worldcoordinate_x = #{worldcoordinateX}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #{createBy}</if>
+				
+		  	    <if test="onlineRestStatus != null"> and online_rest_status = #{onlineRestStatus}</if>
+				
+		  	    <if test="busiBreakfastStart != null"> and busi_breakfast_start = #{busiBreakfastStart}</if>
+				
+		  	    <if test="file12 != null"> and file12 = #{file12}</if>
+				
+		  	    <if test="deliveryRange != null"> and delivery_range = #{deliveryRange}</if>
+				
+		  	    <if test="advertisingSlogan != null"> and advertising_slogan = #{advertisingSlogan}</if>
+				
+		  	    <if test="onlineOrderPrompts != null"> and online_order_prompts = #{onlineOrderPrompts}</if>
+				
+		  	    <if test="lng != null"> and lng = #{lng}</if>
+				
+		  	    <if test="juridicalId != null"> and juridical_id = #{juridicalId}</if>
+				
+		  	    <if test="busiLatesnackEnd != null"> and busi_latesnack_end = #{busiLatesnackEnd}</if>
+				
+		  	    <if test="restExamine != null"> and rest_examine = #{restExamine}</if>
+				
+		  	    <if test="worldcoordinateY != null"> and worldcoordinate_y = #{worldcoordinateY}</if>
+				
+		  	    <if test="busiLunchEnd != null"> and busi_lunch_end = #{busiLunchEnd}</if>
+				
+		  	    <if test="environmentScore != null"> and environment_score = #{environmentScore}</if>
+				
+		  	    <if test="lat != null"> and lat = #{lat}</if>
+				
+		  	    <if test="dishesStyleTypeArray != null"> and dishes_style_type_array = #{dishesStyleTypeArray}</if>
+				
+		  	    <if test="shuiwu != null"> and shuiwu = #{shuiwu}</if>
+				
+		  	    <if test="file4 != null"> and file4 = #{file4}</if>
+				
+		  	    <if test="takeOutStart != null"> and take_out_start = #{takeOutStart}</if>
+				
+		  	    <if test="synDataTime != null"> and syn_data_time = #{synDataTime}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by ${sorting}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</sql>
+	
+	<!-- 查询总数 -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(rest_id)
+		from cm_restaurant
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 查询 -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cm_restaurant
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cm_restaurant
+		where rest_id = #{restId}
+	</select>
+	
+	<!-- 根据ID删除 -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cm_restaurant
+		where  rest_id = #{restId}
+	</delete>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- 添加 -->	
+	<insert id="insert" parameterType="com.ndlan.cwwarm.model.CmRestaurantBean">
+		insert into cm_restaurant(
+		  	    mid  ,
+	
+		  	    adr_city  ,
+	
+		  	    syn_database_status  ,
+	
+		  	    update_by  ,
+	
+		  	    delivery_charge  ,
+	
+		  	    fangwu  ,
+	
+		  	    service_score  ,
+	
+		  	    overlaycoordinate_x  ,
+	
+		  	    dashes_style_id_array  ,
+	
+		  	    sn  ,
+	
+		  	    notes  ,
+	
+		  	    store_name  ,
+	
+		  	    msg  ,
+	
+		  	    description  ,
+	
+		  	    bus_stop  ,
+	
+		  	    busi_end  ,
+	
+		  	    busi_supper_start  ,
+	
+		  	    take_out_status  ,
+	
+		  	    create_time  ,
+	
+		  	    bank_branch  ,
+	
+		  	    cons_per_person  ,
+	
+		  	    file11  ,
+	
+		  	    subway  ,
+	
+		  	    store_id  ,
+	
+		  	    foreign_la  ,
+	
+		  	    update_time  ,
+	
+		  	    linkman_tel  ,
+	
+		  	    syn_version_id  ,
+	
+		  	    denglumima  ,
+	
+		  	    bar_path  ,
+	
+		  	    parentshop_id  ,
+	
+		  	    file13  ,
+	
+		  	    busi_takeout_supper_end  ,
+	
+		  	    overlaycoordinate_y  ,
+	
+		  	    taste_score  ,
+	
+		  	    linkman_phone  ,
+	
+		  	    tilecoordinate_y  ,
+	
+		  	    file3  ,
+	
+		  	    busi_hours_close  ,
+	
+		  	    event_summary  ,
+	
+		  	    busi_breakfast_name  ,
+	
+		  	    invoice_status  ,
+	
+		  	    linkman_name  ,
+	
+		  	    busi_supper_end  ,
+	
+		  	    zhucema  ,
+	
+		  	    mch_addr  ,
+	
+		  	    juridical_person  ,
+	
+		  	    adr_province  ,
+	
+		  	    settle_bank  ,
+	
+		  	    viewportcoordinate_y  ,
+	
+		  	    province  ,
+	
+		  	    file1  ,
+	
+		  	    online_order_status  ,
+	
+		  	    bank_name  ,
+	
+		  	    kaihuo  ,
+	
+		  	    complaint_tel  ,
+	
+		  	    email  ,
+	
+		  	    dining_env  ,
+	
+		  	    busi_takeout_lunch_end  ,
+	
+		  	    busi_start  ,
+	
+		  	    cert_type  ,
+	
+		  	    is_band_cloud_account  ,
+	
+		  	    business_license  ,
+	
+		  	    busi_hours_open  ,
+	
+		  	    online_order_phone  ,
+	
+		  	    xianchang  ,
+	
+		  	    rest_name  ,
+	
+		  	    busi_breakfast_end  ,
+	
+		  	    special_style  ,
+	
+		  	    join_authentication  ,
+	
+		  	    shebeileixing  ,
+	
+		  	    online_order_dish_status  ,
+	
+		  	    rest_id  ,
+	
+		  	    viewportcoordinate_x  ,
+	
+		  	    shop_type  ,
+	
+		  	    adr_detail  ,
+	
+		  	    busi_lunch_start  ,
+	
+		  	    shop_status  ,
+	
+		  	    file14  ,
+	
+		  	    juridical_phone  ,
+	
+		  	    settle_accno  ,
+	
+		  	    shangleixing  ,
+	
+		  	    code  ,
+	
+		  	    busi_supper_name  ,
+	
+		  	    take_out_end  ,
+	
+		  	    dishes_style_name_array  ,
+	
+		  	    pixelcoordinate_y  ,
+	
+		  	    busi_lunch_name  ,
+	
+		  	    cert_expdate  ,
+	
+		  	    zhouzhijiguo  ,
+	
+		  	    serve_speed_score  ,
+	
+		  	    cloud_password  ,
+	
+		  	    acc_name  ,
+	
+		  	    cloud_username  ,
+	
+		  	    adr_area  ,
+	
+		  	    city  ,
+	
+		  	    busi_latesnack_start  ,
+	
+		  	    event_notice  ,
+	
+		  	    pixelcoordinate_x  ,
+	
+		  	    order_days  ,
+	
+		  	    online_takeout_prompts  ,
+	
+		  	    tilecoordinate_x  ,
+	
+		  	    syn_data_complete_time  ,
+	
+		  	    bank_account  ,
+	
+		  	    account_type  ,
+	
+		  	    c_name  ,
+	
+		  	    busi_latesnack_name  ,
+	
+		  	    special_env  ,
+	
+		  	    manager  ,
+	
+		  	    busi_takeout_lunch_start  ,
+	
+		  	    rest_area  ,
+	
+		  	    file2  ,
+	
+		  	    send_price  ,
+	
+		  	    total_score  ,
+	
+		  	    order_tel  ,
+	
+		  	    busi_takeout_supper_start  ,
+	
+		  	    merchant_id  ,
+	
+		  	    area_code  ,
+	
+		  	    is_private  ,
+	
+		  	    worldcoordinate_x  ,
+	
+		  	    create_by  ,
+	
+		  	    online_rest_status  ,
+	
+		  	    busi_breakfast_start  ,
+	
+		  	    file12  ,
+	
+		  	    delivery_range  ,
+	
+		  	    advertising_slogan  ,
+	
+		  	    online_order_prompts  ,
+	
+		  	    lng  ,
+	
+		  	    juridical_id  ,
+	
+		  	    busi_latesnack_end  ,
+	
+		  	    rest_examine  ,
+	
+		  	    worldcoordinate_y  ,
+	
+		  	    busi_lunch_end  ,
+	
+		  	    environment_score  ,
+	
+		  	    lat  ,
+	
+		  	    dishes_style_type_array  ,
+	
+		  	    shuiwu  ,
+	
+		  	    file4  ,
+	
+		  	    take_out_start  ,
+	
+		  	    syn_data_time  
+	
+			
+		)
+		values (
+		  	    #{mid } ,
+		  	    #{adrCity } ,
+		  	    #{synDatabaseStatus } ,
+		  	    #{updateBy } ,
+		  	    #{deliveryCharge } ,
+		  	    #{fangwu } ,
+		  	    #{serviceScore } ,
+		  	    #{overlaycoordinateX } ,
+		  	    #{dashesStyleIdArray } ,
+		  	    #{sn } ,
+		  	    #{notes } ,
+		  	    #{storeName } ,
+		  	    #{msg } ,
+		  	    #{description } ,
+		  	    #{busStop } ,
+		  	    #{busiEnd } ,
+		  	    #{busiSupperStart } ,
+		  	    #{takeOutStatus } ,
+		  	    #{createTime } ,
+		  	    #{bankBranch } ,
+		  	    #{consPerPerson } ,
+		  	    #{file11 } ,
+		  	    #{subway } ,
+		  	    #{storeId } ,
+		  	    #{foreignLa } ,
+		  	    #{updateTime } ,
+		  	    #{linkmanTel } ,
+		  	    #{synVersionId } ,
+		  	    #{denglumima } ,
+		  	    #{barPath } ,
+		  	    #{parentshopId } ,
+		  	    #{file13 } ,
+		  	    #{busiTakeoutSupperEnd } ,
+		  	    #{overlaycoordinateY } ,
+		  	    #{tasteScore } ,
+		  	    #{linkmanPhone } ,
+		  	    #{tilecoordinateY } ,
+		  	    #{file3 } ,
+		  	    #{busiHoursClose } ,
+		  	    #{eventSummary } ,
+		  	    #{busiBreakfastName } ,
+		  	    #{invoiceStatus } ,
+		  	    #{linkmanName } ,
+		  	    #{busiSupperEnd } ,
+		  	    #{zhucema } ,
+		  	    #{mchAddr } ,
+		  	    #{juridicalPerson } ,
+		  	    #{adrProvince } ,
+		  	    #{settleBank } ,
+		  	    #{viewportcoordinateY } ,
+		  	    #{province } ,
+		  	    #{file1 } ,
+		  	    #{onlineOrderStatus } ,
+		  	    #{bankName } ,
+		  	    #{kaihuo } ,
+		  	    #{complaintTel } ,
+		  	    #{email } ,
+		  	    #{diningEnv } ,
+		  	    #{busiTakeoutLunchEnd } ,
+		  	    #{busiStart } ,
+		  	    #{certType } ,
+		  	    #{isBandCloudAccount } ,
+		  	    #{businessLicense } ,
+		  	    #{busiHoursOpen } ,
+		  	    #{onlineOrderPhone } ,
+		  	    #{xianchang } ,
+		  	    #{restName } ,
+		  	    #{busiBreakfastEnd } ,
+		  	    #{specialStyle } ,
+		  	    #{joinAuthentication } ,
+		  	    #{shebeileixing } ,
+		  	    #{onlineOrderDishStatus } ,
+		  	    #{restId } ,
+		  	    #{viewportcoordinateX } ,
+		  	    #{shopType } ,
+		  	    #{adrDetail } ,
+		  	    #{busiLunchStart } ,
+		  	    #{shopStatus } ,
+		  	    #{file14 } ,
+		  	    #{juridicalPhone } ,
+		  	    #{settleAccno } ,
+		  	    #{shangleixing } ,
+		  	    #{code } ,
+		  	    #{busiSupperName } ,
+		  	    #{takeOutEnd } ,
+		  	    #{dishesStyleNameArray } ,
+		  	    #{pixelcoordinateY } ,
+		  	    #{busiLunchName } ,
+		  	    #{certExpdate } ,
+		  	    #{zhouzhijiguo } ,
+		  	    #{serveSpeedScore } ,
+		  	    #{cloudPassword } ,
+		  	    #{accName } ,
+		  	    #{cloudUsername } ,
+		  	    #{adrArea } ,
+		  	    #{city } ,
+		  	    #{busiLatesnackStart } ,
+		  	    #{eventNotice } ,
+		  	    #{pixelcoordinateX } ,
+		  	    #{orderDays } ,
+		  	    #{onlineTakeoutPrompts } ,
+		  	    #{tilecoordinateX } ,
+		  	    #{synDataCompleteTime } ,
+		  	    #{bankAccount } ,
+		  	    #{accountType } ,
+		  	    #{cName } ,
+		  	    #{busiLatesnackName } ,
+		  	    #{specialEnv } ,
+		  	    #{manager } ,
+		  	    #{busiTakeoutLunchStart } ,
+		  	    #{restArea } ,
+		  	    #{file2 } ,
+		  	    #{sendPrice } ,
+		  	    #{totalScore } ,
+		  	    #{orderTel } ,
+		  	    #{busiTakeoutSupperStart } ,
+		  	    #{merchantId } ,
+		  	    #{areaCode } ,
+		  	    #{isPrivate } ,
+		  	    #{worldcoordinateX } ,
+		  	    #{createBy } ,
+		  	    #{onlineRestStatus } ,
+		  	    #{busiBreakfastStart } ,
+		  	    #{file12 } ,
+		  	    #{deliveryRange } ,
+		  	    #{advertisingSlogan } ,
+		  	    #{onlineOrderPrompts } ,
+		  	    #{lng } ,
+		  	    #{juridicalId } ,
+		  	    #{busiLatesnackEnd } ,
+		  	    #{restExamine } ,
+		  	    #{worldcoordinateY } ,
+		  	    #{busiLunchEnd } ,
+		  	    #{environmentScore } ,
+		  	    #{lat } ,
+		  	    #{dishesStyleTypeArray } ,
+		  	    #{shuiwu } ,
+		  	    #{file4 } ,
+		  	    #{takeOutStart } ,
+		  	    #{synDataTime } 
+		)
+	</insert>
+	
+	
+	<!-- 通过ID更新 -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.cwwarm.model.CmRestaurantBean">
+		update cm_restaurant
+		<set>
+		  	<if test="mid != null">  mid = #{mid} ,</if>
+		  	<if test="adrCity != null">  adr_city = #{adrCity} ,</if>
+		  	<if test="synDatabaseStatus != null">  syn_database_status = #{synDatabaseStatus} ,</if>
+		  	<if test="updateBy != null">  update_by = #{updateBy} ,</if>
+		  	<if test="deliveryCharge != null">  delivery_charge = #{deliveryCharge} ,</if>
+		  	<if test="fangwu != null">  fangwu = #{fangwu} ,</if>
+		  	<if test="serviceScore != null">  service_score = #{serviceScore} ,</if>
+		  	<if test="overlaycoordinateX != null">  overlaycoordinate_x = #{overlaycoordinateX} ,</if>
+		  	<if test="dashesStyleIdArray != null">  dashes_style_id_array = #{dashesStyleIdArray} ,</if>
+		  	<if test="sn != null">  sn = #{sn} ,</if>
+		  	<if test="notes != null">  notes = #{notes} ,</if>
+		  	<if test="storeName != null">  store_name = #{storeName} ,</if>
+		  	<if test="msg != null">  msg = #{msg} ,</if>
+		  	<if test="description != null">  description = #{description} ,</if>
+		  	<if test="busStop != null">  bus_stop = #{busStop} ,</if>
+		  	<if test="busiEnd != null">  busi_end = #{busiEnd} ,</if>
+		  	<if test="busiSupperStart != null">  busi_supper_start = #{busiSupperStart} ,</if>
+		  	<if test="takeOutStatus != null">  take_out_status = #{takeOutStatus} ,</if>
+		  	<if test="createTime != null">  create_time = #{createTime} ,</if>
+		  	<if test="bankBranch != null">  bank_branch = #{bankBranch} ,</if>
+		  	<if test="consPerPerson != null">  cons_per_person = #{consPerPerson} ,</if>
+		  	<if test="file11 != null">  file11 = #{file11} ,</if>
+		  	<if test="subway != null">  subway = #{subway} ,</if>
+		  	<if test="storeId != null">  store_id = #{storeId} ,</if>
+		  	<if test="foreignLa != null">  foreign_la = #{foreignLa} ,</if>
+		  	<if test="updateTime != null">  update_time = #{updateTime} ,</if>
+		  	<if test="linkmanTel != null">  linkman_tel = #{linkmanTel} ,</if>
+		  	<if test="synVersionId != null">  syn_version_id = #{synVersionId} ,</if>
+		  	<if test="denglumima != null">  denglumima = #{denglumima} ,</if>
+		  	<if test="barPath != null">  bar_path = #{barPath} ,</if>
+		  	<if test="parentshopId != null">  parentshop_id = #{parentshopId} ,</if>
+		  	<if test="file13 != null">  file13 = #{file13} ,</if>
+		  	<if test="busiTakeoutSupperEnd != null">  busi_takeout_supper_end = #{busiTakeoutSupperEnd} ,</if>
+		  	<if test="overlaycoordinateY != null">  overlaycoordinate_y = #{overlaycoordinateY} ,</if>
+		  	<if test="tasteScore != null">  taste_score = #{tasteScore} ,</if>
+		  	<if test="linkmanPhone != null">  linkman_phone = #{linkmanPhone} ,</if>
+		  	<if test="tilecoordinateY != null">  tilecoordinate_y = #{tilecoordinateY} ,</if>
+		  	<if test="file3 != null">  file3 = #{file3} ,</if>
+		  	<if test="busiHoursClose != null">  busi_hours_close = #{busiHoursClose} ,</if>
+		  	<if test="eventSummary != null">  event_summary = #{eventSummary} ,</if>
+		  	<if test="busiBreakfastName != null">  busi_breakfast_name = #{busiBreakfastName} ,</if>
+		  	<if test="invoiceStatus != null">  invoice_status = #{invoiceStatus} ,</if>
+		  	<if test="linkmanName != null">  linkman_name = #{linkmanName} ,</if>
+		  	<if test="busiSupperEnd != null">  busi_supper_end = #{busiSupperEnd} ,</if>
+		  	<if test="zhucema != null">  zhucema = #{zhucema} ,</if>
+		  	<if test="mchAddr != null">  mch_addr = #{mchAddr} ,</if>
+		  	<if test="juridicalPerson != null">  juridical_person = #{juridicalPerson} ,</if>
+		  	<if test="adrProvince != null">  adr_province = #{adrProvince} ,</if>
+		  	<if test="settleBank != null">  settle_bank = #{settleBank} ,</if>
+		  	<if test="viewportcoordinateY != null">  viewportcoordinate_y = #{viewportcoordinateY} ,</if>
+		  	<if test="province != null">  province = #{province} ,</if>
+		  	<if test="file1 != null">  file1 = #{file1} ,</if>
+		  	<if test="onlineOrderStatus != null">  online_order_status = #{onlineOrderStatus} ,</if>
+		  	<if test="bankName != null">  bank_name = #{bankName} ,</if>
+		  	<if test="kaihuo != null">  kaihuo = #{kaihuo} ,</if>
+		  	<if test="complaintTel != null">  complaint_tel = #{complaintTel} ,</if>
+		  	<if test="email != null">  email = #{email} ,</if>
+		  	<if test="diningEnv != null">  dining_env = #{diningEnv} ,</if>
+		  	<if test="busiTakeoutLunchEnd != null">  busi_takeout_lunch_end = #{busiTakeoutLunchEnd} ,</if>
+		  	<if test="busiStart != null">  busi_start = #{busiStart} ,</if>
+		  	<if test="certType != null">  cert_type = #{certType} ,</if>
+		  	<if test="isBandCloudAccount != null">  is_band_cloud_account = #{isBandCloudAccount} ,</if>
+		  	<if test="businessLicense != null">  business_license = #{businessLicense} ,</if>
+		  	<if test="busiHoursOpen != null">  busi_hours_open = #{busiHoursOpen} ,</if>
+		  	<if test="onlineOrderPhone != null">  online_order_phone = #{onlineOrderPhone} ,</if>
+		  	<if test="xianchang != null">  xianchang = #{xianchang} ,</if>
+		  	<if test="restName != null">  rest_name = #{restName} ,</if>
+		  	<if test="busiBreakfastEnd != null">  busi_breakfast_end = #{busiBreakfastEnd} ,</if>
+		  	<if test="specialStyle != null">  special_style = #{specialStyle} ,</if>
+		  	<if test="joinAuthentication != null">  join_authentication = #{joinAuthentication} ,</if>
+		  	<if test="shebeileixing != null">  shebeileixing = #{shebeileixing} ,</if>
+		  	<if test="onlineOrderDishStatus != null">  online_order_dish_status = #{onlineOrderDishStatus} ,</if>
+		  	<if test="viewportcoordinateX != null">  viewportcoordinate_x = #{viewportcoordinateX} ,</if>
+		  	<if test="shopType != null">  shop_type = #{shopType} ,</if>
+		  	<if test="adrDetail != null">  adr_detail = #{adrDetail} ,</if>
+		  	<if test="busiLunchStart != null">  busi_lunch_start = #{busiLunchStart} ,</if>
+		  	<if test="shopStatus != null">  shop_status = #{shopStatus} ,</if>
+		  	<if test="file14 != null">  file14 = #{file14} ,</if>
+		  	<if test="juridicalPhone != null">  juridical_phone = #{juridicalPhone} ,</if>
+		  	<if test="settleAccno != null">  settle_accno = #{settleAccno} ,</if>
+		  	<if test="shangleixing != null">  shangleixing = #{shangleixing} ,</if>
+		  	<if test="code != null">  code = #{code} ,</if>
+		  	<if test="busiSupperName != null">  busi_supper_name = #{busiSupperName} ,</if>
+		  	<if test="takeOutEnd != null">  take_out_end = #{takeOutEnd} ,</if>
+		  	<if test="dishesStyleNameArray != null">  dishes_style_name_array = #{dishesStyleNameArray} ,</if>
+		  	<if test="pixelcoordinateY != null">  pixelcoordinate_y = #{pixelcoordinateY} ,</if>
+		  	<if test="busiLunchName != null">  busi_lunch_name = #{busiLunchName} ,</if>
+		  	<if test="certExpdate != null">  cert_expdate = #{certExpdate} ,</if>
+		  	<if test="zhouzhijiguo != null">  zhouzhijiguo = #{zhouzhijiguo} ,</if>
+		  	<if test="serveSpeedScore != null">  serve_speed_score = #{serveSpeedScore} ,</if>
+		  	<if test="cloudPassword != null">  cloud_password = #{cloudPassword} ,</if>
+		  	<if test="accName != null">  acc_name = #{accName} ,</if>
+		  	<if test="cloudUsername != null">  cloud_username = #{cloudUsername} ,</if>
+		  	<if test="adrArea != null">  adr_area = #{adrArea} ,</if>
+		  	<if test="city != null">  city = #{city} ,</if>
+		  	<if test="busiLatesnackStart != null">  busi_latesnack_start = #{busiLatesnackStart} ,</if>
+		  	<if test="eventNotice != null">  event_notice = #{eventNotice} ,</if>
+		  	<if test="pixelcoordinateX != null">  pixelcoordinate_x = #{pixelcoordinateX} ,</if>
+		  	<if test="orderDays != null">  order_days = #{orderDays} ,</if>
+		  	<if test="onlineTakeoutPrompts != null">  online_takeout_prompts = #{onlineTakeoutPrompts} ,</if>
+		  	<if test="tilecoordinateX != null">  tilecoordinate_x = #{tilecoordinateX} ,</if>
+		  	<if test="synDataCompleteTime != null">  syn_data_complete_time = #{synDataCompleteTime} ,</if>
+		  	<if test="bankAccount != null">  bank_account = #{bankAccount} ,</if>
+		  	<if test="accountType != null">  account_type = #{accountType} ,</if>
+		  	<if test="cName != null">  c_name = #{cName} ,</if>
+		  	<if test="busiLatesnackName != null">  busi_latesnack_name = #{busiLatesnackName} ,</if>
+		  	<if test="specialEnv != null">  special_env = #{specialEnv} ,</if>
+		  	<if test="manager != null">  manager = #{manager} ,</if>
+		  	<if test="busiTakeoutLunchStart != null">  busi_takeout_lunch_start = #{busiTakeoutLunchStart} ,</if>
+		  	<if test="restArea != null">  rest_area = #{restArea} ,</if>
+		  	<if test="file2 != null">  file2 = #{file2} ,</if>
+		  	<if test="sendPrice != null">  send_price = #{sendPrice} ,</if>
+		  	<if test="totalScore != null">  total_score = #{totalScore} ,</if>
+		  	<if test="orderTel != null">  order_tel = #{orderTel} ,</if>
+		  	<if test="busiTakeoutSupperStart != null">  busi_takeout_supper_start = #{busiTakeoutSupperStart} ,</if>
+		  	<if test="merchantId != null">  merchant_id = #{merchantId} ,</if>
+		  	<if test="areaCode != null">  area_code = #{areaCode} ,</if>
+		  	<if test="isPrivate != null">  is_private = #{isPrivate} ,</if>
+		  	<if test="worldcoordinateX != null">  worldcoordinate_x = #{worldcoordinateX} ,</if>
+		  	<if test="createBy != null">  create_by = #{createBy} ,</if>
+		  	<if test="onlineRestStatus != null">  online_rest_status = #{onlineRestStatus} ,</if>
+		  	<if test="busiBreakfastStart != null">  busi_breakfast_start = #{busiBreakfastStart} ,</if>
+		  	<if test="file12 != null">  file12 = #{file12} ,</if>
+		  	<if test="deliveryRange != null">  delivery_range = #{deliveryRange} ,</if>
+		  	<if test="advertisingSlogan != null">  advertising_slogan = #{advertisingSlogan} ,</if>
+		  	<if test="onlineOrderPrompts != null">  online_order_prompts = #{onlineOrderPrompts} ,</if>
+		  	<if test="lng != null">  lng = #{lng} ,</if>
+		  	<if test="juridicalId != null">  juridical_id = #{juridicalId} ,</if>
+		  	<if test="busiLatesnackEnd != null">  busi_latesnack_end = #{busiLatesnackEnd} ,</if>
+		  	<if test="restExamine != null">  rest_examine = #{restExamine} ,</if>
+		  	<if test="worldcoordinateY != null">  worldcoordinate_y = #{worldcoordinateY} ,</if>
+		  	<if test="busiLunchEnd != null">  busi_lunch_end = #{busiLunchEnd} ,</if>
+		  	<if test="environmentScore != null">  environment_score = #{environmentScore} ,</if>
+		  	<if test="lat != null">  lat = #{lat} ,</if>
+		  	<if test="dishesStyleTypeArray != null">  dishes_style_type_array = #{dishesStyleTypeArray} ,</if>
+		  	<if test="shuiwu != null">  shuiwu = #{shuiwu} ,</if>
+		  	<if test="file4 != null">  file4 = #{file4} ,</if>
+		  	<if test="takeOutStart != null">  take_out_start = #{takeOutStart} ,</if>
+		  	<if test="synDataTime != null">  syn_data_time = #{synDataTime} </if>
+		</set>
+		where  rest_id = #{restId}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.cwwarm.model.CmRestaurantBean">
+		update cm_restaurant
+
+		set 
+		  	 mid = #{mid} ,
+		  	 adr_city = #{adrCity} ,
+		  	 syn_database_status = #{synDatabaseStatus} ,
+		  	 update_by = #{updateBy} ,
+		  	 delivery_charge = #{deliveryCharge} ,
+		  	 fangwu = #{fangwu} ,
+		  	 service_score = #{serviceScore} ,
+		  	 overlaycoordinate_x = #{overlaycoordinateX} ,
+		  	 dashes_style_id_array = #{dashesStyleIdArray} ,
+		  	 sn = #{sn} ,
+		  	 notes = #{notes} ,
+		  	 store_name = #{storeName} ,
+		  	 msg = #{msg} ,
+		  	 description = #{description} ,
+		  	 bus_stop = #{busStop} ,
+		  	 busi_end = #{busiEnd} ,
+		  	 busi_supper_start = #{busiSupperStart} ,
+		  	 take_out_status = #{takeOutStatus} ,
+		  	 create_time = #{createTime} ,
+		  	 bank_branch = #{bankBranch} ,
+		  	 cons_per_person = #{consPerPerson} ,
+		  	 file11 = #{file11} ,
+		  	 subway = #{subway} ,
+		  	 store_id = #{storeId} ,
+		  	 foreign_la = #{foreignLa} ,
+		  	 update_time = #{updateTime} ,
+		  	 linkman_tel = #{linkmanTel} ,
+		  	 syn_version_id = #{synVersionId} ,
+		  	 denglumima = #{denglumima} ,
+		  	 bar_path = #{barPath} ,
+		  	 parentshop_id = #{parentshopId} ,
+		  	 file13 = #{file13} ,
+		  	 busi_takeout_supper_end = #{busiTakeoutSupperEnd} ,
+		  	 overlaycoordinate_y = #{overlaycoordinateY} ,
+		  	 taste_score = #{tasteScore} ,
+		  	 linkman_phone = #{linkmanPhone} ,
+		  	 tilecoordinate_y = #{tilecoordinateY} ,
+		  	 file3 = #{file3} ,
+		  	 busi_hours_close = #{busiHoursClose} ,
+		  	 event_summary = #{eventSummary} ,
+		  	 busi_breakfast_name = #{busiBreakfastName} ,
+		  	 invoice_status = #{invoiceStatus} ,
+		  	 linkman_name = #{linkmanName} ,
+		  	 busi_supper_end = #{busiSupperEnd} ,
+		  	 zhucema = #{zhucema} ,
+		  	 mch_addr = #{mchAddr} ,
+		  	 juridical_person = #{juridicalPerson} ,
+		  	 adr_province = #{adrProvince} ,
+		  	 settle_bank = #{settleBank} ,
+		  	 viewportcoordinate_y = #{viewportcoordinateY} ,
+		  	 province = #{province} ,
+		  	 file1 = #{file1} ,
+		  	 online_order_status = #{onlineOrderStatus} ,
+		  	 bank_name = #{bankName} ,
+		  	 kaihuo = #{kaihuo} ,
+		  	 complaint_tel = #{complaintTel} ,
+		  	 email = #{email} ,
+		  	 dining_env = #{diningEnv} ,
+		  	 busi_takeout_lunch_end = #{busiTakeoutLunchEnd} ,
+		  	 busi_start = #{busiStart} ,
+		  	 cert_type = #{certType} ,
+		  	 is_band_cloud_account = #{isBandCloudAccount} ,
+		  	 business_license = #{businessLicense} ,
+		  	 busi_hours_open = #{busiHoursOpen} ,
+		  	 online_order_phone = #{onlineOrderPhone} ,
+		  	 xianchang = #{xianchang} ,
+		  	 rest_name = #{restName} ,
+		  	 busi_breakfast_end = #{busiBreakfastEnd} ,
+		  	 special_style = #{specialStyle} ,
+		  	 join_authentication = #{joinAuthentication} ,
+		  	 shebeileixing = #{shebeileixing} ,
+		  	 online_order_dish_status = #{onlineOrderDishStatus} ,
+		  	 viewportcoordinate_x = #{viewportcoordinateX} ,
+		  	 shop_type = #{shopType} ,
+		  	 adr_detail = #{adrDetail} ,
+		  	 busi_lunch_start = #{busiLunchStart} ,
+		  	 shop_status = #{shopStatus} ,
+		  	 file14 = #{file14} ,
+		  	 juridical_phone = #{juridicalPhone} ,
+		  	 settle_accno = #{settleAccno} ,
+		  	 shangleixing = #{shangleixing} ,
+		  	 code = #{code} ,
+		  	 busi_supper_name = #{busiSupperName} ,
+		  	 take_out_end = #{takeOutEnd} ,
+		  	 dishes_style_name_array = #{dishesStyleNameArray} ,
+		  	 pixelcoordinate_y = #{pixelcoordinateY} ,
+		  	 busi_lunch_name = #{busiLunchName} ,
+		  	 cert_expdate = #{certExpdate} ,
+		  	 zhouzhijiguo = #{zhouzhijiguo} ,
+		  	 serve_speed_score = #{serveSpeedScore} ,
+		  	 cloud_password = #{cloudPassword} ,
+		  	 acc_name = #{accName} ,
+		  	 cloud_username = #{cloudUsername} ,
+		  	 adr_area = #{adrArea} ,
+		  	 city = #{city} ,
+		  	 busi_latesnack_start = #{busiLatesnackStart} ,
+		  	 event_notice = #{eventNotice} ,
+		  	 pixelcoordinate_x = #{pixelcoordinateX} ,
+		  	 order_days = #{orderDays} ,
+		  	 online_takeout_prompts = #{onlineTakeoutPrompts} ,
+		  	 tilecoordinate_x = #{tilecoordinateX} ,
+		  	 syn_data_complete_time = #{synDataCompleteTime} ,
+		  	 bank_account = #{bankAccount} ,
+		  	 account_type = #{accountType} ,
+		  	 c_name = #{cName} ,
+		  	 busi_latesnack_name = #{busiLatesnackName} ,
+		  	 special_env = #{specialEnv} ,
+		  	 manager = #{manager} ,
+		  	 busi_takeout_lunch_start = #{busiTakeoutLunchStart} ,
+		  	 rest_area = #{restArea} ,
+		  	 file2 = #{file2} ,
+		  	 send_price = #{sendPrice} ,
+		  	 total_score = #{totalScore} ,
+		  	 order_tel = #{orderTel} ,
+		  	 busi_takeout_supper_start = #{busiTakeoutSupperStart} ,
+		  	 merchant_id = #{merchantId} ,
+		  	 area_code = #{areaCode} ,
+		  	 is_private = #{isPrivate} ,
+		  	 worldcoordinate_x = #{worldcoordinateX} ,
+		  	 create_by = #{createBy} ,
+		  	 online_rest_status = #{onlineRestStatus} ,
+		  	 busi_breakfast_start = #{busiBreakfastStart} ,
+		  	 file12 = #{file12} ,
+		  	 delivery_range = #{deliveryRange} ,
+		  	 advertising_slogan = #{advertisingSlogan} ,
+		  	 online_order_prompts = #{onlineOrderPrompts} ,
+		  	 lng = #{lng} ,
+		  	 juridical_id = #{juridicalId} ,
+		  	 busi_latesnack_end = #{busiLatesnackEnd} ,
+		  	 rest_examine = #{restExamine} ,
+		  	 worldcoordinate_y = #{worldcoordinateY} ,
+		  	 busi_lunch_end = #{busiLunchEnd} ,
+		  	 environment_score = #{environmentScore} ,
+		  	 lat = #{lat} ,
+		  	 dishes_style_type_array = #{dishesStyleTypeArray} ,
+		  	 shuiwu = #{shuiwu} ,
+		  	 file4 = #{file4} ,
+		  	 take_out_start = #{takeOutStart} ,
+		  	 syn_data_time = #{synDataTime} 
+	
+		where  rest_id = #{restId}
+	</update>
+	
+</mapper>

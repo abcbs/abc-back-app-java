@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.cwwarm.model.CwAlertBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.cwwarm.model.CwAlertBean">
+		<id column="cw_alert_id" property="cwAlertId" jdbcType="VARCHAR" />
+	
+    
+		<result column="alert_by_pic" property="alertByPic" jdbcType="VARCHAR" />
+    
+		<result column="alert_source_type" property="alertSourceType" jdbcType="VARCHAR" />
+    
+		<result column="alert_rcv" property="alertRcv" jdbcType="VARCHAR" />
+    
+		<result column="alert_by_name" property="alertByName" jdbcType="VARCHAR" />
+    
+		<result column="alert_busi_status" property="alertBusiStatus" jdbcType="VARCHAR" />
+    
+		<result column="alert_rcv_name" property="alertRcvName" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="alert_msg_uri" property="alertMsgUri" jdbcType="VARCHAR" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="alert_by_id" property="alertById" jdbcType="VARCHAR" />
+    
+		<result column="alert_second_source_type" property="alertSecondSourceType" jdbcType="VARCHAR" />
+    
+		<result column="alert_rcv_pic" property="alertRcvPic" jdbcType="VARCHAR" />
+    
+		<result column="alert_life_status" property="alertLifeStatus" jdbcType="VARCHAR" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="alert_msg" property="alertMsg" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		alert_by_pic as alertByPic ,
+		alert_source_type as alertSourceType ,
+		cw_alert_id as cwAlertId ,
+		alert_rcv as alertRcv ,
+		alert_by_name as alertByName ,
+		alert_busi_status as alertBusiStatus ,
+		alert_rcv_name as alertRcvName ,
+		update_time as updateTime ,
+		alert_msg_uri as alertMsgUri ,
+		create_by as createBy ,
+		alert_by_id as alertById ,
+		alert_second_source_type as alertSecondSourceType ,
+		alert_rcv_pic as alertRcvPic ,
+		alert_life_status as alertLifeStatus ,
+		update_by as updateBy ,
+		alert_msg as alertMsg ,
+		create_time as createTime 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="alertByPic != null"> and alert_by_pic = #{alertByPic}</if>
+				
+		  	    <if test="alertSourceType != null"> and alert_source_type = #{alertSourceType}</if>
+				
+		  	    <if test="cwAlertId != null"> and cw_alert_id = #{cwAlertId}</if>
+				
+		  	    <if test="alertRcv != null"> and alert_rcv = #{alertRcv}</if>
+				
+		  	    <if test="alertByName != null"> and alert_by_name = #{alertByName}</if>
+				
+		  	    <if test="alertBusiStatus != null"> and alert_busi_status = #{alertBusiStatus}</if>
+				
+		  	    <if test="alertRcvName != null"> and alert_rcv_name = #{alertRcvName}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #{updateTime}</if>
+				
+		  	    <if test="alertMsgUri != null"> and alert_msg_uri = #{alertMsgUri}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #{createBy}</if>
+				
+		  	    <if test="alertById != null"> and alert_by_id = #{alertById}</if>
+				
+		  	    <if test="alertSecondSourceType != null"> and alert_second_source_type = #{alertSecondSourceType}</if>
+				
+		  	    <if test="alertRcvPic != null"> and alert_rcv_pic = #{alertRcvPic}</if>
+				
+		  	    <if test="alertLifeStatus != null"> and alert_life_status = #{alertLifeStatus}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #{updateBy}</if>
+				
+		  	    <if test="alertMsg != null"> and alert_msg = #{alertMsg}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #{createTime}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by ${sorting}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</sql>
+	
+	<!-- 查询总数 -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(cw_alert_id)
+		from cw_alert
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 查询 -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cw_alert
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cw_alert
+		where cw_alert_id = #{cwAlertId}
+	</select>
+	
+	<!-- 根据ID删除 -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cw_alert
+		where  cw_alert_id = #{cwAlertId}
+	</delete>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- 添加 -->	
+	<insert id="insert" parameterType="com.ndlan.cwwarm.model.CwAlertBean">
+		insert into cw_alert(
+		  	    alert_by_pic  ,
+	
+		  	    alert_source_type  ,
+	
+		  	    cw_alert_id  ,
+	
+		  	    alert_rcv  ,
+	
+		  	    alert_by_name  ,
+	
+		  	    alert_busi_status  ,
+	
+		  	    alert_rcv_name  ,
+	
+		  	    update_time  ,
+	
+		  	    alert_msg_uri  ,
+	
+		  	    create_by  ,
+	
+		  	    alert_by_id  ,
+	
+		  	    alert_second_source_type  ,
+	
+		  	    alert_rcv_pic  ,
+	
+		  	    alert_life_status  ,
+	
+		  	    update_by  ,
+	
+		  	    alert_msg  ,
+	
+		  	    create_time  
+	
+			
+		)
+		values (
+		  	    #{alertByPic } ,
+		  	    #{alertSourceType } ,
+		  	    #{cwAlertId } ,
+		  	    #{alertRcv } ,
+		  	    #{alertByName } ,
+		  	    #{alertBusiStatus } ,
+		  	    #{alertRcvName } ,
+		  	    #{updateTime } ,
+		  	    #{alertMsgUri } ,
+		  	    #{createBy } ,
+		  	    #{alertById } ,
+		  	    #{alertSecondSourceType } ,
+		  	    #{alertRcvPic } ,
+		  	    #{alertLifeStatus } ,
+		  	    #{updateBy } ,
+		  	    #{alertMsg } ,
+		  	    #{createTime } 
+		)
+	</insert>
+	
+	
+	<!-- 通过ID更新 -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.cwwarm.model.CwAlertBean">
+		update cw_alert
+		<set>
+		  	<if test="alertByPic != null">  alert_by_pic = #{alertByPic} ,</if>
+		  	<if test="alertSourceType != null">  alert_source_type = #{alertSourceType} ,</if>
+		  	<if test="alertRcv != null">  alert_rcv = #{alertRcv} ,</if>
+		  	<if test="alertByName != null">  alert_by_name = #{alertByName} ,</if>
+		  	<if test="alertBusiStatus != null">  alert_busi_status = #{alertBusiStatus} ,</if>
+		  	<if test="alertRcvName != null">  alert_rcv_name = #{alertRcvName} ,</if>
+		  	<if test="updateTime != null">  update_time = #{updateTime} ,</if>
+		  	<if test="alertMsgUri != null">  alert_msg_uri = #{alertMsgUri} ,</if>
+		  	<if test="createBy != null">  create_by = #{createBy} ,</if>
+		  	<if test="alertById != null">  alert_by_id = #{alertById} ,</if>
+		  	<if test="alertSecondSourceType != null">  alert_second_source_type = #{alertSecondSourceType} ,</if>
+		  	<if test="alertRcvPic != null">  alert_rcv_pic = #{alertRcvPic} ,</if>
+		  	<if test="alertLifeStatus != null">  alert_life_status = #{alertLifeStatus} ,</if>
+		  	<if test="updateBy != null">  update_by = #{updateBy} ,</if>
+		  	<if test="alertMsg != null">  alert_msg = #{alertMsg} ,</if>
+		  	<if test="createTime != null">  create_time = #{createTime} </if>
+		</set>
+		where  cw_alert_id = #{cwAlertId}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.cwwarm.model.CwAlertBean">
+		update cw_alert
+
+		set 
+		  	 alert_by_pic = #{alertByPic} ,
+		  	 alert_source_type = #{alertSourceType} ,
+		  	 alert_rcv = #{alertRcv} ,
+		  	 alert_by_name = #{alertByName} ,
+		  	 alert_busi_status = #{alertBusiStatus} ,
+		  	 alert_rcv_name = #{alertRcvName} ,
+		  	 update_time = #{updateTime} ,
+		  	 alert_msg_uri = #{alertMsgUri} ,
+		  	 create_by = #{createBy} ,
+		  	 alert_by_id = #{alertById} ,
+		  	 alert_second_source_type = #{alertSecondSourceType} ,
+		  	 alert_rcv_pic = #{alertRcvPic} ,
+		  	 alert_life_status = #{alertLifeStatus} ,
+		  	 update_by = #{updateBy} ,
+		  	 alert_msg = #{alertMsg} ,
+		  	 create_time = #{createTime} 
+	
+		where  cw_alert_id = #{cwAlertId}
+	</update>
+	
+</mapper>

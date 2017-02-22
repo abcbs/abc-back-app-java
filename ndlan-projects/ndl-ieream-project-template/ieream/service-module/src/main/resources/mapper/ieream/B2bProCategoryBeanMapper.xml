@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.B2bProCategoryBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.B2bProCategoryBean">
+		<id column="category_id" property="categoryId" jdbcType="VARCHAR" />
+	
+    
+		<result column="parent_category_name" property="parentCategoryName" jdbcType="VARCHAR" />
+    
+		<result column="parent_category_id" property="parentCategoryId" jdbcType="VARCHAR" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+    
+		<result column="version" property="version" jdbcType="BIGINT" />
+    
+		<result column="rest_id" property="restId" jdbcType="VARCHAR" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="category_grade" property="categoryGrade" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    
+		<result column="category_name" property="categoryName" jdbcType="VARCHAR" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    
+		<result column="parent_name_path" property="parentNamePath" jdbcType="VARCHAR" />
+    
+		<result column="category_tone_ios" property="categoryToneIos" jdbcType="VARCHAR" />
+    
+		<result column="parent_id_path" property="parentIdPath" jdbcType="VARCHAR" />
+    
+		<result column="update_time" property="updateTime" jdbcType="VARCHAR" />
+    
+		<result column="category_status" property="categoryStatus" jdbcType="VARCHAR" />
+    
+		<result column="is_syn" property="isSyn" jdbcType="VARCHAR" />
+    
+		<result column="category_tone_android" property="categoryToneAndroid" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		parent_category_name as parentCategoryName ,
+		parent_category_id as parentCategoryId ,
+		syn_version as synVersion ,
+		version as version ,
+		rest_id as restId ,
+		update_by as updateBy ,
+		category_grade as categoryGrade ,
+		create_time as createTime ,
+		category_id as categoryId ,
+		category_name as categoryName ,
+		create_by as createBy ,
+		parent_name_path as parentNamePath ,
+		category_tone_ios as categoryToneIos ,
+		parent_id_path as parentIdPath ,
+		update_time as updateTime ,
+		category_status as categoryStatus ,
+		is_syn as isSyn ,
+		category_tone_android as categoryToneAndroid 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="parentCategoryName != null"> and parent_category_name = #\{parentCategoryName\}</if>
+				
+		  	    <if test="parentCategoryId != null"> and parent_category_id = #\{parentCategoryId\}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #\{synVersion\}</if>
+				
+		  	    <if test="version != null"> and version = #\{version\}</if>
+				
+		  	    <if test="restId != null"> and rest_id = #\{restId\}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #\{updateBy\}</if>
+				
+		  	    <if test="categoryGrade != null"> and category_grade = #\{categoryGrade\}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #\{createTime\}</if>
+				
+		  	    <if test="categoryId != null"> and category_id = #\{categoryId\}</if>
+				
+		  	    <if test="categoryName != null"> and category_name = #\{categoryName\}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #\{createBy\}</if>
+				
+		  	    <if test="parentNamePath != null"> and parent_name_path = #\{parentNamePath\}</if>
+				
+		  	    <if test="categoryToneIos != null"> and category_tone_ios = #\{categoryToneIos\}</if>
+				
+		  	    <if test="parentIdPath != null"> and parent_id_path = #\{parentIdPath\}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #\{updateTime\}</if>
+				
+		  	    <if test="categoryStatus != null"> and category_status = #\{categoryStatus\}</if>
+				
+		  	    <if test="isSyn != null"> and is_syn = #\{isSyn\}</if>
+				
+		  	    <if test="categoryToneAndroid != null"> and category_tone_android = #\{categoryToneAndroid\}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by $\{sorting\}</if>
+		<if test="offset != null and limit != null">
+			limit #\{offset\}, #\{limit\}
+		</if>
+	</sql>
+	
+	<!-- 查询总数 -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(category_id)
+		from b2b_pro_category
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 查询 -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from b2b_pro_category
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from b2b_pro_category
+		where category_id = #\{category_id\}
+	</select>
+	
+	<!-- 根据ID删除 -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from b2b_pro_category
+		where  category_id = #\{category_id\}
+	</delete>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- 添加 -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.B2bProCategoryBean">
+		insert into b2b_pro_category(
+		  	    parent_category_name  ,
+	
+		  	    parent_category_id  ,
+	
+		  	    syn_version  ,
+	
+		  	    version  ,
+	
+		  	    rest_id  ,
+	
+		  	    update_by  ,
+	
+		  	    category_grade  ,
+	
+		  	    create_time  ,
+	
+		  	    category_id  ,
+	
+		  	    category_name  ,
+	
+		  	    create_by  ,
+	
+		  	    parent_name_path  ,
+	
+		  	    category_tone_ios  ,
+	
+		  	    parent_id_path  ,
+	
+		  	    update_time  ,
+	
+		  	    category_status  ,
+	
+		  	    is_syn  ,
+	
+		  	    category_tone_android  
+	
+			
+		)
+		values (
+		  	    #\{parentCategoryName \} ,
+		  	    #\{parentCategoryId \} ,
+		  	    #\{synVersion \} ,
+		  	    #\{version \} ,
+		  	    #\{restId \} ,
+		  	    #\{updateBy \} ,
+		  	    #\{categoryGrade \} ,
+		  	    #\{createTime \} ,
+		  	    #\{categoryId \} ,
+		  	    #\{categoryName \} ,
+		  	    #\{createBy \} ,
+		  	    #\{parentNamePath \} ,
+		  	    #\{categoryToneIos \} ,
+		  	    #\{parentIdPath \} ,
+		  	    #\{updateTime \} ,
+		  	    #\{categoryStatus \} ,
+		  	    #\{isSyn \} ,
+		  	    #\{categoryToneAndroid \} 
+		)
+	</insert>
+	
+	
+	<!-- 通过ID更新 -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.B2bProCategoryBean">
+		update b2b_pro_category
+		<set>
+		  	<if test=\"parentCategoryName != null\">  parent_category_name = #\{parentCategoryName\} ,</if>
+		  	<if test=\"parentCategoryId != null\">  parent_category_id = #\{parentCategoryId\} ,</if>
+		  	<if test=\"synVersion != null\">  syn_version = #\{synVersion\} ,</if>
+		  	<if test=\"version != null\">  version = #\{version\} ,</if>
+		  	<if test=\"restId != null\">  rest_id = #\{restId\} ,</if>
+		  	<if test=\"updateBy != null\">  update_by = #\{updateBy\} ,</if>
+		  	<if test=\"categoryGrade != null\">  category_grade = #\{categoryGrade\} ,</if>
+		  	<if test=\"createTime != null\">  create_time = #\{createTime\} ,</if>
+		  	<if test=\"categoryName != null\">  category_name = #\{categoryName\} ,</if>
+		  	<if test=\"createBy != null\">  create_by = #\{createBy\} ,</if>
+		  	<if test=\"parentNamePath != null\">  parent_name_path = #\{parentNamePath\} ,</if>
+		  	<if test=\"categoryToneIos != null\">  category_tone_ios = #\{categoryToneIos\} ,</if>
+		  	<if test=\"parentIdPath != null\">  parent_id_path = #\{parentIdPath\} ,</if>
+		  	<if test=\"updateTime != null\">  update_time = #\{updateTime\} ,</if>
+		  	<if test=\"categoryStatus != null\">  category_status = #\{categoryStatus\} ,</if>
+		  	<if test=\"isSyn != null\">  is_syn = #\{isSyn\} ,</if>
+		  	<if test=\"categoryToneAndroid != null\">  category_tone_android = #\{categoryToneAndroid\} </if>
+		</set>
+		where  category_id = #\{category_id\}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.B2bProCategoryBean">
+		update b2b_pro_category
+
+		set 
+		  	 parent_category_name = #\{parentCategoryName\} ,
+		  	 parent_category_id = #\{parentCategoryId\} ,
+		  	 syn_version = #\{synVersion\} ,
+		  	 version = #\{version\} ,
+		  	 rest_id = #\{restId\} ,
+		  	 update_by = #\{updateBy\} ,
+		  	 category_grade = #\{categoryGrade\} ,
+		  	 create_time = #\{createTime\} ,
+		  	 category_name = #\{categoryName\} ,
+		  	 create_by = #\{createBy\} ,
+		  	 parent_name_path = #\{parentNamePath\} ,
+		  	 category_tone_ios = #\{categoryToneIos\} ,
+		  	 parent_id_path = #\{parentIdPath\} ,
+		  	 update_time = #\{updateTime\} ,
+		  	 category_status = #\{categoryStatus\} ,
+		  	 is_syn = #\{isSyn\} ,
+		  	 category_tone_android = #\{categoryToneAndroid\} 
+	
+		where  category_id = #\{category_id\}
+	</update>
+	
+</mapper>

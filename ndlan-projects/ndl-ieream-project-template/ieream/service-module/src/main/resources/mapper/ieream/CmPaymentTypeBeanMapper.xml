@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ndlan.ieream.model.CmPaymentTypeBean">
+	
+	<resultMap id="BaseResultMap" type="com.ndlan.ieream.model.CmPaymentTypeBean">
+		<id column="cpt_id" property="cptId" jdbcType="VARCHAR" />
+	
+    
+		<result column="version" property="version" jdbcType="BIGINT" />
+    
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+    
+		<result column="show_seq" property="showSeq" jdbcType="VARCHAR" />
+    
+		<result column="is_included_sales" property="isIncludedSales" jdbcType="VARCHAR" />
+    
+		<result column="is_show" property="isShow" jdbcType="VARCHAR" />
+    
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+    
+		<result column="payment_name" property="paymentName" jdbcType="VARCHAR" />
+    
+		<result column="is_syn" property="isSyn" jdbcType="VARCHAR" />
+    
+		<result column="syn_version" property="synVersion" jdbcType="BIGINT" />
+    
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    
+		<result column="sysdata_type" property="sysdataType" jdbcType="VARCHAR" />
+    
+		<result column="enable_status" property="enableStatus" jdbcType="VARCHAR" />
+    
+		<result column="payment_type" property="paymentType" jdbcType="VARCHAR" />
+    
+		<result column="pay_status" property="payStatus" jdbcType="VARCHAR" />
+    
+		<result column="notes" property="notes" jdbcType="VARCHAR" />
+    
+		<result column="pay_code" property="payCode" jdbcType="VARCHAR" />
+    
+		<result column="rest_id" property="restId" jdbcType="VARCHAR" />
+    
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		version as version ,
+		cpt_id as cptId ,
+		update_time as updateTime ,
+		show_seq as showSeq ,
+		is_included_sales as isIncludedSales ,
+		is_show as isShow ,
+		create_time as createTime ,
+		payment_name as paymentName ,
+		is_syn as isSyn ,
+		syn_version as synVersion ,
+		update_by as updateBy ,
+		sysdata_type as sysdataType ,
+		enable_status as enableStatus ,
+		payment_type as paymentType ,
+		pay_status as payStatus ,
+		notes as notes ,
+		pay_code as payCode ,
+		rest_id as restId ,
+		create_by as createBy 
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause">
+		<where>
+			<trim prefixOverrides="and">
+		  	    <if test="version != null"> and version = #\{version\}</if>
+				
+		  	    <if test="cptId != null"> and cpt_id = #\{cptId\}</if>
+				
+		  	    <if test="updateTime != null"> and update_time = #\{updateTime\}</if>
+				
+		  	    <if test="showSeq != null"> and show_seq = #\{showSeq\}</if>
+				
+		  	    <if test="isIncludedSales != null"> and is_included_sales = #\{isIncludedSales\}</if>
+				
+		  	    <if test="isShow != null"> and is_show = #\{isShow\}</if>
+				
+		  	    <if test="createTime != null"> and create_time = #\{createTime\}</if>
+				
+		  	    <if test="paymentName != null"> and payment_name = #\{paymentName\}</if>
+				
+		  	    <if test="isSyn != null"> and is_syn = #\{isSyn\}</if>
+				
+		  	    <if test="synVersion != null"> and syn_version = #\{synVersion\}</if>
+				
+		  	    <if test="updateBy != null"> and update_by = #\{updateBy\}</if>
+				
+		  	    <if test="sysdataType != null"> and sysdata_type = #\{sysdataType\}</if>
+				
+		  	    <if test="enableStatus != null"> and enable_status = #\{enableStatus\}</if>
+				
+		  	    <if test="paymentType != null"> and payment_type = #\{paymentType\}</if>
+				
+		  	    <if test="payStatus != null"> and pay_status = #\{payStatus\}</if>
+				
+		  	    <if test="notes != null"> and notes = #\{notes\}</if>
+				
+		  	    <if test="payCode != null"> and pay_code = #\{payCode\}</if>
+				
+		  	    <if test="restId != null"> and rest_id = #\{restId\}</if>
+				
+		  	    <if test="createBy != null"> and create_by = #\{createBy\}</if>
+				
+				
+			</trim>
+		</where>
+		<if test="sorting != null">order by $\{sorting\}</if>
+		<if test="offset != null and limit != null">
+			limit #\{offset\}, #\{limit\}
+		</if>
+	</sql>
+	
+	<!-- 查询总数 -->
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(cpt_id)
+		from cm_payment_type
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 查询 -->
+	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from cm_payment_type
+		<include refid="Base_Where_Clause" />
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from cm_payment_type
+		where cpt_id = #\{cpt_id\}
+	</select>
+	
+	<!-- 根据ID删除 -->
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cm_payment_type
+		where  cpt_id = #\{cpt_id\}
+	</delete>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from sys_dictionary
+		<include refid="Base_Where_Clause" />
+	</delete>
+
+	<!-- 添加 -->	
+	<insert id="insert" parameterType="com.ndlan.ieream.model.CmPaymentTypeBean">
+		insert into cm_payment_type(
+		  	    version  ,
+	
+		  	    cpt_id  ,
+	
+		  	    update_time  ,
+	
+		  	    show_seq  ,
+	
+		  	    is_included_sales  ,
+	
+		  	    is_show  ,
+	
+		  	    create_time  ,
+	
+		  	    payment_name  ,
+	
+		  	    is_syn  ,
+	
+		  	    syn_version  ,
+	
+		  	    update_by  ,
+	
+		  	    sysdata_type  ,
+	
+		  	    enable_status  ,
+	
+		  	    payment_type  ,
+	
+		  	    pay_status  ,
+	
+		  	    notes  ,
+	
+		  	    pay_code  ,
+	
+		  	    rest_id  ,
+	
+		  	    create_by  
+	
+			
+		)
+		values (
+		  	    #\{version \} ,
+		  	    #\{cptId \} ,
+		  	    #\{updateTime \} ,
+		  	    #\{showSeq \} ,
+		  	    #\{isIncludedSales \} ,
+		  	    #\{isShow \} ,
+		  	    #\{createTime \} ,
+		  	    #\{paymentName \} ,
+		  	    #\{isSyn \} ,
+		  	    #\{synVersion \} ,
+		  	    #\{updateBy \} ,
+		  	    #\{sysdataType \} ,
+		  	    #\{enableStatus \} ,
+		  	    #\{paymentType \} ,
+		  	    #\{payStatus \} ,
+		  	    #\{notes \} ,
+		  	    #\{payCode \} ,
+		  	    #\{restId \} ,
+		  	    #\{createBy \} 
+		)
+	</insert>
+	
+	
+	<!-- 通过ID更新 -->
+	<update id="updateByIdSelective" parameterType="com.ndlan.ieream.model.CmPaymentTypeBean">
+		update cm_payment_type
+		<set>
+		  	<if test=\"version != null\">  version = #\{version\} ,</if>
+		  	<if test=\"updateTime != null\">  update_time = #\{updateTime\} ,</if>
+		  	<if test=\"showSeq != null\">  show_seq = #\{showSeq\} ,</if>
+		  	<if test=\"isIncludedSales != null\">  is_included_sales = #\{isIncludedSales\} ,</if>
+		  	<if test=\"isShow != null\">  is_show = #\{isShow\} ,</if>
+		  	<if test=\"createTime != null\">  create_time = #\{createTime\} ,</if>
+		  	<if test=\"paymentName != null\">  payment_name = #\{paymentName\} ,</if>
+		  	<if test=\"isSyn != null\">  is_syn = #\{isSyn\} ,</if>
+		  	<if test=\"synVersion != null\">  syn_version = #\{synVersion\} ,</if>
+		  	<if test=\"updateBy != null\">  update_by = #\{updateBy\} ,</if>
+		  	<if test=\"sysdataType != null\">  sysdata_type = #\{sysdataType\} ,</if>
+		  	<if test=\"enableStatus != null\">  enable_status = #\{enableStatus\} ,</if>
+		  	<if test=\"paymentType != null\">  payment_type = #\{paymentType\} ,</if>
+		  	<if test=\"payStatus != null\">  pay_status = #\{payStatus\} ,</if>
+		  	<if test=\"notes != null\">  notes = #\{notes\} ,</if>
+		  	<if test=\"payCode != null\">  pay_code = #\{payCode\} ,</if>
+		  	<if test=\"restId != null\">  rest_id = #\{restId\} ,</if>
+		  	<if test=\"createBy != null\">  create_by = #\{createBy\} </if>
+		</set>
+		where  cpt_id = #\{cpt_id\}
+	</update>
+	
+	<update id="updateById" parameterType="com.ndlan.ieream.model.CmPaymentTypeBean">
+		update cm_payment_type
+
+		set 
+		  	 version = #\{version\} ,
+		  	 update_time = #\{updateTime\} ,
+		  	 show_seq = #\{showSeq\} ,
+		  	 is_included_sales = #\{isIncludedSales\} ,
+		  	 is_show = #\{isShow\} ,
+		  	 create_time = #\{createTime\} ,
+		  	 payment_name = #\{paymentName\} ,
+		  	 is_syn = #\{isSyn\} ,
+		  	 syn_version = #\{synVersion\} ,
+		  	 update_by = #\{updateBy\} ,
+		  	 sysdata_type = #\{sysdataType\} ,
+		  	 enable_status = #\{enableStatus\} ,
+		  	 payment_type = #\{paymentType\} ,
+		  	 pay_status = #\{payStatus\} ,
+		  	 notes = #\{notes\} ,
+		  	 pay_code = #\{payCode\} ,
+		  	 rest_id = #\{restId\} ,
+		  	 create_by = #\{createBy\} 
+	
+		where  cpt_id = #\{cpt_id\}
+	</update>
+	
+</mapper>

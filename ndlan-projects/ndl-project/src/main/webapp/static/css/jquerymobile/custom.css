@@ -1,0 +1,479 @@
+/* CSS Document */
+@charset "utf-8";
+a,span,div,h1,li{text-shadow:none;}
+
+.G2logo
+{
+	margin-left:10px;
+	top:12px;
+	position: absolute;
+	background-image: url("../../images/jquerymobile/logo.png");
+	display: block;
+	width: 74px;
+	height: 20px;
+}
+.cy_but_minus:hover
+{
+	background:url(../../images/jquerymobile/sub_press.png) no-repeat;cursor: pointer;
+}
+.cy_but_minus
+{
+	width:34px;height:34px;float:left;margin-top:16px;display:block;
+	background:url(../../images/jquerymobile/sub_normal.png) no-repeat;
+	cursor: pointer;
+}
+.cy_but_add{width:34px;height:34px;float:left;margin-top:16px;display:block;background:url(../../images/jquerymobile/add_normal.png) no-repeat;cursor: pointer;}
+.cy_but_add:hover{width:34px;height:34px;background:url(../../images/jquerymobile/add_press.png) no-repeat;cursor: pointer;}
+.cy_amount{float:left;margin:15px 10px;color:#76ca40; font-size:24px;}
+
+
+.lajiao {margin-top:22px;margin-right:3px;width:40px;height:40px;display:block;float:left;background:url(../../images/jquerymobile/lajiao.png);float:left;font-size:40px;}
+
+
+
+/*������˵���*/
+.main_nav_wrap{float:left;position:relative;}
+.main_nav{width:50px;float:left;}
+.call,.call_on,.tjcj,.tjcj_on,.canju,.canju_on,.jiezhang,.jiezhang_on,.qt,.qt_on{width:60px;height:73px;display:block;background-color: black;}
+.call{background:url(../../images/self/fuwu.png);background-position: center center;background-repeat: no-repeat;}
+.call:hover,.call_on{background:url(../../images/self/fuwu_on.png);background-position: center center;background-repeat: no-repeat;}
+.tjcj{background:url(../../images/self/cuicai.png);background-position: center center;background-repeat: no-repeat;}
+.tjcj:hover,.tjcj_on{background:url(../../images/self/cuicai_on.png);background-position: center center;background-repeat: no-repeat;}
+.canju{background:url(../../images/self/canju.png);background-position: center center;background-repeat: no-repeat;}
+.canju:hover,.canju_on{background:url(../../images/self/canju_on.png);background-position: center center;background-repeat: no-repeat;}
+.jiezhang{background:url(../../images/self/jiezhang.png);background-position: center center;background-repeat: no-repeat;}
+.jiezhang:hover,.jiezhang_on{background:url(../../images/self/jiezhang_on.png);background-position: center center;background-repeat: no-repeat;}
+.qt{background:url(../../images/self/qita.png);background-position: center center;background-repeat: no-repeat;}
+.qt:hover,.qt_on{background:url(../../images/self/qita_on.png);background-position: center center;background-repeat: no-repeat;}
+/*���˵����ƿ���*/
+.but_control{width:28px;height:60px;display:block;position:absolute;left:-21px;top:100px;background:url(../../images/self/handle_normal.png);z-index: 999}
+.but_control:hover{width:28px;height:60px;background:url(../../images/self/handle_press.png);}
+
+.but_controla{width:28px;height:60px;display:block;position:absolute;left:84px;top:254px;background:url(../../images/self/handle_normal.png);z-index: 999}
+.but_controla:hover{width:28px;height:60px;background:url(../../images/self/handle_press.png);}
+
+
+.shopping_car{width:100px;height:40px;position:absolute;right:10px;bottom:10px;background: url(../../images/self/shoppingz-car.png) no-repeat;z-index: 999}
+.shopping_car span{display:blocl;height:40px;line-height:40px;margin:0px 0 0 43px;float:left;font-size:18px;color:#fff;text-decoration: none;background:#f60;}
+.shopping_car span a {font-size:14px;color:#fff;text-decoration: none;}
+
+.red:after{background-color: red;}
+
+
+#dlistview li.dishesCategory_on{
+	background:#399000;color:#fff;font-size:18px;text-align:center;
+}
+#dlistview li.dishesCategory_off{
+	background:#b2b2b2;color:#000;font-size:18px;text-align:center;
+}
+
+/* Panel */
+.ui-panel {
+	width: 120px;
+	min-height: 100%;
+	max-height: none;
+	border-width: 0;
+	position: absolute;
+	top: 0;
+	display: block;
+}
+.ui-panel-closed {
+	width: 0;
+	max-height: 100%;
+	overflow: hidden;
+	visibility: hidden;
+}
+.ui-panel-fixed {
+	position: fixed;
+	bottom: -1px; /* Fixes gap on Chrome for Android */
+	padding-bottom: 1px;
+}
+.ui-panel-display-reveal {
+	z-index: 1;
+}
+.ui-panel-display-push {
+	z-index: 999;
+}
+.ui-panel-display-overlay {
+	z-index: 1001; /* Fixed toolbars have z-index 1000 */
+}
+.ui-panel-inner {
+	padding: 0em;
+}
+/* Container, page and wrapper */
+.ui-panel-page-container {
+	overflow-x: visible;
+}
+.ui-panel-page-container-themed .ui-page-active {
+	background: none;
+}
+.ui-panel-wrapper {
+	position: relative;
+	min-height: inherit;
+	border: 0;
+	overflow-x: hidden;
+	z-index: 999;
+}
+/* Fixed toolbars */
+.ui-panel-fixed-toolbar {
+	overflow-x: hidden;
+}
+/* Dismiss */
+.ui-panel-dismiss {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 100%;
+	z-index: 1002;
+	display: none;
+}
+.ui-panel-dismiss-open {
+	display: block;
+}
+/* Animate class is added to panel, wrapper and fixed toolbars */
+.ui-panel-animate {
+	-webkit-transition: -webkit-transform 300ms ease;
+	-moz-transition: -moz-transform 300ms ease;
+	transition: transform 300ms ease;
+}
+/* Fix for Windows Phone issue #6349: unset the transition for transforms in case of fixed toolbars. */
+@media screen and ( max-device-width: 768px ) {
+	.ui-page-header-fixed .ui-panel-animate.ui-panel-wrapper,
+	.ui-page-footer-fixed .ui-panel-animate.ui-panel-wrapper,
+	.ui-panel-animate.ui-panel-fixed-toolbar {
+		-ms-transition: none;
+	}
+	/* We need a transitionend event ... */
+	.ui-panel-animate.ui-panel-fixed-toolbar {
+		-ms-transition: -ms-transform 1ms;
+		-ms-transform: rotate(0deg);
+	}
+}
+/* Hardware acceleration for smoother transitions on WebKit browsers */
+.ui-panel-animate.ui-panel:not(.ui-panel-display-reveal) {
+	-webkit-backface-visibility: hidden;
+	-webkit-transform: translate3d(0,0,0);
+}
+/* Panel positioning (for overlay and push) */
+/* Panel left closed */
+.ui-panel-position-left {
+	left: -120px;
+}
+/* Panel left closed animated */
+.ui-panel-animate.ui-panel-position-left.ui-panel-display-overlay,
+.ui-panel-animate.ui-panel-position-left.ui-panel-display-push {
+	left: 0;
+	-webkit-transform: translate3d(-120px,0,0);
+	-moz-transform: translate3d(-120px,0,0);
+	transform: translate3d(-120px,0,0);
+}
+/* Panel left open */
+.ui-panel-position-left.ui-panel-display-reveal, /* Unset "panel left closed" for reveal */
+.ui-panel-open.ui-panel-position-left {
+	left: 0;
+}
+/* Panel left open animated */
+.ui-panel-animate.ui-panel-open.ui-panel-position-left.ui-panel-display-overlay,
+.ui-panel-animate.ui-panel-open.ui-panel-position-left.ui-panel-display-push {
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+	-moz-transform: none;
+}
+/* Panel right closed */
+.ui-panel-position-right {
+	right: -120px;
+}
+/* Panel right closed animated */
+.ui-panel-animate.ui-panel-position-right.ui-panel-display-overlay,
+.ui-panel-animate.ui-panel-position-right.ui-panel-display-push {
+	right: 0;
+	-webkit-transform: translate3d(120px,0,0);
+	-moz-transform: translate3d(120px,0,0);
+	transform: translate3d(120px,0,0);
+}
+/* Panel right open */
+.ui-panel-position-right.ui-panel-display-reveal, /* Unset "panel right closed" for reveal */
+.ui-panel-position-right.ui-panel-open {
+	right: 0;
+}
+/* Panel right open animated */
+.ui-panel-animate.ui-panel-open.ui-panel-position-right.ui-panel-display-overlay,
+.ui-panel-animate.ui-panel-open.ui-panel-position-right.ui-panel-display-push {
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+	-moz-transform: none;
+}
+/* Wrapper and fixed toolbars positioning (for reveal and push) */
+/* Panel left open */
+.ui-panel-page-content-position-left {
+	left: 120px;
+	right: -120px;
+}
+/* Panel left open animated */
+.ui-panel-animate.ui-panel-page-content-position-left {
+	left: 0;
+	right: 0;
+	-webkit-transform: translate3d(120px,0,0);
+	-moz-transform: translate3d(120px,0,0);
+	transform: translate3d(120px,0,0);
+}
+/* Panel right open */
+.ui-panel-page-content-position-right {
+	left: -120px;
+	right: 120px;
+}
+/* Panel right open animated */
+.ui-panel-animate.ui-panel-page-content-position-right {
+	left: 0;
+	right: 0;
+	-webkit-transform: translate3d(-120px,0,0);
+	-moz-transform: translate3d(-120px,0,0);
+	transform: translate3d(-120px,0,0);
+}
+/* Dismiss model open */
+.ui-panel-dismiss-open.ui-panel-dismiss-position-left {
+	left: 120px;
+}
+.ui-panel-dismiss-open.ui-panel-dismiss-position-right {
+	right: 120px;
+}
+/* Shadows and borders */
+.ui-panel-display-reveal {
+	-webkit-box-shadow: inset -5px 0 5px rgba(0,0,0,.15);
+	-moz-box-shadow: inset -5px 0 5px rgba(0,0,0,.15);
+	box-shadow: inset -5px 0 5px rgba(0,0,0,.15);
+}
+.ui-panel-position-right.ui-panel-display-reveal {
+	-webkit-box-shadow: inset 5px 0 5px rgba(0,0,0,.15);
+	-moz-box-shadow: inset 5px 0 5px rgba(0,0,0,.15);
+	box-shadow: inset 5px 0 5px rgba(0,0,0,.15);
+}
+.ui-panel-display-overlay {
+	-webkit-box-shadow: 5px 0 5px rgba(0,0,0,.15);
+	-moz-box-shadow: 5px 0 5px rgba(0,0,0,.15);
+	box-shadow: 5px 0 5px rgba(0,0,0,.15);
+}
+.ui-panel-position-right.ui-panel-display-overlay {
+	-webkit-box-shadow: -5px 0 5px rgba(0,0,0,.15);
+	-moz-box-shadow: -5px 0 5px rgba(0,0,0,.15);
+	box-shadow: -5px 0 5px rgba(0,0,0,.15);
+}
+.ui-panel-open.ui-panel-position-left.ui-panel-display-push {
+	border-right-width: 1px;
+	margin-right: -1px;
+}
+.ui-panel-page-content-position-left.ui-panel-page-content-display-push {
+	margin-left: 1px;
+	width: auto;
+}
+.ui-panel-open.ui-panel-position-right.ui-panel-display-push {
+	border-left-width: 1px;
+	margin-left: -1px;
+}
+.ui-panel-page-content-position-right.ui-panel-page-content-display-push {
+	margin-right: 1px;
+	width: auto;
+}
+
+
+/* ����listviewͼƬ��С�;Ӷ����հ� */
+.ui-listview .ui-li-has-thumb > img:first-child,
+.ui-listview .ui-li-has-thumb > .ui-btn > img:first-child,
+.ui-listview .ui-li-has-thumb .ui-li-thumb {
+	position: absolute;
+	left: 0;
+	top: 5;
+	max-height: 4em;
+	max-width: 4em;
+}
+.ui-listview .ui-btn {
+	font-size: 12.5px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.ui-listview > li h1,
+.ui-listview > li h2,
+.ui-listview > li h3,
+.ui-listview > li h4,
+.ui-listview > li h5,
+.ui-listview > li h6 {
+	font-size: 1.2em;
+	font-weight: bold;
+	display: block;
+	margin: .25em 0;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.ui-listview > li p {
+	top: 1em;
+	font-size: .85em;
+	font-weight: normal;
+	display: block;
+	margin: .3em 0;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.ui-listview .ui-li-name {
+	position: absolute;
+	font-weight: normal;
+	top: 1em;
+	left: 3.2em;
+	margin: 0;
+	text-align: left;
+	display: block;
+	width:150px;
+	white-space:nowrap;overflow:hidden;text-overflow:ellipsis; 
+}
+.ui-listview .ui-li-totalPrice {
+	position: absolute;
+	font-weight: normal;
+	top: 1em;
+	right: 5em;
+	margin: 0;
+	text-align: right;
+	display: block;
+	width:50px;
+}
+.ui-listview .ui-li-price {
+	position: absolute;
+	font-weight: normal;
+	top: 1em;
+	right: 9.8em;
+	margin: 0;
+	text-align: right;
+	display: block;
+	width:50px;
+}
+.ui-listview .ui-li-fenshu {
+	position: absolute;
+	font-weight: normal;
+	top: 1em;
+	right: 1.2em;
+	margin: 0;
+	text-align: left;
+}
+.ui-listview .ui-li-status {
+	position: absolute;
+	font-weight: normal;
+	top: 1em;
+	right: 1.2em;
+	margin: 0;
+	text-align: left;
+}
+
+
+
+/**ͼƬ�ֺ�**/
+#wrapper {
+    width: 280px;
+    margin: 3px auto;
+}
+
+#intro {
+    padding-bottom: 3px;
+}
+
+#slider {
+    width: 280px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.scroll {
+	overflow: hidden;
+	width: 280px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.scrollContainer {
+	position: relative;
+}
+
+.scrollContainer div.panel {
+    padding: 3px;
+    width: 250px;
+	height: 258px;
+}
+
+#left-shadow {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 12px;
+	bottom: 0;
+	background: url(../images/jquerymobile/leftshadow.png) repeat-y;
+}
+
+#right-shadow {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 12px;
+	bottom: 0;
+	background: url(../images/jquerymobile/rightshadow.png) repeat-y;
+}
+
+.inside {
+	padding: 1px;
+}
+
+.inside img {
+	display: block;
+	margin: 0 0 0px 0;
+	width: 240px;
+	height: 240px;
+}
+
+.inside h2 {
+	font-weight: normal;
+	color: #111;
+	font-size: 16px;
+	margin: 0 0 3px 0;
+}
+
+.inside p {
+	font-size: 11px;
+	color: #ccc;
+}
+
+a {
+	color: #999;
+	text-decoration: none;
+	border-bottom:none;
+}
+/*a {
+	color: #999;
+	text-decoration: none;
+	border-bottom: 1px dotted #ccc;
+}
+a:hover {
+	border-bottom: 1px solid #999;
+}*/
+
+
+a:hover {
+	border-bottom:none;
+}
+
+.scrollButtons {
+    position: absolute;
+    top: 110px;
+    cursor: pointer;
+}
+
+.scrollButtons.left {
+    left: -35px;
+}
+
+.scrollButtons.right {
+    right: -40px;
+}
+
+.hide {
+    display: none;
+}

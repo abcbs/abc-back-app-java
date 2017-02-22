@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.ndlan.canyin.base.repository.mybatis.OrderMyDao">
+<select id="getBillList" parameterType="int" resultType="com.ndlan.canyin.frontdesk.dto3c.billinfo.BillDto">
+			select bb.b_id as bId,
+			bb.cart_id as cardId,
+			bb.create_by as casherId,
+			bb.b_no as bNo,
+			bb.b_name as bName,
+			bb.b_amount as bAmount,
+			bb.mb_id as mbId,
+			bb.customer_name as customerName,
+			bb.amount_paid as amountPaid,
+			bb.pay_type as payType,
+			bb.discount_type as discountType,
+			bb.pay_status as payStatus,
+			bb.all_discount as allDiscount,
+			bb.create_by as createBy,
+			bb.create_time as createTime
+			
+			from base3c_bill bb
+			where bb.rest_id ='${restId}' 
+			<if test="startDate != null">
+				<![CDATA[and  DATE_FORMAT(bb.create_time,'%Y-%m-%d') >= '${startDate}' ]]>
+			</if>
+			<if test="endDate != null">
+				<![CDATA[and  DATE_FORMAT(bb.create_time,'%Y-%m-%d') <= '${endDate}' ]]>
+			</if>
+			<if test="searchValue != null">
+				and ( bb.b_name like '${searchValue}' or bb.b_no like '${searchValue}' )
+			</if>
+			LIMIT ${offset},${pageSize}
+	</select>
+
+	<select id="getBillItemList" parameterType="int"
+		resultType="com.ndlan.canyin.frontdesk.dto3c.billinfo.BillItemDto">
+		select
+		bbi.bd_id as bdId,
+		bbi.bd_no as bdNo,
+		bbi.b_id as bId,
+		bbi.cart_item_id as CardItemId,
+		bbi.pro_id as proId,
+		bbi.category_id as categoryId,
+		bbi.bar_Code as barCode,
+		bbi.name as name,
+		bbi.pro_desc as proDesc,
+		bbi.pic as pic,
+		bbi.quantity as quantity,
+		bbi.price as price,
+		bbi.discount as discount,
+		bbi.discount_type as discountType,
+		bbi.derate as derate,
+		bbi.subtotal as subtotal,
+		bbi.pay_status as payStatus
+
+		from base3c_bill_item bbi
+		where bbi.rest_id ='${restId}'
+		and bbi.b_id='${bId}'
+	</select>
+	<select id="getPayList" parameterType="int" resultType="com.ndlan.canyin.frontdesk.dto3c.memberinfo.MemPayRecordDto">
+	select
+        crm.mb_id as id,
+        cmc.card_no as memberNo,
+        bb.create_time as createTime,
+        ce.name as seller,
+        bb.b_amount as paySum,
+        bb.amount_paid as proceeds,
+        cmco.add_integral as memberIntegral,
+        bb.pay_status as payStatus,
+        cmc.card_status as cardStatus  
+    from
+				cm_employee ce,
+        cm_rest_member_info crm,
+        cm_membership_card cmc,
+        base3c_bill  bb,
+        cm_membership_card_operation cmco  
+	where 
+	emp_id=bb.create_by and crm.mb_id=cmc.mb_id and bb.mb_id=crm.mb_id and bb.b_id=cmco.bill_id
+	and bb.rest_id ='${restId}'
+	and bb.mb_id='${mbId}'
+	<if test="searchValue != null ">
+				and ( cmc.card_no like '${searchValue}' or crm.name like '${searchValue}' )
+			</if>
+			LIMIT ${offset},${pageSize}
+	</select>
+ 
+</mapper>
